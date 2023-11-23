@@ -1,3 +1,4 @@
-import PasswordShowEye from '../images/eye.svg';
+import ShowEye from '../images/eye.svg';
+import ArrowRight from '../images/arrow-right.svg';
 
-export {PasswordShowEye};
+export {ShowEye, ArrowRight};

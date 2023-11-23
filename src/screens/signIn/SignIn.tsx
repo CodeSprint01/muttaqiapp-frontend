@@ -15,10 +15,7 @@ const SignUp = () => {
       </View>
       <View style={styles.signUpFormContainer}>
         <View style={styles.inputFields}>
-          <AppInput inputLabel="Full Name" placeholder="Full Name" />
-        </View>
-        <View style={styles.inputFields}>
-          <AppInput inputLabel="Email Address" placeholder="email@email.com" />
+          <AppInput inputLabel="Email Address" placeholder="Email Address" />
         </View>
 
         <View style={styles.inputFields}>
@@ -31,7 +28,7 @@ const SignUp = () => {
           />
         </View>
         <AppButton
-          buttonText={'Sign Up'}
+          buttonText={'Sign In'}
           onPress={() => console.log('button sign up click')}
           textStyle={styles.signUpTxt}
           withOpacity={0.7}
@@ -40,7 +37,7 @@ const SignUp = () => {
           <TouchableOpacity>
             <View style={styles.alreadyTxt}>
               <AppText
-                text="Already have an Account?"
+                text="Don’t have an Account?"
                 style={styles.alreadyTxt}
               />
             </View>
@@ -48,7 +45,7 @@ const SignUp = () => {
 
           <View style={styles.signImage}>
             <TouchableOpacity>
-              <AppText text="Sign In" style={styles.signIn} />
+              <AppText text="Sign Up" style={styles.signIn} />
             </TouchableOpacity>
             <View style={styles.arrowIcon}>
               <ArrowRight width={17} height={17} />
