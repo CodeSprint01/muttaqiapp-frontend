@@ -1,5 +1,6 @@
 import {StyleSheet, Text, View, StyleProp, TextStyle} from 'react-native';
 import React, {FC} from 'react';
+import {COLORS} from '../../../styles/color';
 
 interface myProps {
   text: string;
@@ -18,7 +19,7 @@ export default AppText;
 
 const styles = StyleSheet.create({
   txt: {
-    color: 'red',
+    color: COLORS.black,
     fontFamily: 'DMSans-Italic-VariableFont_opsz,wght',
   },
 });
