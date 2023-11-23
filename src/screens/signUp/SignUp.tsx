@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.white,
-    // marginVertical: 30,
     marginTop: 10,
   },
   circleContainer: {
@@ -120,7 +119,6 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginHorizontal: 30,
     justifyContent: 'space-between',
-    // paddingBottom:15
   },
   alreadyTxt: {
     fontSize: 12,

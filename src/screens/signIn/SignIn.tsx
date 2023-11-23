@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.white,
-    // marginVertical:30
   },
   circleContainer: {
     flex: 1,
