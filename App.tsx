@@ -9,8 +9,8 @@ const App = () => {
   return (
     <View style={styles.container}>
       {/* <SplashScreen /> */}
-      <SignUp />
-      {/* <SignIn /> */}
+      {/* <SignUp /> */}
+      <SignIn />
     </View>
   );
 };

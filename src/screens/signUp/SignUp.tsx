@@ -1,4 +1,10 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Dimensions,
+} from 'react-native';
 import React from 'react';
 import AppText from '../../components/atoms/appText/AppText';
 import {COLORS} from '../../styles/color';
@@ -7,56 +13,64 @@ import {ShowEye, ArrowRight} from '../../../assets/images/index';
 import AppButton from '../../components/molecules/appButton/AppButton';
 
 const SignUp = () => {
+  const screenHeight = Dimensions.get('window').height;
   return (
-    <View style={styles.container}>
-      <View style={styles.circleContainer}>
-        <View style={styles.circle} />
-        <AppText text="Muttaqi" style={styles.txt} />
-      </View>
-      <View style={styles.signUpFormContainer}>
-        <View style={styles.inputFields}>
-          <AppInput inputLabel="Full Name" placeholder="Full Name" />
+    <ScrollView
+      style={styles.container}
+      scrollEnabled={screenHeight <= 665 ? true : false}>
+      <View style={styles.container}>
+        <View style={styles.circleContainer}>
+          <View style={styles.circle} />
+          <AppText text="Muttaqi" style={styles.txt} />
         </View>
-        <View style={styles.inputFields}>
-          <AppInput inputLabel="Email Address" placeholder="email@email.com" />
-        </View>
+        <View style={styles.signUpFormContainer}>
+          <View style={styles.inputFields}>
+            <AppInput inputLabel="Full Name" placeholder="Full Name" />
+          </View>
+          <View style={styles.inputFields}>
+            <AppInput
+              inputLabel="Email Address"
+              placeholder="email@email.com"
+            />
+          </View>
 
-        <View style={styles.inputFields}>
-          <AppInput
-            inputLabel="Password"
-            placeholder="Password"
-            ImageName={ShowEye}
-            imageHeight={17}
-            imageWidth={17}
+          <View style={styles.inputFields}>
+            <AppInput
+              inputLabel="Password"
+              placeholder="Password"
+              ImageName={ShowEye}
+              imageHeight={17}
+              imageWidth={17}
+            />
+          </View>
+          <AppButton
+            buttonText={'Sign Up'}
+            onPress={() => console.log('button sign up click')}
+            textStyle={styles.signUpTxt}
+            withOpacity={0.7}
           />
-        </View>
-        <AppButton
-          buttonText={'Sign Up'}
-          onPress={() => console.log('button sign up click')}
-          textStyle={styles.signUpTxt}
-          withOpacity={0.7}
-        />
-        <View style={styles.bottomContainer}>
-          <TouchableOpacity>
-            <View style={styles.alreadyTxt}>
-              <AppText
-                text="Already have an Account?"
-                style={styles.alreadyTxt}
-              />
-            </View>
-          </TouchableOpacity>
-
-          <View style={styles.signImage}>
+          <View style={styles.bottomContainer}>
             <TouchableOpacity>
-              <AppText text="Sign In" style={styles.signIn} />
+              <View style={styles.alreadyTxt}>
+                <AppText
+                  text="Already have an Account?"
+                  style={styles.alreadyTxt}
+                />
+              </View>
             </TouchableOpacity>
-            <View style={styles.arrowIcon}>
-              <ArrowRight width={17} height={17} />
+
+            <View style={styles.signImage}>
+              <TouchableOpacity>
+                <AppText text="Sign In" style={styles.signIn} />
+              </TouchableOpacity>
+              <View style={styles.arrowIcon}>
+                <ArrowRight width={17} height={17} />
+              </View>
             </View>
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -66,12 +80,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.white,
-    // marginVertical:30
+    // marginVertical: 30,
+    marginTop: 10,
   },
   circleContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 20,
   },
   circle: {
     width: 138,
@@ -101,9 +117,10 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     flexDirection: 'row',
-    marginTop: 83,
+    marginTop: 50,
     marginHorizontal: 30,
     justifyContent: 'space-between',
+    // paddingBottom:15
   },
   alreadyTxt: {
     fontSize: 12,
