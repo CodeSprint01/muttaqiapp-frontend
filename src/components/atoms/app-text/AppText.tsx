@@ -23,6 +23,6 @@ export default AppText;
 const styles = StyleSheet.create({
   txt: {
     color: COLORS.black,
-    fontFamily: 'DMSans-Italic-VariableFont_opsz,wght',
+    // fontFamily: 'DMSans-Italic-VariableFont_opsz,wght',
   },
 });

@@ -5,6 +5,7 @@ import AppInput from './src/components/molecules/app-input/AppInput';
 import SignUp from './src/screens/signUp/SignUp';
 import SignIn from './src/screens/signIn/SignIn';
 import UserInfoFlow from './src/screens/userInfoFlow/UserInfoFlow';
+import {COLORS} from './src/styles/color';
 
 const App = () => {
   return (
@@ -21,5 +22,6 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.white,
   },
 });

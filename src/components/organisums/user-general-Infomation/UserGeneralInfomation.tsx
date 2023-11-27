@@ -19,20 +19,11 @@ const userGeneralInfomation = () => {
       <View style={styles.inputField}>
         <AppInput inputLabel="CNIC. NO" />
       </View>
-      {/* <View
-        style={[
-          styles.inputField,
-          {flexDirection: 'row', justifyContent: 'space-between'},
-        ]}>
-        <View style={{width: '41%'}}>
-          <AppInput inputLabel="CNIC. NO" />
-        </View>
-        <View style={styles.phoneNumberInputField}>
-          <AppInput inputLabel="Phone Number" />
-        </View>
-      </View> */}
       <View style={styles.inputField}>
         <SelectPhoneNumber />
+      </View>
+      <View style={styles.inputField}>
+        <AppInput inputLabel="Address" />
       </View>
     </View>
   );

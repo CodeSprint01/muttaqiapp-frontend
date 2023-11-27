@@ -4,6 +4,7 @@ import UserGeneralInfomation from '../../components/organisums/user-general-Info
 import UserInfoHeader, {
   UserInfoSteps,
 } from '../../components/atoms/user-info-header/UserInfoSteps';
+import {COLORS} from '../../styles/color';
 
 const userInfoFlow = () => {
   return (
@@ -20,5 +21,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 30,
+    color: COLORS.error,
   },
 });

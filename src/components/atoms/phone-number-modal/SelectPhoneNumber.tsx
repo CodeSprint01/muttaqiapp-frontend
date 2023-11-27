@@ -11,10 +11,9 @@ const SelectPhoneNumber = () => {
     setValue(text);
   };
 
-  const handleOnSelectCountry = newCountryCode => {
+  const handleOnSelectCountry = (newCountryCode: any) => {
     setCountryCode(newCountryCode);
   };
-  console.log(formattedValue);
 
   return (
     <View style={styles.container}>
@@ -26,15 +25,7 @@ const SelectPhoneNumber = () => {
         onSelectCountry={handleOnSelectCountry}
         textInputStyle={{}}
         containerStyle={styles.flagContainer}
-        textContainerStyle={{
-          backgroundColor: 'white',
-          borderRadius: 10,
-          marginLeft: 10,
-          width: '65%',
-          marginRight: -14,
-          borderWidth: 1,
-          borderColor: COLORS.quaternary,
-        }}
+        textContainerStyle={styles.phoneNumberInput}
         flagButtonStyle={styles.flagView}
       />
     </View>
@@ -43,22 +34,28 @@ const SelectPhoneNumber = () => {
 export default SelectPhoneNumber;
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // backgroundColor: 'blue',
-    // borderWidth:2,
-    // borderColor:"red",
     width: '100%',
   },
   flagContainer: {
-    // borderWidth: 1,
     borderRadius: 10,
     marginRight: 20,
-    // backgroundColor:"green"
   },
   flagView: {
     borderWidth: 1,
     borderColor: COLORS.quaternary,
     borderRadius: 10,
-    width: '35%',
+    width: '30%',
+  },
+  phoneNumberInput: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    marginLeft: 10,
+    width: '65%',
+    marginRight: -14,
+    borderWidth: 1,
+    borderColor: COLORS.quaternary,
+    height: 47,
+    paddingTop: -20,
+    paddingBottom: -10,
   },
 });
