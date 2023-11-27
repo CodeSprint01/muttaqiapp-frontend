@@ -8,7 +8,7 @@ import {
   ImageSourcePropType,
   View,
 } from 'react-native';
-import AppText from '../../atoms/appText/AppText';
+import AppText from '../../atoms/app-text/AppText';
 import {COLORS} from '../../../styles/color';
 
 interface ButtonProps {

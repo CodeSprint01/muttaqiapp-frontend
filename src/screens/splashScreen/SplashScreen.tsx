@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import AppText from '../../components/atoms/appText/AppText';
+import AppText from '../../components/atoms/app-text/AppText';
 import {COLORS} from '../../styles/color';
 
 const SplashScreen = () => {

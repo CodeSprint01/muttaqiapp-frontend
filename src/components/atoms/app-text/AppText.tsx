@@ -3,14 +3,17 @@ import React, {FC} from 'react';
 import {COLORS} from '../../../styles/color';
 
 interface myProps {
-  text: string;
+  text: any;
   style?: StyleProp<TextStyle>;
+  onPress?: () => void;
 }
 
-const AppText: FC<myProps> = ({text, style}) => {
+const AppText: FC<myProps> = ({text, style, onPress}) => {
   return (
     <View>
-      <Text style={[styles.txt, style]}>{text}</Text>
+      <Text onPress={onPress} style={[styles.txt, style]}>
+        {text}
+      </Text>
     </View>
   );
 };

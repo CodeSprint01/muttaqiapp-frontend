@@ -1,10 +1,10 @@
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import AppText from '../../components/atoms/appText/AppText';
+import AppText from '../../components/atoms/app-text/AppText';
 import {COLORS} from '../../styles/color';
-import AppInput from '../../components/molecules/appInput/AppInput';
+import AppInput from '../../components/molecules/app-input/AppInput';
 import {ShowEye, ArrowRight} from '../../../assets/images/index';
-import AppButton from '../../components/molecules/appButton/AppButton';
+import AppButton from '../../components/molecules/app-button/AppButton';
 
 const SignUp = () => {
   return (
@@ -15,13 +15,12 @@ const SignUp = () => {
       </View>
       <View style={styles.signUpFormContainer}>
         <View style={styles.inputFields}>
-          <AppInput inputLabel="Email Address" placeholder="Email Address" />
+          <AppInput inputLabel="Email Address" />
         </View>
 
         <View style={styles.inputFields}>
           <AppInput
             inputLabel="Password"
-            placeholder="Password"
             ImageName={ShowEye}
             imageHeight={17}
             imageWidth={17}
