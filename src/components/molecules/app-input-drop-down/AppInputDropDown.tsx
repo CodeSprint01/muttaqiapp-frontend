@@ -1,23 +1,16 @@
-/* eslint-disable react-native/no-inline-styles */
 import {
   StyleSheet,
-  TextInput,
   View,
-  TextStyle,
-  ViewStyle,
   ImageSourcePropType,
-  Animated,
-  Easing,
   TextInputProps,
 } from 'react-native';
-import React, {FC, useState, useRef} from 'react';
+import React, {FC, useState} from 'react';
 import {COLORS} from '../../../styles/color';
-import AppText from '../../atoms/app-text/AppText';
+import {SelectList} from 'react-native-dropdown-select-list';
 
 interface MyProps {
-  inputLabel: string;
-  textStyle?: TextStyle;
-  inputStyle?: ViewStyle;
+  arrayData: Array<{label: string; value: string}>;
+  placeholderText: string;
   ImageName?: ImageSourcePropType;
   imageWidth?: number;
   imageHeight?: number;
@@ -31,107 +24,45 @@ type PropsWithImage = MyProps &
       }
     : {});
 const AppInputDropDown: FC<PropsWithImage & TextInputProps> = ({
-  inputLabel,
-  textStyle,
-  inputStyle,
+  arrayData,
+  placeholderText,
   ImageName,
   imageWidth = 24,
   imageHeight = 24,
-  ...rest
 }) => {
-  const [isFocused, setIsFocused] = useState<boolean>(false);
-  const [inputValue, setInputValue] = useState<string>(rest.value || ''); // Use state to track input value
-  const animatedValue = useRef(new Animated.Value(inputValue ? 1 : 0)).current;
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  const handleFocus = () => {
-    Animated.timing(animatedValue, {
-      toValue: 1,
-      duration: 200,
-      easing: Easing.ease,
-      useNativeDriver: false,
-    }).start();
-    setIsFocused(true);
-  };
+  console.log(selectedItem);
 
-  const handleBlur = () => {
-    if (!inputValue) {
-      Animated.timing(animatedValue, {
-        toValue: 0,
-        duration: 200,
-        easing: Easing.ease,
-        useNativeDriver: false,
-      }).start();
-      setIsFocused(false);
-    }
-  };
-  const handleInputChange = (text: string) => {
-    setInputValue(text);
-  };
-  const labelStyle = {
-    transform: [
-      {
-        translateY: animatedValue.interpolate({
-          inputRange: [0, 1],
-          outputRange: [20, 0],
-        }),
-      },
-    ],
-  };
   return (
     <>
       <View>
-        <View style={styles.textView}>
-          <Animated.View style={[styles.animatedLabel, labelStyle]}>
-            <AppText
-              text={inputLabel}
-              onPress={handleFocus}
-              style={[
-                styles.txtSty,
-                textStyle,
-                {color: isFocused ? COLORS.black : COLORS.quaternary},
-              ]}
-            />
-          </Animated.View>
-        </View>
-        <TextInput
-          style={[styles.inputSty, inputStyle, {zIndex: isFocused ? 1 : 3}]}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChangeText={handleInputChange}
-          value={inputValue}
-          {...rest}
+        <SelectList
+          setSelected={(val: any) => setSelectedItem(val)}
+          data={arrayData}
+          save="value"
+          search={false}
+          arrowicon={<ImageName width={imageWidth} height={imageHeight} />}
+          placeholder={placeholderText}
+          dropdownTextStyles={styles.dropdownTextSty}
+          boxStyles={styles.boxSty}
+          inputStyles={styles.inputSty}
+          dropdownStyles={styles.dropdownsty}
         />
-        {ImageName && (
-          <View style={styles.iconContainer}>
-            <ImageName width={imageWidth} height={imageHeight} />
-          </View>
-        )}
       </View>
     </>
   );
 };
-
 export default AppInputDropDown;
 
 const styles = StyleSheet.create({
-  inputSty: {
-    height: 47,
-    borderWidth: 1,
-    borderColor: COLORS.tertiary,
-    borderRadius: 10,
-    paddingLeft: 14,
-    paddingRight: 40,
-    fontSize: 16,
-    fontFamily: 'DMSans-Italic-VariableFont_opsz,wght',
+  dropdownTextSty: {
+    color: 'black',
   },
-  textView: {
-    position: 'absolute',
-    zIndex: 2,
-    marginLeft: 9,
-    left: 3,
-    backgroundColor: 'white',
-    top: -4,
-    marginBottom: 8,
+  boxSty: {
+    borderColor: COLORS.tertiary,
+    borderWidth: 1,
+    height: 47,
   },
   txtSty: {
     fontSize: 12,
@@ -140,13 +71,20 @@ const styles = StyleSheet.create({
     color: COLORS.black,
     marginHorizontal: 5,
   },
-  animatedLabel: {
-    position: 'absolute',
-    backgroundColor: 'white',
+  inputSty: {
+    color: COLORS.quaternary,
+    fontSize: 12,
+    paddingTop: 3,
   },
-  iconContainer: {
-    position: 'absolute',
-    right: 44,
-    top: 15,
+  dropdownsty: {
+    backgroundColor: COLORS.tertiary,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: COLORS.tertiary,
+    elevation: 2,
+    shadowColor: 'black',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.3,
+    shadowRadius: 9,
   },
 });
