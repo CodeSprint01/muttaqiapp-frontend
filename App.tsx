@@ -1,4 +1,4 @@
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import React from 'react';
 import SplashScreen from './src/screens/splashScreen/SplashScreen';
 import AppInput from './src/components/molecules/app-input/AppInput';
@@ -6,16 +6,15 @@ import SignUp from './src/screens/signUp/SignUp';
 import SignIn from './src/screens/signIn/SignIn';
 import UserInfoFlow from './src/screens/userInfoFlow/UserInfoFlow';
 import {COLORS} from './src/styles/color';
+import TabNavigator from './src/navigation/TabNavigator';
+import {NavigationContainer} from '@react-navigation/native';
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      {/* <SplashScreen /> */}
-      {/* <SignUp /> */}
-      {/* <SignIn /> */}
-      {/* <UserInfoFlow /> */}
-
-    </View>
+    <NavigationContainer>
+      <TabNavigator />
+    </NavigationContainer>
+    // <Text>hhh</Text>
   );
 };
 
@@ -26,3 +25,18 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
   },
 });
+// <View style={styles.container}>
+{
+  /* <SplashScreen /> */
+}
+{
+  /* <SignUp /> */
+}
+{
+  /* <SignIn /> */
+}
+{
+  /* <UserInfoFlow /> */
+}
+
+// </View>
