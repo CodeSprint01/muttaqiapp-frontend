@@ -5,12 +5,14 @@ import UserInfoHeader, {
   UserInfoSteps,
 } from '../../components/atoms/user-info-header/UserInfoSteps';
 import {COLORS} from '../../styles/color';
+import UserFamilyInformation from '../../components/organisums/user-family-Infomation/UserFamilyInformation';
 
 const userInfoFlow = () => {
   return (
     <View style={styles.container}>
       <UserInfoHeader stepValue={UserInfoSteps.assest} />
       <UserGeneralInfomation />
+      {/* <UserFamilyInformation /> */}
     </View>
   );
 };

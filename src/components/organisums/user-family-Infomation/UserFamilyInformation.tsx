@@ -4,66 +4,50 @@ import AppText from '../../atoms/app-text/AppText';
 import {COLORS} from '../../../styles/color';
 import AppInput from '../../molecules/app-input/AppInput';
 import {DropDownImage} from '../../../../assets/images';
-import SelectPhoneNumber from '../../atoms/phone-number-modal/SelectPhoneNumber';
 import AppInputDropDown from '../../molecules/app-input-drop-down/AppInputDropDown';
-import SelectLanguageModal from '../../atoms/all-language-modal/SelectLanguageModal';
-import {language, SecteList} from '../../../utils/mocks/languageList';
+import {MartialStatus} from '../../../utils/mocks/languageList';
 
-const userGeneralInfomation = () => {
+const UserFamilyInformation = () => {
   return (
     <ScrollView
       style={styles.container}
       showsVerticalScrollIndicator={false}
       scrollEnabled={true}>
       <View>
-        <AppText text={'General Information'} style={styles.gernalTxt} />
+        <AppText text={'Family Information'} style={styles.gernalTxt} />
         <View style={styles.inputField}>
-          <AppInput inputLabel="Full Name" />
+          <AppInput inputLabel="Father Name" />
         </View>
         <View style={styles.inputField}>
-          <AppInput inputLabel="Education" />
+          <AppInput inputLabel="Mother Name" />
         </View>
         <View style={styles.inputField}>
-          <AppInput inputLabel="CNIC. NO" />
-        </View>
-        <View style={styles.inputField}>
-          <SelectPhoneNumber />
-        </View>
-        <View style={styles.inputField}>
-          <AppInput inputLabel="Address" />
-        </View>
-        <View style={styles.sectAndAge}>
-          <View style={styles.sect}>
-            <AppInputDropDown
-              placeholderText="Sect"
-              ImageName={DropDownImage}
-              imageWidth={20}
-              imageHeight={20}
-              arrayData={SecteList}
-            />
-          </View>
-          <View style={styles.age}>
-            <AppInput inputLabel="Age" />
-          </View>
-        </View>
-        <View style={styles.inputField}>
-          <SelectLanguageModal />
+          <AppInput inputLabel="NO. of Siblings" />
         </View>
         <View style={styles.inputField}>
           <AppInputDropDown
-            placeholderText="Language"
+            placeholderText="Martial Status"
             ImageName={DropDownImage}
             imageWidth={20}
             imageHeight={20}
-            arrayData={language}
+            arrayData={MartialStatus}
           />
+        </View>
+        <View style={styles.inputField}>
+          <AppInput inputLabel="Childern Names" />
+        </View>
+        <View style={styles.inputField}>
+          <AppInput inputLabel="Wife Name" />
+        </View>
+        <View style={styles.inputField}>
+          <AppInput inputLabel="Widow/Widower" />
         </View>
       </View>
     </ScrollView>
   );
 };
 
-export default userGeneralInfomation;
+export default UserFamilyInformation;
 
 const styles = StyleSheet.create({
   container: {

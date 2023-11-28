@@ -72,7 +72,7 @@ const AppInput: FC<PropsWithImage & TextInputProps> = ({
       {
         translateY: animatedValue.interpolate({
           inputRange: [0, 1],
-          outputRange: [20, 0],
+          outputRange: [25, 0],
         }),
       },
     ],
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     marginLeft: 9,
     left: 3,
     backgroundColor: 'white',
-    top: -4,
+    top: -6,
     marginBottom: 8,
   },
   txtSty: {

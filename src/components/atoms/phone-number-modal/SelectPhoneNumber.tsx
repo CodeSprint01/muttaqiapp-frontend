@@ -5,7 +5,7 @@ import {COLORS} from '../../../styles/color';
 const SelectPhoneNumber = () => {
   const [value, setValue] = useState('');
   const [formattedValue, setFormattedValue] = useState('');
-  const [countryCode, setCountryCode] = useState('US'); // Initial country code
+  const [countryCode, setCountryCode] = useState('PK'); // Initial country code
 
   const handleOnChangeText = text => {
     setValue(text);
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   flagView: {
     borderWidth: 1,
-    borderColor: COLORS.quaternary,
+    borderColor: COLORS.tertiary,
     borderRadius: 10,
     width: '30%',
   },
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     width: '65%',
     marginRight: -14,
     borderWidth: 1,
-    borderColor: COLORS.quaternary,
+    borderColor: COLORS.tertiary,
     height: 47,
     paddingTop: -20,
     paddingBottom: -10,

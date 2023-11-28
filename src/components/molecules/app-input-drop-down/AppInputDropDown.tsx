@@ -35,22 +35,20 @@ const AppInputDropDown: FC<PropsWithImage & TextInputProps> = ({
   console.log(selectedItem);
 
   return (
-    <>
-      <View>
-        <SelectList
-          setSelected={(val: any) => setSelectedItem(val)}
-          data={arrayData}
-          save="value"
-          search={false}
-          arrowicon={<ImageName width={imageWidth} height={imageHeight} />}
-          placeholder={placeholderText}
-          dropdownTextStyles={styles.dropdownTextSty}
-          boxStyles={styles.boxSty}
-          inputStyles={styles.inputSty}
-          dropdownStyles={styles.dropdownsty}
-        />
-      </View>
-    </>
+    <View>
+      <SelectList
+        setSelected={(val: any) => setSelectedItem(val)}
+        data={arrayData}
+        save="value"
+        search={false}
+        arrowicon={<ImageName width={imageWidth} height={imageHeight} />}
+        placeholder={placeholderText}
+        dropdownTextStyles={styles.dropdownTextSty}
+        boxStyles={styles.boxSty}
+        inputStyles={styles.inputSty}
+        dropdownStyles={styles.dropdownsty}
+      />
+    </View>
   );
 };
 export default AppInputDropDown;
@@ -77,7 +75,7 @@ const styles = StyleSheet.create({
     paddingTop: 3,
   },
   dropdownsty: {
-    backgroundColor: COLORS.tertiary,
+    backgroundColor: COLORS.white,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: COLORS.tertiary,
