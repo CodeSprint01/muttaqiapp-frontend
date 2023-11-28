@@ -13,7 +13,8 @@ const App = () => {
       {/* <SplashScreen /> */}
       {/* <SignUp /> */}
       {/* <SignIn /> */}
-      <UserInfoFlow />
+      {/* <UserInfoFlow /> */}
+
     </View>
   );
 };

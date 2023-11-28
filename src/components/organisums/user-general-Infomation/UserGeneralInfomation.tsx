@@ -1,6 +1,5 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import AppText from '../../atoms/app-text/AppText';
 import {COLORS} from '../../../styles/color';
 import AppInput from '../../molecules/app-input/AppInput';
 import {DropDownImage} from '../../../../assets/images';
@@ -50,7 +49,6 @@ const userGeneralInfomation = () => {
           <View style={styles.languageModal}>
             <SelectLanguageModal />
           </View>
-          {/* <View style={{marginTop: 20 , backgroundColor:"green"  , height:70 , marginBottom}}> */}
           <View style={styles.languageList}>
             <AppInputDropDown
               placeholderText="Language"
@@ -61,14 +59,6 @@ const userGeneralInfomation = () => {
             />
           </View>
         </View>
-        {/* </View> */}
-        {/* <View style={{marginTop: 100}}>
-          <Text> test </Text>
-        </View> */}
-        {/*
-        <View style={{marginTop: 200}}>
-          <Text> test </Text>
-        </View> */}
       </View>
     </ScrollView>
   );
