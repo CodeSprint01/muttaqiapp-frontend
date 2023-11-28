@@ -32,8 +32,6 @@ const AppInputDropDown: FC<PropsWithImage & TextInputProps> = ({
 }) => {
   const [selectedItem, setSelectedItem] = useState(null);
 
-  console.log(selectedItem);
-
   return (
     <View>
       <SelectList

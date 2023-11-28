@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import AppText from '../../atoms/app-text/AppText';
 import {COLORS} from '../../../styles/color';
@@ -16,7 +16,6 @@ const userGeneralInfomation = () => {
       showsVerticalScrollIndicator={false}
       scrollEnabled={true}>
       <View>
-        <AppText text={'General Information'} style={styles.gernalTxt} />
         <View style={styles.inputField}>
           <AppInput inputLabel="Full Name" />
         </View>
@@ -32,32 +31,44 @@ const userGeneralInfomation = () => {
         <View style={styles.inputField}>
           <AppInput inputLabel="Address" />
         </View>
-        <View style={styles.sectAndAge}>
-          <View style={styles.sect}>
+        {/* here i am working on drop down list */}
+        <View>
+          <View style={styles.sectAndAge}>
+            <View style={styles.sect}>
+              <AppInputDropDown
+                placeholderText="Sect"
+                ImageName={DropDownImage}
+                imageWidth={20}
+                imageHeight={20}
+                arrayData={SecteList}
+              />
+            </View>
+            <View style={styles.age}>
+              <AppInput inputLabel="Age" />
+            </View>
+          </View>
+          <View style={styles.languageModal}>
+            <SelectLanguageModal />
+          </View>
+          {/* <View style={{marginTop: 20 , backgroundColor:"green"  , height:70 , marginBottom}}> */}
+          <View style={styles.languageList}>
             <AppInputDropDown
-              placeholderText="Sect"
+              placeholderText="Language"
               ImageName={DropDownImage}
               imageWidth={20}
               imageHeight={20}
-              arrayData={SecteList}
+              arrayData={language}
             />
           </View>
-          <View style={styles.age}>
-            <AppInput inputLabel="Age" />
-          </View>
         </View>
-        <View style={styles.inputField}>
-          <SelectLanguageModal />
-        </View>
-        <View style={styles.inputField}>
-          <AppInputDropDown
-            placeholderText="Language"
-            ImageName={DropDownImage}
-            imageWidth={20}
-            imageHeight={20}
-            arrayData={language}
-          />
-        </View>
+        {/* </View> */}
+        {/* <View style={{marginTop: 100}}>
+          <Text> test </Text>
+        </View> */}
+        {/*
+        <View style={{marginTop: 200}}>
+          <Text> test </Text>
+        </View> */}
       </View>
     </ScrollView>
   );
@@ -70,15 +81,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.white,
   },
-  gernalTxt: {
-    fontSize: 20,
-    fontWeight: '700',
-    lineHeight: 26.04,
-    color: COLORS.black,
-    paddingTop: 23,
-  },
   inputField: {
     marginTop: 20,
+  },
+  languageModal: {
+    marginTop: 110,
   },
   phoneNumberInputField: {
     width: '57%',
@@ -90,9 +97,21 @@ const styles = StyleSheet.create({
   sect: {
     marginTop: 30,
     width: '49%',
+    position: 'absolute',
+    zIndex: 2,
   },
   age: {
     marginTop: 30,
     width: '49%',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+  },
+  languageList: {
+    marginTop: 15,
+    // zIndex: 2,
+    // position: 'absolute',
+    // width: '100%',
+    marginBottom: 95,
   },
 });

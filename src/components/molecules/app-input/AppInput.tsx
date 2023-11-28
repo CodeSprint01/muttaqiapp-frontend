@@ -88,7 +88,10 @@ const AppInput: FC<PropsWithImage & TextInputProps> = ({
               style={[
                 styles.txtSty,
                 textStyle,
-                {color: isFocused ? COLORS.black : COLORS.quaternary},
+                {
+                  color: isFocused ? COLORS.black : COLORS.quaternary,
+                  fontSize: isFocused ? 12 : 14,
+                },
               ]}
             />
           </Animated.View>
@@ -134,11 +137,13 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   txtSty: {
-    fontSize: 12,
+    fontSize: 14,
     lineHeight: 12.64,
     fontWeight: '400',
     color: COLORS.black,
     marginHorizontal: 5,
+    // backgroundColor:"red",
+    paddingTop: 2,
   },
   animatedLabel: {
     position: 'absolute',

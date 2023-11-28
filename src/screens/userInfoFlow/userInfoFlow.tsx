@@ -6,6 +6,7 @@ import UserInfoHeader, {
 } from '../../components/atoms/user-info-header/UserInfoSteps';
 import {COLORS} from '../../styles/color';
 import UserFamilyInformation from '../../components/organisums/user-family-Infomation/UserFamilyInformation';
+import AppButton from '../../components/molecules/app-button/AppButton';
 
 const userInfoFlow = () => {
   return (
@@ -13,6 +14,9 @@ const userInfoFlow = () => {
       <UserInfoHeader stepValue={UserInfoSteps.assest} />
       <UserGeneralInfomation />
       {/* <UserFamilyInformation /> */}
+      <View style={{marginBottom:34}}>
+        <AppButton buttonText='Continue' />
+      </View>
     </View>
   );
 };

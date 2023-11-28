@@ -38,6 +38,7 @@ const UserInfoHeader: FC<stepProps> = ({stepValue}) => {
         <AppText text={stepValue + 1} style={styles.textValue} />
         <AppText text=" of 4" style={styles.textValue} />
       </View>
+      <AppText text={'General Information'} style={styles.labelText} />
     </View>
   );
 };
@@ -47,6 +48,13 @@ export default UserInfoHeader;
 const styles = StyleSheet.create({
   container: {
     marginTop: 35,
+  },
+  labelText: {
+    fontSize: 20,
+    fontWeight: '700',
+    lineHeight: 26.04,
+    color: COLORS.black,
+    paddingTop: 23,
   },
   linesView: {
     backgroundColor: 'white',
