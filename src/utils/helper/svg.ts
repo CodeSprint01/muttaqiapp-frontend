@@ -6,7 +6,9 @@ export const Icons = {
   TrackerTabIcon: 'TRACKER_TAB_ICON',
   SettingTabIcon: 'SETTING_TAB_ICON',
   CompassPin: 'COMPASS_PIN',
-  CompassGray: 'COMPASS_GRAY',
+  CompassGrayPin: 'COMPASS_GRAY_PIN',
+  LocationPin: 'LOCATION_PIN',
+  ThemeChange: 'THEME_CHANGE',
 };
 
 export const Colors = {
@@ -15,7 +17,9 @@ export const Colors = {
   [Icons.TrackerTabIcon]: {color: COLORS.light_gray},
   [Icons.SettingTabIcon]: {color: COLORS.light_gray},
   [Icons.CompassPin]: {color: COLORS.light_gray},
-  [Icons.CompassGray]: {color: COLORS.light_gray},
+  [Icons.CompassGrayPin]: {color: COLORS.light_gray},
+  [Icons.LocationPin]: {color: COLORS.light_gray},
+  [Icons.ThemeChange]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -28,8 +32,12 @@ SvgIcons[Icons.SettingTabIcon] =
   require('../../../assets/images/setting').default;
 SvgIcons[Icons.CompassPin] =
   require('../../../assets/images/compassPin').default;
-SvgIcons[Icons.CompassGray] =
-  require('../../../assets/images/CompassGray').default;
+SvgIcons[Icons.CompassGrayPin] =
+  require('../../../assets/images/grayCompassPin').default;
+SvgIcons[Icons.LocationPin] =
+  require('../../../assets/images/locationPin').default;
+SvgIcons[Icons.ThemeChange] =
+  require('../../../assets/images/ThemeChange').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

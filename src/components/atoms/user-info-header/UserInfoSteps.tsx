@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     lineHeight: 26.04,
-    color: COLORS.black,
+    color: COLORS.lightBlack,
     paddingTop: 23,
   },
   linesView: {

@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   txt: {
-    color: COLORS.black,
+    color: COLORS.lightBlack,
     fontSize: 20,
     fontWeight: '700',
     paddingTop: 20,
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '400',
     lineHeight: 15.62,
-    color: COLORS.black,
+    color: COLORS.lightBlack,
     paddingTop: 2,
   },
   signImage: {

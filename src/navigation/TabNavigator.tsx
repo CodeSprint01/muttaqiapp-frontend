@@ -35,6 +35,7 @@ const TabNavigator = () => {
             height: 80,
             elevation: 0,
           },
+          headerShown: false,
         })}>
         <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Qibla" component={QiblaStack} />

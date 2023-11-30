@@ -94,7 +94,7 @@ const TrackerScreen = () => {
   }, []);
 
   return (
-    <Grid style={{backgroundColor: 'black'}}>
+    <Grid style={{backgroundColor: 'lightBlack'}}>
       <Row style={{alignItems: 'center'}} size={0.9}>
         <Col style={{alignItems: 'center'}}>
           <Text
@@ -111,13 +111,13 @@ const TrackerScreen = () => {
       <Row style={{alignItems: 'center'}} size={0.1}>
         <Col style={{alignItems: 'center'}}>
           <View style={{width: width, alignItems: 'center', bottom: 0}}>
-            <Image
+            {/* <Image
               source={require('../../../assets/images/compass_pointer.png')}
               style={{
                 height: height / 26,
                 resizeMode: 'contain',
               }}
-            />
+            /> */}
           </View>
         </Col>
       </Row>
@@ -135,7 +135,7 @@ const TrackerScreen = () => {
         </Text>
 
         <Col style={{alignItems: 'center'}}>
-          <Image
+          {/* <Image
             source={require('../../../assets/images/compass_bg.png')}
             style={{
               height: width - 80,
@@ -144,7 +144,7 @@ const TrackerScreen = () => {
               resizeMode: 'contain',
               transform: [{rotate: 360 - magnetometerValue + 'deg'}],
             }}
-          />
+          /> */}
         </Col>
       </Row>
 

@@ -8,5 +8,6 @@ export const COLORS = {
   sucess: '#3AA757',
   error: '#EA4335',
   white: '#FFFFFF',
-  black: '#333333',
+  black: '#000000',
+  lightBlack: '#333333',
 } as const;

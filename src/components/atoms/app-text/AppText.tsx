@@ -22,7 +22,7 @@ export default AppText;
 
 const styles = StyleSheet.create({
   txt: {
-    color: COLORS.black,
+    color: COLORS.lightBlack,
     // fontFamily: 'DMSans-Italic-VariableFont_opsz,wght',
   },
 });
