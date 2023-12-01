@@ -5,7 +5,7 @@ import {COLORS} from '../../../styles/color';
 import AppInput from '../../molecules/app-input/AppInput';
 import {DropDownImage} from '../../../../assets/images';
 import AppInputDropDown from '../../molecules/app-input-drop-down/AppInputDropDown';
-import {MartialStatus} from '../../../utils/mocks/languageList';
+import {MartialStatus} from '../../../utils/mocks/AllMockArray';
 
 const UserFamilyInformation = () => {
   return (

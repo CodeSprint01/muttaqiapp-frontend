@@ -6,7 +6,7 @@ import {DropDownImage} from '../../../../assets/images';
 import SelectPhoneNumber from '../../atoms/phone-number-modal/SelectPhoneNumber';
 import AppInputDropDown from '../../molecules/app-input-drop-down/AppInputDropDown';
 import SelectLanguageModal from '../../atoms/all-language-modal/SelectLanguageModal';
-import {language, SecteList} from '../../../utils/mocks/languageList';
+import {language, SecteList} from '../../../utils/mocks/AllMockArray';
 
 const userGeneralInfomation = () => {
   return (

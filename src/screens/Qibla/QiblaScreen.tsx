@@ -7,6 +7,7 @@ import {COLORS} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
 import QiblaScreenHeader from './QiblaScreenHeader';
 import AppModal from '../../components/atoms/app-modal/AppModal';
+import CompassTemplateModal from './CompassTemplateModal';
 
 const QiblaScreen = () => {
   const [heading, setHeading] = useState({accuracy: 0, heading: 0});
@@ -26,13 +27,21 @@ const QiblaScreen = () => {
           latitude: location.latitude,
           longitude: location.longitude,
         });
+        console.log(userLocation);
       })
       .catch(error => {
         const {code, message} = error;
         console.log(code, message);
       });
-  }, [userLocation]);
-  console.log(userLocation);
+  }, []);
+  const handleCompassSelect = (selectedItem: any) => {
+    const {compassImage, compassPin, name} = selectedItem;
+    console.log('Selected Compass Image:', compassImage?.uri);
+    console.log('Selected Compass Pin:', compassPin?.uri);
+    console.log('Selected Name:', name);
+    console.log('Selected Name:', selectedItem);
+    // Add your logic here
+  };
 
   useEffect(() => {
     CompassHeading.start(0, (degree: any) => {
@@ -88,14 +97,14 @@ const QiblaScreen = () => {
         <View style={{transform: [{rotate: `${360 - heading.heading}deg`}]}}>
           <View>
             <Image
-              source={require('../../../assets/images/qiblaGrayTheme.png')}
+              source={require('../../../assets/images/compass-template/grayCompassHd.png')}
               style={styles.compassImage}
             />
           </View>
         </View>
         <View style={styles.niddleContainer}>
           <AppIconSvg
-            icon={Icons.CompassGrayPin}
+            icon={Icons.GrayBlueCompPin}
             width={75}
             height={75}
             color={COLORS.light_gray}
@@ -108,7 +117,7 @@ const QiblaScreen = () => {
       <AppModal
         children={
           <View>
-            <Text>Select Theme</Text>
+            <CompassTemplateModal onSelectItem={handleCompassSelect} />
           </View>
         }
         isVisible={modalVisible}
