@@ -1,6 +1,7 @@
-import {View, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet, Text} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import CompassHeading from 'react-native-compass-heading';
+import GetLocation from 'react-native-get-location';
 import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
 import {COLORS} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
@@ -9,6 +10,29 @@ import AppModal from '../../components/atoms/app-modal/AppModal';
 
 const QiblaScreen = () => {
   const [heading, setHeading] = useState({accuracy: 0, heading: 0});
+  const [modalVisible, setModalVisible] = useState(false);
+  const [userLocation, setUserLocation] = useState({
+    latitude: 31.5684198,
+    longitude: 74.3261093,
+  });
+
+  useEffect(() => {
+    GetLocation.getCurrentPosition({
+      enableHighAccuracy: true,
+      timeout: 15000,
+    })
+      .then(location => {
+        setUserLocation({
+          latitude: location.latitude,
+          longitude: location.longitude,
+        });
+      })
+      .catch(error => {
+        const {code, message} = error;
+        console.log(code, message);
+      });
+  }, [userLocation]);
+  console.log(userLocation);
 
   useEffect(() => {
     CompassHeading.start(0, (degree: any) => {
@@ -40,11 +64,10 @@ const QiblaScreen = () => {
 
     return brng;
   }
-  const latitude1 = 74.326119;
-  const longitude1 = 31.568435;
-  const latitude2 = 21.422487;
-  const longitude2 = 39.826206;
-
+  const latitude1 = userLocation?.latitude;
+  const longitude1 = userLocation?.longitude;
+  const latitude2 = 21.42251;
+  const longitude2 = 39.826168;
   const bearing = angleFromCoordinate(
     latitude1,
     longitude1,
@@ -52,13 +75,14 @@ const QiblaScreen = () => {
     longitude2,
   );
   console.log('Bearing:', bearing);
+  const handleModalVisible = () => {
+    setModalVisible(!modalVisible);
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <QiblaScreenHeader
-          handleThemeClick={() => console.log('theme click')}
-        />
+        <QiblaScreenHeader handleThemeClick={handleModalVisible} />
       </View>
       <View style={styles.watchContainer}>
         <View style={{transform: [{rotate: `${360 - heading.heading}deg`}]}}>
@@ -81,7 +105,15 @@ const QiblaScreen = () => {
       <View style={styles.bottomTxtContainer}>
         <AppText text={'Turn to your Right'} style={styles.bottomTxt} />
       </View>
-      <AppModal children={'gg'} />
+      <AppModal
+        children={
+          <View>
+            <Text>Select Theme</Text>
+          </View>
+        }
+        isVisible={modalVisible}
+        toggleModal={handleModalVisible}
+      />
     </View>
   );
 };
