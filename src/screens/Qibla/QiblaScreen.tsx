@@ -5,20 +5,26 @@ import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
 import {COLORS} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
 import QiblaScreenHeader from './QiblaScreenHeader';
+import AppModal from '../../components/atoms/app-modal/AppModal';
 
 const QiblaScreen = () => {
   const [heading, setHeading] = useState({accuracy: 0, heading: 0});
-  console.log(heading);
 
   useEffect(() => {
-    CompassHeading.start(0, degree => {
+    CompassHeading.start(0, (degree: any) => {
       setHeading(degree);
     });
     return () => {
       CompassHeading.stop();
     };
   }, []);
-  function angleFromCoordinate(latitude1, longitude1, latitude2, longitude2) {
+
+  function angleFromCoordinate(
+    latitude1: number,
+    longitude1: number,
+    latitude2: number,
+    longitude2: number,
+  ): number {
     const dLon = (longitude2 - longitude1) * (Math.PI / 180);
     latitude1 = latitude1 * (Math.PI / 180);
     latitude2 = latitude2 * (Math.PI / 180);
@@ -59,7 +65,7 @@ const QiblaScreen = () => {
           <View>
             <Image
               source={require('../../../assets/images/qiblaGrayTheme.png')}
-              style={{width: 312, height: 312}}
+              style={styles.compassImage}
             />
           </View>
         </View>
@@ -75,6 +81,7 @@ const QiblaScreen = () => {
       <View style={styles.bottomTxtContainer}>
         <AppText text={'Turn to your Right'} style={styles.bottomTxt} />
       </View>
+      <AppModal children={'gg'} />
     </View>
   );
 };
@@ -94,6 +101,10 @@ const styles = StyleSheet.create({
     flex: 4,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  compassImage: {
+    width: 312,
+    height: 312,
   },
   niddleContainer: {
     position: 'absolute',
