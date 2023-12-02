@@ -16,6 +16,8 @@ const QiblaScreen = () => {
     latitude: 31.5684198,
     longitude: 74.3261093,
   });
+  // const [debounceTimout, setDebounceTimout] = useState<any>();
+  let debounceTimout: any;
 
   useEffect(() => {
     GetLocation.getCurrentPosition({
@@ -43,9 +45,17 @@ const QiblaScreen = () => {
     // Add your logic here
   };
 
+  const debounce = (timer: number, degree: any) => {
+    clearTimeout(debounceTimout);
+    debounceTimout = setTimeout(() => {
+      console.log('here is conosle of heading,', degree);
+      setHeading(degree);
+    }, timer);
+  };
+
   useEffect(() => {
     CompassHeading.start(0, (degree: any) => {
-      setHeading(degree);
+      debounce(100, degree);
     });
     return () => {
       CompassHeading.stop();
@@ -83,7 +93,7 @@ const QiblaScreen = () => {
     latitude2,
     longitude2,
   );
-  console.log('Bearing:', bearing);
+  // console.log('Bearing:', bearing);
   const handleModalVisible = () => {
     setModalVisible(!modalVisible);
   };
