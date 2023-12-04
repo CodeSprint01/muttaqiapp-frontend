@@ -15,35 +15,37 @@ const CompassTemplateModal: FC<CompassTemplateModalProps> = ({
   return (
     <>
       <AppText text={'Select Theme'} style={styles.headerTxt} />
-      <FlatList
-        data={compassTemplate}
-        numColumns={2}
-        renderItem={({item}) => (
-          <TouchableOpacity
-            onPress={() => {
-              console.log('here is consle of item', item.compassImage);
-              onSelectItem(item);
-            }}
-            style={styles.imageBox}>
-            <View style={{}}>
-              <AppIconSvg
-                icon={item.compassImage}
-                color={COLORS.black}
-                height={112}
-                width={112}
-              />
-            </View>
-            <View style={styles.compsPinContainer}>
-              <AppIconSvg
-                icon={item.compassPin}
-                color={COLORS.black}
-                height={35}
-                width={35}
-              />
-            </View>
-          </TouchableOpacity>
-        )}
-      />
+      <View style={styles.listContainer}>
+        <FlatList
+          data={compassTemplate}
+          numColumns={2}
+          renderItem={({item}) => (
+            <TouchableOpacity
+              onPress={() => {
+                console.log('here is consle of item', item.compassImage);
+                onSelectItem(item);
+              }}
+              style={styles.imageBox}>
+              <View style={{}}>
+                <AppIconSvg
+                  icon={item.compassImage}
+                  color={COLORS.black}
+                  height={112}
+                  width={112}
+                />
+              </View>
+              <View style={styles.compsPinContainer}>
+                <AppIconSvg
+                  icon={item.compassPin}
+                  color={COLORS.black}
+                  height={35}
+                  width={35}
+                />
+              </View>
+            </TouchableOpacity>
+          )}
+        />
+      </View>
     </>
   );
 };
@@ -58,15 +60,15 @@ const styles = StyleSheet.create({
     marginBottom: 81,
   },
   imageBox: {
-    width: '35%',
-    height: 120,
+    width: 150,
+    height: 150,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLORS.light_blue,
     flexDirection: 'row',
-    marginLeft: '10%',
     marginBottom: 100,
     borderRadius: 10,
+    marginHorizontal: 20,
   },
   compassImg: {
     width: 112,
@@ -78,5 +80,8 @@ const styles = StyleSheet.create({
   },
   compsPinContainer: {
     position: 'absolute',
+  },
+  listContainer: {
+    marginHorizontal: 10,
   },
 });

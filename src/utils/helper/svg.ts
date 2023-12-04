@@ -14,6 +14,15 @@ export const Icons = {
   GrayBlueCompPin: 'GRAYBLUE_COMP_PIN',
   BlackCompPin: 'BLACK_COMP_PIN',
   GoldeCompPin: 'GOLDE_COMP_PIN',
+  Slient: 'slient',
+  Duas: 'DUAS',
+  names: 'NAMES',
+  azkar: 'AZKAR',
+  tasbih: 'TASBIH',
+  planner: 'PLANNER',
+  hadith: 'HADITH',
+  quran: 'QURAN',
+  knowledge: 'KNOWLEDGE',
 };
 
 export const Colors = {
@@ -30,6 +39,15 @@ export const Colors = {
   [Icons.GrayBlueCompPin]: {color: COLORS.light_gray},
   [Icons.BlackCompPin]: {color: COLORS.light_gray},
   [Icons.GoldeCompPin]: {color: COLORS.light_gray},
+  [Icons.Slient]: {color: COLORS.light_gray},
+  [Icons.Duas]: {color: COLORS.light_gray},
+  [Icons.names]: {color: COLORS.light_gray},
+  [Icons.azkar]: {color: COLORS.light_gray},
+  [Icons.tasbih]: {color: COLORS.light_gray},
+  [Icons.planner]: {color: COLORS.light_gray},
+  [Icons.hadith]: {color: COLORS.light_gray},
+  [Icons.quran]: {color: COLORS.light_gray},
+  [Icons.knowledge]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -58,6 +76,24 @@ SvgIcons[Icons.GoldeCompPin] =
   require('../../../assets/images/compass-template/goldeCompPin').default;
 SvgIcons[Icons.BlackCompPin] =
   require('../../../assets/images/compass-template/blackCompPin').default;
+SvgIcons[Icons.Slient] = require('../../../assets/images/slient').default;
+
+SvgIcons[Icons.Duas] =
+  require('../../../assets/images/discover-svg/Duas').default;
+SvgIcons[Icons.names] =
+  require('../../../assets/images/discover-svg/names').default;
+SvgIcons[Icons.azkar] =
+  require('../../../assets/images/discover-svg/azkar').default;
+SvgIcons[Icons.tasbih] =
+  require('../../../assets/images/discover-svg/tasbih').default;
+SvgIcons[Icons.planner] =
+  require('../../../assets/images/discover-svg/planner').default;
+SvgIcons[Icons.hadith] =
+  require('../../../assets/images/discover-svg/hadith').default;
+SvgIcons[Icons.quran] =
+  require('../../../assets/images/discover-svg/quran').default;
+SvgIcons[Icons.knowledge] =
+  require('../../../assets/images/discover-svg/knowledge').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

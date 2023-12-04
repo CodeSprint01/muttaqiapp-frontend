@@ -14,6 +14,7 @@ export const MartialStatus: Array<{label: string; value: string}> = [
 ];
 import {Icons} from '../helper/svg';
 
+// compass template array svg Image
 export const compassTemplate: Array<{
   name: string;
   compassImage: any;

@@ -1,4 +1,4 @@
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import CompassHeading from 'react-native-compass-heading';
 import GetLocation from 'react-native-get-location';
@@ -16,9 +16,13 @@ const QiblaScreen = () => {
     latitude: 31.5684198,
     longitude: 74.3261093,
   });
-  // const [debounceTimout, setDebounceTimout] = useState<any>();
+  const [compassName, setCompassName] = useState('');
+  const [selectedTemplate, setSelectedTemplate] = useState({
+    compImage: require('../../../assets/images/compass-template/grayCompassHd.png'),
+    compassPin: Icons.GrayBlueCompPin,
+  });
   let debounceTimout: any;
-
+  // here we get user location
   useEffect(() => {
     GetLocation.getCurrentPosition({
       enableHighAccuracy: true,
@@ -36,15 +40,19 @@ const QiblaScreen = () => {
         console.log(code, message);
       });
   }, []);
+  // here we select compass template
   const handleCompassSelect = (selectedItem: any) => {
-    const {compassImage, compassPin, name} = selectedItem;
-    console.log('Selected Compass Image:', compassImage?.uri);
-    console.log('Selected Compass Pin:', compassPin?.uri);
-    console.log('Selected Name:', name);
     console.log('Selected Name:', selectedItem);
-    // Add your logic here
+    setCompassName(selectedItem?.name);
   };
 
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      selectedTemplateFun();
+    }, 0); // Use a minimal timeout to allow the state to update
+
+    return () => clearTimeout(timerId); // Clear the timeout on component unmount
+  }, [compassName]);
   const debounce = (timer: number, degree: any) => {
     clearTimeout(debounceTimout);
     debounceTimout = setTimeout(() => {
@@ -53,6 +61,7 @@ const QiblaScreen = () => {
     }, timer);
   };
 
+  // here we get degree or diraction
   useEffect(() => {
     CompassHeading.start(0, (degree: any) => {
       debounce(100, degree);
@@ -62,6 +71,7 @@ const QiblaScreen = () => {
     };
   }, []);
 
+  // below function calculates user location form A point to B point
   function angleFromCoordinate(
     latitude1: number,
     longitude1: number,
@@ -93,10 +103,35 @@ const QiblaScreen = () => {
     latitude2,
     longitude2,
   );
-  // console.log('Bearing:', bearing);
   const handleModalVisible = () => {
     setModalVisible(!modalVisible);
   };
+  // here we give slected compass template png image
+
+  const selectedTemplateFun = () => {
+    if (compassName === 'grayCompass') {
+      setSelectedTemplate({
+        compImage: require('../../../assets/images/compass-template/grayCompassHd.png'),
+        compassPin: Icons.GrayBlueCompPin,
+      });
+    } else if (compassName === 'blueCompass') {
+      setSelectedTemplate({
+        compImage: require('../../../assets/images/compass-template/blueCompassHd.png'),
+        compassPin: Icons.GrayBlueCompPin,
+      });
+    } else if (compassName === 'goldenCompass') {
+      setSelectedTemplate({
+        compImage: require('../../../assets/images/compass-template/goldeCompassHd.png'),
+        compassPin: Icons.GoldeCompPin,
+      });
+    } else {
+      setSelectedTemplate({
+        compImage: require('../../../assets/images/compass-template/blackCompassHd.png'),
+        compassPin: Icons.BlackCompPin,
+      });
+    }
+  };
+  console.log(selectedTemplate);
 
   return (
     <View style={styles.container}>
@@ -107,14 +142,14 @@ const QiblaScreen = () => {
         <View style={{transform: [{rotate: `${360 - heading.heading}deg`}]}}>
           <View>
             <Image
-              source={require('../../../assets/images/compass-template/grayCompassHd.png')}
+              source={selectedTemplate?.compImage}
               style={styles.compassImage}
             />
           </View>
         </View>
         <View style={styles.niddleContainer}>
           <AppIconSvg
-            icon={Icons.GrayBlueCompPin}
+            icon={selectedTemplate.compassPin}
             width={75}
             height={75}
             color={COLORS.light_gray}
