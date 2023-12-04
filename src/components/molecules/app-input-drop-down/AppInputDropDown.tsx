@@ -7,6 +7,7 @@ import {
 import React, {FC, useState} from 'react';
 import {COLORS} from '../../../styles/color';
 import {SelectList} from 'react-native-dropdown-select-list';
+import {keyValue} from '../../../types/keyVlaue';
 
 interface MyProps {
   arrayData: Array<{label: string; value: string}>;
@@ -35,7 +36,7 @@ const AppInputDropDown: FC<PropsWithImage & TextInputProps> = ({
   return (
     <View>
       <SelectList
-        setSelected={(val: any) => setSelectedItem(val)}
+        setSelected={(val: keyValue) => setSelectedItem(val)}
         data={arrayData}
         save="value"
         search={false}
