@@ -102,16 +102,3 @@ export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   }
   return SvgIcon;
 };
-
-// export const getSvgIcon = (icon: string, color: string | boolean = false) => {
-//   const SvgIcon = SvgIcons[icon];
-//   if (typeof SvgIcon === 'function') {
-//     return color
-//       ? SvgIcon(color)
-//       : Colors[icon].subColor
-//       ? SvgIcon(Colors[icon].color, Colors[icon].subColor)
-//       : SvgIcon(Colors[icon].color);
-//   } else {
-//     return SvgIcons[icon];
-//   }
-// };

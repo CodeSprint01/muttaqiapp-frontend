@@ -99,9 +99,6 @@ const styles = StyleSheet.create({
   },
   languageList: {
     marginTop: 15,
-    // zIndex: 2,
-    // position: 'absolute',
-    // width: '100%',
     marginBottom: 95,
   },
 });
