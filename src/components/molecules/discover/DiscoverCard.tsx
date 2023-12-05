@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {FC} from 'react';
 import {COLORS} from '../../../styles/color';
 import {AppIconSvg} from '../../atoms/app-icon-svg';
@@ -6,11 +6,12 @@ import AppText from '../../atoms/app-text/AppText';
 interface cardProps {
   icon: string;
   text: string;
+  onPress: () => void;
 }
 
-const DiscoverCard: FC<cardProps> = ({icon, text}) => {
+const DiscoverCard: FC<cardProps> = ({icon, text, onPress}) => {
   return (
-    <View>
+    <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
       <View style={styles.container}>
         <AppIconSvg
           icon={icon}
@@ -20,7 +21,7 @@ const DiscoverCard: FC<cardProps> = ({icon, text}) => {
         />
       </View>
       <AppText text={text} style={styles.txt} />
-    </View>
+    </TouchableOpacity>
   );
 };
 

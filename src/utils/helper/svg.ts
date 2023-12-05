@@ -14,15 +14,27 @@ export const Icons = {
   GrayBlueCompPin: 'GRAYBLUE_COMP_PIN',
   BlackCompPin: 'BLACK_COMP_PIN',
   GoldeCompPin: 'GOLDE_COMP_PIN',
-  Slient: 'slient',
+  Slient: 'SLIENT',
+  Notification: 'NOTIFICATION',
+  Adhan: 'ADHAN',
   Duas: 'DUAS',
-  names: 'NAMES',
-  azkar: 'AZKAR',
-  tasbih: 'TASBIH',
-  planner: 'PLANNER',
-  hadith: 'HADITH',
-  quran: 'QURAN',
-  knowledge: 'KNOWLEDGE',
+  Names: 'NAMES',
+  Azkar: 'AZKAR',
+  Tasbih: 'TASBIH',
+  Planner: 'PLANNER',
+  Hadith: 'HADITH',
+  Quran: 'QURAN',
+  Knowledge: 'KNOWLEDGE',
+  Setting: 'SETTING',
+  Profile: 'PROFILE',
+  Vault: 'VAULT',
+  Languages: 'LANGUAGES',
+  Faq: 'FAQ',
+  Feedback: 'FEEDBACK',
+  Support: 'SUPPORT',
+  TermsConditions: 'TERMS_CONDITIONS',
+  PrivacyPolicy: 'PRIVACY_POLICY',
+  AboutMuttaqi: 'ABOUT_MUTTAQI',
 };
 
 export const Colors = {
@@ -40,14 +52,26 @@ export const Colors = {
   [Icons.BlackCompPin]: {color: COLORS.light_gray},
   [Icons.GoldeCompPin]: {color: COLORS.light_gray},
   [Icons.Slient]: {color: COLORS.light_gray},
+  [Icons.Notification]: {color: COLORS.light_gray},
+  [Icons.Adhan]: {color: COLORS.light_gray},
   [Icons.Duas]: {color: COLORS.light_gray},
-  [Icons.names]: {color: COLORS.light_gray},
-  [Icons.azkar]: {color: COLORS.light_gray},
-  [Icons.tasbih]: {color: COLORS.light_gray},
-  [Icons.planner]: {color: COLORS.light_gray},
-  [Icons.hadith]: {color: COLORS.light_gray},
-  [Icons.quran]: {color: COLORS.light_gray},
-  [Icons.knowledge]: {color: COLORS.light_gray},
+  [Icons.Names]: {color: COLORS.light_gray},
+  [Icons.Azkar]: {color: COLORS.light_gray},
+  [Icons.Tasbih]: {color: COLORS.light_gray},
+  [Icons.Planner]: {color: COLORS.light_gray},
+  [Icons.Hadith]: {color: COLORS.light_gray},
+  [Icons.Quran]: {color: COLORS.light_gray},
+  [Icons.Knowledge]: {color: COLORS.light_gray},
+  [Icons.Profile]: {color: COLORS.light_gray},
+  [Icons.Vault]: {color: COLORS.light_gray},
+  [Icons.Languages]: {color: COLORS.light_gray},
+  [Icons.Faq]: {color: COLORS.light_gray},
+  [Icons.Feedback]: {color: COLORS.light_gray},
+  [Icons.Support]: {color: COLORS.light_gray},
+  [Icons.TermsConditions]: {color: COLORS.light_gray},
+  [Icons.PrivacyPolicy]: {color: COLORS.light_gray},
+  [Icons.AboutMuttaqi]: {color: COLORS.light_gray},
+  [Icons.Setting]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -77,23 +101,45 @@ SvgIcons[Icons.GoldeCompPin] =
 SvgIcons[Icons.BlackCompPin] =
   require('../../../assets/images/compass-template/blackCompPin').default;
 SvgIcons[Icons.Slient] = require('../../../assets/images/slient').default;
-
+SvgIcons[Icons.Notification] =
+  require('../../../assets/images/notification').default;
+SvgIcons[Icons.Adhan] = require('../../../assets/images/adhan').default;
 SvgIcons[Icons.Duas] =
   require('../../../assets/images/discover-svg/Duas').default;
-SvgIcons[Icons.names] =
+SvgIcons[Icons.Names] =
   require('../../../assets/images/discover-svg/names').default;
-SvgIcons[Icons.azkar] =
+SvgIcons[Icons.Azkar] =
   require('../../../assets/images/discover-svg/azkar').default;
-SvgIcons[Icons.tasbih] =
+SvgIcons[Icons.Tasbih] =
   require('../../../assets/images/discover-svg/tasbih').default;
-SvgIcons[Icons.planner] =
+SvgIcons[Icons.Planner] =
   require('../../../assets/images/discover-svg/planner').default;
-SvgIcons[Icons.hadith] =
+SvgIcons[Icons.Hadith] =
   require('../../../assets/images/discover-svg/hadith').default;
-SvgIcons[Icons.quran] =
+SvgIcons[Icons.Quran] =
   require('../../../assets/images/discover-svg/quran').default;
-SvgIcons[Icons.knowledge] =
+SvgIcons[Icons.Knowledge] =
   require('../../../assets/images/discover-svg/knowledge').default;
+SvgIcons[Icons.Profile] =
+  require('../../../assets/images/setting-screen-svg/myProfile').default;
+SvgIcons[Icons.Vault] =
+  require('../../../assets/images/setting-screen-svg/vault').default;
+SvgIcons[Icons.Languages] =
+  require('../../../assets/images/setting-screen-svg/languages').default;
+SvgIcons[Icons.Faq] =
+  require('../../../assets/images/setting-screen-svg/faq').default;
+SvgIcons[Icons.Feedback] =
+  require('../../../assets/images/setting-screen-svg/feedback').default;
+SvgIcons[Icons.Support] =
+  require('../../../assets/images/setting-screen-svg/support').default;
+SvgIcons[Icons.TermsConditions] =
+  require('../../../assets/images/setting-screen-svg/termsCond').default;
+SvgIcons[Icons.PrivacyPolicy] =
+  require('../../../assets/images/setting-screen-svg/privacy').default;
+SvgIcons[Icons.AboutMuttaqi] =
+  require('../../../assets/images/setting-screen-svg/about').default;
+SvgIcons[Icons.Setting] =
+  require('../../../assets/images/setting-screen-svg/setting').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

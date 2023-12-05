@@ -1,39 +1,45 @@
+import {DiscoverEnum, discover} from '../../types/keyVlaue';
 import {Icons} from '../helper/svg';
 
-export const discoverArray: Array<{
-  image: any;
-  name: string;
-}> = [
+export const discoverArray: discover[] = [
   {
     image: Icons.Duas,
     name: 'Duas',
+    type: DiscoverEnum.DUAS,
   },
   {
-    image: Icons.names,
+    image: Icons.Names,
     name: '99 Names',
+    type: DiscoverEnum.ALLAH_NAME,
   },
   {
-    image: Icons.azkar,
+    image: Icons.Azkar,
     name: 'Azkar',
+    type: DiscoverEnum.AZKAR,
   },
   {
-    image: Icons.tasbih,
+    image: Icons.Tasbih,
     name: 'Tasbih',
+    type: DiscoverEnum.TASBIH,
   },
   {
-    image: Icons.planner,
+    image: Icons.Planner,
     name: 'Planner',
+    type: DiscoverEnum.PLANNER,
   },
   {
-    image: Icons.hadith,
+    image: Icons.Hadith,
     name: 'Hadith',
+    type: DiscoverEnum.HADITH,
   },
   {
-    image: Icons.quran,
+    image: Icons.Quran,
     name: 'Quran',
+    type: DiscoverEnum.QURAN,
   },
   {
-    image: Icons.knowledge,
+    image: Icons.Knowledge,
     name: 'Knowledge',
+    type: DiscoverEnum.KNOWLEDGE,
   },
 ];
