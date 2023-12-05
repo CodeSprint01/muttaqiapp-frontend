@@ -1,13 +1,14 @@
 import React from 'react';
-import TabNavigator from './src/navigation/TabNavigator';
-import {NavigationContainer} from '@react-navigation/native';
+import './src/components/atoms/error/LogBox';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import MainStack from './src/navigation/MainStack';
+import {NavigationContainer} from '@react-navigation/native';
 
 const App = () => {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
-        <TabNavigator />
+        <MainStack />
       </NavigationContainer>
     </GestureHandlerRootView>
   );

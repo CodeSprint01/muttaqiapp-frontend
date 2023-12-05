@@ -4,10 +4,46 @@ import {COLORS} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
 import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
 import SettingLists from '../../components/molecules/setting-lists/SettingLists';
+import {settingEnum} from '../../types/keyVlaue';
+import {useNavigation} from '@react-navigation/native';
 
-const SettingUserScreen = () => {
-  const handleListClick = (type: number) => {
-    console.log(type);
+const SettingScreen = () => {
+  const navigation = useNavigation();
+  const handleListClick = (type: settingEnum) => {
+    switch (type) {
+      case settingEnum.PROFILE:
+        navigation.navigate('UserProfile');
+        break;
+      case settingEnum.VAULT:
+        console.log('switch 1');
+        break;
+      case settingEnum.NOTIFICATIONS:
+        console.log('switch 2');
+        break;
+      case settingEnum.LANGUAGES:
+        console.log('switch 3');
+        break;
+      case settingEnum.FAQ:
+        console.log('switch 4');
+        break;
+      case settingEnum.FEEDBACK:
+        console.log('switch 5');
+        break;
+      case settingEnum.SUPPORT:
+        console.log('switch 6');
+        break;
+      case settingEnum.TERMS_CONDITION:
+        console.log('switch 7');
+        break;
+      case settingEnum.PRIVACY:
+        console.log('switch 8');
+        break;
+      case settingEnum.ABOUT:
+        console.log('switch 9');
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -31,7 +67,7 @@ const SettingUserScreen = () => {
   );
 };
 
-export default SettingUserScreen;
+export default SettingScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,

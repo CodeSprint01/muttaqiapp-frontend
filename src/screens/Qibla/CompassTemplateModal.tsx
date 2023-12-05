@@ -22,7 +22,6 @@ const CompassTemplateModal: FC<CompassTemplateModalProps> = ({
           renderItem={({item}) => (
             <TouchableOpacity
               onPress={() => {
-                console.log('here is consle of item', item.compassImage);
                 onSelectItem(item);
               }}
               style={styles.imageBox}>

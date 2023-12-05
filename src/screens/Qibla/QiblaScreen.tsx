@@ -33,7 +33,6 @@ const QiblaScreen = () => {
           latitude: location.latitude,
           longitude: location.longitude,
         });
-        console.log(userLocation);
       })
       .catch(error => {
         const {code, message} = error;
@@ -42,7 +41,6 @@ const QiblaScreen = () => {
   }, []);
   // here we select compass template
   const handleCompassSelect = (selectedItem: any) => {
-    console.log('Selected Name:', selectedItem);
     setCompassName(selectedItem?.name);
   };
 
@@ -56,7 +54,6 @@ const QiblaScreen = () => {
   const debounce = (timer: number, degree: any) => {
     clearTimeout(debounceTimout);
     debounceTimout = setTimeout(() => {
-      console.log('here is conosle of heading,', degree);
       setHeading(degree);
     }, timer);
   };
@@ -131,7 +128,6 @@ const QiblaScreen = () => {
       });
     }
   };
-  console.log(selectedTemplate);
 
   return (
     <View style={styles.container}>
