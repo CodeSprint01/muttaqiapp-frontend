@@ -4,7 +4,7 @@ import {COLORS} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
 import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
 import SettingLists from '../../components/molecules/setting-lists/SettingLists';
-import {settingEnum} from '../../types/keyVlaue';
+import {screen, settingEnum} from '../../types/keyVlaue';
 import {useNavigation} from '@react-navigation/native';
 
 const SettingScreen = () => {
@@ -12,7 +12,7 @@ const SettingScreen = () => {
   const handleListClick = (type: settingEnum) => {
     switch (type) {
       case settingEnum.PROFILE:
-        navigation.navigate('UserProfile');
+        navigation.navigate(screen.USER_PROFILE);
         break;
       case settingEnum.VAULT:
         console.log('switch 1');

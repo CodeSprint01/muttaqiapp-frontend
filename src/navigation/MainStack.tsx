@@ -2,19 +2,20 @@ import React from 'react';
 import TabNavigator from './TabNavigator';
 import {createStackNavigator} from '@react-navigation/stack';
 import UserProfile from '../screens/user-profile/UserProfile';
+import {screen} from '../types/keyVlaue';
 
 const MainStack = () => {
   const Stack = createStackNavigator();
 
   return (
-    <Stack.Navigator initialRouteName="TabNavigator">
+    <Stack.Navigator initialRouteName={screen.TAB_NAVIGATOR}>
       <Stack.Screen
-        name="TabNavigator"
+        name={screen.TAB_NAVIGATOR}
         component={TabNavigator}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="UserProfile"
+        name={screen.USER_PROFILE}
         component={UserProfile}
         options={{headerShown: false}}
       />

@@ -7,6 +7,7 @@ import SettingStack from './SettingStack';
 import {COLORS} from '../styles/color';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import BottomTabbarTabs from '../components/atoms/bottomTabBar-tabs/BottomTabbarTabs';
+import {screen} from '../types/keyVlaue';
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -37,10 +38,10 @@ const TabNavigator = () => {
           },
           headerShown: false,
         })}>
-        <Tab.Screen name="Home" component={HomeStack} />
-        <Tab.Screen name="Qibla" component={QiblaStack} />
-        <Tab.Screen name="Tracker" component={TrackerStack} />
-        <Tab.Screen name="Setting" component={SettingStack} />
+        <Tab.Screen name={screen.HOME_STACK} component={HomeStack} />
+        <Tab.Screen name={screen.QIBLA_STACK} component={QiblaStack} />
+        <Tab.Screen name={screen.TRACKER_STACK} component={TrackerStack} />
+        <Tab.Screen name={screen.SETTING_STACK} component={SettingStack} />
       </Tab.Navigator>
     </View>
   );

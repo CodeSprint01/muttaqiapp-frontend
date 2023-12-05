@@ -1,3 +1,17 @@
+export enum screen {
+  USER_PROFILE = 'user-profile',
+  TAB_NAVIGATOR = 'tab-navigator',
+  HOME_SCREEN = 'home-screen',
+  QIBLA_SCREEN = 'qibla-screen',
+  TRACKER_SCREEN = 'tracker-screen',
+  SETTING_SCREEN = 'setting-screen',
+
+  HOME_STACK = 'home-stack',
+  QIBLA_STACK = 'qibla-stack',
+  TRACKER_STACK = 'tracker-stack',
+  SETTING_STACK = 'setting-stack',
+}
+
 export interface keyValue {
   label: string;
   value: string;

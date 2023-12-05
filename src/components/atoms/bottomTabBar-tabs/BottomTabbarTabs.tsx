@@ -1,6 +1,7 @@
 import React from 'react';
 import {AppIconSvg, Icons} from '../app-icon-svg';
 import {COLORS} from '../../../styles/color';
+import {screen} from '../../../types/keyVlaue';
 
 interface botmtabbarProps {
   name: string;
@@ -10,7 +11,7 @@ const BottomTabbarTabs = ({name, focused}: botmtabbarProps) => {
   let svgImage;
 
   switch (name) {
-    case 'Home':
+    case screen.HOME_STACK:
       svgImage = (
         <AppIconSvg
           icon={Icons.HomeTabIcon}
@@ -20,7 +21,7 @@ const BottomTabbarTabs = ({name, focused}: botmtabbarProps) => {
         />
       );
       break;
-    case 'Qibla':
+    case screen.QIBLA_STACK:
       svgImage = (
         <AppIconSvg
           icon={Icons.QiblaTabIcon}
@@ -30,7 +31,7 @@ const BottomTabbarTabs = ({name, focused}: botmtabbarProps) => {
         />
       );
       break;
-    case 'Tracker':
+    case screen.TRACKER_STACK:
       svgImage = (
         <AppIconSvg
           icon={Icons.TrackerTabIcon}
@@ -40,7 +41,7 @@ const BottomTabbarTabs = ({name, focused}: botmtabbarProps) => {
         />
       );
       break;
-    case 'Setting':
+    case screen.SETTING_STACK:
       svgImage = (
         <AppIconSvg
           icon={Icons.SettingTabIcon}
