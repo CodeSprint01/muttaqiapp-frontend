@@ -6,12 +6,14 @@ interface AppModalProps {
   isVisible: boolean;
   toggleModal: () => void;
   children: ReactNode;
+  isModal: boolean;
 }
 
 const AppModal: React.FC<AppModalProps> = ({
   isVisible,
   toggleModal,
   children,
+  isModal = true,
 }) => {
   return (
     <Modal
@@ -19,8 +21,13 @@ const AppModal: React.FC<AppModalProps> = ({
       onBackdropPress={toggleModal}
       onSwipeComplete={toggleModal}
       swipeDirection={['down']}
-      style={styles.modal}>
-      <View style={styles.modalContent}>{children}</View>
+      style={styles.}>
+      {/* <View style={isModal ? null : styles.modal}> */}
+      <View style={styles.modalContainer}>
+        {/* bottom sheet modal */}
+        {/* <View style={isModal ? styles.modalContainer : styles.modalContent}> */}
+        <View style={styles.modalContainer}>{children}</View>
+      </View>
     </Modal>
   );
 };
@@ -32,9 +39,17 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: 'white',
-    // padding: 22,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+  },
+  isModal: {
+    width: '100%',
+    borderRadius: 20,
+    backgroundColor: 'white',
+  },
+  modalContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

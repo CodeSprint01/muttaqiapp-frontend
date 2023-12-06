@@ -1,5 +1,5 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
 import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
 import {COLORS} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
@@ -9,9 +9,21 @@ import {Gender} from '../../utils/mocks/AllMockArray';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
 import {screen} from '../../types/keyVlaue';
+import DatePicker from 'react-native-date-picker';
+import BottomSheet from '../../components/atoms/bottom_sheet/BottomSheet';
+import AppModal from '../../components/atoms/app-modal/AppModal';
 
 const UserProfile = () => {
   const navigation = useNavigation();
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const handleDateChange = newDate => {
+    setSelectedDate(newDate);
+    const day = newDate.getDate();
+    const month = newDate.getMonth() + 1; // Months are zero-based
+    const year = newDate.getFullYear();
+    console.log(`Selected Date: ${day}/${month}/${year}`);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -52,18 +64,28 @@ const UserProfile = () => {
               iconStyle={styles.dropIcon}
             />
           </View>
-          <View style={styles.dateOfBirth}>
-            <AppInputDropDown
-              placeholderText="Date of Birth"
-              ImageName={Icons.DropDown}
-              imageColor={COLORS.black}
-              imageWidth={15}
-              imageHeight={15}
-              arrayData={Gender}
-              iconStyle={styles.dropIcon}
+          {/* <View style={styles.dateOfBirth}>
+            <DropdownModal
+              label="Date of Birth"
+              placeholder="DD/MM/YYYY"
+              // onPress={chat gpt click to open date modal}
             />
-          </View>
+          </View> */}
         </View>
+
+        {/* <View
+          style={{
+            backgroundColor: 'pink',
+            marginVertical: 10,
+            paddingVertical: 50,
+          }}>
+          <DatePicker
+            date={selectedDate}
+            mode="date" // Set mode to 'date' to display only the date
+            onDateChange={handleDateChange}
+          />
+        </View> */}
+        <AppModal isVisible={true} children={<Text>hhh</Text>} />
         <TouchableOpacity
           activeOpacity={0.5}
           onPress={() => navigation.navigate(screen.CHANGE_PASSWORD)}>
