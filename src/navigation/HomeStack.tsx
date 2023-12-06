@@ -1,12 +1,12 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import Dashboard from '../screens/Dashboard/Dashboard';
+import HomeScreen from '../screens/Dashboard/HomeScreen';
 
 const HomeStack = () => {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Dashboard" component={Dashboard} />
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
     </Stack.Navigator>
   );
 };

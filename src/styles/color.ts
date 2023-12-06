@@ -4,8 +4,10 @@ export const COLORS = {
   tertiary: '#D9D9D9',
   quaternary: '#BDBDBD',
   light_gray: '#BBBBBB',
+  light_blue: '#ECF6F8',
   sucess: '#3AA757',
   error: '#EA4335',
   white: '#FFFFFF',
-  black: '#333333',
+  black: '#000000',
+  lightBlack: '#333333',
 } as const;

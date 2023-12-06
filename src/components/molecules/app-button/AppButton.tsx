@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     height: 63,
   },
   txt: {
-    color: COLORS.black,
+    color: COLORS.lightBlack,
   },
   iconContainer: {
     position: 'absolute',

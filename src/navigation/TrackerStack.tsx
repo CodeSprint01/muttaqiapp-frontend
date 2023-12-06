@@ -1,12 +1,12 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import Tracker from '../screens/Tracker/Tracker';
+import TrackerScreen from '../screens/Tracker/TrackerScreen';
 
 const TrackerStack = () => {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Tracker" component={Tracker} />
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="TrackerScreen" component={TrackerScreen} />
     </Stack.Navigator>
   );
 };

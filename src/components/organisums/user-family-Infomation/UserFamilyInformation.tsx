@@ -5,7 +5,7 @@ import {COLORS} from '../../../styles/color';
 import AppInput from '../../molecules/app-input/AppInput';
 import {DropDownImage} from '../../../../assets/images';
 import AppInputDropDown from '../../molecules/app-input-drop-down/AppInputDropDown';
-import {MartialStatus} from '../../../utils/mocks/languageList';
+import {MartialStatus} from '../../../utils/mocks/AllMockArray';
 
 const UserFamilyInformation = () => {
   return (
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     lineHeight: 26.04,
-    color: COLORS.black,
+    color: COLORS.lightBlack,
     paddingTop: 23,
   },
   inputField: {

@@ -89,7 +89,7 @@ const AppInput: FC<PropsWithImage & TextInputProps> = ({
                 styles.txtSty,
                 textStyle,
                 {
-                  color: isFocused ? COLORS.black : COLORS.quaternary,
+                  color: isFocused ? COLORS.lightBlack : COLORS.quaternary,
                   fontSize: isFocused ? 12 : 14,
                 },
               ]}
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 12.64,
     fontWeight: '400',
-    color: COLORS.black,
+    color: COLORS.lightBlack,
     marginHorizontal: 5,
     // backgroundColor:"red",
     paddingTop: 2,
