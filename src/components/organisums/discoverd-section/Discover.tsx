@@ -24,6 +24,7 @@ const Discover: React.FC<DiscoverProps> = ({onDiscoverItemPress}) => {
       <AppText text={'Discover'} style={styles.disTxt} />
       <View>
         <FlatList
+          scrollEnabled={false}
           numColumns={4}
           data={discoverArray}
           renderItem={renderItem}

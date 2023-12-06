@@ -7,6 +7,7 @@ import SelectPhoneNumber from '../../atoms/phone-number-modal/SelectPhoneNumber'
 import AppInputDropDown from '../../molecules/app-input-drop-down/AppInputDropDown';
 import SelectLanguageModal from '../../atoms/all-language-modal/SelectLanguageModal';
 import {language, SecteList} from '../../../utils/mocks/AllMockArray';
+import {Icons} from '../../atoms/app-icon-svg';
 
 const userGeneralInfomation = () => {
   return (
@@ -36,7 +37,8 @@ const userGeneralInfomation = () => {
             <View style={styles.sect}>
               <AppInputDropDown
                 placeholderText="Sect"
-                ImageName={DropDownImage}
+                ImageName={Icons.DropDown}
+                imageColor={COLORS.black}
                 imageWidth={20}
                 imageHeight={20}
                 arrayData={SecteList}
@@ -52,7 +54,8 @@ const userGeneralInfomation = () => {
           <View style={styles.languageList}>
             <AppInputDropDown
               placeholderText="Language"
-              ImageName={DropDownImage}
+              ImageName={Icons.DropDown}
+              imageColor={COLORS.black}
               imageWidth={20}
               imageHeight={20}
               arrayData={language}

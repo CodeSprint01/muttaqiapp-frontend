@@ -1,20 +1,18 @@
-import {
-  StyleSheet,
-  View,
-  ImageSourcePropType,
-  TextInputProps,
-} from 'react-native';
+import {StyleSheet, View, TextInputProps, ViewStyle} from 'react-native';
 import React, {FC, useState} from 'react';
 import {COLORS} from '../../../styles/color';
 import {SelectList} from 'react-native-dropdown-select-list';
 import {keyValue} from '../../../types/keyVlaue';
+import {AppIconSvg} from '../../atoms/app-icon-svg';
 
 interface MyProps {
-  arrayData: Array<{label: string; value: string}>;
+  arrayData: any;
   placeholderText: string;
-  ImageName?: ImageSourcePropType;
+  ImageName?: string;
   imageWidth?: number;
   imageHeight?: number;
+  imageColor: string;
+  iconStyle?: ViewStyle;
 }
 
 type PropsWithImage = MyProps &
@@ -30,6 +28,8 @@ const AppInputDropDown: FC<PropsWithImage & TextInputProps> = ({
   ImageName,
   imageWidth = 24,
   imageHeight = 24,
+  imageColor = COLORS.black,
+  iconStyle,
 }) => {
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -40,7 +40,15 @@ const AppInputDropDown: FC<PropsWithImage & TextInputProps> = ({
         data={arrayData}
         save="value"
         search={false}
-        arrowicon={<ImageName width={imageWidth} height={imageHeight} />}
+        arrowicon={
+          <AppIconSvg
+            icon={ImageName}
+            width={imageWidth}
+            height={imageHeight}
+            color={imageColor}
+            style={iconStyle}
+          />
+        }
         placeholder={placeholderText}
         dropdownTextStyles={styles.dropdownTextSty}
         boxStyles={styles.boxSty}

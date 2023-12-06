@@ -4,7 +4,7 @@ import {SvgXml} from 'react-native-svg';
 import {getSvgIcon, Icons} from '../../../utils/helper/svg';
 
 interface AppIconSvgProps {
-  icon: string;
+  icon: any;
   width?: number;
   height?: number;
   color?: string;
@@ -22,7 +22,12 @@ const AppIconSvg = ({
     {color ? (
       <SvgXml xml={getSvgIcon(icon, color)} width={width} height={height} />
     ) : (
-      <SvgXml xml={getSvgIcon(icon)} width={width} height={height} />
+      <SvgXml
+        xml={getSvgIcon(icon)}
+        width={width}
+        height={height}
+        color={color}
+      />
     )}
   </View>
 );

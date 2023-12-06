@@ -5,11 +5,11 @@ import {
   StyleProp,
   ViewStyle,
   TextStyle,
-  ImageSourcePropType,
   View,
 } from 'react-native';
 import AppText from '../../atoms/app-text/AppText';
 import {COLORS} from '../../../styles/color';
+import {AppIconSvg} from '../../atoms/app-icon-svg';
 
 interface ButtonProps {
   buttonText: string;
@@ -17,7 +17,7 @@ interface ButtonProps {
   withOpacity?: number;
   onPress: () => void;
   buttonStyle?: ViewStyle;
-  ImageName?: ImageSourcePropType;
+  ImageName?: string;
   imageWidth?: number;
   imageHeight?: number;
 }
@@ -47,7 +47,11 @@ const AppButton: FC<PropsWithImage> = ({
       <AppText text={buttonText} style={[styles.txt, textStyle]} />
       {ImageName && (
         <View style={styles.iconContainer}>
-          <ImageName width={imageWidth} height={imageHeight} />
+          <AppIconSvg
+            icon={ImageName}
+            width={imageWidth}
+            height={imageHeight}
+          />
         </View>
       )}
     </TouchableOpacity>
@@ -64,7 +68,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: COLORS.primary,
     marginTop: 20,
-    height: 63,
+    height: 55,
   },
   txt: {
     color: COLORS.lightBlack,

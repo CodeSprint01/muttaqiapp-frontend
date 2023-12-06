@@ -5,38 +5,35 @@ import {
   View,
   TextStyle,
   ViewStyle,
-  ImageSourcePropType,
   Animated,
   Easing,
-  TextInputProps,
+  TouchableOpacity,
 } from 'react-native';
 import React, {FC, useState, useRef} from 'react';
 import {COLORS} from '../../../styles/color';
 import AppText from '../../atoms/app-text/AppText';
+import {AppIconSvg} from '../../atoms/app-icon-svg';
 
 interface MyProps {
   inputLabel: string;
   textStyle?: TextStyle;
   inputStyle?: ViewStyle;
-  ImageName?: ImageSourcePropType;
+  ImageName?: string;
   imageWidth?: number;
   imageHeight?: number;
+  iconStyle?: ViewStyle;
+  onPress?: () => void;
 }
 
-type PropsWithImage = MyProps &
-  (MyProps['ImageName'] extends ImageSourcePropType
-    ? {
-        imageWidth: number;
-        imageHeight: number;
-      }
-    : {});
-const AppInput: FC<PropsWithImage & TextInputProps> = ({
+const AppInput: FC<MyProps> = ({
   inputLabel,
   textStyle,
   inputStyle,
   ImageName,
   imageWidth = 24,
   imageHeight = 24,
+  iconStyle,
+  onPress,
   ...rest
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -105,9 +102,16 @@ const AppInput: FC<PropsWithImage & TextInputProps> = ({
           {...rest}
         />
         {ImageName && (
-          <View style={styles.iconContainer}>
-            <ImageName width={imageWidth} height={imageHeight} />
-          </View>
+          <TouchableOpacity
+            onPress={onPress}
+            style={[styles.iconContainer, iconStyle]}>
+            <AppIconSvg
+              icon={ImageName}
+              width={imageWidth}
+              height={imageHeight}
+              color={COLORS.black}
+            />
+          </TouchableOpacity>
         )}
       </View>
     </>
@@ -125,7 +129,6 @@ const styles = StyleSheet.create({
     paddingLeft: 14,
     paddingRight: 40,
     fontSize: 16,
-    fontFamily: 'DMSans-Italic-VariableFont_opsz,wght',
   },
   textView: {
     position: 'absolute',
@@ -142,7 +145,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: COLORS.lightBlack,
     marginHorizontal: 5,
-    // backgroundColor:"red",
     paddingTop: 2,
   },
   animatedLabel: {
@@ -151,7 +153,9 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     position: 'absolute',
-    right: 44,
-    top: 15,
+    right: 13,
+    top: 8,
+    zIndex: 2,
+    padding: 4,
   },
 });

@@ -10,6 +10,8 @@ export enum screen {
   QIBLA_STACK = 'qibla-stack',
   TRACKER_STACK = 'tracker-stack',
   SETTING_STACK = 'setting-stack',
+
+  CHANGE_PASSWORD = 'change-password',
 }
 
 export interface keyValue {

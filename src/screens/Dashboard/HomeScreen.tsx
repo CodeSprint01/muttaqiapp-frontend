@@ -1,5 +1,4 @@
 import {View, StyleSheet, ScrollView} from 'react-native';
-import '../../components/atoms/error/LogBox';
 import React, {useState} from 'react';
 import PrayerListItem from '../../components/molecules/prayer-list/PrayerListItem';
 import {Icons} from '../../utils/helper/svg';

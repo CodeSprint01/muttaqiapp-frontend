@@ -3,9 +3,9 @@ import React from 'react';
 import AppText from '../../atoms/app-text/AppText';
 import {COLORS} from '../../../styles/color';
 import AppInput from '../../molecules/app-input/AppInput';
-import {DropDownImage} from '../../../../assets/images';
 import AppInputDropDown from '../../molecules/app-input-drop-down/AppInputDropDown';
 import {MartialStatus} from '../../../utils/mocks/AllMockArray';
+import {Icons} from '../../atoms/app-icon-svg';
 
 const UserFamilyInformation = () => {
   return (
@@ -27,7 +27,8 @@ const UserFamilyInformation = () => {
         <View style={styles.inputField}>
           <AppInputDropDown
             placeholderText="Martial Status"
-            ImageName={DropDownImage}
+            ImageName={Icons.DropDown}
+            imageColor={COLORS.black}
             imageWidth={20}
             imageHeight={20}
             arrayData={MartialStatus}

@@ -1,5 +1,4 @@
 import React from 'react';
-import './src/components/atoms/error/LogBox';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import MainStack from './src/navigation/MainStack';
 import {NavigationContainer} from '@react-navigation/native';

@@ -41,3 +41,5 @@ export const compassTemplate: Array<{
     compassPin: Icons.BlackCompPin,
   },
 ];
+
+export const Gender: Array<string> = ['male', 'female', 'other'];

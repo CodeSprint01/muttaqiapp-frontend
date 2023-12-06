@@ -35,6 +35,11 @@ export const Icons = {
   TermsConditions: 'TERMS_CONDITIONS',
   PrivacyPolicy: 'PRIVACY_POLICY',
   AboutMuttaqi: 'ABOUT_MUTTAQI',
+  ButtonPlus: 'BUTTON_PLUS',
+  ArrowBack: 'ARROW_BACK',
+  DropDown: 'DROP_DOWN',
+  PassEye: 'PASS-EYE',
+  PassEyeSlash: 'PASS-EYE-SLASH',
 };
 
 export const Colors = {
@@ -72,6 +77,11 @@ export const Colors = {
   [Icons.PrivacyPolicy]: {color: COLORS.light_gray},
   [Icons.AboutMuttaqi]: {color: COLORS.light_gray},
   [Icons.Setting]: {color: COLORS.light_gray},
+  [Icons.ButtonPlus]: {color: COLORS.light_gray},
+  [Icons.ArrowBack]: {color: COLORS.light_gray},
+  [Icons.DropDown]: {color: COLORS.light_gray},
+  [Icons.PassEye]: {color: COLORS.light_gray},
+  [Icons.PassEyeSlash]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -140,6 +150,13 @@ SvgIcons[Icons.AboutMuttaqi] =
   require('../../../assets/images/setting-screen-svg/about').default;
 SvgIcons[Icons.Setting] =
   require('../../../assets/images/setting-screen-svg/setting').default;
+SvgIcons[Icons.ButtonPlus] =
+  require('../../../assets/images/plusButton').default;
+SvgIcons[Icons.ArrowBack] = require('../../../assets/images/arrowBack').default;
+SvgIcons[Icons.DropDown] = require('../../../assets/images/dropDown').default;
+SvgIcons[Icons.PassEye] = require('../../../assets/images/passEye').default;
+SvgIcons[Icons.PassEyeSlash] =
+  require('../../../assets/images/passEyeSlash').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];
