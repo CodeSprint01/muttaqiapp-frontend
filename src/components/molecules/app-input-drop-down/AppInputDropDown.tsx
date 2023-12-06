@@ -62,7 +62,7 @@ export default AppInputDropDown;
 
 const styles = StyleSheet.create({
   dropdownTextSty: {
-    color: 'lightBlack',
+    color: COLORS.lightBlack,
   },
   boxSty: {
     borderColor: COLORS.tertiary,

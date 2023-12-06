@@ -126,11 +126,10 @@ const styles = StyleSheet.create({
   genderDate: {
     marginTop: 28,
     flexDirection: 'row',
-    marginLeft: 5,
     justifyContent: 'space-between',
   },
   genderDropDown: {
-    width: '48%',
+    width: '46%',
     position: 'absolute',
     zIndex: 2,
   },
@@ -138,7 +137,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   dateOfBirth: {
-    width: '48%',
+    width: '50%',
     position: 'absolute',
     zIndex: 2,
     right: 0,
