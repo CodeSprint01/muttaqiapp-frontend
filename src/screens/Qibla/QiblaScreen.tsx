@@ -156,6 +156,7 @@ const QiblaScreen = () => {
         <AppText text={'Turn to your Right'} style={styles.bottomTxt} />
       </View>
       <AppModal
+        isModal={false}
         children={
           <View>
             <CompassTemplateModal onSelectItem={handleCompassSelect} />

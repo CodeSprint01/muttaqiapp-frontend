@@ -1,12 +1,13 @@
 import React, {ReactNode} from 'react';
 import {View, StyleSheet} from 'react-native';
 import Modal from 'react-native-modal';
+import {COLORS} from '../../../styles/color';
 
 interface AppModalProps {
   isVisible: boolean;
   toggleModal: () => void;
   children: ReactNode;
-  isModal: boolean;
+  isModal?: boolean;
 }
 
 const AppModal: React.FC<AppModalProps> = ({
@@ -21,12 +22,11 @@ const AppModal: React.FC<AppModalProps> = ({
       onBackdropPress={toggleModal}
       onSwipeComplete={toggleModal}
       swipeDirection={['down']}
-      style={styles.}>
-      {/* <View style={isModal ? null : styles.modal}> */}
-      <View style={styles.modalContainer}>
-        {/* bottom sheet modal */}
-        {/* <View style={isModal ? styles.modalContainer : styles.modalContent}> */}
-        <View style={styles.modalContainer}>{children}</View>
+      style={isModal === true ? styles.empty : styles.modal}>
+      <View style={styles.modal}>
+        <View style={isModal === true ? styles.isModal : styles.modalContent}>
+          {children}
+        </View>
       </View>
     </Modal>
   );
@@ -45,12 +45,13 @@ const styles = StyleSheet.create({
   isModal: {
     width: '100%',
     borderRadius: 20,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.white,
   },
   modalContainer: {
     justifyContent: 'center',
     alignItems: 'center',
   },
+  empty: {},
 });
 
 export default AppModal;

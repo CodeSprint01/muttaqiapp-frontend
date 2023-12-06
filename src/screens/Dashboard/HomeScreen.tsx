@@ -63,6 +63,7 @@ const HomeScreen = () => {
         </View>
         <Discover onDiscoverItemPress={handleDiscoverItem} />
         <AppModal
+          isModal={false}
           children={
             <View style={styles.prayerModalContainer}>
               <AppText
