@@ -7,6 +7,24 @@ export interface discover {
   name: string;
   type: DiscoverEnum;
 }
+
+export interface settingScreen {
+  image: string;
+  name: string;
+  type: settingEnum;
+}
+
+export interface fivePrayer {
+  id: number;
+  backgroundImg: any;
+  label: string;
+  prayerName: string;
+  time: string;
+  icon: any;
+  heartValue: number;
+}
+
+// enum
 export enum DiscoverEnum {
   DUAS,
   ALLAH_NAME,
@@ -16,12 +34,6 @@ export enum DiscoverEnum {
   HADITH,
   QURAN,
   KNOWLEDGE,
-}
-
-export interface settingScreen {
-  image: string;
-  name: string;
-  type: settingEnum;
 }
 
 export enum settingEnum {

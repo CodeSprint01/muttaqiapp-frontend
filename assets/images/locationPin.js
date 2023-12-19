@@ -9,5 +9,4 @@ export default color => `
 </clipPath>
 </defs>
 </svg>
-
 `;

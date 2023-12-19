@@ -41,3 +41,59 @@ export const compassTemplate: Array<{
     compassPin: Icons.BlackCompPin,
   },
 ];
+export interface exploreInterface {
+  image: any;
+  firstTxt: string;
+  secondTxt: string;
+}
+
+export const exploreArray: exploreInterface[] = [
+  {
+    image: Icons.GrayCompass,
+    firstTxt: 'gray',
+    secondTxt: 'demo1',
+  },
+  {
+    image: Icons.BlueCompass,
+    firstTxt: 'blue',
+    secondTxt: 'demo2',
+  },
+  {
+    image: Icons.GoldeCompass,
+    firstTxt: 'golden',
+    secondTxt: 'demo3',
+  },
+  {
+    image: Icons.BlackCompass,
+    firstTxt: 'black',
+    secondTxt: 'demo4',
+  },
+];
+export interface exploreInterface {
+  image: any;
+  firstTxt: string;
+  secondTxt: string;
+}
+
+export const pyayerArray: exploreInterface[] = [
+  {
+    image: Icons.GrayCompass,
+    firstTxt: 'gray',
+    secondTxt: 'demo1',
+  },
+  {
+    image: Icons.BlueCompass,
+    firstTxt: 'blue',
+    secondTxt: 'demo2',
+  },
+  {
+    image: Icons.GoldeCompass,
+    firstTxt: 'golden',
+    secondTxt: 'demo3',
+  },
+  {
+    image: Icons.BlackCompass,
+    firstTxt: 'black',
+    secondTxt: 'demo4',
+  },
+];

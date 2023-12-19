@@ -23,17 +23,18 @@ const PrayerListItem: FC<listProps> = ({
       style={styles.container}
       activeOpacity={0.5}
       onPress={onPress}>
-      <View style={styles.prayerName}>
-        <AppText text={PrayerName} style={styles.PyayerTxt} />
-      </View>
       <View style={styles.timeAndIcon}>
-        <AppText text={prayerTime} />
         <AppIconSvg
           icon={notificationIcon}
-          width={16}
-          height={18}
+          width={30}
+          height={30}
           color={COLORS.black}
         />
+        <AppText text={PrayerName} style={styles.PyayerTxt} />
+      </View>
+
+      <View style={styles.prayerName}>
+        <AppText text={prayerTime} />
       </View>
     </TouchableOpacity>
   );
@@ -46,25 +47,22 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 45,
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: COLORS.tertiary,
     flexDirection: 'row',
   },
   prayerName: {
-    flex: 7,
+    flex: 1,
     justifyContent: 'center',
     fontWeight: '400',
   },
   PyayerTxt: {
-    fontSize: 16,
+    fontSize: 20,
     color: COLORS.lightBlack,
     paddingLeft: 20,
     justifyContent: 'center',
   },
   timeAndIcon: {
-    flex: 3,
+    flex: 6,
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
     alignItems: 'center',
   },
 });

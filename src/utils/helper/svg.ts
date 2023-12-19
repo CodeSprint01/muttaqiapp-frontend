@@ -35,6 +35,8 @@ export const Icons = {
   TermsConditions: 'TERMS_CONDITIONS',
   PrivacyPolicy: 'PRIVACY_POLICY',
   AboutMuttaqi: 'ABOUT_MUTTAQI',
+  PlusIcon: 'PLUS_ICON',
+  UserHeart: 'USER_HEART',
 };
 
 export const Colors = {
@@ -72,6 +74,8 @@ export const Colors = {
   [Icons.PrivacyPolicy]: {color: COLORS.light_gray},
   [Icons.AboutMuttaqi]: {color: COLORS.light_gray},
   [Icons.Setting]: {color: COLORS.light_gray},
+  [Icons.PlusIcon]: {color: COLORS.light_gray},
+  [Icons.UserHeart]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -140,6 +144,8 @@ SvgIcons[Icons.AboutMuttaqi] =
   require('../../../assets/images/setting-screen-svg/about').default;
 SvgIcons[Icons.Setting] =
   require('../../../assets/images/setting-screen-svg/setting').default;
+SvgIcons[Icons.PlusIcon] = require('../../../assets/images/plusIcon').default;
+SvgIcons[Icons.UserHeart] = require('../../../assets/images/userHeart').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];
