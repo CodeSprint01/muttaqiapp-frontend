@@ -1,43 +1,89 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import '../../components/atoms/error/LogBox';
-import React from 'react';
+import React, {useState} from 'react';
 import Swiper from 'react-native-swiper';
 import {Icons} from '../../components/atoms/app-icon-svg';
 import PrayerSwiper from './PrayerSwiper';
 import {COLORS} from '../../styles/color';
 import TaskSwiper from './TaskSwiper';
+import {exploreArray} from '../../utils/mocks/AllMockArray';
+import ExploreCard from '../../components/atoms/explore-card/ExploreCard';
+import AppText from '../../components/atoms/app-text/AppText';
 
 const HomeScreen = () => {
+  const initialCheckboxes = [
+    {id: 1, label: 'memorize quran', isChecked: false},
+    {id: 2, label: 'memorize quran', isChecked: false},
+    {id: 3, label: 'memorize quran', isChecked: false},
+    {id: 4, label: 'memorize quran', isChecked: false},
+    {id: 5, label: 'memorize quran', isChecked: false},
+    {id: 6, label: 'memorize quran', isChecked: false},
+    {id: 7, label: 'memorize quran', isChecked: false},
+  ];
+  const [checkboxes, setCheckboxes] = useState(initialCheckboxes);
+
+  const handleCheckboxChange = (checkboxId: number) => {
+    console.log('click');
+    setCheckboxes(prevCheckboxes =>
+      prevCheckboxes.map(checkbox =>
+        checkbox.id === checkboxId
+          ? {...checkbox, isChecked: !checkbox.isChecked}
+          : checkbox,
+      ),
+    );
+  };
   return (
-    <ScrollView style={styles.container}>
-      {/* <View style={styles.sliderContainer}>
-        <Swiper
-          dot={<View style={styles.inActiveDot} />}
-          activeDot={<View style={styles.activeDot} />}>
-          <View style={styles.slide}>
-            <PrayerSwiper
-              heartValue={80}
-              icon={Icons.Notification}
-              prayerName="Maghrib"
-              time="05:22 AM"
-              backgroundImg={require('../../../assets/images/prayer-background-img/maghribImage.png')}
-            />
-          </View>
-          <View style={styles.slide}>
-            <PrayerSwiper
-              heartValue={80}
-              icon={Icons.Notification}
-              prayerName="Maghrib"
-              time="05:22 AM"
-              backgroundImg={require('../../../assets/images/prayer-background-img/maghribImage.png')}
-            />
-          </View>
-        </Swiper>
+    // <ScrollView style={styles.container}>
+    <View style={styles.sliderContainer}>
+      <Swiper
+        scrollEnabled={true}
+        nestedScrollEnabled={true}
+        dot={<View style={styles.inActiveDot} />}
+        activeDot={<View style={styles.activeDot} />}>
+        <View style={styles.slide}>
+          <PrayerSwiper
+            heartValue={80}
+            icon={Icons.Notification}
+            prayerName="Maghrib"
+            time="05:22 AM"
+            backgroundImg={require('../../../assets/images/prayer-background-img/maghribImage.png')}
+          />
+        </View>
+        <View style={styles.slide}>
+          <TaskSwiper
+            circleValue={77}
+            checkboxes={initialCheckboxes}
+            handleCheckboxChange={handleCheckboxChange}
+          />
+        </View>
+      </Swiper>
+      {/* <View style={styles.slide}>
+        <PrayerSwiper
+          heartValue={80}
+          icon={Icons.Notification}
+          prayerName="Maghrib"
+          time="05:22 AM"
+          backgroundImg={require('../../../assets/images/prayer-background-img/maghribImage.png')}
+        />
       </View> */}
       <View>
-        <TaskSwiper />
+        <AppText text={'Explore'} style={styles.explore} />
+        <FlatList
+          data={exploreArray}
+          keyExtractor={item => item.firstTxt}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item}) => (
+            <ExploreCard
+              image={item.image}
+              firstTxt={item.firstTxt}
+              secondTxt={item.secondTxt}
+            />
+          )}
+        />
       </View>
-    </ScrollView>
+      <View style={{height: 200}}></View>
+    </View>
   );
 };
 
@@ -50,9 +96,10 @@ const styles = StyleSheet.create({
   },
   slide: {
     marginHorizontal: 20,
+    marginTop: 30,
   },
   sliderContainer: {
-    backgroundColor: 'pink',
+    backgroundColor: COLORS.pale_mint,
     flex: 1,
   },
   inActiveDot: {
@@ -65,7 +112,7 @@ const styles = StyleSheet.create({
     marginTop: 3,
     marginBottom: 3,
     position: 'relative',
-    bottom: 590,
+    // bottom: 590,
   },
   activeDot: {
     backgroundColor: COLORS.green,
@@ -77,6 +124,12 @@ const styles = StyleSheet.create({
     marginTop: 3,
     marginBottom: 3,
     position: 'relative',
-    bottom: 590,
+    // bottom: 590,
+  },
+  explore: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    paddingTop: 10,
+    marginLeft: 20,
   },
 });

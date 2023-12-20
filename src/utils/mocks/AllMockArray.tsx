@@ -49,14 +49,14 @@ export interface exploreInterface {
 
 export const exploreArray: exploreInterface[] = [
   {
-    image: Icons.GrayCompass,
-    firstTxt: 'gray',
-    secondTxt: 'demo1',
+    image: Icons.QuranExplore,
+    firstTxt: 'Quran',
+    secondTxt: 'P.207',
   },
   {
-    image: Icons.BlueCompass,
-    firstTxt: 'blue',
-    secondTxt: 'demo2',
+    image: Icons.Azkaar,
+    firstTxt: 'Azkaar',
+    secondTxt: '1/3',
   },
   {
     image: Icons.GoldeCompass,

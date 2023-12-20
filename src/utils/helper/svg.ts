@@ -37,6 +37,10 @@ export const Icons = {
   AboutMuttaqi: 'ABOUT_MUTTAQI',
   PlusIcon: 'PLUS_ICON',
   UserHeart: 'USER_HEART',
+  OpenDetails: 'OPEN_DETAILS',
+  CheckBoxTickIcon: 'CHECK_BOX_TICK_ICON',
+  QuranExplore: 'QURAN_EXPLORE',
+  Azkaar: 'AZKAAR',
 };
 
 export const Colors = {
@@ -76,6 +80,10 @@ export const Colors = {
   [Icons.Setting]: {color: COLORS.light_gray},
   [Icons.PlusIcon]: {color: COLORS.light_gray},
   [Icons.UserHeart]: {color: COLORS.light_gray},
+  [Icons.OpenDetails]: {color: COLORS.light_gray},
+  [Icons.CheckBoxTickIcon]: {color: COLORS.light_gray},
+  [Icons.QuranExplore]: {color: COLORS.light_gray},
+  [Icons.Azkaar]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -146,6 +154,15 @@ SvgIcons[Icons.Setting] =
   require('../../../assets/images/setting-screen-svg/setting').default;
 SvgIcons[Icons.PlusIcon] = require('../../../assets/images/plusIcon').default;
 SvgIcons[Icons.UserHeart] = require('../../../assets/images/userHeart').default;
+SvgIcons[Icons.CheckBoxTickIcon] =
+  require('../../../assets/images/checkBoxTickIcon').default;
+SvgIcons[Icons.OpenDetails] =
+  require('../../../assets/images/openDetails').default;
+
+SvgIcons[Icons.QuranExplore] =
+  require('../../../assets/images/explore-images/quran').default;
+SvgIcons[Icons.Azkaar] =
+  require('../../../assets/images/explore-images/azkaar').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];
