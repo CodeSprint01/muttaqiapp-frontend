@@ -20,7 +20,7 @@ const HomeScreen = () => {
     {id: 6, label: 'memorize quran', isChecked: false},
     {id: 7, label: 'memorize quran', isChecked: false},
   ];
-  const [checkboxes, setCheckboxes] = useState(initialCheckboxes);
+  // const [checkboxes, setCheckboxes] = useState(initialCheckboxes);
 
   const handleCheckboxChange = (checkboxId: number) => {
     console.log('click');
@@ -33,7 +33,6 @@ const HomeScreen = () => {
     );
   };
   return (
-    // <ScrollView style={styles.container}>
     <View style={styles.sliderContainer}>
       <Swiper
         scrollEnabled={true}
@@ -57,15 +56,6 @@ const HomeScreen = () => {
           />
         </View>
       </Swiper>
-      {/* <View style={styles.slide}>
-        <PrayerSwiper
-          heartValue={80}
-          icon={Icons.Notification}
-          prayerName="Maghrib"
-          time="05:22 AM"
-          backgroundImg={require('../../../assets/images/prayer-background-img/maghribImage.png')}
-        />
-      </View> */}
       <View>
         <AppText text={'Explore'} style={styles.explore} />
         <FlatList
@@ -82,7 +72,6 @@ const HomeScreen = () => {
           )}
         />
       </View>
-      <View style={{height: 200}}></View>
     </View>
   );
 };
@@ -101,6 +90,7 @@ const styles = StyleSheet.create({
   sliderContainer: {
     backgroundColor: COLORS.pale_mint,
     flex: 1,
+    elevation: 10,
   },
   inActiveDot: {
     backgroundColor: COLORS.lightGray,

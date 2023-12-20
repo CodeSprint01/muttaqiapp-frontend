@@ -66,9 +66,7 @@ const PrayerSwiper: FC<prayerProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
-    // backgroundColor: 'green',
-  },
+  container: {},
   sliderContainer: {
     borderRadius: 22,
     flexDirection: 'row',
