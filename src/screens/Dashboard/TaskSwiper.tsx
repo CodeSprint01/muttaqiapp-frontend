@@ -48,22 +48,19 @@ const TaskSwiper: FC<TaskProps> = ({
               icon={Icons.OpenDetails}
               width={16}
               height={16}
-              color={COLORS.dark_gray}
+              color={COLORS.green}
             />
           </View>
         </View>
-        <View
-          style={{
-            marginRight: 10,
-            height: 100,
-          }}>
+        <View style={styles.flatlistView}>
           <FlatList
             data={checkboxes}
             renderItem={({item}) => (
-              <Text key={item.id} style={{}}>
-                {console.log(item)}
-                {item.label}
-              </Text>
+              <AppCheckBox
+                isChecked={item.isChecked}
+                onToggle={() => handleCheckboxChange(item.id)}
+                label={item.label}
+              />
             )}
           />
         </View>
@@ -97,26 +94,19 @@ const styles = StyleSheet.create({
   taskAndValue: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
+    paddingVertical: 10,
+    paddingRight: 10,
   },
   dailyProgress: {
     paddingRight: 5,
   },
   contentContainer: {
     flex: 7,
+    marginLeft: 20,
   },
-  // dailyTaskContainer: {
-  //   flex: 1,
-  //   marginBottom: 20,
-  //   paddingLeft: 10,
-  //   backgroundColor: 'coral',
-  // },
-  checkboxContainer: {
-    // flexDirection: 'row',
-    // alignItems: 'center',
-    // marginVertical: 1,
-    // backgroundColor: 'pink',
-    // margin: 10,
+  flatlistView: {
+    marginRight: 10,
+    height: 100,
   },
   checkbox: {
     transform: Platform.OS === 'ios' ? [{scaleX: 0.8}, {scaleY: 0.8}] : [],

@@ -41,6 +41,7 @@ export const Icons = {
   CheckBoxTickIcon: 'CHECK_BOX_TICK_ICON',
   QuranExplore: 'QURAN_EXPLORE',
   Azkaar: 'AZKAAR',
+  RingIcon: 'RING_ICON',
 };
 
 export const Colors = {
@@ -84,6 +85,7 @@ export const Colors = {
   [Icons.CheckBoxTickIcon]: {color: COLORS.light_gray},
   [Icons.QuranExplore]: {color: COLORS.light_gray},
   [Icons.Azkaar]: {color: COLORS.light_gray},
+  [Icons.RingIcon]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -163,6 +165,7 @@ SvgIcons[Icons.QuranExplore] =
   require('../../../assets/images/explore-images/quran').default;
 SvgIcons[Icons.Azkaar] =
   require('../../../assets/images/explore-images/azkaar').default;
+SvgIcons[Icons.RingIcon] = require('../../../assets/images/ringIcon').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

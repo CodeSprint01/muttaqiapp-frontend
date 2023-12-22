@@ -29,14 +29,16 @@ const ExploreCard: FC<exploreInterface> = ({image, firstTxt, secondTxt}) => {
 export default ExploreCard;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    marginLeft: 18,
+  },
   card: {
     width: 140,
     // height: 176,
     backgroundColor: '#afe1af',
     borderRadius: 20,
     marginTop: 20,
-    marginHorizontal: 16,
+    // marginHorizontal: 16,
     elevation: 10,
   },
   cardIcon: {

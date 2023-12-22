@@ -66,11 +66,14 @@ const PrayerSwiper: FC<prayerProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    height: 165,
+  },
   sliderContainer: {
     borderRadius: 22,
     flexDirection: 'row',
     resizeMode: 'contain',
+    height: 165,
   },
   prayerSection: {
     flex: 7,

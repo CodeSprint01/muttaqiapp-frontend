@@ -40,7 +40,7 @@ const AppCheckBox = ({
             icon={Icons.CheckBoxTickIcon}
             width={15}
             height={15}
-            color={COLORS.dark_gray}
+            color={COLORS.green}
           />
         )}
       </TouchableOpacity>
