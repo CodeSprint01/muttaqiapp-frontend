@@ -1,4 +1,11 @@
-import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import '../../components/atoms/error/LogBox';
 import React, {useEffect, useState} from 'react';
 import Swiper from 'react-native-swiper';
@@ -10,6 +17,7 @@ import {exploreArray} from '../../utils/mocks/AllMockArray';
 import ExploreCard from '../../components/atoms/explore-card/ExploreCard';
 import AppText from '../../components/atoms/app-text/AppText';
 import PrayerTimes from './PrayerTimes';
+import notifee from '@notifee/react-native';
 
 const HomeScreen = () => {
   const initialCheckboxes = [
@@ -33,6 +41,37 @@ const HomeScreen = () => {
       ),
     );
   };
+  // here is notification code
+
+  const notificationTime = new Date();
+  const setupChannels = async () => {
+    await notifee.requestPermission();
+    await notifee.createChannel({
+      id: 'default',
+      name: 'Muttaqi Channel',
+      sound: 'alarm',
+    });
+  };
+
+  const notificationDemo = async () => {
+    setupChannels();
+    await notifee.displayNotification({
+      title: 'Duhar Prayer ',
+      body: 'It is a time for Duhhar Prayer',
+      subtitle: `${notificationTime.toLocaleTimeString()}`,
+
+      android: {
+        channelId: 'default',
+        pressAction: {
+          id: 'default',
+        },
+      },
+      ios: {
+        categoryId: 'default',
+      },
+    });
+  };
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -79,7 +118,7 @@ const HomeScreen = () => {
       </View>
       <View style={styles.prayerAlarmContainer}>
         <AppText text={'Prayer times'} style={styles.prayerTimes} />
-        <PrayerTimes />
+        <PrayerTimes onPress={notificationDemo} />
       </View>
     </ScrollView>
   );

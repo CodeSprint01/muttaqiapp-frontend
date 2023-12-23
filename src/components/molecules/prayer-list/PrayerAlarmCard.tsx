@@ -1,15 +1,18 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {FC} from 'react';
 import {AppIconSvg, Icons} from '../../atoms/app-icon-svg';
 import {COLORS} from '../../../styles/color';
 import LinearGradient from 'react-native-linear-gradient';
 import AppText from '../../atoms/app-text/AppText';
 
-const PrayerAlarmCard = () => {
+interface AlarmProps {
+  onPress: () => void;
+}
+const PrayerAlarmCard: FC<AlarmProps> = ({onPress}) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconText}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPress}>
           <LinearGradient
             colors={['#1290A1', '#1DA28F']}
             style={styles.iconContaiuner}>

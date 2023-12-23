@@ -1,15 +1,18 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {FC} from 'react';
 import PrayerAlarmCard from '../../components/molecules/prayer-list/PrayerAlarmCard';
 
-const PrayerTimes = () => {
+interface prayerProps {
+  onPress: () => void;
+}
+const PrayerTimes: FC<prayerProps> = ({onPress}) => {
   return (
     <View style={styles.container}>
-      <PrayerAlarmCard />
-      <PrayerAlarmCard />
-      <PrayerAlarmCard />
-      <PrayerAlarmCard />
-      <PrayerAlarmCard />
+      <PrayerAlarmCard onPress={onPress} />
+      <PrayerAlarmCard onPress={onPress} />
+      <PrayerAlarmCard onPress={onPress} />
+      <PrayerAlarmCard onPress={onPress} />
+      <PrayerAlarmCard onPress={onPress} />
     </View>
   );
 };
