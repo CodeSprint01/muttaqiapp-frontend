@@ -6,18 +6,22 @@ import {AppIconSvg} from '../app-icon-svg';
 import {exploreInterface} from '../../../utils/mocks/AllMockArray';
 import LinearGradient from 'react-native-linear-gradient';
 
-const ExploreCard: FC<exploreInterface> = ({image, firstTxt, secondTxt}) => {
+const ExploreCard: FC<exploreInterface> = ({
+  image,
+  firstTxt,
+  secondTxt,
+  index,
+}) => {
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        {marginRight: index === 3 ? 12 : 0, marginLeft: index === 0 ? 12 : 0},
+      ]}>
       <LinearGradient colors={['#1290A1', '#1DA28F']} style={styles.card}>
         <View style={styles.cardIcon}>
           <AppIconSvg icon={image} width={50} height={50} color={'black'} />
-          <View
-            // blurAmount={1}
-            style={styles.blurView}
-            // blurType="dark"
-            // reducedTransparencyFallbackColor="black"
-          />
+          <View style={styles.blurView} />
         </View>
         <AppText text={firstTxt} style={styles.cardFirstTxt} />
         <AppText text={secondTxt} style={styles.cardSecondTxt} />
@@ -30,16 +34,15 @@ export default ExploreCard;
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 18,
+    paddingBottom: 25,
   },
   card: {
-    width: 140,
-    // height: 176,
+    width: 130,
     backgroundColor: '#afe1af',
     borderRadius: 20,
     marginTop: 20,
-    // marginHorizontal: 16,
     elevation: 10,
+    marginHorizontal: 8,
   },
   cardIcon: {
     marginTop: 20,
@@ -50,7 +53,7 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     fontSize: 20,
     fontWeight: '700',
-    marginTop: 120,
+    marginTop: 100,
     marginLeft: 20,
   },
   blurView: {
@@ -60,13 +63,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
     opacity: 0.04,
     borderRadius: 100,
-    // marginLeft: 5,
-    // width: 47,
-    // height: 30,
-    // borderRadius: 25, // Adjust the borderRadius to get the desired shape
-    // marginTop: 55,
-    // opacity: 0.5, // Adjust the opacity to control the intensity of the shadow
-    // position: 'absolute',
   },
   cardSecondTxt: {
     color: COLORS.white,

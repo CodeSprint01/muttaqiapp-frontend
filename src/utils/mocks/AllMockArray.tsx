@@ -45,6 +45,7 @@ export interface exploreInterface {
   image: any;
   firstTxt: string;
   secondTxt: string;
+  index?: number;
 }
 
 export const exploreArray: exploreInterface[] = [

@@ -44,12 +44,12 @@ const PrayerSwiper: FC<prayerProps> = ({
           <View style={styles.heratView}>
             <AppText text={`${heartValue} %`} style={styles.goodDeeds} />
             <CircularProgress
-              size={100}
+              size={90}
               width={7}
               fill={heartValue}
               tintColor={COLORS.forest_Green}
               backgroundColor={COLORS.Crimson}
-              rotation={270}
+              rotation={200}
             />
             <AppText text={'30 %'} style={styles.bedDeeds} />
             <View style={{position: 'absolute'}}>
@@ -74,6 +74,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     resizeMode: 'contain',
     height: 165,
+    elevation: 10,
+    shadowColor: 'black',
+    shadowOffset: {width: 2, height: 2},
+    shadowOpacity: 0.2,
   },
   prayerSection: {
     flex: 7,
@@ -108,8 +112,8 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   heratView: {
-    width: 140,
-    height: 140,
+    width: 125,
+    height: 125,
     borderRadius: 75,
     backgroundColor: COLORS.light_blue_gray,
     position: 'absolute',

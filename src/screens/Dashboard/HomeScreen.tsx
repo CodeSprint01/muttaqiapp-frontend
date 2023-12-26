@@ -32,7 +32,6 @@ const HomeScreen = () => {
   const [checkboxes, setCheckboxes] = useState(initialCheckboxes);
 
   const handleCheckboxChange = (checkboxId: number) => {
-    console.log('click');
     setCheckboxes(prevCheckboxes =>
       prevCheckboxes.map(checkbox =>
         checkbox.id === checkboxId
@@ -42,41 +41,46 @@ const HomeScreen = () => {
     );
   };
   // here is notification code
+  async function onCreateTriggerNotification() {
+    const setupChannels = async () => {
+      await notifee.requestPermission();
+      await notifee.createChannel({
+        id: 'default',
+        name: 'Muttaqi Channel',
+        sound: 'alarm',
+      });
+    };
+    // const timestamp = new Date().getTime() + 5000;
+    // const date = new Date();
+    // const hours = date.getHours();
+    // const min = date.getMinutes();
 
-  const notificationTime = new Date();
-  const setupChannels = async () => {
-    await notifee.requestPermission();
-    await notifee.createChannel({
-      id: 'default',
-      name: 'Muttaqi Channel',
-      sound: 'alarm',
-    });
-  };
-
-  const notificationDemo = async () => {
+    // const trigger: TimestampTrigger = {
+    //   type: TriggerType.TIMESTAMP,
+    //   timestamp: timestamp,
+    //   alarmManager: true,
+    // };
     setupChannels();
     await notifee.displayNotification({
-      title: 'Duhar Prayer ',
-      body: 'It is a time for Duhhar Prayer',
-      subtitle: `${notificationTime.toLocaleTimeString()}`,
-
+      // title: `Meeting with Jane ${hours} : ${min}`,
+      title: `Meeting with Jane `,
+      body: 'Today at your time',
       android: {
         channelId: 'default',
-        pressAction: {
-          id: 'default',
-        },
       },
       ios: {
         categoryId: 'default',
       },
     });
-  };
+  }
+
+  // Call the function to create the notification
 
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
       style={styles.sliderContainer}>
-      <View style={{height: 200}}>
+      <View style={{height: 210}}>
         <Swiper
           scrollEnabled={true}
           nestedScrollEnabled={true}
@@ -100,25 +104,26 @@ const HomeScreen = () => {
           </View>
         </Swiper>
       </View>
-      <View style={{paddingBottom: 24}}>
+      <View style={{marginBottom: 2}}>
         <AppText text={'Explore'} style={styles.explore} />
         <FlatList
           data={exploreArray}
           keyExtractor={item => item.firstTxt}
           horizontal
           showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => (
+          renderItem={({item, index}) => (
             <ExploreCard
               image={item.image}
               firstTxt={item.firstTxt}
               secondTxt={item.secondTxt}
+              index={index}
             />
           )}
         />
       </View>
       <View style={styles.prayerAlarmContainer}>
         <AppText text={'Prayer times'} style={styles.prayerTimes} />
-        <PrayerTimes onPress={notificationDemo} />
+        <PrayerTimes onPress={onCreateTriggerNotification} />
       </View>
     </ScrollView>
   );
@@ -150,7 +155,7 @@ const styles = StyleSheet.create({
     marginTop: 3,
     marginBottom: 3,
     position: 'relative',
-    bottom: -15,
+    bottom: -7,
   },
   activeDot: {
     backgroundColor: COLORS.green,
@@ -162,7 +167,7 @@ const styles = StyleSheet.create({
     marginTop: 3,
     marginBottom: 3,
     position: 'relative',
-    bottom: -15,
+    bottom: -7,
   },
   explore: {
     fontSize: 25,
@@ -172,7 +177,8 @@ const styles = StyleSheet.create({
   },
   prayerAlarmContainer: {
     flex: 1,
-    // backgroundColor: 'skyblue',
+    // backgroundColor: 'black',
+    marginTop: -10,
   },
   prayerTimes: {
     fontSize: 24,

@@ -29,7 +29,7 @@ const TaskSwiper: FC<TaskProps> = ({
     <View style={styles.container}>
       <View style={styles.circleContainer}>
         <CircularProgress
-          size={110}
+          size={100}
           width={17}
           fill={circleValue}
           tintColor={COLORS.green}
@@ -77,6 +77,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.Light_Powder_Blue,
     borderRadius: 22,
     elevation: 10,
+    shadowColor: 'black',
+    shadowOffset: {width: 2, height: 2},
+    shadowOpacity: 0.2,
   },
   circleContainer: {
     flex: 4,

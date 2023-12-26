@@ -1,4 +1,10 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  Platform,
+  SafeAreaView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import HomeStack from './HomeStack';
 import QiblaStack from './QiblaStack';
@@ -34,7 +40,7 @@ const TabNavigator = () => {
   );
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={[styles.container]}>
       <Tab.Navigator
         screenOptions={({route}) => ({
           // eslint-disable-next-line react/no-unstable-nested-components
@@ -81,19 +87,19 @@ const TabNavigator = () => {
         <Tab.Screen name="Tracker" component={TrackerStack} />
         <Tab.Screen name="Setting" component={SettingStack} />
       </Tab.Navigator>
-    </View>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
     flex: 1,
+    backgroundColor: 'white',
   },
   customTabButton: {
-    backgroundColor: COLORS.green, // Set the background color as needed
-    borderRadius: 30, // Adjust the border radius to make it fully rounded
-    width: 60, // Adjust the width as needed
-    height: 60, // Adjust the height as needed
+    backgroundColor: COLORS.green,
+    borderRadius: 30,
+    width: 60,
+    height: 60,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: -46,
