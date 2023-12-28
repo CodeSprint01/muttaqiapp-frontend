@@ -18,6 +18,8 @@ import ExploreCard from '../../components/atoms/explore-card/ExploreCard';
 import AppText from '../../components/atoms/app-text/AppText';
 import PrayerTimes from './PrayerTimes';
 import notifee from '@notifee/react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import {rgbaColor} from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
 
 const HomeScreen = () => {
   const initialCheckboxes = [
@@ -30,6 +32,16 @@ const HomeScreen = () => {
     {id: 7, label: 'memorize quran', isChecked: false},
   ];
   const [checkboxes, setCheckboxes] = useState(initialCheckboxes);
+  const [isPrayerTime, setIsPrayerTime] = useState(true);
+  const [icon, setIcon] = useState(0);
+  // const getIcon = () => {
+  //   if (!isPrayerTime && icon === 3) {
+  //     return Icons.RingIcon;
+  //   }
+  //   else if(!isPrayerTime && icon===4)
+  // };
+
+  const onPress = () => {};
 
   const handleCheckboxChange = (checkboxId: number) => {
     setCheckboxes(prevCheckboxes =>
@@ -77,55 +89,63 @@ const HomeScreen = () => {
   // Call the function to create the notification
 
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      style={styles.sliderContainer}>
-      <View style={{height: 210}}>
-        <Swiper
-          scrollEnabled={true}
-          nestedScrollEnabled={true}
-          dot={<View style={styles.inActiveDot} />}
-          activeDot={<View style={styles.activeDot} />}>
-          <View style={styles.slide}>
-            <PrayerSwiper
-              heartValue={80}
-              icon={Icons.Notification}
-              prayerName="Maghrib"
-              time="05:22 AM"
-              backgroundImg={require('../../../assets/images/prayer-background-img/maghribImage.png')}
-            />
-          </View>
-          <View style={styles.slide}>
-            <TaskSwiper
-              circleValue={77}
-              checkboxes={checkboxes}
-              handleCheckboxChange={handleCheckboxChange}
-            />
-          </View>
-        </Swiper>
-      </View>
-      <View style={{marginBottom: 2}}>
-        <AppText text={'Explore'} style={styles.explore} />
-        <FlatList
-          data={exploreArray}
-          keyExtractor={item => item.firstTxt}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          renderItem={({item, index}) => (
-            <ExploreCard
-              image={item.image}
-              firstTxt={item.firstTxt}
-              secondTxt={item.secondTxt}
-              index={index}
-            />
-          )}
-        />
-      </View>
-      <View style={styles.prayerAlarmContainer}>
-        <AppText text={'Prayer times'} style={styles.prayerTimes} />
-        <PrayerTimes onPress={onCreateTriggerNotification} />
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.sliderContainer}>
+        <View style={{height: 210}}>
+          <Swiper
+            scrollEnabled={true}
+            nestedScrollEnabled={true}
+            dot={<View style={styles.inActiveDot} />}
+            activeDot={<View style={styles.activeDot} />}>
+            <View style={styles.slide}>
+              <PrayerSwiper
+                heartValue={70}
+                icon={Icons.Notification}
+                prayerName="Maghrib"
+                time="05:22 AM"
+                backgroundImg={require('../../../assets/images/prayer-background-img/maghribImage.png')}
+              />
+            </View>
+            <View style={styles.slide}>
+              <TaskSwiper
+                circleValue={77}
+                checkboxes={checkboxes}
+                handleCheckboxChange={handleCheckboxChange}
+              />
+            </View>
+          </Swiper>
+        </View>
+        <View style={{marginBottom: 2}}>
+          <AppText text={'Explore'} style={styles.explore} />
+          <FlatList
+            data={exploreArray}
+            keyExtractor={item => item.firstTxt}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            renderItem={({item, index}) => (
+              <ExploreCard
+                image={item.image}
+                firstTxt={item.firstTxt}
+                secondTxt={item.secondTxt}
+                index={index}
+              />
+            )}
+          />
+        </View>
+        <View style={styles.prayerAlarmContainer}>
+          <AppText text={'Prayer times'} style={styles.prayerTimes} />
+          <PrayerTimes onPress={onPress} />
+        </View>
+        <View style={styles.bottom} />
+      </ScrollView>
+      <LinearGradient
+        colors={['#ffffff00', COLORS.white]}
+        style={styles.gradient}
+      />
+      {/* <View style={styles.opacity} /> */}
+    </View>
   );
 };
 
@@ -133,8 +153,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    paddingTop: 40,
+    backgroundColor: COLORS.lightBlack,
   },
   slide: {
     marginHorizontal: 20,
@@ -143,7 +162,6 @@ const styles = StyleSheet.create({
   sliderContainer: {
     backgroundColor: COLORS.pale_mint,
     flex: 1,
-    elevation: 10,
   },
   inActiveDot: {
     backgroundColor: COLORS.lightGray,
@@ -186,5 +204,25 @@ const styles = StyleSheet.create({
     color: COLORS.very_dark_gray,
     marginLeft: 24,
     paddingBottom: 16,
+  },
+  gradient: {
+    position: 'absolute',
+    width: '100%',
+    height: '15%',
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  bottom: {
+    backgroundColor: COLORS.pale_mint,
+    width: '100%',
+    height: 150,
+  },
+  opacity: {
+    height: 110,
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    position: 'absolute',
+    bottom: 0,
+    width: '100%'
   },
 });

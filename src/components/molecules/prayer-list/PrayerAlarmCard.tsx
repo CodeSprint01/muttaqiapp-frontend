@@ -7,8 +7,10 @@ import AppText from '../../atoms/app-text/AppText';
 
 interface AlarmProps {
   onPress: () => void;
+  name: string;
+  time: string;
 }
-const PrayerAlarmCard: FC<AlarmProps> = ({onPress}) => {
+const PrayerAlarmCard: FC<AlarmProps> = ({onPress, name, time}) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconText}>
@@ -24,11 +26,11 @@ const PrayerAlarmCard: FC<AlarmProps> = ({onPress}) => {
             />
           </LinearGradient>
         </TouchableOpacity>
-        <AppText text={'Fajr'} style={styles.prayerText} />
+        <AppText text={name} style={styles.prayerText} />
       </View>
 
       <View style={styles.prayerTime}>
-        <AppText text={'04:52 PM'} style={styles.prayerTimeTxt} />
+        <AppText text={time} style={styles.prayerTimeTxt} />
       </View>
     </View>
   );

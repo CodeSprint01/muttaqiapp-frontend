@@ -45,13 +45,13 @@ const PrayerSwiper: FC<prayerProps> = ({
             <AppText text={`${heartValue} %`} style={styles.goodDeeds} />
             <CircularProgress
               size={90}
-              width={7}
+              width={7} 
               fill={heartValue}
               tintColor={COLORS.forest_Green}
               backgroundColor={COLORS.Crimson}
-              rotation={200}
+              rotation={220}
             />
-            <AppText text={'30 %'} style={styles.bedDeeds} />
+            <AppText text={'20 %'} style={styles.bedDeeds} />
             <View style={{position: 'absolute'}}>
               <Image
                 source={require('../../../assets/images/userHeart.png')}

@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     fontSize: 20,
     fontWeight: '700',
+    color: COLORS.black,
   },
   taskAndIccon: {
     flexDirection: 'row',

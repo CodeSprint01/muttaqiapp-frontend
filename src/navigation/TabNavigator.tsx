@@ -41,6 +41,7 @@ const TabNavigator = () => {
 
   return (
     <SafeAreaView style={[styles.container]}>
+      {/* <View style={{styles.}}> */}
       <Tab.Navigator
         screenOptions={({route}) => ({
           // eslint-disable-next-line react/no-unstable-nested-components
@@ -54,15 +55,20 @@ const TabNavigator = () => {
             fontWeight: '400',
           },
           tabBarStyle: {
-            backgroundColor: COLORS.pale_mint,
-            width: '90%',
+            backgroundColor: COLORS.white,
+            width: '92%',
             alignSelf: 'center',
+            position: 'absolute',
             borderRadius: 25,
-            marginBottom: 20,
+            borderWidth: 1,
+            borderColor: COLORS.white,
+            marginBottom: 2,
+            marginTop: 5,
+            marginLeft: '4%',
             paddingTop: 16,
             paddingBottom: 16,
             height: 80,
-            elevation: 1,
+            elevation: 2,
           },
           headerShown: false,
         })}>
@@ -93,7 +99,7 @@ const TabNavigator = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.pale_mint,
   },
   customTabButton: {
     backgroundColor: COLORS.green,
