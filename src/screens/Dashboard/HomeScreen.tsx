@@ -16,7 +16,7 @@ import TaskSwiper from './TaskSwiper';
 import {exploreArray} from '../../utils/mocks/AllMockArray';
 import ExploreCard from '../../components/atoms/explore-card/ExploreCard';
 import AppText from '../../components/atoms/app-text/AppText';
-import PrayerTimes from './PrayerTimes';
+import PrayerTimesList from './PrayerTimesList';
 import notifee from '@notifee/react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {rgbaColor} from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
@@ -32,16 +32,6 @@ const HomeScreen = () => {
     {id: 7, label: 'memorize quran', isChecked: false},
   ];
   const [checkboxes, setCheckboxes] = useState(initialCheckboxes);
-  const [isPrayerTime, setIsPrayerTime] = useState(true);
-  const [icon, setIcon] = useState(0);
-  // const getIcon = () => {
-  //   if (!isPrayerTime && icon === 3) {
-  //     return Icons.RingIcon;
-  //   }
-  //   else if(!isPrayerTime && icon===4)
-  // };
-
-  const onPress = () => {};
 
   const handleCheckboxChange = (checkboxId: number) => {
     setCheckboxes(prevCheckboxes =>
@@ -136,7 +126,7 @@ const HomeScreen = () => {
         </View>
         <View style={styles.prayerAlarmContainer}>
           <AppText text={'Prayer times'} style={styles.prayerTimes} />
-          <PrayerTimes onPress={onPress} />
+          <PrayerTimesList />
         </View>
         <View style={styles.bottom} />
       </ScrollView>
@@ -223,6 +213,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
     position: 'absolute',
     bottom: 0,
-    width: '100%'
+    width: '100%',
   },
 });
