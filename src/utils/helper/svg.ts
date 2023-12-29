@@ -183,7 +183,7 @@ SvgIcons[Icons.TickCircle] =
 SvgIcons[Icons.Alarm] =
   require('../../../assets/images/prayer-time/alarm').default;
 SvgIcons[Icons.AlarmSlash] =
-  require('../../../assets/images/prayer-time/alarmslash').default;
+  require('../../../assets/images/prayer-time/alarmSlash').default;
 SvgIcons[Icons.AlarmCross] =
   require('../../../assets/images/prayer-time/alarmCross').default;
 
