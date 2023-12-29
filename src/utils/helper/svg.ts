@@ -41,7 +41,12 @@ export const Icons = {
   CheckBoxTickIcon: 'CHECK_BOX_TICK_ICON',
   QuranExplore: 'QURAN_EXPLORE',
   Azkaar: 'AZKAAR',
-  RingIcon: 'RING_ICON',
+
+  EmptyCircle: 'EMPTY_CIRCLE',
+  TickCircle: 'TICK_CIRCLE',
+  Alarm: 'ALARM',
+  AlarmSlash: 'ALARM_SLASH',
+  AlarmCross: 'ALARM_CROSS',
 };
 
 export const Colors = {
@@ -85,7 +90,12 @@ export const Colors = {
   [Icons.CheckBoxTickIcon]: {color: COLORS.light_gray},
   [Icons.QuranExplore]: {color: COLORS.light_gray},
   [Icons.Azkaar]: {color: COLORS.light_gray},
-  [Icons.RingIcon]: {color: COLORS.light_gray},
+
+  [Icons.EmptyCircle]: {color: COLORS.light_gray},
+  [Icons.TickCircle]: {color: COLORS.light_gray},
+  [Icons.Alarm]: {color: COLORS.light_gray},
+  [Icons.AlarmSlash]: {color: COLORS.light_gray},
+  [Icons.AlarmCross]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -165,7 +175,17 @@ SvgIcons[Icons.QuranExplore] =
   require('../../../assets/images/explore-images/quran').default;
 SvgIcons[Icons.Azkaar] =
   require('../../../assets/images/explore-images/azkaar').default;
-SvgIcons[Icons.RingIcon] = require('../../../assets/images/ringIcon').default;
+
+SvgIcons[Icons.EmptyCircle] =
+  require('../../../assets/images/prayer-time/emptyCircle').default;
+SvgIcons[Icons.TickCircle] =
+  require('../../../assets/images/prayer-time/tickCircle').default;
+SvgIcons[Icons.Alarm] =
+  require('../../../assets/images/prayer-time/alarm').default;
+SvgIcons[Icons.AlarmSlash] =
+  require('../../../assets/images/prayer-time/alarmslash').default;
+SvgIcons[Icons.AlarmCross] =
+  require('../../../assets/images/prayer-time/alarmCross').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

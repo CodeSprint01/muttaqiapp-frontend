@@ -9,8 +9,9 @@ interface AlarmProps {
   onPress: () => void;
   name: string;
   time: string;
+  prayerIcon: any;
 }
-const PrayerAlarmCard: FC<AlarmProps> = ({onPress, name, time}) => {
+const PrayerAlarmCard: FC<AlarmProps> = ({onPress, name, time, prayerIcon}) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconText}>
@@ -19,7 +20,7 @@ const PrayerAlarmCard: FC<AlarmProps> = ({onPress, name, time}) => {
             colors={['#1290A1', '#1DA28F']}
             style={styles.iconContaiuner}>
             <AppIconSvg
-              icon={Icons.RingIcon}
+              icon={prayerIcon}
               width={24}
               height={24}
               color={COLORS.white}

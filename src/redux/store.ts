@@ -4,7 +4,7 @@ import {persistStore, persistReducer} from 'redux-persist';
 import rootReducer from './reducer';
 
 const persistConfig = {
-  timeout: 15000,
+  // timeout: 15000,
   key: 'root',
   storage: AsyncStorage,
   // whitelist: [
@@ -15,5 +15,5 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(persistedReducer);
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);
 export default store;

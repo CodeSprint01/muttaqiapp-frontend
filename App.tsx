@@ -1,17 +1,18 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import './src/components/atoms/error/LogBox';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import MainStack from './src/navigation/MainStack';
-import {NavigationContainer} from '@react-navigation/native';
+import {Provider} from 'react-redux';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import store from './src/redux/store';
 
 const App = () => {
   return (
-    <GestureHandlerRootView style={styles.container}>
-      <NavigationContainer>
+    <Provider store={store}>
+      <GestureHandlerRootView style={styles.container}>
         <MainStack />
-      </NavigationContainer>
-    </GestureHandlerRootView>
+      </GestureHandlerRootView>
+    </Provider>
   );
 };
 
