@@ -15,6 +15,9 @@ import {KnowledgeArray, KnowledgeProps} from '../../utils/mocks/Knowledge';
 
 const Knowledge = () => {
   const [showItems, setShowItems] = useState<number[]>([]);
+  const lastIndex = KnowledgeArray.length - 1;
+  console.log(lastIndex);
+
   const renderItem = ({item, index}: {item: KnowledgeProps; index: number}) => (
     <>
       <View style={styles.listTitle}>
@@ -33,7 +36,11 @@ const Knowledge = () => {
         </TouchableOpacity>
       </View>
       {showItems.includes(index) && (
-        <View style={styles.descriptionView}>
+        <View
+          style={[
+            styles.descriptionView,
+            {marginBottom: index === lastIndex ? 40 : 0},
+          ]}>
           <AppText style={styles.description} text={item?.description} />
         </View>
       )}
