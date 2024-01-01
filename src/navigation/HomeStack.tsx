@@ -2,7 +2,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import Knowledge from '../screens/explore-screen/Knowledge';
 import {screens} from '../types/types';
-import Hadith from '../screens/explore-screen/Hadith';
+import Hadith from '../screens/explore-screen/hadith-screens/Hadith';
 
 const HomeStack = () => {
   const Stack = createStackNavigator();

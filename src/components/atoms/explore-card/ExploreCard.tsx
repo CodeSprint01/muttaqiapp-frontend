@@ -12,8 +12,7 @@ export interface ExploreProps {
   firstTxt: string;
   secondTxt: string;
   index?: number;
-  // handleCardClick: (index: number) => void;
-  routeName: any | string;
+  routeName: any;
 }
 
 const ExploreCard: FC<ExploreProps> = ({
@@ -21,15 +20,16 @@ const ExploreCard: FC<ExploreProps> = ({
   firstTxt,
   secondTxt,
   index = 0,
-  // handleCardClick,
   routeName,
+  // handleCardClick,
 }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       activeOpacity={0.8}
       // onPress={() => handleCardClick(index)}
-      onPress={() => navigation.navigate('knowledge')}>
+      // onPress={() => navigation.navigate('HomeStack', {screen: screens.KNOWLEDGE})
+      onPress={() => navigation.navigate('HomeStack', {screen: routeName})}>
       <View
         style={[
           styles.container,

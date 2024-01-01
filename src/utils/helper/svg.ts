@@ -49,6 +49,8 @@ export const Icons = {
   Alarm: 'ALARM',
   AlarmSlash: 'ALARM_SLASH',
   AlarmCross: 'ALARM_CROSS',
+  ArrowUp: 'ARROW_UP',
+  ArrowDown: 'ARROW_DOWN',
 };
 
 export const Colors = {
@@ -100,6 +102,8 @@ export const Colors = {
   [Icons.Alarm]: {color: COLORS.light_gray},
   [Icons.AlarmSlash]: {color: COLORS.light_gray},
   [Icons.AlarmCross]: {color: COLORS.light_gray},
+  [Icons.ArrowUp]: {color: COLORS.light_gray},
+  [Icons.ArrowDown]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -193,6 +197,10 @@ SvgIcons[Icons.AlarmSlash] =
   require('../../../assets/images/prayer-time/alarmSlash').default;
 SvgIcons[Icons.AlarmCross] =
   require('../../../assets/images/prayer-time/alarmCross').default;
+SvgIcons[Icons.ArrowUp] =
+  require('../../../assets/images/explore-images/arrowUp').default;
+SvgIcons[Icons.ArrowDown] =
+  require('../../../assets/images/explore-images/arrowDown').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

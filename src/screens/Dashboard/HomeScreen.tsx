@@ -126,7 +126,6 @@ const HomeScreen = () => {
                 secondTxt={item.secondTxt}
                 index={index}
                 routeName={item.routeName}
-
                 // handleCardClick={index => handelExploreCard(index)}
               />
             )}

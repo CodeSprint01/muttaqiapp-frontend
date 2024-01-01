@@ -71,9 +71,9 @@ export const exploreArray: exploreInterface[] = [
   },
   {
     image: Icons.BlackCompass,
-    firstTxt: 'black',
+    firstTxt: 'Knowledge',
     secondTxt: 'demo4',
-    routeName: 'UserProfile',
+    routeName: screens.KNOWLEDGE,
   },
 ];
 export interface exploreInterface {
