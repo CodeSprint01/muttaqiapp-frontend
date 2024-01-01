@@ -16,6 +16,8 @@ import BottomTabbarTabs from '../components/atoms/bottomTabBar-tabs/BottomTabbar
 import AddTodo from '../screens/add-todo-screen/AddTodo';
 import {AppIconSvg, Icons} from '../components/atoms/app-icon-svg';
 import LinearGradient from 'react-native-linear-gradient';
+import HomeScreen from '../screens/Dashboard/HomeScreen';
+import {screens} from '../types/types';
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -72,10 +74,18 @@ const TabNavigator = () => {
           },
           headerShown: false,
         })}>
-        <Tab.Screen name="Home" component={HomeStack} />
-        <Tab.Screen name="Qibla" component={QiblaStack} />
         <Tab.Screen
-          name="AddTodo"
+          name={screens.TAB_HOME}
+          component={HomeScreen}
+          options={{title: 'Home'}}
+        />
+        <Tab.Screen
+          name={screens.TAB_QIBLA}
+          component={QiblaStack}
+          options={{title: 'Qibla'}}
+        />
+        <Tab.Screen
+          name={screens.TAB_TO_DO}
           component={AddTodo}
           options={{
             tabBarIcon: ({focused}) => (
@@ -90,8 +100,16 @@ const TabNavigator = () => {
             tabBarLabel: '',
           }}
         />
-        <Tab.Screen name="Tracker" component={TrackerStack} />
-        <Tab.Screen name="Setting" component={SettingStack} />
+        <Tab.Screen
+          name={screens.TAB_TRACKER}
+          component={TrackerStack}
+          options={{title: 'Tracker'}}
+        />
+        <Tab.Screen
+          name={screens.TAB_SETTING}
+          component={SettingStack}
+          options={{title: 'Setting'}}
+        />
       </Tab.Navigator>
     </SafeAreaView>
   );

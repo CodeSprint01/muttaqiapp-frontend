@@ -12,6 +12,7 @@ export const MartialStatus: Array<{label: string; value: string}> = [
   {label: 'Married', value: 'Married'},
   {label: 'Divored', value: 'Divored'},
 ];
+import {screens} from '../../types/types';
 import {Icons} from '../helper/svg';
 
 // compass template array svg Image
@@ -46,6 +47,7 @@ export interface exploreInterface {
   firstTxt: string;
   secondTxt: string;
   index?: number;
+  routeName: any;
 }
 
 export const exploreArray: exploreInterface[] = [
@@ -53,21 +55,25 @@ export const exploreArray: exploreInterface[] = [
     image: Icons.QuranExplore,
     firstTxt: 'Quran',
     secondTxt: 'P.207',
+    routeName: screens.TAB_HOME,
   },
   {
     image: Icons.Azkaar,
     firstTxt: 'Azkaar',
     secondTxt: '1/3',
+    routeName: screens.TAB_HOME,
   },
   {
     image: Icons.GoldeCompass,
     firstTxt: 'golden',
     secondTxt: 'demo3',
+    routeName: screens.HADITH,
   },
   {
     image: Icons.BlackCompass,
     firstTxt: 'black',
     secondTxt: 'demo4',
+    routeName: 'UserProfile',
   },
 ];
 export interface exploreInterface {
@@ -76,25 +82,25 @@ export interface exploreInterface {
   secondTxt: string;
 }
 
-export const pyayerArray: exploreInterface[] = [
-  {
-    image: Icons.GrayCompass,
-    firstTxt: 'gray',
-    secondTxt: 'demo1',
-  },
-  {
-    image: Icons.BlueCompass,
-    firstTxt: 'blue',
-    secondTxt: 'demo2',
-  },
-  {
-    image: Icons.GoldeCompass,
-    firstTxt: 'golden',
-    secondTxt: 'demo3',
-  },
-  {
-    image: Icons.BlackCompass,
-    firstTxt: 'black',
-    secondTxt: 'demo4',
-  },
-];
+// export const pyayerArray: exploreInterface[] = [
+//   {
+//     image: Icons.GrayCompass,
+//     firstTxt: 'gray',
+//     secondTxt: 'demo1',
+//   },
+//   {
+//     image: Icons.BlueCompass,
+//     firstTxt: 'blue',
+//     secondTxt: 'demo2',
+//   },
+//   {
+//     image: Icons.GoldeCompass,
+//     firstTxt: 'golden',
+//     secondTxt: 'demo3',
+//   },
+//   {
+//     image: Icons.BlackCompass,
+//     firstTxt: 'black',
+//     secondTxt: 'demo4',
+//   },
+// ];

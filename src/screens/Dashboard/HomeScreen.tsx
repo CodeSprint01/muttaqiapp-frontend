@@ -1,11 +1,4 @@
-import {
-  FlatList,
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
 import '../../components/atoms/error/LogBox';
 import React, {useEffect, useState} from 'react';
 import Swiper from 'react-native-swiper';
@@ -19,7 +12,7 @@ import AppText from '../../components/atoms/app-text/AppText';
 import PrayerTimesList from './PrayerTimesList';
 import notifee from '@notifee/react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {rgbaColor} from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
+import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
   const initialCheckboxes = [
@@ -41,6 +34,12 @@ const HomeScreen = () => {
           : checkbox,
       ),
     );
+  };
+  const navigation = useNavigation();
+  // here is explore sction
+
+  const handelExploreCard = (index: number) => {
+    console.log(index);
   };
   // here is notification code
   async function onCreateTriggerNotification() {
@@ -108,6 +107,12 @@ const HomeScreen = () => {
           </Swiper>
         </View>
         <View style={{marginBottom: 2}}>
+          {/* <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('HomeStack', {screen: screens.HADITH})
+            }>
+            <Text>click to move</Text>
+          </TouchableOpacity> */}
           <AppText text={'Explore'} style={styles.explore} />
           <FlatList
             data={exploreArray}
@@ -120,6 +125,9 @@ const HomeScreen = () => {
                 firstTxt={item.firstTxt}
                 secondTxt={item.secondTxt}
                 index={index}
+                routeName={item.routeName}
+
+                // handleCardClick={index => handelExploreCard(index)}
               />
             )}
           />
