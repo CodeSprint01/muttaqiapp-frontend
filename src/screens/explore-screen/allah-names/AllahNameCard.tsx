@@ -13,7 +13,7 @@ interface cardProps {
   onPress?: () => void;
   arabic: string;
   english: string;
-  description?: string;
+  style?: any;
   meaning: string;
   index?: number;
 }
@@ -23,7 +23,7 @@ const AllahNameCard: FC<cardProps> = ({
   arabic,
   english,
   meaning,
-  description,
+  style,
   index,
 }) => {
   return (
@@ -33,6 +33,7 @@ const AllahNameCard: FC<cardProps> = ({
           paddingBottom: index === 5 ? 40 : 0,
         },
         styles.imageBackView,
+        style,
       ]}>
       <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
         <Image
@@ -53,7 +54,6 @@ export default AllahNameCard;
 
 const styles = StyleSheet.create({
   imageBackView: {
-    // width: '100%',
     height: 150,
     borderRadius: 24,
     shadowColor: '#000',

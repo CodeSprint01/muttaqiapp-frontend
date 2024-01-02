@@ -15,8 +15,6 @@ const AllahNames = () => {
       <View
         style={{
           flex: 1,
-          // paddingHorizontal: 20,
-          // backgroundColor: COLORS.dark_gray,
         }}>
         <View style={{marginHorizontal: 20}}>
           <ScreenHeader headerText="Allah Names" />
@@ -34,6 +32,7 @@ const AllahNames = () => {
                 arabic={item.arabic}
                 english={item.english}
                 meaning={item.meaning}
+                style={styles.cardShadow}
                 index={index}
                 onPress={() =>
                   navigation.navigate('HomeStack', {
@@ -54,4 +53,11 @@ const AllahNames = () => {
 
 export default AllahNames;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  cardShadow: {
+    shadowColor: '#000',
+    shadowOffset: {width: 4, height: 0},
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+  },
+});
