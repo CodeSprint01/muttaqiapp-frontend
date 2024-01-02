@@ -1,12 +1,12 @@
 import {FlatList, SafeAreaView, StyleSheet, View} from 'react-native';
 import React from 'react';
-import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
+import ScreenHeader from '../../components/molecules/app-header/ScreenHeader';
 import AllahNameCard from './AllahNameCard';
-import {AllahNamesArray} from '../../../utils/mocks/AllMockArray';
+import {AllahNamesArray} from '../../utils/mocks/AllMockArray';
 import {useNavigation} from '@react-navigation/native';
-import {screens} from '../../../types/types';
-import AppContainer from '../../../components/atoms/app-container/AppContainer';
-import {COLORS} from '../../../styles/color';
+import {screens} from '../../types/types';
+import AppContainer from '../../components/atoms/app-container/AppContainer';
+import {COLORS} from '../../styles/color';
 
 const AllahNames = () => {
   const navigation = useNavigation();

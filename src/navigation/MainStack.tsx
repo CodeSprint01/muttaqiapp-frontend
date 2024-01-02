@@ -5,7 +5,7 @@ import UserProfile from '../screens/user-profile/UserProfile';
 import {NavigationContainer} from '@react-navigation/native';
 import HomeStack from './HomeStack';
 import {screens} from '../types/types';
-import Knowledge from '../screens/explore-screen/Knowledge';
+import Knowledge from '../screens/knowledge-screen/Knowledge';
 const MainStack = () => {
   const Stack = createStackNavigator();
   console.log('here is console o ');

@@ -10,7 +10,7 @@ import BottomTabbarTabs from '../components/atoms/bottomTabBar-tabs/BottomTabbar
 import AddTodo from '../screens/add-todo-screen/AddTodo';
 import {AppIconSvg, Icons} from '../components/atoms/app-icon-svg';
 import LinearGradient from 'react-native-linear-gradient';
-import HomeScreen from '../screens/Dashboard/HomeScreen';
+import HomeScreen from '../screens/home-screen/HomeScreen';
 import {screens} from '../types/types';
 import AppContainer from '../components/atoms/app-container/AppContainer';
 

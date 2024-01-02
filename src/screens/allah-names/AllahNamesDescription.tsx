@@ -1,11 +1,11 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
+import ScreenHeader from '../../components/molecules/app-header/ScreenHeader';
 import AllahNameCard from './AllahNameCard';
-import {allahNamesDescription} from '../../../types/types';
-import {COLORS} from '../../../styles/color';
-import AppContainer from '../../../components/atoms/app-container/AppContainer';
-import AppText from '../../../components/atoms/app-text/AppText';
+import {allahNamesDescription} from '../../types/types';
+import {COLORS} from '../../styles/color';
+import AppContainer from '../../components/atoms/app-container/AppContainer';
+import AppText from '../../components/atoms/app-text/AppText';
 
 const AllahNamesDescription = ({route}) => {
   const data = route.params.item;

@@ -1,6 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import TrackerScreen from '../screens/Tracker/TrackerScreen';
+import TrackerScreen from '../screens/tracker/TrackerScreen';
 
 const TrackerStack = () => {
   const Stack = createStackNavigator();

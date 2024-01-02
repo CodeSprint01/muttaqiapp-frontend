@@ -6,8 +6,8 @@ import {
   Image,
 } from 'react-native';
 import React, {FC} from 'react';
-import AppText from '../../../components/atoms/app-text/AppText';
-import {COLORS} from '../../../styles/color';
+import AppText from '../../components/atoms/app-text/AppText';
+import {COLORS} from '../../styles/color';
 
 interface cardProps {
   onPress?: () => void;
@@ -37,7 +37,7 @@ const AllahNameCard: FC<cardProps> = ({
       ]}>
       <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
         <Image
-          source={require('../../../../assets/images/explore-images/namesBackImg.png')}
+          source={require('../../../assets/images/explore-images/namesBackImg.png')}
           style={styles.backImg}
         />
         <View style={styles.txtContainer}>

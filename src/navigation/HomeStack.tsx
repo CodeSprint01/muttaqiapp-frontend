@@ -1,10 +1,10 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import Knowledge from '../screens/explore-screen/Knowledge';
+import Knowledge from '../screens/knowledge-screen/Knowledge';
 import {screens} from '../types/types';
-import Hadith from '../screens/explore-screen/hadith-screens/Hadith';
-import AllahNames from '../screens/explore-screen/allah-names/AllahNames';
-import AllahNamesDescription from '../screens/explore-screen/allah-names/AllahNamesDescription';
+import Hadith from '../screens/hadith-screens/Hadith';
+import AllahNames from '../screens/allah-names/AllahNames';
+import AllahNamesDescription from '../screens/allah-names/AllahNamesDescription';
 
 const HomeStack = () => {
   const Stack = createStackNavigator();
