@@ -26,6 +26,7 @@ const Discover: React.FC<DiscoverProps> = ({onDiscoverItemPress}) => {
         <FlatList
           numColumns={4}
           data={discoverArray}
+          scrollEnabled={false}
           renderItem={renderItem}
           keyExtractor={item => item.name}
         />

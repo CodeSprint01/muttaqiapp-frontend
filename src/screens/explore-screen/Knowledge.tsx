@@ -1,23 +1,15 @@
-import {
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
 import {COLORS} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
 import ScreenHeader from '../../components/molecules/app-header/ScreenHeader';
 import {KnowledgeArray, KnowledgeProps} from '../../utils/mocks/Knowledge';
+import AppContainer from '../../components/atoms/app-container/AppContainer';
 
 const Knowledge = () => {
   const [showItems, setShowItems] = useState<number[]>([]);
   const lastIndex = KnowledgeArray.length - 1;
-  console.log(lastIndex);
-
   const renderItem = ({item, index}: {item: KnowledgeProps; index: number}) => (
     <>
       <View style={styles.listTitle}>
@@ -55,7 +47,7 @@ const Knowledge = () => {
   };
   const keyExtractor = (item: any, index: number) => index.toString();
   return (
-    <SafeAreaView style={styles.container}>
+    <AppContainer style={styles.container}>
       <View style={{paddingHorizontal: 20}}>
         <ScreenHeader headerText="Knowledge" />
         <FlatList
@@ -64,7 +56,7 @@ const Knowledge = () => {
           keyExtractor={keyExtractor}
         />
       </View>
-    </SafeAreaView>
+    </AppContainer>
   );
 };
 

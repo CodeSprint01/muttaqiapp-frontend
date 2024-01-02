@@ -1,10 +1,4 @@
-import {
-  Platform,
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import HomeStack from './HomeStack';
 import QiblaStack from './QiblaStack';
@@ -18,6 +12,7 @@ import {AppIconSvg, Icons} from '../components/atoms/app-icon-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import HomeScreen from '../screens/Dashboard/HomeScreen';
 import {screens} from '../types/types';
+import AppContainer from '../components/atoms/app-container/AppContainer';
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -42,7 +37,7 @@ const TabNavigator = () => {
   );
 
   return (
-    <SafeAreaView style={[styles.container]}>
+    <AppContainer style={styles.container}>
       {/* <View style={{styles.}}> */}
       <Tab.Navigator
         screenOptions={({route}) => ({
@@ -111,7 +106,7 @@ const TabNavigator = () => {
           options={{title: 'Setting'}}
         />
       </Tab.Navigator>
-    </SafeAreaView>
+    </AppContainer>
   );
 };
 const styles = StyleSheet.create({

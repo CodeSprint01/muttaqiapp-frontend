@@ -8,6 +8,7 @@ import AppText from '../../components/atoms/app-text/AppText';
 import QiblaScreenHeader from './QiblaScreenHeader';
 import AppModal from '../../components/atoms/app-modal/AppModal';
 import CompassTemplateModal from './CompassTemplateModal';
+import AppContainer from '../../components/atoms/app-container/AppContainer';
 
 const QiblaScreen = () => {
   const [heading, setHeading] = useState({accuracy: 0, heading: 0});
@@ -130,41 +131,43 @@ const QiblaScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <QiblaScreenHeader handleThemeClick={handleModalVisible} />
-      </View>
-      <View style={styles.watchContainer}>
-        <View style={{transform: [{rotate: `${360 - heading.heading}deg`}]}}>
-          <View>
-            <Image
-              source={selectedTemplate?.compImage}
-              style={styles.compassImage}
+    <AppContainer>
+      <View style={styles.container}>
+        <View style={styles.headerContainer}>
+          <QiblaScreenHeader handleThemeClick={handleModalVisible} />
+        </View>
+        <View style={styles.watchContainer}>
+          <View style={{transform: [{rotate: `${360 - heading.heading}deg`}]}}>
+            <View>
+              <Image
+                source={selectedTemplate?.compImage}
+                style={styles.compassImage}
+              />
+            </View>
+          </View>
+          <View style={styles.niddleContainer}>
+            <AppIconSvg
+              icon={selectedTemplate.compassPin}
+              width={75}
+              height={75}
+              color={COLORS.light_gray}
             />
           </View>
         </View>
-        <View style={styles.niddleContainer}>
-          <AppIconSvg
-            icon={selectedTemplate.compassPin}
-            width={75}
-            height={75}
-            color={COLORS.light_gray}
-          />
+        <View style={styles.bottomTxtContainer}>
+          <AppText text={'Turn to your Right'} style={styles.bottomTxt} />
         </View>
+        <AppModal
+          children={
+            <View>
+              <CompassTemplateModal onSelectItem={handleCompassSelect} />
+            </View>
+          }
+          isVisible={modalVisible}
+          toggleModal={handleModalVisible}
+        />
       </View>
-      <View style={styles.bottomTxtContainer}>
-        <AppText text={'Turn to your Right'} style={styles.bottomTxt} />
-      </View>
-      <AppModal
-        children={
-          <View>
-            <CompassTemplateModal onSelectItem={handleCompassSelect} />
-          </View>
-        }
-        isVisible={modalVisible}
-        toggleModal={handleModalVisible}
-      />
-    </View>
+    </AppContainer>
   );
 };
 
@@ -173,7 +176,6 @@ export default QiblaScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.white,
   },
   headerContainer: {
     flex: 1,

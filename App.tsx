@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, LogBox} from 'react-native';
 import './src/components/atoms/error/LogBox';
 import MainStack from './src/navigation/MainStack';
 import {Provider} from 'react-redux';
@@ -7,6 +7,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import store from './src/redux/store';
 
 const App = () => {
+  LogBox.ignoreAllLogs();
   return (
     <Provider store={store}>
       <GestureHandlerRootView style={styles.container}>

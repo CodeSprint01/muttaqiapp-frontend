@@ -1,4 +1,4 @@
-import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
+import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import '../../components/atoms/error/LogBox';
 import React, {useEffect, useState} from 'react';
 import Swiper from 'react-native-swiper';
