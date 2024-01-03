@@ -47,4 +47,5 @@ export enum screens {
   HADITH = 'hadith',
   ALLAH_NAMES_DESCRIPTION = 'allah-names-description',
   ALLAH_NAMES = 'allah-names',
+  QURAN_SCREEN = 'quran-screen',
 }

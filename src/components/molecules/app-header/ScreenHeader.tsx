@@ -5,7 +5,7 @@ import {COLORS} from '../../../styles/color';
 import {useNavigation} from '@react-navigation/native';
 
 interface HeaderProps {
-  headerText: string;
+  headerText?: string;
   rightIcon?: any;
 }
 
@@ -18,7 +18,7 @@ const ScreenHeader: FC<HeaderProps> = ({headerText, rightIcon}) => {
           style={styles.backIcon}
           onPress={() => navigation.goBack()}>
           <AppIconSvg
-            icon={Icons.ArrowRight}
+            icon={Icons.ArrowLeft}
             width={24}
             height={24}
             color={COLORS.dark_gray}

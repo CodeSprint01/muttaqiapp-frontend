@@ -5,6 +5,7 @@ import {screens} from '../types/types';
 import Hadith from '../screens/hadith-screens/Hadith';
 import AllahNames from '../screens/allah-names/AllahNames';
 import AllahNamesDescription from '../screens/allah-names/AllahNamesDescription';
+import QuranScreen from '../screens/quran-screens/QuranScreen';
 
 const HomeStack = () => {
   const Stack = createStackNavigator();
@@ -28,6 +29,11 @@ const HomeStack = () => {
       <Stack.Screen
         name={screens.HADITH}
         component={Hadith}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.QURAN_SCREEN}
+        component={QuranScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

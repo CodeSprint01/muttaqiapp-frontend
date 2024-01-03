@@ -41,7 +41,7 @@ export const Icons = {
   CheckBoxTickIcon: 'CHECK_BOX_TICK_ICON',
   QuranExplore: 'QURAN_EXPLORE',
   Azkaar: 'AZKAAR',
-  ArrowRight: 'ARROW_RIGHT',
+  ArrowLeft: 'ARROW_LEFT',
   Search: 'SEARCH',
 
   EmptyCircle: 'EMPTY_CIRCLE',
@@ -51,6 +51,7 @@ export const Icons = {
   AlarmCross: 'ALARM_CROSS',
   ArrowUp: 'ARROW_UP',
   ArrowDown: 'ARROW_DOWN',
+  ArrowRight: 'ARROW_RIGHT',
 };
 
 export const Colors = {
@@ -94,7 +95,7 @@ export const Colors = {
   [Icons.CheckBoxTickIcon]: {color: COLORS.light_gray},
   [Icons.QuranExplore]: {color: COLORS.light_gray},
   [Icons.Azkaar]: {color: COLORS.light_gray},
-  [Icons.ArrowRight]: {color: COLORS.light_gray},
+  [Icons.ArrowLeft]: {color: COLORS.light_gray},
   [Icons.Search]: {color: COLORS.light_gray},
 
   [Icons.EmptyCircle]: {color: COLORS.light_gray},
@@ -104,6 +105,7 @@ export const Colors = {
   [Icons.AlarmCross]: {color: COLORS.light_gray},
   [Icons.ArrowUp]: {color: COLORS.light_gray},
   [Icons.ArrowDown]: {color: COLORS.light_gray},
+  [Icons.ArrowRight]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -183,6 +185,7 @@ SvgIcons[Icons.QuranExplore] =
   require('../../../assets/images/explore-images/quran').default;
 SvgIcons[Icons.Azkaar] =
   require('../../../assets/images/explore-images/azkaar').default;
+SvgIcons[Icons.ArrowLeft] = require('../../../assets/images/arrowLeft').default;
 SvgIcons[Icons.ArrowRight] =
   require('../../../assets/images/arrowRight').default;
 SvgIcons[Icons.Search] = require('../../../assets/images/search').default;
