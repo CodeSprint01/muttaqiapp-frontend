@@ -47,6 +47,7 @@ export const Icons = {
   Alarm: 'ALARM',
   AlarmSlash: 'ALARM_SLASH',
   AlarmCross: 'ALARM_CROSS',
+  Night: 'NIGHT',
 };
 
 export const Colors = {
@@ -96,9 +97,13 @@ export const Colors = {
   [Icons.Alarm]: {color: COLORS.light_gray},
   [Icons.AlarmSlash]: {color: COLORS.light_gray},
   [Icons.AlarmCross]: {color: COLORS.light_gray},
+  [Icons.AlarmCross]: {color: COLORS.light_gray},
+
+  [Icons.Night]: {color: COLORS.primary},
 };
 
-const SvgIcons = {};
+const SvgIcons = {
+};
 
 SvgIcons[Icons.HomeTabIcon] = require('../../../assets/images/home').default;
 SvgIcons[Icons.QiblaTabIcon] = require('../../../assets/images/qibla').default;
@@ -186,6 +191,10 @@ SvgIcons[Icons.AlarmSlash] =
   require('../../../assets/images/prayer-time/alarmSlash').default;
 SvgIcons[Icons.AlarmCross] =
   require('../../../assets/images/prayer-time/alarmCross').default;
+
+// Azkaar icons
+SvgIcons[Icons.Night] =
+  require('../../../assets/images/azkaar-section/night').defualt;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];
