@@ -24,11 +24,11 @@ const SettingLists: FC<settingProps> = ({handleListItem}) => {
   };
   return (
     <>
-      <FlatList
+      {/* <FlatList
         data={settingArray}
         renderItem={renderItem}
         keyExtractor={item => item.name}
-      />
+      /> */}
     </>
   );
 };

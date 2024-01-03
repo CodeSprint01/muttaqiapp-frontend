@@ -41,6 +41,8 @@ export const Icons = {
   CheckBoxTickIcon: 'CHECK_BOX_TICK_ICON',
   QuranExplore: 'QURAN_EXPLORE',
   Azkaar: 'AZKAAR',
+  ArrowRight: 'ARROW_RIGHT',
+  Search: 'SEARCH',
 
   EmptyCircle: 'EMPTY_CIRCLE',
   TickCircle: 'TICK_CIRCLE',
@@ -48,6 +50,8 @@ export const Icons = {
   AlarmSlash: 'ALARM_SLASH',
   AlarmCross: 'ALARM_CROSS',
   Night: 'NIGHT',
+  ArrowUp: 'ARROW_UP',
+  ArrowDown: 'ARROW_DOWN',
 };
 
 export const Colors = {
@@ -91,6 +95,8 @@ export const Colors = {
   [Icons.CheckBoxTickIcon]: {color: COLORS.light_gray},
   [Icons.QuranExplore]: {color: COLORS.light_gray},
   [Icons.Azkaar]: {color: COLORS.light_gray},
+  [Icons.ArrowRight]: {color: COLORS.light_gray},
+  [Icons.Search]: {color: COLORS.light_gray},
 
   [Icons.EmptyCircle]: {color: COLORS.light_gray},
   [Icons.TickCircle]: {color: COLORS.light_gray},
@@ -100,6 +106,8 @@ export const Colors = {
   [Icons.AlarmCross]: {color: COLORS.light_gray},
 
   [Icons.Night]: {color: COLORS.primary},
+  [Icons.ArrowUp]: {color: COLORS.light_gray},
+  [Icons.ArrowDown]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {
@@ -180,6 +188,9 @@ SvgIcons[Icons.QuranExplore] =
   require('../../../assets/images/explore-images/quran').default;
 SvgIcons[Icons.Azkaar] =
   require('../../../assets/images/explore-images/azkaar').default;
+SvgIcons[Icons.ArrowRight] =
+  require('../../../assets/images/arrowRight').default;
+SvgIcons[Icons.Search] = require('../../../assets/images/search').default;
 
 SvgIcons[Icons.EmptyCircle] =
   require('../../../assets/images/prayer-time/emptyCircle').default;
@@ -191,6 +202,10 @@ SvgIcons[Icons.AlarmSlash] =
   require('../../../assets/images/prayer-time/alarmSlash').default;
 SvgIcons[Icons.AlarmCross] =
   require('../../../assets/images/prayer-time/alarmCross').default;
+SvgIcons[Icons.ArrowUp] =
+  require('../../../assets/images/explore-images/arrowUp').default;
+SvgIcons[Icons.ArrowDown] =
+  require('../../../assets/images/explore-images/arrowDown').default;
 
 // Azkaar icons
 SvgIcons[Icons.Night] =

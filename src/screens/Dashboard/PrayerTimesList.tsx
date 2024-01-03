@@ -125,7 +125,7 @@ const PrayerTimesList = () => {
   // {moment(prayerTimes.fajr).format('h:mm A')}
   return (
     <View style={styles.container}>
-      <Text> {prayerTimes.nextPrayer()}</Text>
+      {/* <Text> {prayerTimes.nextPrayer()}</Text> */}
       <FlatList
         data={Prayers}
         renderItem={({item, index}) =>

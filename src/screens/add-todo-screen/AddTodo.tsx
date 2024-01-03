@@ -1,11 +1,12 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import AppContainer from '../../components/atoms/app-container/AppContainer';
 
 const AddTodo = () => {
   return (
-    <View>
+    <AppContainer style={{backgroundColor: 'red', flex: 1}}>
       <Text>AddTodo</Text>
-    </View>
+    </AppContainer>
   );
 };
 

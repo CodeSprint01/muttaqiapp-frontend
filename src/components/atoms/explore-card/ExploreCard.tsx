@@ -1,32 +1,50 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {FC} from 'react';
 import {COLORS} from '../../../styles/color';
 import AppText from '../app-text/AppText';
 import {AppIconSvg} from '../app-icon-svg';
-import {exploreInterface} from '../../../utils/mocks/AllMockArray';
 import LinearGradient from 'react-native-linear-gradient';
+import {useNavigation} from '@react-navigation/native';
+import {screens} from '../../../types/types';
 
-const ExploreCard: FC<exploreInterface> = ({
+export interface ExploreProps {
+  image: any;
+  firstTxt: string;
+  secondTxt: string;
+  index?: number;
+  routeName: any;
+}
+
+const ExploreCard: FC<ExploreProps> = ({
   image,
   firstTxt,
   secondTxt,
-  index,
+  index = 0,
+  routeName,
+  // handleCardClick,
 }) => {
+  const navigation = useNavigation();
   return (
-    <View
-      style={[
-        styles.container,
-        {marginRight: index === 3 ? 12 : 0, marginLeft: index === 0 ? 12 : 0},
-      ]}>
-      <LinearGradient colors={['#1290A1', '#1DA28F']} style={styles.card}>
-        <View style={styles.cardIcon}>
-          <AppIconSvg icon={image} width={50} height={50} color={'black'} />
-          <View style={styles.blurView} />
-        </View>
-        <AppText text={firstTxt} style={styles.cardFirstTxt} />
-        <AppText text={secondTxt} style={styles.cardSecondTxt} />
-      </LinearGradient>
-    </View>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      // onPress={() => handleCardClick(index)}
+      // onPress={() => navigation.navigate('HomeStack', {screen: screens.KNOWLEDGE})
+      onPress={() => navigation.navigate('HomeStack', {screen: routeName})}>
+      <View
+        style={[
+          styles.container,
+          {marginRight: index === 3 ? 12 : 0, marginLeft: index === 0 ? 12 : 0},
+        ]}>
+        <LinearGradient colors={['#1290A1', '#1DA28F']} style={styles.card}>
+          <View style={styles.cardIcon}>
+            <AppIconSvg icon={image} width={50} height={50} color={'black'} />
+            <View style={styles.blurView} />
+          </View>
+          <AppText text={firstTxt} style={styles.cardFirstTxt} />
+          <AppText text={secondTxt} style={styles.cardSecondTxt} />
+        </LinearGradient>
+      </View>
+    </TouchableOpacity>
   );
 };
 
