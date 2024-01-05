@@ -47,6 +47,7 @@ export default ScreenHeader;
 const styles = StyleSheet.create({
   container: {
     // backgroundColor: 'pink',
+    paddingVertical: 15,
   },
   txt: {
     color: COLORS.very_dark_gray,

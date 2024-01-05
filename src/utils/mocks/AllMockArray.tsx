@@ -46,55 +46,67 @@ export const compassTemplate: Array<{
 export const exploreArray: exploreInterface[] = [
   {
     image: Icons.QuranExplore,
-    firstTxt: 'Quran',
-    secondTxt: 'P.207',
+    title: 'Quran',
+    subTitle: 'P.207',
     routeName: screens.TAB_HOME,
   },
   {
     image: Icons.Azkaar,
-    firstTxt: 'Azkaar',
-    secondTxt: '1/3',
-    routeName: screens.TAB_HOME,
+    title: 'Azkaar',
+    subTitle: '1/3',
+    routeName: screens.CARD_SCREEN,
   },
   {
-    image: Icons.GoldeCompass,
-    firstTxt: 'golden',
-    secondTxt: 'demo3',
-    routeName: screens.ALLAH_NAMES,
+    image: Icons.Duas,
+    title: 'Dua',
+    subTitle: '',
+    routeName: screens.CARD_SCREEN,
+  },
+  {
+    image: Icons.Hadith,
+    title: 'Hadith',
+    subTitle: '',
+    routeName: screens.CARD_SCREEN,
   },
   {
     image: Icons.BlackCompass,
-    firstTxt: 'Knowledge',
-    secondTxt: 'demo4',
+    title: 'Allah',
+    subTitle: '99 names',
+    routeName: screens.ALLAH_NAMES,
+  },
+  {
+    image: Icons.Knowledge,
+    title: 'Knowledge',
+    subTitle: 'demo4',
     routeName: screens.KNOWLEDGE,
   },
 ];
 // export interface exploreInterface {
 //   image: any;
-//   firstTxt: string;
-//   secondTxt: string;
+//   title: string;
+//   subTitle: string;
 // }
 
 // export const pyayerArray: exploreInterface[] = [
 //   {
 //     image: Icons.GrayCompass,
-//     firstTxt: 'gray',
-//     secondTxt: 'demo1',
+//     title: 'gray',
+//     subTitle: 'demo1',
 //   },
 //   {
 //     image: Icons.BlueCompass,
-//     firstTxt: 'blue',
-//     secondTxt: 'demo2',
+//     title: 'blue',
+//     subTitle: 'demo2',
 //   },
 //   {
 //     image: Icons.GoldeCompass,
-//     firstTxt: 'golden',
-//     secondTxt: 'demo3',
+//     title: 'golden',
+//     subTitle: 'demo3',
 //   },
 //   {
 //     image: Icons.BlackCompass,
-//     firstTxt: 'black',
-//     secondTxt: 'demo4',
+//     title: 'black',
+//     subTitle: 'demo4',
 //   },
 // ];
 

@@ -6,30 +6,65 @@ import {AppIconSvg} from '../app-icon-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
 import {screens} from '../../../types/types';
+import {duas} from '../../../utils/mocks/DuasMock';
+import {hadith} from '../../../utils/mocks/HadithMock';
+import {azkaars} from '../../../utils/mocks/AzkaarMockData';
 
 export interface ExploreProps {
   image: any;
-  firstTxt: string;
-  secondTxt: string;
+  title: string;
+  subTitle: string;
   index?: number;
-  routeName: any;
+  routeName: string;
 }
 
 const ExploreCard: FC<ExploreProps> = ({
   image,
-  firstTxt,
-  secondTxt,
+  title,
+  subTitle,
   index = 0,
   routeName,
   // handleCardClick,
 }) => {
   const navigation = useNavigation();
+  const navigateFromCard = (category: string) => {
+    console.log(category);
+    switch (category.toLowerCase()) {
+      case 'azkaar':
+        navigation.navigate('HomeStack', {
+          screen: routeName,
+          params: {
+            title: category,
+          },
+        });
+        break;
+      case 'dua':
+        navigation.navigate('HomeStack', {
+          screen: routeName,
+          params: {
+            title: category,
+          },
+        });
+        break;
+      case 'hadith':
+        navigation.navigate('HomeStack', {
+          screen: routeName,
+          params: {
+            title: category,
+          },
+        });
+        break;
+      default:
+        navigation.navigate('HomeStack', {screen: routeName});
+        break;
+    }
+  };
   return (
     <TouchableOpacity
       activeOpacity={0.8}
       // onPress={() => handleCardClick(index)}
       // onPress={() => navigation.navigate('HomeStack', {screen: screens.KNOWLEDGE})
-      onPress={() => navigation.navigate('HomeStack', {screen: routeName})}>
+      onPress={() => navigateFromCard(title)}>
       <View
         style={[
           styles.container,
@@ -40,8 +75,8 @@ const ExploreCard: FC<ExploreProps> = ({
             <AppIconSvg icon={image} width={50} height={50} color={'black'} />
             <View style={styles.blurView} />
           </View>
-          <AppText text={firstTxt} style={styles.cardFirstTxt} />
-          <AppText text={secondTxt} style={styles.cardSecondTxt} />
+          <AppText text={title} style={styles.cardFirstTxt} />
+          <AppText text={subTitle} style={styles.cardSecondTxt} />
         </LinearGradient>
       </View>
     </TouchableOpacity>

@@ -2,9 +2,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import Knowledge from '../screens/explore-screen/Knowledge';
 import {screens} from '../types/types';
-import Hadith from '../screens/explore-screen/hadith-screens/Hadith';
 import AllahNames from '../screens/explore-screen/allah-names/AllahNames';
 import AllahNamesDescription from '../screens/explore-screen/allah-names/AllahNamesDescription';
+import CardScreen from '../screens/cardScreen/CardScreen';
+import DetailScreen from '../screens/detail-screen/DetailScreen';
 
 const HomeStack = () => {
   const Stack = createStackNavigator();
@@ -26,8 +27,13 @@ const HomeStack = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name={screens.HADITH}
-        component={Hadith}
+        name={screens.CARD_SCREEN}
+        component={CardScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.DETAIL_SCREENN}
+        component={DetailScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

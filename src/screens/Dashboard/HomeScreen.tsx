@@ -116,14 +116,14 @@ const HomeScreen = () => {
           <AppText text={'Explore'} style={styles.explore} />
           <FlatList
             data={exploreArray}
-            keyExtractor={item => item.firstTxt}
+            keyExtractor={item => item.title}
             horizontal
             showsHorizontalScrollIndicator={false}
             renderItem={({item, index}) => (
-              <ExploreCard
+              <ExploreCard 
                 image={item.image}
-                firstTxt={item.firstTxt}
-                secondTxt={item.secondTxt}
+                title={item.title}
+                subTitle={item.subTitle}
                 index={index}
                 routeName={item.routeName}
                 // handleCardClick={index => handelExploreCard(index)}

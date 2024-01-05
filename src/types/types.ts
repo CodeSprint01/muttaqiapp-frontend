@@ -13,8 +13,8 @@ export interface Types {
 // }
 export interface exploreInterface {
   image: any;
-  firstTxt: string;
-  secondTxt: string;
+  title: string;
+  subTitle: string;
   index?: number;
   routeName: any;
 }
@@ -36,6 +36,14 @@ export interface location {
   longitude: number;
 }
 
+// inter face for 'azkaar', 'duas', 'hadith',
+export interface ReligiousContent {
+  title: string;
+  subTitle: string;
+  content: string[];
+  repeat?: number;
+}
+
 // screens names
 export enum screens {
   TAB_HOME = 'tab-home',
@@ -47,4 +55,6 @@ export enum screens {
   HADITH = 'hadith',
   ALLAH_NAMES_DESCRIPTION = 'allah-names-description',
   ALLAH_NAMES = 'allah-names',
+  CARD_SCREEN = 'card-screenn',
+  DETAIL_SCREENN = 'detail-screen',
 }
