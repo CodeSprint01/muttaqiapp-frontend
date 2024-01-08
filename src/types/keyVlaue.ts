@@ -48,3 +48,6 @@ export enum settingEnum {
   PRIVACY,
   ABOUT,
 }
+
+
+

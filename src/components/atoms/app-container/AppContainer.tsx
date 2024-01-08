@@ -21,5 +21,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.pale_mint,
+    // padding: 40,
   },
 });
