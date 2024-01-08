@@ -44,6 +44,20 @@ export interface ReligiousContent {
   repeat?: number;
 }
 
+export interface Ayat {
+  isRukoo?: boolean;
+  isSajda?: boolean;
+  arabic: string;
+  tarjuma: string; //english tarjuma
+  tafseer: string;
+}
+
+export interface Surah {
+  name: string;
+  category: string; // makki or madni
+  ayats: Ayat[]; // arabic of ayats
+}
+
 // screens names
 export enum screens {
   TAB_HOME = 'tab-home',

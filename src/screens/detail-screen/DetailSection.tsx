@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     alignItems: 'center',
     textAlign: 'left',
-
     // backgroundColor: 'red'
   },
 });

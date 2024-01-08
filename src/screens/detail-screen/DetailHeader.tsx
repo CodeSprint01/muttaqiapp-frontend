@@ -7,7 +7,8 @@ import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
 
 const DetailHeader = ({repeat}) => {
   return (
-    <View style={styles.row}>
+    <View
+      style={repeat ? styles.row : [styles.row, {justifyContent: 'flex-end'}]}>
       {repeat ? (
         <View style={styles.repeat}>
           <AppText style={styles.repeatTxt} text={'Repeat: '} />
@@ -19,7 +20,7 @@ const DetailHeader = ({repeat}) => {
           </LinearGradient>
         </View>
       ) : null}
-      <View style={styles.trailing}>
+      <View style={[styles.trailing]}>
         {/* <AppIconSvg icon={Icons.Alarm} color={COLORS.black} /> */}
         <View style={{paddingHorizontal: 5}}>
           <Image
