@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'yellow',
   },
   headerConatiner: {
-    backgroundColor: COLORS.Light_Powder_Blue,
+    backgroundColor: COLORS.light_Powder_Blue,
     height: 165,
     borderRadius: 38,
     flexDirection: 'row',

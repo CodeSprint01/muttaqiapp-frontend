@@ -53,6 +53,12 @@ export const Icons = {
   ArrowUp: 'ARROW_UP',
   ArrowDown: 'ARROW_DOWN',
   ArrowRight: 'ARROW_RIGHT',
+
+  EmptyBookmark: 'EMPTY_BOOKMARK',
+  EmptyHeart: 'EMPTY_HEART',
+  BookSquare: 'BOOK_SQUARE',
+  Pause: 'PAUSE',
+  Play: 'PLAY',
 };
 
 export const Colors = {
@@ -110,10 +116,14 @@ export const Colors = {
   [Icons.ArrowUp]: {color: COLORS.light_gray},
   [Icons.ArrowDown]: {color: COLORS.light_gray},
   [Icons.ArrowRight]: {color: COLORS.light_gray},
+  [Icons.EmptyBookmark]: {color: COLORS.light_gray},
+  [Icons.EmptyHeart]: {color: COLORS.light_gray},
+  [Icons.BookSquare]: {color: COLORS.light_gray},
+  [Icons.Pause]: {color: COLORS.light_gray},
+  [Icons.Play]: {color: COLORS.light_gray},
 };
 
-const SvgIcons = {
-};
+const SvgIcons = {};
 
 SvgIcons[Icons.HomeTabIcon] = require('../../../assets/images/home').default;
 SvgIcons[Icons.QiblaTabIcon] = require('../../../assets/images/qibla').default;
@@ -209,7 +219,16 @@ SvgIcons[Icons.ArrowUp] =
   require('../../../assets/images/explore-images/arrowUp').default;
 SvgIcons[Icons.ArrowDown] =
   require('../../../assets/images/explore-images/arrowDown').default;
-
+SvgIcons[Icons.EmptyBookmark] =
+  require('../../../assets/images/explore-images/emptyBookmark').default;
+SvgIcons[Icons.EmptyHeart] =
+  require('../../../assets/images/explore-images/emptyHeart').default;
+SvgIcons[Icons.BookSquare] =
+  require('../../../assets/images/explore-images/bookSquare').default;
+SvgIcons[Icons.Pause] =
+  require('../../../assets/images/explore-images/pause').default;
+SvgIcons[Icons.Play] =
+  require('../../../assets/images/explore-images/play').default;
 // Azkaar icons
 SvgIcons[Icons.Night] =
   require('../../../assets/images/azkaar-section/night').defualt;

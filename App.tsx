@@ -5,13 +5,16 @@ import MainStack from './src/navigation/MainStack';
 import {Provider} from 'react-redux';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import store from './src/redux/store';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
 const App = () => {
   LogBox.ignoreAllLogs();
   return (
     <Provider store={store}>
       <GestureHandlerRootView style={styles.container}>
-        <MainStack />
+        <BottomSheetModalProvider>
+          <MainStack />
+        </BottomSheetModalProvider>
       </GestureHandlerRootView>
     </Provider>
   );

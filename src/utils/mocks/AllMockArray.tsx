@@ -48,7 +48,7 @@ export const exploreArray: exploreInterface[] = [
     image: Icons.QuranExplore,
     title: 'Quran',
     subTitle: 'P.207',
-    routeName: screens.TAB_HOME,
+    routeName: screens.QURAN_SCREEN,
   },
   {
     image: Icons.Azkaar,

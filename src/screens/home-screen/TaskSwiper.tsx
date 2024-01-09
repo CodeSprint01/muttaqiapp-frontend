@@ -33,7 +33,7 @@ const TaskSwiper: FC<TaskProps> = ({
           width={17}
           fill={circleValue}
           tintColor={COLORS.green}
-          backgroundColor={COLORS.Light_Steel_Blue}
+          backgroundColor={COLORS.light_Steel_Blue}
           rotation={20}
           style={{borderRadius: 20}}
         />
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     height: 165,
-    backgroundColor: COLORS.Light_Powder_Blue,
+    backgroundColor: COLORS.light_Powder_Blue,
     borderRadius: 22,
     elevation: 10,
     shadowColor: 'black',
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
 
   bottomView: {
     marginBottom: 30,
-    backgroundColor: COLORS.Light_Powder_Blue,
+    backgroundColor: COLORS.light_Powder_Blue,
   },
   checkboxLabel: {
     marginLeft: 10,

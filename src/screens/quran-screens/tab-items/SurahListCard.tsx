@@ -33,7 +33,7 @@ const SurahListCard: FC<ListProps> = ({
             <View
               style={[
                 styles.verticalLine,
-                {height: 20, marginTop: 7, marginHorizontal: 10},
+                {height: 15, width: 1.5, marginTop: 9, marginHorizontal: 8},
               ]}
             />
             <AppText text={`${length} Verses`} style={styles.verses} />

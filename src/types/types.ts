@@ -45,11 +45,11 @@ export interface ReligiousContent {
 }
 
 export interface Ayat {
-  isRukoo?: boolean;
-  isSajda?: boolean;
+  isBookmark: boolean;
+  isFavourite: boolean;
   arabic: string;
-  tarjuma: string; //english tarjuma
-  tafseer: string;
+  translation: string; //english tarjuma
+  details: string;
 }
 
 export interface Surah {
@@ -72,6 +72,7 @@ export enum screens {
   ALLAH_NAMES = 'allah-names',
 
   QURAN_SCREEN = 'quran-screen',
-  DETAIL_SCREENN = 'DETAIL_SCREENN',
-  CARD_SCREEN = 'CARD_SCREEN',
+  DETAIL_SCREENN = 'detail-screen',
+  CARD_SCREEN = 'card-screen',
+  SURAH_DETAILS_SCREEN = 'surah-details-screen',
 }

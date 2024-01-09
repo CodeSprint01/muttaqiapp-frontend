@@ -1,17 +1,37 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {Surah, screens} from '../../../types/types';
 import React from 'react';
-import AppText from '../../../components/atoms/app-text/AppText';
 import {COLORS} from '../../../styles/color';
 import SurahListCard from './SurahListCard';
+import {AllSurah} from '../../../utils/mocks/SurahMock';
+import {useNavigation} from '@react-navigation/native';
 
 const SurahScreen = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <SurahListCard />
-      <SurahListCard />
-      <SurahListCard />
-      <SurahListCard />
-      <SurahListCard />
+      <View style={styles.container}>
+        <FlatList
+          data={AllSurah}
+          renderItem={({item, index}: {item: Surah; index: number}) => (
+            <>
+              <SurahListCard
+                surahName={item?.name}
+                surahType={item?.category}
+                indx={index + 1}
+                length={item?.ayats?.length}
+                onPress={() =>
+                  navigation.navigate('HomeStack', {
+                    screen: screens.SURAH_DETAILS_SCREEN,
+                    params: {data: item},
+                  })
+                }
+              />
+            </>
+          )}
+          keyExtractor={item => item?.name?.toString()}
+        />
+      </View>
     </View>
   );
 };

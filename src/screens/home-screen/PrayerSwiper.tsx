@@ -45,10 +45,10 @@ const PrayerSwiper: FC<prayerProps> = ({
             <AppText text={`${heartValue} %`} style={styles.goodDeeds} />
             <CircularProgress
               size={90}
-              width={7} 
+              width={7}
               fill={heartValue}
               tintColor={COLORS.forest_Green}
-              backgroundColor={COLORS.Crimson}
+              backgroundColor={COLORS.crimson}
               rotation={220}
             />
             <AppText text={'20 %'} style={styles.bedDeeds} />
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   bedDeeds: {
     fontSize: 10,
     fontWeight: '400',
-    color: COLORS.Crimson,
+    color: COLORS.crimson,
     paddingTop: 2,
   },
 });

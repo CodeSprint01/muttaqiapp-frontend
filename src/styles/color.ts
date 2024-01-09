@@ -19,7 +19,7 @@ export const COLORS = {
   pale_mint: '#F5FFFE',
   light_blue_gray: '#BDD4E3',
   forest_Green: '#33A753',
-  Crimson: '#E64C3C',
-  Light_Steel_Blue: '#D2E0E0',
-  Light_Powder_Blue: '#EEFAFC',
+  crimson: '#E64C3C',
+  light_Steel_Blue: '#D2E0E0',
+  light_Powder_Blue: '#EEFAFC',
 } as const;
