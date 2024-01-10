@@ -1,4 +1,4 @@
-import {Button, FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import {Icons} from '../../../components/atoms/app-icon-svg';
 import {COLORS} from '../../../styles/color';
@@ -7,17 +7,23 @@ import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import SurahHeader from './SurahHeader';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {Ayat} from '../../../types/types';
-import BottomSheet from '@gorhom/bottom-sheet';
+import AppBottomSheet from '../../../components/molecules/app-bottom-sheet/AppBottomSheet';
 
 const SurahDetailsScreen = ({route}) => {
   const surahData = route?.params?.data;
-  const [isBottomSheetVisibale, setIsBottomSheetVisibale] = useState(false);
+  const [showBottomSheet, setShowBottomSheet] = useState<boolean>(false);
+  const [ayatDetails, setAyatDetails] = useState([]);
 
-  console.log(surahData);
-  const handelBottomSeetShow = () => {
-    console.log('test');
-    setIsBottomSheetVisibale(!isBottomSheetVisibale);
+  const handleShowBottoomsheet = item => {
+    setShowBottomSheet(!showBottomSheet);
+    setAyatDetails(item);
   };
+  // const handleAyatIndex = (item: any) => {
+  //   return console.log(item);
+  //   setAyatDetails(item);
+  // };
+  console.log(ayatDetails);
+
   const renderItem = ({item, index}: {item: Ayat; index: number}) => {
     return (
       <View style={[styles.listView, {marginTop: index === 0 ? 27 : 0}]}>
@@ -26,7 +32,7 @@ const SurahDetailsScreen = ({route}) => {
           bookmark={item?.isBookmark ? Icons.Alarm : Icons.EmptyBookmark}
           favourite={item?.isFavourite ? Icons.Adhan : Icons.EmptyHeart}
           playPause={Icons.Play}
-          onPressBooksquare={handelBottomSeetShow}
+          onPressBooksquare={() => handleShowBottoomsheet(item)}
         />
         <AppText text={item?.arabic} style={styles.arabicTxt} />
         <AppText text={item?.translation} style={styles.translation} />
@@ -46,15 +52,20 @@ const SurahDetailsScreen = ({route}) => {
           renderItem={renderItem}
         />
       </View>
-
-      <BottomSheet
-        snapPoints={['25%', '50%', '75%']}
-        isVisible={isBottomSheetVisibale}
-        onBackdropPress={() => handelBottomSeetShow}>
-        <View>
-          <Text>thsi is modal </Text>
-        </View>
-      </BottomSheet>
+      {showBottomSheet && (
+        <AppBottomSheet
+          children={
+            <View style={styles.bottomContainer}>
+              <AppText text={ayatDetails.arabic} style={styles.arabicTxt} />
+              <AppText
+                text={ayatDetails.details}
+                style={[styles.translation, {paddingTop: 36}]}
+              />
+            </View>
+          }
+          isVisible={showBottomSheet}
+        />
+      )}
     </AppContainer>
   );
 };
@@ -85,32 +96,7 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     paddingTop: 5,
   },
+  bottomContainer: {
+    paddingHorizontal: 23,
+  },
 });
-// import React, {useEffect, useState} from 'react';
-// import {View, Text, Button, StyleSheet} from 'react-native';
-// import BottomSheet from '@gorhom/bottom-sheet';
-
-// const SurahDetailsScreen = () => {
-//   const [isBottomSheetVisible, setBottomSheetVisible] = useState(false);
-
-//   useEffect(() => {
-//     // Code that depends on isBottomSheetVisible
-//   }, [isBottomSheetVisible]);
-
-//   return (
-//     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-//       <Button
-//         title="Show Bottom Sheet"
-//         onPress={() => setBottomSheetVisible(!isBottomSheetVisible)}
-//       />
-//       <BottomSheet
-//         snapPoints={['25%', '50%', '75%']}
-//         isVisible={isBottomSheetVisible}
-//         onBackdropPress={() => setBottomSheetVisible(false)}>
-//         <Text>jwekgkejhgkkhwevj</Text>
-//       </BottomSheet>
-//     </View>
-//   );
-// };
-
-// export default SurahDetailsScreen;
