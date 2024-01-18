@@ -8,10 +8,10 @@ interface myProps {
   onPress?: () => void;
 }
 
-const AppText: FC<myProps> = ({text, style, onPress}) => {
+const AppText: FC<myProps> = ({text, style, onPress, ...props}) => {
   return (
     <View>
-      <Text onPress={onPress} style={[styles.txt, style]}>
+      <Text {...props} onPress={onPress} style={[styles.txt, style]}>
         {text}
       </Text>
     </View>

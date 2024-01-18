@@ -59,6 +59,10 @@ export const Icons = {
   BookSquare: 'BOOK_SQUARE',
   Pause: 'PAUSE',
   Play: 'PLAY',
+
+  OneOverFour: 'ONE_OVER_FOUR',
+  OneOverTwo: 'ONE_OVER_TWO',
+  OneOverThree: 'ONE_OVER_THREE',
 };
 
 export const Colors = {
@@ -121,6 +125,10 @@ export const Colors = {
   [Icons.BookSquare]: {color: COLORS.light_gray},
   [Icons.Pause]: {color: COLORS.light_gray},
   [Icons.Play]: {color: COLORS.light_gray},
+
+  [Icons.OneOverFour]: {color: COLORS.light_gray},
+  [Icons.OneOverTwo]: {color: COLORS.light_gray},
+  [Icons.OneOverThree]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -229,6 +237,12 @@ SvgIcons[Icons.Pause] =
   require('../../../assets/images/explore-images/pause').default;
 SvgIcons[Icons.Play] =
   require('../../../assets/images/explore-images/play').default;
+SvgIcons[Icons.OneOverFour] =
+  require('../../../assets/images/juz-part/oneOverFour').default;
+SvgIcons[Icons.OneOverTwo] =
+  require('../../../assets/images/juz-part/oneOverTwo').default;
+SvgIcons[Icons.OneOverThree] =
+  require('../../../assets/images/juz-part/oneOverThree').default;
 // Azkaar icons
 SvgIcons[Icons.Night] =
   require('../../../assets/images/azkaar-section/night').defualt;

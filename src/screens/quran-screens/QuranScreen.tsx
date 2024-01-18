@@ -1,17 +1,38 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
+import React, {Fragment} from 'react';
 import ScreenHeader from '../../components/molecules/app-header/ScreenHeader';
 import QuranHeaderCard from './QuranHeaderCard';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS} from '../../styles/color';
 import TopTabs from './tab-items/TopTabs';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import SurahScreen from './tab-items/SurahScreen';
-import JuzScreen from './tab-items/JuzScreen';
-import BookmarksScreen from './tab-items/BookmarksScreen';
 
 const QuranScreen = () => {
+  // const heaaaderComponent = () => {
+  //   return (
+  //     <Fragment>
+  //       <View style={styles.header}>
+  //         <ScreenHeader />
+  //       </View>
+  //       <View style={styles.quranHeader}>
+  //         <QuranHeaderCard
+  //           surahName="At-Tuawbah"
+  //           paraNo="P. 209"
+  //           onPress={() => console.log('click')}
+  //         />
+  //       </View>
+  //     </Fragment>
+  //   );
+  // };
   return (
+    // <AppContainer>
+    //   <FlatList
+    //     data={[]}
+    //     renderItem={({item, index}) => {
+    //       return <Text>helllo</Text>;
+    //     }}
+    //     ListHeaderComponent={heaaaderComponent}
+    //   />
+    // </AppContainer>
     // <ScrollView style={{flex: 1, backgroundColor: 'pink'}}>
     <AppContainer style={styles.container}>
       <View style={styles.header}>
@@ -28,7 +49,6 @@ const QuranScreen = () => {
         <TopTabs />
       </View>
     </AppContainer>
-    // </ScrollView>
   );
 };
 

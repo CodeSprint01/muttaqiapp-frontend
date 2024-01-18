@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import BookmarkListCard from './BookmarkListCard';
 import {Icons} from '../../../utils/helper/svg';
+import {COLORS} from '../../../styles/color';
 
 const BookmarksScreen = () => {
   return (
@@ -23,6 +24,6 @@ export default BookmarksScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'pink',
+    backgroundColor: COLORS.pale_mint,
   },
 });

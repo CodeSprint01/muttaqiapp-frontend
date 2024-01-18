@@ -50,6 +50,7 @@ export interface Ayat {
   arabic: string;
   translation: string; //english tarjuma
   details: string;
+  audio: string;
 }
 
 export interface Surah {
@@ -58,6 +59,16 @@ export interface Surah {
   ayats: Ayat[]; // arabic of ayats
 }
 
+export interface Juz {
+  juz: number;
+  juzData: JuzData[];
+}
+export interface JuzData {
+  part: number;
+  arabic: string;
+  surahName: string;
+  verse: number;
+}
 // screens names
 
 export enum screens {
