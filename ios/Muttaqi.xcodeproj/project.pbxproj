@@ -15,6 +15,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A98DE0392B5E5A2B001BEE08 /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98DE0382B5E5A2B001BEE08 /* dummy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		74DADFAAD2A3510EA4FB575F /* Pods-muttaqi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muttaqi.release.xcconfig"; path = "Target Support Files/Pods-muttaqi/Pods-muttaqi.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = muttaqi/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98B3A3A81148D6C03AC684F6 /* Pods-muttaqi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muttaqi.debug.xcconfig"; path = "Target Support Files/Pods-muttaqi/Pods-muttaqi.debug.xcconfig"; sourceTree = "<group>"; };
+		A98DE0372B5E5A2B001BEE08 /* muttaqi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "muttaqi-Bridging-Header.h"; sourceTree = "<group>"; };
+		A98DE0382B5E5A2B001BEE08 /* dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummy.swift; sourceTree = "<group>"; };
 		BD9CB951318DC75DEBBCACD1 /* Pods-muttaqi-muttaqiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muttaqi-muttaqiTests.debug.xcconfig"; path = "Target Support Files/Pods-muttaqi-muttaqiTests/Pods-muttaqi-muttaqiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C01EB76C0C2444C79D940424 /* DMSans-Italic-VariableFont_opsz,wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-Italic-VariableFont_opsz,wght.ttf"; path = "../assets/fonts/DMSans-Italic-VariableFont_opsz,wght.ttf"; sourceTree = "<group>"; };
 		C1343BCE2BCF8E13B9DB981F /* libPods-muttaqi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-muttaqi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +121,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				A98DE0382B5E5A2B001BEE08 /* dummy.swift */,
 				13B07FAE1A68108700A75B9A /* muttaqi */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* muttaqiTests */,
@@ -125,6 +129,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
 				EAAD3D0B05D34AA88D993CF5 /* Resources */,
+				A98DE0372B5E5A2B001BEE08 /* muttaqi-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -218,7 +223,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1410;
 					};
 				};
 			};
@@ -425,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				A98DE0392B5E5A2B001BEE08 /* dummy.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +450,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BD9CB951318DC75DEBBCACD1 /* Pods-muttaqi-muttaqiTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -471,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 65DC9E6E06083524F65A8D65 /* Pods-muttaqi-muttaqiTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = muttaqiTests/Info.plist;
@@ -498,7 +506,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = MA96ZNXTG9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = muttaqi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -513,6 +521,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = muttaqi;
+				SWIFT_OBJC_BRIDGING_HEADER = "muttaqi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -526,7 +535,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = MA96ZNXTG9;
 				INFOPLIST_FILE = muttaqi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -540,6 +549,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = muttaqi;
+				SWIFT_OBJC_BRIDGING_HEADER = "muttaqi-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -614,10 +624,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
@@ -687,10 +694,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
