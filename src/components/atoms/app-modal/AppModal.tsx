@@ -1,17 +1,21 @@
 import React, {ReactNode} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ViewProps, ViewStyle} from 'react-native';
 import Modal from 'react-native-modal';
 
 interface AppModalProps {
   isVisible: boolean;
   toggleModal: () => void;
   children: ReactNode;
+  extraViewStyle?: ViewStyle;
+  extraModalStyle?: ViewStyle;
 }
 
 const AppModal: React.FC<AppModalProps> = ({
   isVisible,
   toggleModal,
   children,
+  extraViewStyle,
+  extraModalStyle,
 }) => {
   return (
     <Modal
@@ -19,8 +23,8 @@ const AppModal: React.FC<AppModalProps> = ({
       onBackdropPress={toggleModal}
       onSwipeComplete={toggleModal}
       swipeDirection={['down']}
-      style={styles.modal}>
-      <View style={styles.modalContent}>{children}</View>
+      style={[styles.modal, extraModalStyle]}>
+      <View style={[styles.modalContent, extraViewStyle]}>{children}</View>
     </Modal>
   );
 };

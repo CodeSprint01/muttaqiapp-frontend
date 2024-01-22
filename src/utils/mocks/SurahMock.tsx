@@ -5,61 +5,80 @@ export const AllSurah: Surah[] = [
     category: 'Makki',
     ayats: [
       {
+        id: 1,
         isBookmark: false,
         isFavourite: false,
         arabic: 'بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ',
         translation:
           'In the name of Allah, the Most Gracious, the Most Merciful.',
-        audio: require('../../../assets/audio/surahAlhumd.mp3'),
+        audio: require('../../../assets/audio/alasar.mp3'),
+        surahName: 'Al-Fatiha',
+        verseNo: 1,
         details:
           'This is the opening verse of the Surah, signifying the commencement of the chapter with the name of Allah, the Most Compassionate, Most Merciful.',
       },
       {
+        id: 2,
         isBookmark: false,
         isFavourite: false,
         arabic: 'الْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ',
         translation: 'All praise is due to Allah, the Lord of all worlds.',
-        audio: require('../../../assets/audio/alasar.mp3'),
+        audio: require('../../../assets/audio/surahAlhumd.mp3'),
+        surahName: 'Al-koshar',
+        verseNo: 120,
         details:
           'This verse expresses gratitude and praise to Allah, acknowledging Him as the Lord and Sustainer of the entire universe.',
       },
       {
+        id: 3,
         isBookmark: false,
         isFavourite: false,
         arabic: 'الرَّحْمٰنِ الرَّحِيْمِ',
         translation: 'The Most Gracious, the Most Merciful.',
         audio: require('../../../assets/audio/surahAlhumd.mp3'),
+        surahName: 'Al-Fatiha',
+        verseNo: 140,
         details:
           "These attributes highlight Allah's boundless compassion and mercy, emphasizing His benevolence towards His creation.",
       },
       {
+        id: 4,
         isBookmark: false,
         isFavourite: false,
         arabic: 'مٰلِكِ يَوْمِ الدِّيْنِ',
         translation: 'Master of the Day of Judgment.',
         audio: require('../../../assets/audio/surahAlhumd.mp3'),
+        surahName: 'Al-Fatiha',
+        verseNo: 1,
         details:
           'Acknowledging Allah as the Sovereign and Master of the Day of Judgment, where everyone will be held accountable for their deeds.',
       },
       {
+        id: 5,
         isBookmark: false,
         isFavourite: false,
         arabic: 'اِيَّاكَ نَعْبُدُ وَ اِيَّاكَ نَسْتَعِيْنُ',
         translation: 'You alone we worship, and You alone we ask for help.',
         audio: require('../../../assets/audio/surahAlhumd.mp3'),
+        surahName: 'Al-Fatiha',
+        verseNo: 1,
         details:
           'Expressing devotion and seeking assistance solely from Allah, affirming monotheistic worship and reliance on Him alone.',
       },
       {
+        id: 6,
         isBookmark: false,
         isFavourite: false,
         arabic: 'اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيْمَ',
         translation: 'Guide us on the Straight Path.',
         audio: require('../../../assets/audio/surahAlhumd.mp3'),
+        surahName: 'Al-Fatiha',
+        verseNo: 130,
         details:
           "A supplication for guidance, seeking Allah's help in staying on the righteous and straight path in life.",
       },
       {
+        id: 7,
         isBookmark: false,
         isFavourite: false,
         arabic:
@@ -67,6 +86,8 @@ export const AllSurah: Surah[] = [
         translation:
           'The path of those who have received Your grace; not the path of those who have brought down wrath upon themselves, nor of those who have gone astray.',
         audio: require('../../../assets/audio/surahAlhumd.mp3'),
+        surahName: 'Al-Fatiha',
+        verseNo: 1,
         details:
           "Seeking to follow the path of those who have earned Allah's favor, avoiding the paths of those who incurred His displeasure or went astray.",
       },

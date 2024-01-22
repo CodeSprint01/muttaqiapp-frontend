@@ -3,12 +3,20 @@ import React, {FC, useMemo, useRef, useState} from 'react';
 import BottomSheet, {BottomSheetView} from '@gorhom/bottom-sheet';
 
 interface sheetProps {
-  isVisible: boolean;
+  isVisible?: boolean;
   children: React.ReactNode;
   extraStyle?: ViewStyle;
+  snapPoint: any;
+  enableHandlePanningGesture: boolean;
 }
-const AppBottomSheet: FC<sheetProps> = ({isVisible, children, extraStyle}) => {
-  const snapPoint = useMemo(() => ['25%', '50%', '75%', '95%'], []);
+const AppBottomSheet: FC<sheetProps> = ({
+  isVisible,
+  children,
+  extraStyle,
+  snapPoint,
+  enableHandlePanningGesture,
+}) => {
+  // const snapPoint = useMemo(() => ['25%', '50%', '75%', '95%'], []);
   const bottomSheetRef = useRef<BottomSheet>(null);
   const [isShow, setIsShow] = useState(isVisible);
   const renderItem = () => {
@@ -23,8 +31,10 @@ const AppBottomSheet: FC<sheetProps> = ({isVisible, children, extraStyle}) => {
   return (
     <BottomSheet
       ref={bottomSheetRef}
-      index={3}
+      // index={3}
+      enableContentPanningGesture={false}
       snapPoints={snapPoint}
+      enableHandlePanningGesture={enableHandlePanningGesture ?? true}
       enablePanDownToClose={isShow}>
       <BottomSheetView>{renderItem()}</BottomSheetView>
     </BottomSheet>

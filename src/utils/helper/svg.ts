@@ -43,6 +43,7 @@ export const Icons = {
   Azkaar: 'AZKAAR',
   ArrowLeft: 'ARROW_LEFT',
   Search: 'SEARCH',
+  Cross: 'CROSS',
 
   EmptyCircle: 'EMPTY_CIRCLE',
   TickCircle: 'TICK_CIRCLE',
@@ -108,6 +109,7 @@ export const Colors = {
   [Icons.Azkaar]: {color: COLORS.light_gray},
   [Icons.ArrowLeft]: {color: COLORS.light_gray},
   [Icons.Search]: {color: COLORS.light_gray},
+  [Icons.Cross]: {color: COLORS.light_gray},
 
   [Icons.EmptyCircle]: {color: COLORS.light_gray},
   [Icons.TickCircle]: {color: COLORS.light_gray},
@@ -203,6 +205,7 @@ SvgIcons[Icons.CheckBoxTickIcon] =
   require('../../../assets/images/checkBoxTickIcon').default;
 SvgIcons[Icons.OpenDetails] =
   require('../../../assets/images/openDetails').default;
+SvgIcons[Icons.Cross] = require('../../../assets/images/cross').default;
 
 SvgIcons[Icons.QuranExplore] =
   require('../../../assets/images/explore-images/quran').default;

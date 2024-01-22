@@ -45,10 +45,13 @@ export interface ReligiousContent {
 }
 
 export interface Ayat {
+  id: number;
   isBookmark: boolean;
   isFavourite: boolean;
   arabic: string;
   translation: string; //english tarjuma
+  surahName: string;
+  verseNo: number;
   details: string;
   audio: string;
 }
