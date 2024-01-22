@@ -17,14 +17,7 @@ export const Icons = {
   Slient: 'SLIENT',
   Notification: 'NOTIFICATION',
   Adhan: 'ADHAN',
-  Duas: 'DUAS',
-  Names: 'NAMES',
-  Azkar: 'AZKAR',
-  Tasbih: 'TASBIH',
   Planner: 'PLANNER',
-  Hadith: 'HADITH',
-  Quran: 'QURAN',
-  Knowledge: 'KNOWLEDGE',
   Setting: 'SETTING',
   Profile: 'PROFILE',
   Vault: 'VAULT',
@@ -64,6 +57,14 @@ export const Icons = {
   OneOverFour: 'ONE_OVER_FOUR',
   OneOverTwo: 'ONE_OVER_TWO',
   OneOverThree: 'ONE_OVER_THREE',
+
+  Quran: 'QURAN',
+  Azkar: 'AZKAR',
+  Duas: 'DUAS',
+  AllahNames: 'ALLAH_NAMES',
+  Tasbih: 'TASBIH',
+  Hadith: 'HADITH',
+  Knowledge: 'KNOWLEDGE',
 };
 
 export const Colors = {
@@ -83,14 +84,7 @@ export const Colors = {
   [Icons.Slient]: {color: COLORS.light_gray},
   [Icons.Notification]: {color: COLORS.light_gray},
   [Icons.Adhan]: {color: COLORS.light_gray},
-  [Icons.Duas]: {color: COLORS.light_gray},
-  [Icons.Names]: {color: COLORS.light_gray},
-  [Icons.Azkar]: {color: COLORS.light_gray},
-  [Icons.Tasbih]: {color: COLORS.light_gray},
   [Icons.Planner]: {color: COLORS.light_gray},
-  [Icons.Hadith]: {color: COLORS.light_gray},
-  [Icons.Quran]: {color: COLORS.light_gray},
-  [Icons.Knowledge]: {color: COLORS.light_gray},
   [Icons.Profile]: {color: COLORS.light_gray},
   [Icons.Vault]: {color: COLORS.light_gray},
   [Icons.Languages]: {color: COLORS.light_gray},
@@ -131,6 +125,14 @@ export const Colors = {
   [Icons.OneOverFour]: {color: COLORS.light_gray},
   [Icons.OneOverTwo]: {color: COLORS.light_gray},
   [Icons.OneOverThree]: {color: COLORS.light_gray},
+
+  [Icons.Quran]: {color: COLORS.light_gray},
+  [Icons.Azkar]: {color: COLORS.light_gray},
+  [Icons.Duas]: {color: COLORS.light_gray},
+  [Icons.AllahNames]: {color: COLORS.light_gray},
+  [Icons.Tasbih]: {color: COLORS.light_gray},
+  [Icons.Hadith]: {color: COLORS.light_gray},
+  [Icons.Knowledge]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -163,22 +165,24 @@ SvgIcons[Icons.Slient] = require('../../../assets/images/slient').default;
 SvgIcons[Icons.Notification] =
   require('../../../assets/images/notification').default;
 SvgIcons[Icons.Adhan] = require('../../../assets/images/adhan').default;
-SvgIcons[Icons.Duas] =
-  require('../../../assets/images/discover-svg/Duas').default;
-SvgIcons[Icons.Names] =
-  require('../../../assets/images/discover-svg/names').default;
-SvgIcons[Icons.Azkar] =
-  require('../../../assets/images/discover-svg/azkar').default;
-SvgIcons[Icons.Tasbih] =
-  require('../../../assets/images/discover-svg/tasbih').default;
 SvgIcons[Icons.Planner] =
   require('../../../assets/images/discover-svg/planner').default;
-SvgIcons[Icons.Hadith] =
-  require('../../../assets/images/discover-svg/hadith').default;
+
 SvgIcons[Icons.Quran] =
-  require('../../../assets/images/discover-svg/quran').default;
+  require('../../../assets/images/explore-images/quran').default;
+SvgIcons[Icons.Azkar] =
+  require('../../../assets/images/explore-images/azkaar').default;
+SvgIcons[Icons.Duas] =
+  require('../../../assets/images/explore-images/dua').default;
+SvgIcons[Icons.AllahNames] =
+  require('../../../assets/images/explore-images/allahNames').default;
+SvgIcons[Icons.Tasbih] =
+  require('../../../assets/images/explore-images/tasbih').default;
+SvgIcons[Icons.Hadith] =
+  require('../../../assets/images/explore-images/hadith').default;
 SvgIcons[Icons.Knowledge] =
-  require('../../../assets/images/discover-svg/knowledge').default;
+  require('../../../assets/images/explore-images/knowledge').default;
+
 SvgIcons[Icons.Profile] =
   require('../../../assets/images/setting-screen-svg/myProfile').default;
 SvgIcons[Icons.Vault] =

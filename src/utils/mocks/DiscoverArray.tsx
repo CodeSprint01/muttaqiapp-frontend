@@ -8,7 +8,7 @@ export const discoverArray: discover[] = [
     type: DiscoverEnum.DUAS,
   },
   {
-    image: Icons.Names,
+    image: Icons.AllahNames,
     name: '99 Names',
     type: DiscoverEnum.ALLAH_NAME,
   },

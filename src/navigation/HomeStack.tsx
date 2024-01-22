@@ -8,6 +8,7 @@ import CardScreen from '../screens/cardScreen/CardScreen';
 import DetailScreen from '../screens/detail-screen/DetailScreen';
 import QuranScreen from '../screens/quran-screens/QuranScreen';
 import SurahDetailsScreen from '../screens/quran-screens/tab-items/SurahDetailsScreen';
+import TasbihCounter from '../screens/tasbih-screen/TasbihCounter';
 
 const HomeStack = () => {
   const Stack = createStackNavigator();
@@ -41,6 +42,11 @@ const HomeStack = () => {
       <Stack.Screen
         name={screens.QURAN_SCREEN}
         component={QuranScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.TASBIH_COUNTER}
+        component={TasbihCounter}
         options={{headerShown: false}}
       />
       <Stack.Screen

@@ -120,7 +120,7 @@ const HomeScreen = () => {
             horizontal
             showsHorizontalScrollIndicator={false}
             renderItem={({item, index}) => (
-              <ExploreCard 
+              <ExploreCard
                 image={item.image}
                 title={item.title}
                 subTitle={item.subTitle}

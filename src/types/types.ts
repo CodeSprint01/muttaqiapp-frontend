@@ -89,4 +89,5 @@ export enum screens {
   DETAIL_SCREENN = 'detail-screen',
   CARD_SCREEN = 'card-screen',
   SURAH_DETAILS_SCREEN = 'surah-details-screen',
+  TASBIH_COUNTER = 'tasbih_counter',
 }

@@ -45,7 +45,7 @@ export const compassTemplate: Array<{
 
 export const exploreArray: exploreInterface[] = [
   {
-    image: Icons.QuranExplore,
+    image: Icons.Quran,
     title: 'Quran',
     subTitle: 'P.207',
     routeName: screens.QURAN_SCREEN,
@@ -63,16 +63,22 @@ export const exploreArray: exploreInterface[] = [
     routeName: screens.CARD_SCREEN,
   },
   {
+    image: Icons.AllahNames,
+    title: 'Allah names',
+    subTitle: '99 names',
+    routeName: screens.ALLAH_NAMES,
+  },
+  {
+    image: Icons.Tasbih,
+    title: 'Tasbih',
+    subTitle: '',
+    routeName: screens.TASBIH_COUNTER,
+  },
+  {
     image: Icons.Hadith,
     title: 'Hadith',
     subTitle: '',
     routeName: screens.CARD_SCREEN,
-  },
-  {
-    image: Icons.BlackCompass,
-    title: 'Allah',
-    subTitle: '99 names',
-    routeName: screens.ALLAH_NAMES,
   },
   {
     image: Icons.Knowledge,
@@ -180,11 +186,15 @@ export const AllahNamesArray: allahNamesProps[] = [
     arabic: 'الملك',
     english: '(Al- malik)',
     meaning: 'The King and Owner of Dominion',
-    allahNamesDescription:
-      'The word ‘Allah’, the proper name of God, indicates that Allah is the true God who alone deserves to be worshipped, whom all creatures worship out of love, praise His greatness, revere Him and turn to Him in times of need and adversity. In fact, this name comprises all the meanings of His beautiful names.',
-    occurrence: '2724 times.',
-    evidance:
-      '“Surely I am Allah, there is no god but I; therefore, worship Me and keep up prayer for My remembrance.”',
+    allahNamesDescription: [
+      {
+        meaningDescription:
+          'Meaning: The word ‘Allah’, the proper name of God, indicates that Allah is the true God who alone deserves to be worshipped, whom all creatures worship out of love, praise His greatness, revere Him and turn to Him in times of need and adversity. In fact, this name comprises all the meanings of His beautiful names.',
+        occurrence: '2724 times.',
+        evidance:
+          '“Surely I am Allah, there is no god but I; therefore, worship Me and keep up prayer for My remembrance.”',
+      },
+    ],
   },
 
   {

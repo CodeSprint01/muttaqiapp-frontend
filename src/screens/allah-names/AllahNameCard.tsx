@@ -30,7 +30,7 @@ const AllahNameCard: FC<cardProps> = ({
     <View
       style={[
         {
-          paddingBottom: index === 5 ? 40 : 0,
+          marginBottom: index === 5 ? 70 : 0,
         },
         styles.imageBackView,
         style,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 15,
     elevation: 10,
-    marginVertical: 7,
+    marginVertical: 10,
     backgroundColor: COLORS.pale_mint,
     width: '88%',
     alignSelf: 'center',

@@ -22,6 +22,8 @@ const AllahNames = () => {
         <View
           style={{
             paddingTop: 27,
+            // backgroundColor: 'red',
+            // paddingBottom: 100,
           }}>
           <FlatList
             data={AllahNamesArray}

@@ -62,13 +62,11 @@ const ExploreCard: FC<ExploreProps> = ({
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      // onPress={() => handleCardClick(index)}
-      // onPress={() => navigation.navigate('HomeStack', {screen: screens.KNOWLEDGE})
       onPress={() => navigateFromCard(title)}>
       <View
         style={[
           styles.container,
-          {marginRight: index === 3 ? 12 : 0, marginLeft: index === 0 ? 12 : 0},
+          {marginLeft: index === 0 ? 12 : 0, marginRight: index === 6 ? 12 : 0},
         ]}>
         <LinearGradient colors={['#1290A1', '#1DA28F']} style={styles.card}>
           <View style={styles.cardIcon}>
@@ -91,14 +89,15 @@ const styles = StyleSheet.create({
   },
   card: {
     width: 130,
-    backgroundColor: '#afe1af',
+    // backgroundColor: '#afe1af',
     borderRadius: 20,
     marginTop: 20,
     elevation: 10,
     marginHorizontal: 8,
+    height: 175,
   },
   cardIcon: {
-    marginTop: 20,
+    marginTop: 10,
     marginLeft: 20,
     position: 'absolute',
   },
@@ -106,15 +105,15 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     fontSize: 20,
     fontWeight: '700',
-    marginTop: 100,
+    marginTop: 90,
     marginLeft: 20,
   },
   blurView: {
-    width: 47,
-    height: 20,
+    width: 50,
+    height: 25,
     backgroundColor: 'black',
     marginTop: 5,
-    opacity: 0.04,
+    opacity: 0.02,
     borderRadius: 100,
   },
   cardSecondTxt: {
