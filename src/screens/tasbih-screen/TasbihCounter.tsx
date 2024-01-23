@@ -1,16 +1,9 @@
-import {StyleSheet, Platform, TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
 import ScreenHeader from '../../components/molecules/app-header/ScreenHeader';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
-import AppText from '../../components/atoms/app-text/AppText';
-import {COLORS} from '../../styles/color';
-import AppButton from '../../components/molecules/app-button/AppButton';
 
 const TasbihCounter = () => {
-  const [count, setCount] = useState(0);
-  const handleCounter = () => {
-    setCount(count + 1);
-  };
   return (
     <AppContainer style={styles.container}>
       <View style={styles.headerContainer}>

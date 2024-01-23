@@ -4,6 +4,46 @@
     {
       "path": "assets/fonts/DMSans-Italic-VariableFont_opsz,wght.ttf",
       "sha1": "00b55563b41311b9021be08aeaaf91bd4727c6f7"
+    },
+    {
+      "path": "assets/fonts/DMSans-VariableFont_opsz,wght.ttf",
+      "sha1": "bd912858c0f8887c01a56b09e6b1ca1cf81418ee"
+    },
+    {
+      "path": "assets/fonts/DMSans_18pt-Bold.ttf",
+      "sha1": "9420b53f2af12576f6b96354edf420ec24358087"
+    },
+    {
+      "path": "assets/fonts/DMSans_18pt-ExtraBold.ttf",
+      "sha1": "d5850bc0de4c204efd50c4d6277bf5788164a87d"
+    },
+    {
+      "path": "assets/fonts/DMSans_24pt-ExtraLight.ttf",
+      "sha1": "b6118cad62f03f4675a56979825a1fea5cf34684"
+    },
+    {
+      "path": "assets/fonts/DMSans_24pt-Light.ttf",
+      "sha1": "37f801f285fa6fcf6d6e4d145190d70279b59537"
+    },
+    {
+      "path": "assets/fonts/DMSans_24pt-Medium.ttf",
+      "sha1": "aaaf4a7e4d31f4e2b9304d57251b734edbcac6d5"
+    },
+    {
+      "path": "assets/fonts/DMSans_24pt-Regular.ttf",
+      "sha1": "567a49151e774388e4976e93bf0547988011dded"
+    },
+    {
+      "path": "assets/fonts/DMSans_24pt-SemiBold.ttf",
+      "sha1": "1b745aa68025d0de394b6df755691466af6ec5f4"
+    },
+    {
+      "path": "assets/fonts/DMSans_36pt-Bold.ttf",
+      "sha1": "f31cb3b1efbbd21ccfad19881c1d0e32aa4f23f7"
+    },
+    {
+      "path": "assets/fonts/DMSans_36pt-ExtraBold.ttf",
+      "sha1": "984c4de91fe6cc854c8dc9898e9cbe26886762ba"
     }
   ]
 }

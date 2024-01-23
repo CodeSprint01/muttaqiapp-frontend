@@ -23,3 +23,17 @@ export const COLORS = {
   light_Steel_Blue: '#D2E0E0',
   light_Powder_Blue: '#EEFAFC',
 } as const;
+
+// font family is here
+
+export const fonts = {
+  dmSans: {
+    200: 'DMSans_36pt-Light',
+    300: 'DMSans_36pt-ExtraLight',
+    400: 'DMSans_36pt-Regular',
+    500: 'DMSans_36pt-Medium',
+    600: 'DMSans_36pt-SemiBold',
+    700: 'DMSans_36pt-Bold',
+    800: 'DMSans_36pt-ExtraBold',
+  },
+};
