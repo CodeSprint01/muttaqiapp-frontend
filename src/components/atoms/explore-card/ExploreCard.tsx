@@ -1,14 +1,10 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {FC} from 'react';
 import {COLORS} from '../../../styles/color';
 import AppText from '../app-text/AppText';
 import {AppIconSvg} from '../app-icon-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
-import {screens} from '../../../types/types';
-import {duas} from '../../../utils/mocks/DuasMock';
-import {hadith} from '../../../utils/mocks/HadithMock';
-import {azkaars} from '../../../utils/mocks/AzkaarMockData';
 
 export interface ExploreProps {
   image: any;
@@ -24,7 +20,6 @@ const ExploreCard: FC<ExploreProps> = ({
   subTitle,
   index = 0,
   routeName,
-  // handleCardClick,
 }) => {
   const navigation = useNavigation();
   const navigateFromCard = (category: string) => {

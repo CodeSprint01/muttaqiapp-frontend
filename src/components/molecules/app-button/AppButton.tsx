@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import AppText from '../../atoms/app-text/AppText';
 import {COLORS} from '../../../styles/color';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface ButtonProps {
   buttonText: string;
@@ -40,17 +41,24 @@ const AppButton: FC<PropsWithImage> = ({
   imageHeight = 24,
 }) => {
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      activeOpacity={withOpacity}
+    <LinearGradient
+      colors={[
+        '#1290A1',
+        'rgba(24, 154, 151, 0.86)',
+        'rgba(29, 162, 143, 0.73)',
+      ]}
+      start={{x: 0, y: 0}}
+      end={{x: 1, y: 1}}
       style={[styles.button, buttonStyle]}>
-      <AppText text={buttonText} style={[styles.txt, textStyle]} />
-      {ImageName && (
-        <View style={styles.iconContainer}>
-          <ImageName width={imageWidth} height={imageHeight} />
-        </View>
-      )}
-    </TouchableOpacity>
+      <TouchableOpacity onPress={onPress} activeOpacity={withOpacity}>
+        <AppText text={buttonText} style={[styles.txt, textStyle]} />
+        {ImageName && (
+          <View style={styles.iconContainer}>
+            <ImageName width={imageWidth} height={imageHeight} />
+          </View>
+        )}
+      </TouchableOpacity>
+    </LinearGradient>
   );
 };
 
@@ -58,16 +66,16 @@ export default AppButton;
 
 const styles = StyleSheet.create({
   button: {
-    padding: 10,
-    borderRadius: 8,
+    borderRadius: 13,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLORS.primary,
-    marginTop: 20,
-    height: 63,
+    paddingVertical: 16,
   },
   txt: {
-    color: COLORS.lightBlack,
+    color: COLORS.white,
+    fontSize: 20,
+    fontStyle: 'normal',
+    fontWeight: '700',
   },
   iconContainer: {
     position: 'absolute',

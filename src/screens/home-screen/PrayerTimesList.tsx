@@ -135,7 +135,7 @@ const PrayerTimesList = () => {
               name={item.name}
               time={item.time}
               prayerIcon={isPrayerTime ? offerPrayed() : alarmState()}
-              onPress={() => onPress(index)}
+              // onPress={() => onPress(index)}
             />
           )
         }
