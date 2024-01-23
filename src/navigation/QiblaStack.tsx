@@ -1,6 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import QiblaScreen from '../screens/qibla/QiblaScreen';
+import QiblaScreen from '../screens/Qibla/QiblaScreen';
 
 const QiblaStack = () => {
   const Stack = createStackNavigator();
