@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inActiveDot: {
-    backgroundColor: COLORS.lightGray,
+    backgroundColor: COLORS.light_black_gray,
     width: 8,
     height: 8,
     borderRadius: 4,

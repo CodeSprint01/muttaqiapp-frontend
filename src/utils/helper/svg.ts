@@ -65,6 +65,10 @@ export const Icons = {
   Tasbih: 'TASBIH',
   Hadith: 'HADITH',
   Knowledge: 'KNOWLEDGE',
+
+  Update: 'UPDATE',
+  Delete: 'DELETE',
+  Refresh: 'REFRESH',
 };
 
 export const Colors = {
@@ -133,6 +137,9 @@ export const Colors = {
   [Icons.Tasbih]: {color: COLORS.light_gray},
   [Icons.Hadith]: {color: COLORS.light_gray},
   [Icons.Knowledge]: {color: COLORS.light_gray},
+  [Icons.Delete]: {color: COLORS.light_gray},
+  [Icons.Update]: {color: COLORS.light_gray},
+  [Icons.Refresh]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -252,7 +259,13 @@ SvgIcons[Icons.OneOverThree] =
   require('../../../assets/images/juz-part/oneOverThree').default;
 // Azkaar icons
 SvgIcons[Icons.Night] =
-  require('../../../assets/images/azkaar-section/night').defualt;
+  require('../../../assets/images/azkaar-section/night').default;
+SvgIcons[Icons.Delete] =
+  require('../../../assets/images/planner-tracker/delete').default;
+SvgIcons[Icons.Update] =
+  require('../../../assets/images/planner-tracker/updateTodo').default;
+SvgIcons[Icons.Refresh] =
+  require('../../../assets/images/planner-tracker/refresh').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

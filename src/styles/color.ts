@@ -11,17 +11,19 @@ export const COLORS = {
   black: '#000000',
   lightBlack: '#333333',
   green: '#1DA28F',
+  dark_green: '#188C7B',
   background: '#F6F8F7',
   very_dark_gray: '#2A2F2F',
   dark_gray: '#464646',
   medium_gray: '#6B6B6B',
-  lightGray: '#B5C6C4',
+  light_black_gray: '#B5C6C4',
   pale_mint: '#F5FFFE',
   light_blue_gray: '#BDD4E3',
   forest_Green: '#33A753',
   crimson: '#E64C3C',
   light_Steel_Blue: '#D2E0E0',
   light_Powder_Blue: '#EEFAFC',
+  pumpkin_orange: '#E86B0F',
 } as const;
 
 // font family is here

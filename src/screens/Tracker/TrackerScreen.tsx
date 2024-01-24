@@ -1,61 +1,36 @@
-import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import Modal from 'react-native-modal';
+import {ScrollView, StyleSheet, View} from 'react-native';
+import React from 'react';
+import AppContainer from '../../components/atoms/app-container/AppContainer';
+import ScreenHeader from '../../components/molecules/app-header/ScreenHeader';
+import UserProgressCard from './UserProgressCard';
+import TodoTask from './TodoTask';
 
 const TrackerScreen = () => {
-  const [isModalVisible, setModalVisible] = useState(false);
-
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
-
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={toggleModal}>
-        <Text>Show Bottom Sheet Modal</Text>
-      </TouchableOpacity>
-
-      <Modal
-        isVisible={isModalVisible}
-        onBackdropPress={toggleModal}
-        onSwipeComplete={toggleModal}
-        swipeDirection={['down']}
-        style={styles.modal}>
-        <View style={styles.modalContent}>
-          <Text>Your Bottom Sheet Content Goes Here </Text>
-          <Text>Your Bottom Sheet Content Goes Here </Text>
-          <Text>Your Bottom Sheet Content Goes Here </Text>
-          <Text>Your Bottom Sheet Content Goes Here </Text>
-          <Text>Your Bottom Sheet Content Goes Here </Text>
-          <Text>Your Bottom Sheet Content Goes Here </Text>
-          <TouchableOpacity onPress={toggleModal}>
-            <Text>Close Modal</Text>
-          </TouchableOpacity>
+    <AppContainer>
+      <ScrollView>
+        <View style={{paddingHorizontal: 20}}>
+          <ScreenHeader headerText="Planner" />
         </View>
-      </Modal>
-    </View>
+        <View style={styles.container}>
+          <UserProgressCard totalTask={8} completeTask={6} circleValue={60} />
+          <View style={styles.todoConntainer}>
+            <TodoTask handleAddTodo={() => console.log('add to do')} />
+          </View>
+        </View>
+      </ScrollView>
+    </AppContainer>
   );
 };
 
+export default TrackerScreen;
+
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 20,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
-  modal: {
-    justifyContent: 'flex-end',
-    margin: 0,
-  },
-  modalContent: {
-    backgroundColor: 'white',
-    padding: 22,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    height: 400,
+  todoConntainer: {
+    paddingHorizontal: 20,
   },
 });
-
-export default TrackerScreen;
