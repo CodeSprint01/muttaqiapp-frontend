@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useMemo, useState} from 'react';
 import {Icons} from '../../../components/atoms/app-icon-svg';
 import {COLORS} from '../../../styles/color';
@@ -15,12 +15,14 @@ import TrackPlayer, {
   State,
   useProgress,
 } from 'react-native-track-player';
+import BottomSheetOverlapView from '../../../components/molecules/bottom-sheet-overlap/BottomSheetOverlapView';
 
 const SurahDetailsScreen = ({route}) => {
   const surahData = route?.params?.data;
-  const [showBottomSheet, setShowBottomSheet] = useState<boolean>(false);
   const [ayatDetails, setAyatDetails] = useState<null | Ayat[]>([]);
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
+  const [isShowBoottomSheet, setIsShowBoottomSheet] = useState<boolean>(false);
+
   const [playerData, setPlayerData] = useState({
     audioIndex: null,
     isPlay: false,
@@ -35,6 +37,7 @@ const SurahDetailsScreen = ({route}) => {
   useEffect(() => {
     setupPlayer();
   }, []);
+  console.log(isShowBoottomSheet);
 
   const setupPlayer = async () => {
     try {
@@ -139,10 +142,10 @@ const SurahDetailsScreen = ({route}) => {
   // here end player code
 
   const handleShowBottoomsheet = (item: any) => {
-    setShowBottomSheet(!showBottomSheet);
+    setIsShowBoottomSheet(!isShowBoottomSheet);
     setAyatDetails(item);
   };
-  const DetailsnapPoint = useMemo(() => ['25%', '50%', '75%', '95%'], []);
+  const DetailsnapPoint = useMemo(() => ['95%', '50%', '75%', '25%'], []);
   const PlayersnapPoint = useMemo(() => ['15%', '15.1%'], []);
 
   const renderItem = ({item, index}: {item: Ayat; index: number}) => {
@@ -179,21 +182,21 @@ const SurahDetailsScreen = ({route}) => {
           keyExtractor={(item, index) => index.toString()}
         />
       </View>
-      {showBottomSheet && (
-        <AppBottomSheet
-          snapPoint={DetailsnapPoint}
-          children={
-            <View style={styles.bottomContainer}>
-              <AppText text={ayatDetails?.arabic} style={styles.arabicTxt} />
-              <AppText
-                text={ayatDetails?.details}
-                style={[styles.translation, {paddingTop: 36}]}
-              />
-            </View>
-          }
-          isVisible={showBottomSheet}
-        />
-      )}
+
+      <BottomSheetOverlapView
+        showBottomSheet={isShowBoottomSheet}
+        // setShowBottomSheet={() => setIsShowBoottomSheet(false)}
+        setShowBottomSheet={isShowBoottomSheet ? handleShowBottoomsheet : null}
+        snapPoints={DetailsnapPoint}
+        enableHeaderLine>
+        <View style={styles.bottomContainer}>
+          <AppText text={ayatDetails?.arabic} style={styles.arabicTxt} />
+          <AppText
+            text={ayatDetails?.details}
+            style={[styles.translation, {paddingTop: 36}]}
+          />
+        </View>
+      </BottomSheetOverlapView>
       {isShowModal && (
         <AppBottomSheet
           enableHandlePanningGesture={false}
@@ -252,117 +255,3 @@ const styles = StyleSheet.create({
   },
 });
 export default SurahDetailsScreen;
-
-// import Slider from '@react-native-community/slider';
-// import React, {useEffect, useState} from 'react';
-// import {View, Text, Button} from 'react-native';
-// import TrackPlayer, {
-//   Capability,
-//   usePlaybackState,
-//   State,
-//   useProgress,
-// } from 'react-native-track-player';
-
-// const SurahDetailsScreen = () => {
-//   const [playerState, setPlayerState] = useState('pause');
-//   const testAudio = require('../../../../assets/audio/alasar.mp3');
-//   const playbackState = usePlaybackState();
-//   var progress = useProgress();
-//   useEffect(() => {
-//     setupPlayer();
-//   }, []);
-
-//   const track1 = {
-//     url: require('../../../../assets/audio/surahAlhumd.mp3'),
-//   };
-//   const track2 = {
-//     url: require('../../../../assets/audio/surahAlhumd.mp3'),
-//   };
-// const setupPlayer = async () => {
-//   try {
-//     await TrackPlayer.setupPlayer();
-//     await TrackPlayer.updateOptions({
-//       compactCapabilities: [
-//         Capability.Play,
-//         Capability.Pause,
-//         Capability.Stop,
-//         Capability.SeekTo,
-//       ],
-//       capabilities: [Capability.Play, Capability.Pause, Capability.Stop],
-//     });
-//     await TrackPlayer.add([track1, track2]);
-//   } catch (error) {
-//     console.log('player setup error ', error);
-//   }
-// };
-
-//   const playTrack = async () => {
-//     try {
-//       await TrackPlayer.play();
-//     } catch (error) {
-//       console.log('this is play err: ', error);
-//     }
-//   };
-// const pauseTrack = async () => {
-//   console.log('pause');
-//   try {
-//     await TrackPlayer.pause();
-//   } catch (error) {
-//     console.log('this is pause', error);
-//   }
-// };
-//   const stopAudio = async () => {
-//     console.log('stop');
-//     try {
-//       await TrackPlayer.stop();
-//       console.log('stop');
-//     } catch (error) {
-//       console.log('this is stop', error);
-//     }
-//   };
-//   const playPause = async (playbackState: any) => {
-//     console.log('state is here', playbackState);
-//     setPlayerState(playbackState);
-//   };
-// const seekForward = async (value: number) => {
-//   try {
-//     while (playbackState === State.Buffering) {
-//       // Wait for buffering to complete
-//       await new Promise(resolve => setTimeout(resolve, 50)); // Adjust the delay as needed
-//     }
-//     const position = progress.position;
-//     await TrackPlayer.seekTo(position + value);
-//   } catch (error) {
-//     console.error('Error during seekForward:', error);
-//   }
-// };
-
-//   return (
-//     <View>
-//       <Text style={{marginTop: 100}}>React Native Track Player Example</Text>
-//       <Button title="Play" onPress={playTrack} />
-//       <Button title="Pause" onPress={pauseTrack} />
-//       <Button title="stop" onPress={stopAudio} />
-//       <Button title="seek " onPress={seekForward} />
-//       <Button
-//         title={playerState !== 'playing' ? 'pause' : 'play'}
-//         onPress={() => playPause(playbackState)}
-//       />
-//       <Slider
-//         style={{
-//           width: '100%',
-//           height: 40,
-//         }}
-//         minimumValue={0}
-//         maximumValue={progress.duration}
-//         minimumTrackTintColor="red"
-//         maximumTrackTintColor="blue"
-//         value={progress.position}
-//         thumbTintColor="orange"
-//         onValueChange={seekForward}
-//       />
-//     </View>
-//   );
-// };
-
-// export default SurahDetailsScreen;

@@ -1,3 +1,5 @@
+import {Platform} from 'react-native';
+
 export const COLORS = {
   primary: '#1290A1',
   secondary: '#ECF6F8',
@@ -38,4 +40,14 @@ export const fonts = {
     700: 'DMSans_36pt-Bold',
     800: 'DMSans_36pt-ExtraBold',
   },
+};
+
+export const spacing = {
+  bottomSheetHeader: 24,
+  paddingNavigationBar: Platform.select({ios: 44, android: 56}),
+  paddingBottomTabBar: 49,
+  paddingTabViewBar: 50,
+  marginInnerRowsHalf: 4,
+  marginInnerRows: 8,
+  marginInnerContent: 16,
 };
