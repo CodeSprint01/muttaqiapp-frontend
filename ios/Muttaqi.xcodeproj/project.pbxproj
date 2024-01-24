@@ -8,24 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* muttaqiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* muttaqiTests.m */; };
-		0A19E5118F56411690580943 /* DMSans-Italic-VariableFont_opsz,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C01EB76C0C2444C79D940424 /* DMSans-Italic-VariableFont_opsz,wght.ttf */; };
+		0C9E621453A748D4BB467924 /* DMSans_36pt-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E712FBB0C66A46DE95B5F199 /* DMSans_36pt-Medium.ttf */; };
 		0EE627FC46ED2B507F52F525 /* libPods-muttaqi-muttaqiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A09C1ACE370E6D10D6D98C4 /* libPods-muttaqi-muttaqiTests.a */; };
 		138D61A57012B5A43A7B4ED0 /* libPods-muttaqi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1343BCE2BCF8E13B9DB981F /* libPods-muttaqi.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		150C947F76224B7ABB8D39B5 /* DMSans_36pt-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE94E117DF1A43D7A5CF4CAC /* DMSans_36pt-ExtraLight.ttf */; };
+		1E29FC587A584F1FA3D9B681 /* DMSans_36pt-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9901A6107EFB4768802192A9 /* DMSans_36pt-Bold.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		95253009A18B4BB9BFEB2952 /* DMSans_36pt-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E152819708BC4B758BACD27A /* DMSans_36pt-ExtraBold.ttf */; };
+		A8AD6458B4544CB0BE900381 /* DMSans_36pt-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 867D2C93408D40EEBDE0019C /* DMSans_36pt-Light.ttf */; };
 		A98DE0392B5E5A2B001BEE08 /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98DE0382B5E5A2B001BEE08 /* dummy.swift */; };
 		CA236C23671748048D6E4EF8 /* DMSans-VariableFont_opsz,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3072E8EB98314E06AC151CD5 /* DMSans-VariableFont_opsz,wght.ttf */; };
-		D1E0C8B16EEA4CFD86FA9F4F /* DMSans_18pt-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F67B3AD637A48CBA008B562 /* DMSans_18pt-Bold.ttf */; };
-		968A983DCD744DFEAAED1AC1 /* DMSans_18pt-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6EE367261D3944E393FABFFC /* DMSans_18pt-ExtraBold.ttf */; };
-		17D9D7BB29B548878DD559D5 /* DMSans_24pt-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 184C4E278B0D483BB9F2C024 /* DMSans_24pt-ExtraLight.ttf */; };
-		4169827457F240E2926389A9 /* DMSans_24pt-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A10034E83CC84130AD3AEACE /* DMSans_24pt-Light.ttf */; };
-		CCB13573A072452C9ED2711B /* DMSans_24pt-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20621DE31A8C4FDAA8E26CB4 /* DMSans_24pt-Medium.ttf */; };
-		5287D401A8704D398C926303 /* DMSans_24pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EEA52DBD93845849FA06433 /* DMSans_24pt-Regular.ttf */; };
-		2E0BD63C46544574B0E9E6F2 /* DMSans_24pt-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1786842DF01942D0B70A7E6B /* DMSans_24pt-SemiBold.ttf */; };
-		1E29FC587A584F1FA3D9B681 /* DMSans_36pt-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9901A6107EFB4768802192A9 /* DMSans_36pt-Bold.ttf */; };
-		95253009A18B4BB9BFEB2952 /* DMSans_36pt-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E152819708BC4B758BACD27A /* DMSans_36pt-ExtraBold.ttf */; };
+		D36E05E60F9D459B9BDB16C8 /* DMSans_36pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98D19537E9554DCF9E4212AA /* DMSans_36pt-Regular.ttf */; };
+		FB3FCCF885D04C8698CBD92E /* DMSans_36pt-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 951DDA60A8404BB0AF7F1AD2 /* DMSans_36pt-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,27 +45,24 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = muttaqi/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = muttaqi/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = muttaqi/main.m; sourceTree = "<group>"; };
+		3072E8EB98314E06AC151CD5 /* DMSans-VariableFont_opsz,wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-VariableFont_opsz,wght.ttf"; path = "../assets/fonts/DMSans-VariableFont_opsz,wght.ttf"; sourceTree = "<group>"; };
 		3A09C1ACE370E6D10D6D98C4 /* libPods-muttaqi-muttaqiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-muttaqi-muttaqiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65DC9E6E06083524F65A8D65 /* Pods-muttaqi-muttaqiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muttaqi-muttaqiTests.release.xcconfig"; path = "Target Support Files/Pods-muttaqi-muttaqiTests/Pods-muttaqi-muttaqiTests.release.xcconfig"; sourceTree = "<group>"; };
 		74DADFAAD2A3510EA4FB575F /* Pods-muttaqi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muttaqi.release.xcconfig"; path = "Target Support Files/Pods-muttaqi/Pods-muttaqi.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = muttaqi/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		867D2C93408D40EEBDE0019C /* DMSans_36pt-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans_36pt-Light.ttf"; path = "../assets/fonts/DMSans_36pt-Light.ttf"; sourceTree = "<group>"; };
+		951DDA60A8404BB0AF7F1AD2 /* DMSans_36pt-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans_36pt-SemiBold.ttf"; path = "../assets/fonts/DMSans_36pt-SemiBold.ttf"; sourceTree = "<group>"; };
 		98B3A3A81148D6C03AC684F6 /* Pods-muttaqi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muttaqi.debug.xcconfig"; path = "Target Support Files/Pods-muttaqi/Pods-muttaqi.debug.xcconfig"; sourceTree = "<group>"; };
+		98D19537E9554DCF9E4212AA /* DMSans_36pt-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans_36pt-Regular.ttf"; path = "../assets/fonts/DMSans_36pt-Regular.ttf"; sourceTree = "<group>"; };
+		9901A6107EFB4768802192A9 /* DMSans_36pt-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans_36pt-Bold.ttf"; path = "../assets/fonts/DMSans_36pt-Bold.ttf"; sourceTree = "<group>"; };
 		A98DE0372B5E5A2B001BEE08 /* muttaqi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "muttaqi-Bridging-Header.h"; sourceTree = "<group>"; };
 		A98DE0382B5E5A2B001BEE08 /* dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummy.swift; sourceTree = "<group>"; };
 		BD9CB951318DC75DEBBCACD1 /* Pods-muttaqi-muttaqiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muttaqi-muttaqiTests.debug.xcconfig"; path = "Target Support Files/Pods-muttaqi-muttaqiTests/Pods-muttaqi-muttaqiTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C01EB76C0C2444C79D940424 /* DMSans-Italic-VariableFont_opsz,wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-Italic-VariableFont_opsz,wght.ttf"; path = "../assets/fonts/DMSans-Italic-VariableFont_opsz,wght.ttf"; sourceTree = "<group>"; };
 		C1343BCE2BCF8E13B9DB981F /* libPods-muttaqi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-muttaqi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE94E117DF1A43D7A5CF4CAC /* DMSans_36pt-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans_36pt-ExtraLight.ttf"; path = "../assets/fonts/DMSans_36pt-ExtraLight.ttf"; sourceTree = "<group>"; };
+		E152819708BC4B758BACD27A /* DMSans_36pt-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans_36pt-ExtraBold.ttf"; path = "../assets/fonts/DMSans_36pt-ExtraBold.ttf"; sourceTree = "<group>"; };
+		E712FBB0C66A46DE95B5F199 /* DMSans_36pt-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans_36pt-Medium.ttf"; path = "../assets/fonts/DMSans_36pt-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		3072E8EB98314E06AC151CD5 /* DMSans-VariableFont_opsz,wght.ttf */ = {isa = PBXFileReference; name = "DMSans-VariableFont_opsz,wght.ttf"; path = "../assets/fonts/DMSans-VariableFont_opsz,wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		4F67B3AD637A48CBA008B562 /* DMSans_18pt-Bold.ttf */ = {isa = PBXFileReference; name = "DMSans_18pt-Bold.ttf"; path = "../assets/fonts/DMSans_18pt-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6EE367261D3944E393FABFFC /* DMSans_18pt-ExtraBold.ttf */ = {isa = PBXFileReference; name = "DMSans_18pt-ExtraBold.ttf"; path = "../assets/fonts/DMSans_18pt-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		184C4E278B0D483BB9F2C024 /* DMSans_24pt-ExtraLight.ttf */ = {isa = PBXFileReference; name = "DMSans_24pt-ExtraLight.ttf"; path = "../assets/fonts/DMSans_24pt-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A10034E83CC84130AD3AEACE /* DMSans_24pt-Light.ttf */ = {isa = PBXFileReference; name = "DMSans_24pt-Light.ttf"; path = "../assets/fonts/DMSans_24pt-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		20621DE31A8C4FDAA8E26CB4 /* DMSans_24pt-Medium.ttf */ = {isa = PBXFileReference; name = "DMSans_24pt-Medium.ttf"; path = "../assets/fonts/DMSans_24pt-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		0EEA52DBD93845849FA06433 /* DMSans_24pt-Regular.ttf */ = {isa = PBXFileReference; name = "DMSans_24pt-Regular.ttf"; path = "../assets/fonts/DMSans_24pt-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1786842DF01942D0B70A7E6B /* DMSans_24pt-SemiBold.ttf */ = {isa = PBXFileReference; name = "DMSans_24pt-SemiBold.ttf"; path = "../assets/fonts/DMSans_24pt-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		9901A6107EFB4768802192A9 /* DMSans_36pt-Bold.ttf */ = {isa = PBXFileReference; name = "DMSans_36pt-Bold.ttf"; path = "../assets/fonts/DMSans_36pt-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E152819708BC4B758BACD27A /* DMSans_36pt-ExtraBold.ttf */ = {isa = PBXFileReference; name = "DMSans_36pt-ExtraBold.ttf"; path = "../assets/fonts/DMSans_36pt-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,17 +173,14 @@
 		EAAD3D0B05D34AA88D993CF5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C01EB76C0C2444C79D940424 /* DMSans-Italic-VariableFont_opsz,wght.ttf */,
 				3072E8EB98314E06AC151CD5 /* DMSans-VariableFont_opsz,wght.ttf */,
-				4F67B3AD637A48CBA008B562 /* DMSans_18pt-Bold.ttf */,
-				6EE367261D3944E393FABFFC /* DMSans_18pt-ExtraBold.ttf */,
-				184C4E278B0D483BB9F2C024 /* DMSans_24pt-ExtraLight.ttf */,
-				A10034E83CC84130AD3AEACE /* DMSans_24pt-Light.ttf */,
-				20621DE31A8C4FDAA8E26CB4 /* DMSans_24pt-Medium.ttf */,
-				0EEA52DBD93845849FA06433 /* DMSans_24pt-Regular.ttf */,
-				1786842DF01942D0B70A7E6B /* DMSans_24pt-SemiBold.ttf */,
 				9901A6107EFB4768802192A9 /* DMSans_36pt-Bold.ttf */,
 				E152819708BC4B758BACD27A /* DMSans_36pt-ExtraBold.ttf */,
+				CE94E117DF1A43D7A5CF4CAC /* DMSans_36pt-ExtraLight.ttf */,
+				867D2C93408D40EEBDE0019C /* DMSans_36pt-Light.ttf */,
+				E712FBB0C66A46DE95B5F199 /* DMSans_36pt-Medium.ttf */,
+				98D19537E9554DCF9E4212AA /* DMSans_36pt-Regular.ttf */,
+				951DDA60A8404BB0AF7F1AD2 /* DMSans_36pt-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -290,17 +281,14 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				0A19E5118F56411690580943 /* DMSans-Italic-VariableFont_opsz,wght.ttf in Resources */,
 				CA236C23671748048D6E4EF8 /* DMSans-VariableFont_opsz,wght.ttf in Resources */,
-				D1E0C8B16EEA4CFD86FA9F4F /* DMSans_18pt-Bold.ttf in Resources */,
-				968A983DCD744DFEAAED1AC1 /* DMSans_18pt-ExtraBold.ttf in Resources */,
-				17D9D7BB29B548878DD559D5 /* DMSans_24pt-ExtraLight.ttf in Resources */,
-				4169827457F240E2926389A9 /* DMSans_24pt-Light.ttf in Resources */,
-				CCB13573A072452C9ED2711B /* DMSans_24pt-Medium.ttf in Resources */,
-				5287D401A8704D398C926303 /* DMSans_24pt-Regular.ttf in Resources */,
-				2E0BD63C46544574B0E9E6F2 /* DMSans_24pt-SemiBold.ttf in Resources */,
 				1E29FC587A584F1FA3D9B681 /* DMSans_36pt-Bold.ttf in Resources */,
 				95253009A18B4BB9BFEB2952 /* DMSans_36pt-ExtraBold.ttf in Resources */,
+				150C947F76224B7ABB8D39B5 /* DMSans_36pt-ExtraLight.ttf in Resources */,
+				A8AD6458B4544CB0BE900381 /* DMSans_36pt-Light.ttf in Resources */,
+				0C9E621453A748D4BB467924 /* DMSans_36pt-Medium.ttf in Resources */,
+				D36E05E60F9D459B9BDB16C8 /* DMSans_36pt-Regular.ttf in Resources */,
+				FB3FCCF885D04C8698CBD92E /* DMSans_36pt-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
