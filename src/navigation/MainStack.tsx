@@ -17,11 +17,11 @@ const MainStack = () => {
           component={TabNavigator}
           options={{headerShown: false}}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="UserProfile"
           component={UserProfile}
           options={{headerShown: false}}
-        />
+        /> */}
         <Stack.Screen
           name="HomeStack"
           component={HomeStack}
