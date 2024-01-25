@@ -7,7 +7,6 @@ import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import SurahHeader from './SurahHeader';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {Ayat} from '../../../types/types';
-import AppBottomSheet from '../../../components/molecules/app-bottom-sheet/AppBottomSheet';
 import AudioPlayer from '../../../components/molecules/audio-player/AudioPlayer';
 import TrackPlayer, {
   Capability,
@@ -197,7 +196,7 @@ const SurahDetailsScreen = ({route}) => {
           />
         </View>
       </BottomSheetOverlapView>
-      {isShowModal && (
+      {/* {isShowModal && (
         <AppBottomSheet
           enableHandlePanningGesture={false}
           snapPoint={PlayersnapPoint}
@@ -214,7 +213,7 @@ const SurahDetailsScreen = ({route}) => {
             />
           }
         />
-      )}
+      )} */}
     </AppContainer>
   );
 };
