@@ -18,11 +18,6 @@ const MainStack = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="UserProfile"
-          component={UserProfile}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
           name="HomeStack"
           component={HomeStack}
           options={{headerShown: false}}

@@ -2,14 +2,14 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 
-const AddTodo = () => {
+const AddTodoScreen = () => {
   return (
     <AppContainer style={{backgroundColor: 'red', flex: 1}}>
-      <Text>AddTodo</Text>
+      <Text>AddTodoScreen</Text>
     </AppContainer>
   );
 };
 
-export default AddTodo;
+export default AddTodoScreen;
 
 const styles = StyleSheet.create({});
