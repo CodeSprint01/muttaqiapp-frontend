@@ -32,13 +32,13 @@ export const COLORS = {
 
 export const fonts = {
   dmSans: {
-    200: 'DMSans_36pt-Light',
-    300: 'DMSans_36pt-ExtraLight',
-    400: 'DMSans_36pt-Regular',
-    500: 'DMSans_36pt-Medium',
-    600: 'DMSans_36pt-SemiBold',
-    700: 'DMSans_36pt-Bold',
-    800: 'DMSans_36pt-ExtraBold',
+    200: 'DMSans-Light',
+    300: 'DMSans-ExtraLight',
+    400: 'DMSans-Regular',
+    500: 'DMSans-Medium',
+    600: 'DMSans-SemiBold',
+    700: 'DMSans-Bold',
+    800: 'DMSans-ExtraBold',
   },
 };
 
