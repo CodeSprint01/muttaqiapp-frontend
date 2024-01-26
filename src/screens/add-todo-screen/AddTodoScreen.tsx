@@ -21,7 +21,6 @@ const AddTodoScreen = () => {
     maghrib: false,
     isha: false,
   });
-  console.log(prayerData);
 
   const handleCheckBox = (index: number) => {
     setPrayerData(prevState => {

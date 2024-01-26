@@ -16,8 +16,6 @@ const PrayerProgress: FC<PrayerProps> = ({
   prayerTime,
   prayerData,
 }) => {
-  // console.log(prayerData);
-
   return (
     <View style={styles.container}>
       <AppText text={'Prayer progress'} style={styles.prayerProg} />
@@ -88,7 +86,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#CCFFCC',
     borderRadius: 18,
     justifyContent: 'center',
-    // paddingLeft: 6,
   },
   notPrayerBox: {
     width: 36,
@@ -99,7 +96,7 @@ const styles = StyleSheet.create({
     paddingLeft: -6,
   },
   boxCircle: {
-    borderColor: COLORS.black,
+    borderColor: COLORS.white,
     marginLeft: 6,
   },
 });
