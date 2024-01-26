@@ -15,6 +15,7 @@ import TrackPlayer, {
   useProgress,
 } from 'react-native-track-player';
 import BottomSheetOverlapView from '../../../components/molecules/bottom-sheet-overlap/BottomSheetOverlapView';
+import AppBottomSheet from '../../../components/molecules/app-bottom-sheet/AppBottomSheet';
 
 const SurahDetailsScreen = ({route}) => {
   const surahData = route?.params?.data;
@@ -54,15 +55,6 @@ const SurahDetailsScreen = ({route}) => {
       console.log('player setup error ', error);
     }
   };
-  // console.log(playerData);
-  // console.log(playbackState, 'this is player state');
-  // setPlayerData(prevState => ({
-  //   ...prevState,
-  //   playerPlaybackState: playbackState,
-  // }));
-  // if (playerData.playerPlaybackState === 'playing') {
-  //   setIsShowModal(true);
-  // }
 
   const handlePlayerClick = async (item: Ayat, index: number) => {
     if (playerData.audioIndex === index) {
@@ -128,7 +120,6 @@ const SurahDetailsScreen = ({route}) => {
         (playbackState as State) === State.Buffering ||
         (playbackState as State) === State.Playing
       ) {
-        // Wait for buffering to complete
         await new Promise(resolve => setTimeout(resolve, 200));
       }
       const position = progress.position;
@@ -144,8 +135,8 @@ const SurahDetailsScreen = ({route}) => {
     setIsShowBoottomSheet(!isShowBoottomSheet);
     setAyatDetails(item);
   };
-  const DetailsnapPoint = useMemo(() => ['95%', '50%', '75%', '25%'], []);
-  const PlayersnapPoint = useMemo(() => ['15%', '15.1%'], []);
+  const DetailsnapPoint = useMemo(() => ['95%', '96%', '77%'], []);
+  const PlayersnapPoint = useMemo(() => ['16%', '16.01%'], []);
 
   const renderItem = ({item, index}: {item: Ayat; index: number}) => {
     return (
@@ -181,7 +172,6 @@ const SurahDetailsScreen = ({route}) => {
           keyExtractor={(item, index) => index.toString()}
         />
       </View>
-
       <BottomSheetOverlapView
         showBottomSheet={isShowBoottomSheet}
         // setShowBottomSheet={() => setIsShowBoottomSheet(false)}
@@ -196,24 +186,24 @@ const SurahDetailsScreen = ({route}) => {
           />
         </View>
       </BottomSheetOverlapView>
-      {/* {isShowModal && (
-        <AppBottomSheet
-          enableHandlePanningGesture={false}
-          snapPoint={PlayersnapPoint}
-          children={
-            <AudioPlayer
-              surahName={playerData?.surahName}
-              verse={`Verse no. ${playerData?.verse}`}
-              playPauseOnPress={playPauseAudio}
-              playerIcon={playerData.isPlay ? Icons.Pause : Icons.Play}
-              handleSeekTo={seekForward}
-              progressDuration={progress.duration}
-              progressPosition={progress.position}
-              crossOnPress={handleCrossPlayer}
-            />
-          }
-        />
-      )} */}
+      <View>
+        <BottomSheetOverlapView
+          showBottomSheet={isShowModal}
+          setShowBottomSheet={handleCrossPlayer}
+          snapPoints={PlayersnapPoint}
+          enableHeaderLine={false}>
+          <AudioPlayer
+            surahName={playerData?.surahName}
+            verse={`Verse no. ${playerData?.verse}`}
+            playPauseOnPress={playPauseAudio}
+            playerIcon={playerData.isPlay ? Icons.Pause : Icons.Play}
+            handleSeekTo={seekForward}
+            progressDuration={progress.duration}
+            progressPosition={progress.position}
+            crossOnPress={handleCrossPlayer}
+          />
+        </BottomSheetOverlapView>
+      </View>
     </AppContainer>
   );
 };
