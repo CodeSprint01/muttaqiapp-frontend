@@ -1,7 +1,7 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {FC, useState} from 'react';
+import {Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {FC, useEffect, useState} from 'react';
 import AppText from '../../atoms/app-text/AppText';
-import {COLORS} from '../../../styles/color';
+import {COLORS, fonts} from '../../../styles/color';
 import {AppIconSvg, Icons} from '../../atoms/app-icon-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import Slider from '@react-native-community/slider';
@@ -26,6 +26,38 @@ const AudioPlayer: FC<PlayerProops> = ({
   progressPosition,
   handleSeekTo,
 }) => {
+  const [currentTime, setCurrentTime] = useState({
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  // convert seconds to  hours min sec
+  function secondsToHMS(seconds: number) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+    return {
+      hours,
+      minutes,
+      seconds: remainingSeconds,
+    };
+  }
+  var totalDuration = secondsToHMS(progressDuration);
+  console.log(totalDuration.hours, 'total du');
+
+  useEffect(() => {
+    const timeObject = secondsToHMS(progressPosition);
+    setCurrentTime(preValue => ({
+      ...preValue,
+      hours: timeObject?.hours,
+      minutes: timeObject?.minutes,
+      seconds: timeObject?.seconds,
+    }));
+    console.log(timeObject, 'jj');
+  }, [progressPosition]);
+  console.log(currentTime, 'jj');
+
   return (
     <LinearGradient colors={['#1290A1', '#1DA28F']} style={styles.container}>
       <View style={styles.buttonCont}>
@@ -42,15 +74,29 @@ const AudioPlayer: FC<PlayerProops> = ({
           <Slider
             style={{
               width: '100%',
-              height: 40,
+              height: 30,
             }}
             minimumValue={0}
             maximumValue={progressDuration}
-            minimumTrackTintColor="red"
-            maximumTrackTintColor="blue"
+            minimumTrackTintColor="white"
+            maximumTrackTintColor={COLORS.light_gray}
             value={progressPosition}
-            thumbTintColor="orange"
+            thumbTintColor="white"
             onValueChange={handleSeekTo}
+          />
+        </View>
+        <View style={styles.sliderTime}>
+          <AppText
+            style={styles.audioTime}
+            text={`${currentTime?.hours}:${
+              currentTime?.minutes
+            }:${currentTime?.seconds.toFixed(0)}`}
+          />
+          <AppText
+            style={styles.audioTime}
+            text={`${totalDuration.hours}:${
+              totalDuration.minutes
+            }:${totalDuration.seconds.toFixed(0)}`}
           />
         </View>
       </View>
@@ -67,9 +113,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.green,
     flexDirection: 'row',
-    width: '92%',
+    width: '100%',
     alignSelf: 'center',
     borderRadius: 22,
+    marginTop: 0,
   },
   buttonCont: {
     width: '22%',
@@ -85,29 +132,34 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   surahName: {
-    fontSize: 17,
-    fontWeight: '500',
-    color: COLORS.pale_mint,
-    paddingTop: 7,
-  },
-  detailsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-  },
-  verse: {
-    paddingTop: 10,
     fontSize: 14,
-    fontWeight: '500',
+    fontFamily: fonts.dmSans[400],
     color: COLORS.pale_mint,
-    paddingLeft: 5,
+    paddingTop: 14,
+  },
+  detailsContainer: {},
+  verse: {
+    fontSize: 12,
+    fontFamily: fonts.dmSans[400],
+    color: COLORS.pale_mint,
   },
   sliderContainer: {
-    // flexDirection: 'column',
-    // backgroundColor: 'pink',
+    marginLeft: Platform.OS === 'android' ? -15 : -3,
   },
   cross: {
     position: 'absolute',
     right: 5,
-    top: 20,
+    top: 30,
+  },
+  sliderTime: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginRight: Platform.OS === 'android' ? 13 : 0,
+  },
+  audioTime: {
+    fontSize: 10,
+    color: COLORS.white,
+    fontFamily: fonts.dmSans[400],
+    paddingBottom: 10,
   },
 });
