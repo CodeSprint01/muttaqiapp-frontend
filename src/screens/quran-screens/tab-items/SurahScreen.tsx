@@ -17,9 +17,9 @@ const SurahScreen = () => {
             <>
               <SurahListCard
                 surahName={item?.name}
-                surahType={item?.category}
+                surahType={item?.type}
                 indx={index + 1}
-                length={item?.ayats?.length}
+                length={item?.ayahs?.length}
                 onPress={() =>
                   navigation.navigate('HomeStack', {
                     screen: screens.SURAH_DETAILS_SCREEN,
