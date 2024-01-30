@@ -53,7 +53,7 @@ const WeeklyStateSlider: FC<StatsProps> = ({handleEyeClick, graphData}) => {
             color2={COLORS.turquoise_blue}
             color3={COLORS.royal_blue}
             color4={COLORS.golden_rod}
-            strokeDashArray3={[5, 5]}
+            strokeDashArray4={[5, 5]}
             height={110}
             stepValue={20}
             backgroundColor={COLORS.light_Powder_Blue}
