@@ -1,8 +1,8 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import AddTodo from '../screens/add-todo-screen/AddTodo';
+import AddTodo from '../screens/add-todo-screen/AddTodoScreen';
 
-const HomeStack = () => {
+const AddTodoStack = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
@@ -11,4 +11,4 @@ const HomeStack = () => {
   );
 };
 
-export default HomeStack;
+export default AddTodoStack;

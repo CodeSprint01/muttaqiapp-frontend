@@ -20,6 +20,7 @@ interface Props {
   onToggle: () => void;
   style?: CustomCheckboxStyle;
   containerStyle?: StyleProp<ViewStyle>;
+  checkBoxStyle?: StyleProp<ViewStyle>;
 }
 
 const AppCheckBox = ({
@@ -28,19 +29,20 @@ const AppCheckBox = ({
   onToggle,
   style,
   containerStyle,
+  checkBoxStyle,
 }: Props) => {
   return (
     <View style={[styles.checkboxContainer, containerStyle]}>
       <TouchableOpacity
         onPress={onToggle}
         activeOpacity={0.7}
-        style={styles.checkboxUnchecked}>
+        style={[styles.checkboxUnchecked, checkBoxStyle]}>
         {isChecked && (
           <AppIconSvg
             icon={Icons.CheckBoxTickIcon}
             width={15}
             height={15}
-            color={COLORS.green}
+            color={COLORS.white}
           />
         )}
       </TouchableOpacity>

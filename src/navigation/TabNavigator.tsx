@@ -7,12 +7,12 @@ import SettingStack from './SettingStack';
 import {COLORS} from '../styles/color';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import BottomTabbarTabs from '../components/atoms/bottomTabBar-tabs/BottomTabbarTabs';
-import AddTodo from '../screens/add-todo-screen/AddTodo';
 import {AppIconSvg, Icons} from '../components/atoms/app-icon-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import HomeScreen from '../screens/home-screen/HomeScreen';
 import {screens} from '../types/types';
 import AppContainer from '../components/atoms/app-container/AppContainer';
+import AddTodoStack from './AddTodoStack';
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -81,7 +81,7 @@ const TabNavigator = () => {
         />
         <Tab.Screen
           name={screens.TAB_TO_DO}
-          component={AddTodo}
+          component={AddTodoStack}
           options={{
             tabBarIcon: ({focused}) => (
               <AppIconSvg

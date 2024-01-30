@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: COLORS.lightGray,
+    borderColor: COLORS.light_black_gray,
   },
   partTxt: {
     color: COLORS.green,
@@ -117,10 +117,10 @@ const styles = StyleSheet.create({
   surahTxt: {
     fontSize: 14,
     fontWeight: '400',
-    color: COLORS.lightGray,
+    color: COLORS.light_black_gray,
   },
   verticalLine: {
-    backgroundColor: COLORS.lightGray,
+    backgroundColor: COLORS.light_black_gray,
     marginHorizontal: 8,
     height: 15,
     width: 1.5,

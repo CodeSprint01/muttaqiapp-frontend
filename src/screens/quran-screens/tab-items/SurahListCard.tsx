@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   verticalLine: {
     width: 1,
     height: 40,
-    backgroundColor: COLORS.lightGray,
+    backgroundColor: COLORS.light_black_gray,
     marginHorizontal: 29,
     marginTop: 7,
   },
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   surahTypes: {
     fontSize: 16,
     fontWeight: '500',
-    color: COLORS.lightGray,
+    color: COLORS.light_black_gray,
     paddingTop: 5,
   },
   verses: {
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   largeVerticallie: {
     width: '100%',
     height: 1,
-    backgroundColor: COLORS.lightGray,
+    backgroundColor: COLORS.light_black_gray,
     marginVertical: 16,
   },
 });
