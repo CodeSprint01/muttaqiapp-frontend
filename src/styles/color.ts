@@ -26,6 +26,10 @@ export const COLORS = {
   light_Steel_Blue: '#D2E0E0',
   light_Powder_Blue: '#EEFAFC',
   pumpkin_orange: '#E86B0F',
+  turquoise_blue: '#00DCFC',
+  royal_blue: '#5882DC',
+  golden_rod: '#E5BD2B',
+  light_greenish_blue: ' #AEF0DB',
 } as const;
 
 // font family is here

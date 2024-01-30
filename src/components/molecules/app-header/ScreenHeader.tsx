@@ -1,4 +1,11 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ViewProps,
+} from 'react-native';
 import React, {FC} from 'react';
 import {AppIconSvg, Icons} from '../../atoms/app-icon-svg';
 import {COLORS} from '../../../styles/color';
@@ -7,12 +14,13 @@ import {useNavigation} from '@react-navigation/native';
 interface HeaderProps {
   headerText?: string;
   rightIcon?: any;
+  extraStyle?: StyleProp<ViewProps> | any;
 }
 
-const ScreenHeader: FC<HeaderProps> = ({headerText, rightIcon}) => {
+const ScreenHeader: FC<HeaderProps> = ({headerText, rightIcon, extraStyle}) => {
   const navigation = useNavigation();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, extraStyle]}>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
           style={styles.backIcon}
@@ -47,7 +55,7 @@ export default ScreenHeader;
 const styles = StyleSheet.create({
   container: {
     // backgroundColor: 'pink',
-    paddingVertical: 15,
+    // paddingVertical: 15,
   },
   txt: {
     color: COLORS.very_dark_gray,

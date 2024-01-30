@@ -37,7 +37,6 @@ export const Icons = {
   ArrowLeft: 'ARROW_LEFT',
   Search: 'SEARCH',
   Cross: 'CROSS',
-
   EmptyCircle: 'EMPTY_CIRCLE',
   TickCircle: 'TICK_CIRCLE',
   Alarm: 'ALARM',
@@ -47,17 +46,14 @@ export const Icons = {
   ArrowUp: 'ARROW_UP',
   ArrowDown: 'ARROW_DOWN',
   ArrowRight: 'ARROW_RIGHT',
-
   EmptyBookmark: 'EMPTY_BOOKMARK',
   EmptyHeart: 'EMPTY_HEART',
   BookSquare: 'BOOK_SQUARE',
   Pause: 'PAUSE',
   Play: 'PLAY',
-
   OneOverFour: 'ONE_OVER_FOUR',
   OneOverTwo: 'ONE_OVER_TWO',
   OneOverThree: 'ONE_OVER_THREE',
-
   Quran: 'QURAN',
   Azkar: 'AZKAR',
   Duas: 'DUAS',
@@ -65,10 +61,11 @@ export const Icons = {
   Tasbih: 'TASBIH',
   Hadith: 'HADITH',
   Knowledge: 'KNOWLEDGE',
-
   Update: 'UPDATE',
   Delete: 'DELETE',
   Refresh: 'REFRESH',
+  Eye: 'EYE',
+  EyeSlash: 'EYE_SLASH',
 };
 
 export const Colors = {
@@ -140,6 +137,8 @@ export const Colors = {
   [Icons.Delete]: {color: COLORS.light_gray},
   [Icons.Update]: {color: COLORS.light_gray},
   [Icons.Refresh]: {color: COLORS.light_gray},
+  [Icons.Eye]: {color: COLORS.light_gray},
+  [Icons.EyeSlash]: {color: COLORS.light_gray},
 };
 
 const SvgIcons = {};
@@ -266,7 +265,9 @@ SvgIcons[Icons.Update] =
   require('../../../assets/images/planner-tracker/updateTodo').default;
 SvgIcons[Icons.Refresh] =
   require('../../../assets/images/planner-tracker/refresh').default;
-
+SvgIcons[Icons.Eye] = require('../../../assets/images/tracker/eye').default;
+SvgIcons[Icons.EyeSlash] =
+  require('../../../assets/images/tracker/eyeSlash').default;
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];
   if (typeof SvgIcon === 'function' && color) {

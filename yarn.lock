@@ -3862,6 +3862,11 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
+gifted-charts-core@^0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/gifted-charts-core/-/gifted-charts-core-0.0.13.tgz#8a536c98592ea6296498a2841c14b01d16c7b051"
+  integrity sha512-UrFWHwXlwSySygYwnRR1m2dmweVYHnR+8QRVwDtfKJSNeo9dTGpt/tY/IKJw9zRD8c1alVjovdgv4zgauBvlSQ==
+
 glob-parent@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
@@ -6045,6 +6050,13 @@ react-native-get-location@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-native-get-location/-/react-native-get-location-4.0.0.tgz#ba56a1e83d1718fcaa8a35160de044a544400019"
   integrity sha512-Fco8h+uF6ZhBFw2JrwnWJV+yh05wJNJjsjdomG62sk4HrjWbpoYkFJt6W2wuazreMaft/ynTLxKHDWLc4XPx6g==
+
+react-native-gifted-charts@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/react-native-gifted-charts/-/react-native-gifted-charts-1.4.3.tgz#61132a55f96315410ba2cc4a397cb0dd25fbcb7c"
+  integrity sha512-n5d5ZrmHz4qrxJxwPkImfj0ZFBRJyoxC2u1PeBCTAbHACKBP/+yyoRYJxBCkc2hVudZGrvZztixKTlC4u1sLJg==
+  dependencies:
+    gifted-charts-core "^0.0.13"
 
 react-native-linear-gradient@^2.8.3:
   version "2.8.3"
