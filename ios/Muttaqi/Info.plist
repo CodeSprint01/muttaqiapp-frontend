@@ -53,13 +53,14 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>DMSans_36pt-Bold.ttf</string>
-		<string>DMSans_36pt-ExtraBold.ttf</string>
-		<string>DMSans_36pt-ExtraLight.ttf</string>
-		<string>DMSans_36pt-Light.ttf</string>
-		<string>DMSans_36pt-Medium.ttf</string>
-		<string>DMSans_36pt-Regular.ttf</string>
-		<string>DMSans_36pt-SemiBold.ttf</string>
+		<string>DMSans-Bold.ttf</string>
+		<string>DMSans-ExtraBold.ttf</string>
+		<string>DMSans-ExtraLight.ttf</string>
+		<string>DMSans-Light.ttf</string>
+		<string>DMSans-Medium.ttf</string>
+		<string>DMSans-Regular.ttf</string>
+		<string>DMSans-SemiBold.ttf</string>
+		<string>DMSans-Thin.ttf</string>
 	</array>
 </dict>
 </plist>

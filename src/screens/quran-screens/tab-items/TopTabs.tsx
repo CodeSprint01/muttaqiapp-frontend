@@ -11,7 +11,7 @@ const TopTabs = () => {
   const Tab = createMaterialTopTabNavigator();
   const design = () => ({
     tabBarActiveTintColor: COLORS.green,
-    tabBarInactiveTintColor: COLORS.lightGray,
+    tabBarInactiveTintColor: COLORS.light_black_gray,
     tabBarPressOpacity: 0.1,
     tabBarIndicatorStyle: {
       backgroundColor: COLORS.green,

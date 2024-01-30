@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   verticalLine: {
     width: '100%',
     height: 1,
-    backgroundColor: COLORS.lightGray,
+    backgroundColor: COLORS.light_black_gray,
     marginTop: 13,
   },
   headerText: {
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     elevation: 15,
     ...Platform.select({
       ios: {
-        shadowColor: 'rgba(111, 140, 176, 0.41)',
+        shadowColor: 'rgba(111, 140, 176)',
         shadowOffset: {width: 30, height: 30},
         shadowOpacity: 1,
         shadowRadius: 40,

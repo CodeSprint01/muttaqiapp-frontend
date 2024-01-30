@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import Swiper from 'react-native-swiper';
 import {Icons} from '../../components/atoms/app-icon-svg';
 import PrayerSwiper from './PrayerSwiper';
-import {COLORS} from '../../styles/color';
+import {COLORS, fonts} from '../../styles/color';
 import TaskSwiper from './TaskSwiper';
 import {exploreArray} from '../../utils/mocks/AllMockArray';
 import ExploreCard from '../../components/atoms/explore-card/ExploreCard';
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inActiveDot: {
-    backgroundColor: COLORS.lightGray,
+    backgroundColor: COLORS.light_black_gray,
     width: 8,
     height: 8,
     borderRadius: 4,
@@ -197,10 +197,10 @@ const styles = StyleSheet.create({
   },
   prayerTimes: {
     fontSize: 24,
-    fontWeight: '500',
     color: COLORS.very_dark_gray,
     marginLeft: 24,
     paddingBottom: 16,
+    fontFamily: fonts.dmSans[400],
   },
   gradient: {
     position: 'absolute',
