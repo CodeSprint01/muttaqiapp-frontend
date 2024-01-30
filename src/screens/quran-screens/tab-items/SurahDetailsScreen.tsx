@@ -1,12 +1,12 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useMemo, useState} from 'react';
-import {Icons} from '../../../components/atoms/app-icon-svg';
-import {COLORS} from '../../../styles/color';
+import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
+import {COLORS, fonts} from '../../../styles/color';
 import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import SurahHeader from './SurahHeader';
 import AppText from '../../../components/atoms/app-text/AppText';
-import {Ayat} from '../../../types/types';
+import {Ayah, Ayat} from '../../../types/types';
 import AudioPlayer from '../../../components/molecules/audio-player/AudioPlayer';
 import TrackPlayer, {
   Capability,
@@ -15,29 +15,34 @@ import TrackPlayer, {
   useProgress,
 } from 'react-native-track-player';
 import BottomSheetOverlapView from '../../../components/molecules/bottom-sheet-overlap/BottomSheetOverlapView';
-import AppBottomSheet from '../../../components/molecules/app-bottom-sheet/AppBottomSheet';
 
 const SurahDetailsScreen = ({route}) => {
   const surahData = route?.params?.data;
-  const [ayatDetails, setAyatDetails] = useState<null | Ayat[]>([]);
+  const [ayatDetails, setAyatDetails] = useState<null | Ayah[]>([]);
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
+  const [hideTranslation, setHideTranslation] = useState<boolean>(false);
   const [isShowBoottomSheet, setIsShowBoottomSheet] = useState<boolean>(false);
 
-  const [playerData, setPlayerData] = useState({
+  const [playerData, setPlayerData] = useState<any>({
     audioIndex: null,
     isPlay: false,
     surahName: '',
     verse: 0,
     playerPlaybackState: '',
   });
+
+  const handleHideTranslation = () => {
+    setHideTranslation(!hideTranslation);
+  };
   // here is player code
   const playbackState = usePlaybackState();
   var progress = useProgress();
 
+  console.log(surahData, 'surahData');
+
   useEffect(() => {
     setupPlayer();
   }, []);
-  console.log(isShowBoottomSheet);
 
   const setupPlayer = async () => {
     try {
@@ -57,46 +62,40 @@ const SurahDetailsScreen = ({route}) => {
   };
 
   const handlePlayerClick = async (item: Ayat, index: number) => {
-    if (playerData.audioIndex === index) {
-      if (playerData.isPlay === true) {
-        await TrackPlayer.pause();
-        setPlayerData(prevState => ({...prevState, isPlay: false}));
-      } else {
-        await TrackPlayer.play();
-        setPlayerData(prevState => ({...prevState, isPlay: true}));
-      }
-      console.log('this is if part of handlePlayerClick');
-    } else {
-      console.log('this is else part of handlePlayerClick');
-      setPlayerData(preState => ({
-        ...preState,
-        audioIndex: index,
-        surahName: item?.surahName,
-        verse: item?.verseNo,
-        isPlay: true,
-      }));
-      setIsShowModal(true);
-      const playerState = await TrackPlayer.getPlaybackState();
-      console.log(playerState, 'player state is here');
-
-      console.log('play pause click', item.audio);
-      console.log(playbackState, 'playback state');
-      await TrackPlayer.reset();
-      try {
-        await TrackPlayer.add({
-          title: item?.surahName,
-          artist: `verse No. ${item?.verseNo}`,
-          id: 'track1',
-          url: item?.audio,
-        });
-      } catch (error) {
-        console.error('Error setting up TrackPlayer:', error);
-      }
-      await TrackPlayer.play();
-    }
+    console.log('play and pause');
+    // we take audio from api so i test code it working well i comment below code for future use
+    // if (playerData.audioIndex === index) {
+    //   if (playerData.isPlay === true) {
+    //     await TrackPlayer.pause();
+    //     setPlayerData(prevState => ({...prevState, isPlay: false}));
+    //   } else {
+    //     await TrackPlayer.play();
+    //     setPlayerData(prevState => ({...prevState, isPlay: true}));
+    //   }
+    // } else {
+    //   setPlayerData(preState => ({
+    //     ...preState,
+    //     audioIndex: index,
+    //     surahName: item?.surahName,
+    //     verse: item?.verseNo,
+    //     isPlay: true,
+    //   }));
+    //   setIsShowModal(true);
+    //   await TrackPlayer.reset();
+    //   try {
+    //     await TrackPlayer.add({
+    //       title: item?.surahName,
+    //       artist: `verse No. ${item?.verseNo}`,
+    //       id: 'track1',
+    //       url: item?.audio,
+    //     });
+    //   } catch (error) {
+    //     console.error('Error setting up TrackPlayer:', error);
+    //   }
+    //   await TrackPlayer.play();
+    // }
   };
   const playPauseAudio = async () => {
-    console.log('pause');
     try {
       if (playerData.isPlay === true) {
         await TrackPlayer.pause();
@@ -130,7 +129,6 @@ const SurahDetailsScreen = ({route}) => {
   };
 
   // here end player code
-
   const handleShowBottoomsheet = (item: any) => {
     setIsShowBoottomSheet(!isShowBoottomSheet);
     setAyatDetails(item);
@@ -138,13 +136,13 @@ const SurahDetailsScreen = ({route}) => {
   const DetailsnapPoint = useMemo(() => ['95%', '96%', '77%'], []);
   const PlayersnapPoint = useMemo(() => ['16%', '16.01%'], []);
 
-  const renderItem = ({item, index}: {item: Ayat; index: number}) => {
+  const renderItem = ({item, index}: {item: Ayah; index: number}) => {
     return (
-      <View style={[styles.listView, {marginTop: index === 0 ? 27 : 0}]}>
+      <View style={[styles.listView, {marginTop: index === 0 ? 23 : 0}]}>
         <SurahHeader
           ayatNumber={index + 1}
-          bookmark={item?.isBookmark ? Icons.Alarm : Icons.EmptyBookmark}
-          favourite={item?.isFavourite ? Icons.Adhan : Icons.EmptyHeart}
+          bookmark={Icons.EmptyBookmark}
+          favourite={Icons.EmptyHeart}
           playPause={
             playerData?.audioIndex === index && playerData.isPlay
               ? Icons.Pause
@@ -153,8 +151,8 @@ const SurahDetailsScreen = ({route}) => {
           onPressBooksquare={() => handleShowBottoomsheet(item)}
           onPressPlayPause={() => handlePlayerClick(item, index)}
         />
-        <AppText text={item?.arabic} style={styles.arabicTxt} />
-        <AppText text={item?.translation} style={styles.translation} />
+        <AppText text={item?.text} style={styles.arabicTxt} />
+        <AppText text={item?.enText} style={styles.translation} />
       </View>
     );
   };
@@ -165,23 +163,54 @@ const SurahDetailsScreen = ({route}) => {
         <ScreenHeader headerText="Al-Baqarah" rightIcon={Icons.Search} />
       </View>
       <View style={styles.container}>
-        <FlatList
-          data={surahData?.ayats}
-          showsVerticalScrollIndicator={false}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => index.toString()}
-        />
+        <View style={styles.hideShowTrans}>
+          <TouchableOpacity activeOpacity={0.5} onPress={handleHideTranslation}>
+            <AppText
+              text={hideTranslation ? 'Show translation' : 'Hide translation'}
+              style={styles.hideShowTxt}
+            />
+          </TouchableOpacity>
+          <View style={styles.eyeIcon}>
+            <AppIconSvg
+              icon={hideTranslation ? Icons.EyeSlash : Icons.Eye}
+              width={24}
+              height={24}
+              color="black"
+            />
+          </View>
+        </View>
+        {hideTranslation ? (
+          <View style={{marginTop: 10}}>
+            <SurahHeader
+              bookmark={Icons.EmptyBookmark}
+              favourite={Icons.EmptyHeart}
+              playPause={Icons.Play}
+              onPressBooksquare={() => console.log('onPressBooksquare')}
+              onPressPlayPause={() => console.log('onPressPlayPause')}
+            />
+            <AppText
+              text={surahData?.ayahs?.map(ayah => ayah.text).join(' ۝ ')}
+              style={{fontSize: 24, textAlign: 'right', marginTop: 10}}
+            />
+          </View>
+        ) : (
+          <FlatList
+            data={surahData?.ayahs}
+            showsVerticalScrollIndicator={false}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        )}
       </View>
       <BottomSheetOverlapView
         showBottomSheet={isShowBoottomSheet}
-        // setShowBottomSheet={() => setIsShowBoottomSheet(false)}
         setShowBottomSheet={isShowBoottomSheet ? handleShowBottoomsheet : null}
         snapPoints={DetailsnapPoint}
         enableHeaderLine>
         <View style={styles.bottomContainer}>
-          <AppText text={ayatDetails?.arabic} style={styles.arabicTxt} />
+          <AppText text={ayatDetails?.text} style={styles.arabicTxt} />
           <AppText
-            text={ayatDetails?.details}
+            text={ayatDetails?.enText}
             style={[styles.translation, {paddingTop: 36}]}
           />
         </View>
@@ -214,6 +243,23 @@ const styles = StyleSheet.create({
   },
   listView: {
     marginBottom: 16,
+  },
+  hideShowTrans: {
+    // backgroundColor: 'pink',
+    flexDirection: 'row',
+    marginTop: 20,
+  },
+  hideShowTxt: {
+    fontSize: 20,
+    fontFamily: fonts.dmSans[500],
+    color: COLORS.green,
+    textDecorationLine: 'underline',
+    fontStyle: 'normal',
+    paddingRight: 18,
+    justifyContent: 'center',
+  },
+  eyeIcon: {
+    paddingTop: 3,
   },
   arabicTxt: {
     fontSize: 24,

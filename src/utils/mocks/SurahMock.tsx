@@ -12,7 +12,7 @@ export const AllSurah: Surah[] = [
       {
         number: 1,
         numberInSurah: 1,
-        text: 'بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ\n',
+        text: 'بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ',
         enText:
           'In the name of God, The Most Gracious, The Dispenser of Grace:',
         manzil: 1,
@@ -22,7 +22,7 @@ export const AllSurah: Surah[] = [
       {
         number: 2,
         numberInSurah: 2,
-        text: 'ٱلۡحَمۡدُ لِلَّهِ رَبِّ ٱلۡعَـٰلَمِینَ\n',
+        text: 'ٱلۡحَمۡدُ لِلَّهِ رَبِّ ٱلۡعَـٰلَمِینَ',
         enText:
           'All praise is due to God alone, the Sustainer of all the worlds,',
         manzil: 1,
@@ -32,7 +32,7 @@ export const AllSurah: Surah[] = [
       {
         number: 3,
         numberInSurah: 3,
-        text: 'ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ\n',
+        text: 'ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ',
         enText: 'The Most Gracious, the Dispenser of Grace,',
         manzil: 1,
         ruku: 1,
@@ -41,7 +41,7 @@ export const AllSurah: Surah[] = [
       {
         number: 4,
         numberInSurah: 4,
-        text: 'مَـٰلِكِ یَوۡمِ ٱلدِّینِ\n',
+        text: 'مَـٰلِكِ یَوۡمِ ٱلدِّینِ',
         enText: 'Lord of the Day of Judgment!',
         manzil: 1,
         ruku: 1,
@@ -50,7 +50,7 @@ export const AllSurah: Surah[] = [
       {
         number: 5,
         numberInSurah: 5,
-        text: 'إِیَّاكَ نَعۡبُدُ وَإِیَّاكَ نَسۡتَعِینُ\n',
+        text: 'إِیَّاكَ نَعۡبُدُ وَإِیَّاكَ نَسۡتَعِینُ',
         enText:
           'Thee alone do we worship; and unto Thee alone do we turn for aid.',
         manzil: 1,
@@ -60,7 +60,7 @@ export const AllSurah: Surah[] = [
       {
         number: 6,
         numberInSurah: 6,
-        text: 'ٱهۡدِنَا ٱلصِّرَ ٰطَ ٱلۡمُسۡتَقِیمَ\n',
+        text: 'ٱهۡدِنَا ٱلصِّرَ ٰطَ ٱلۡمُسۡتَقِیمَ',
         enText: 'Guide us the straight way.',
         manzil: 1,
         ruku: 1,
@@ -69,7 +69,7 @@ export const AllSurah: Surah[] = [
       {
         number: 7,
         numberInSurah: 7,
-        text: 'صِرَ ٰطَ ٱلَّذِینَ أَنۡعَمۡتَ عَلَیۡهِمۡ غَیۡرِ ٱلۡمَغۡضُوبِ عَلَیۡهِمۡ وَلَا ٱلضَّاۤلِّینَ\n',
+        text: 'صِرَ ٰطَ ٱلَّذِینَ أَنۡعَمۡتَ عَلَیۡهِمۡ غَیۡرِ ٱلۡمَغۡضُوبِ عَلَیۡهِمۡ وَلَا ٱلضَّاۤلِّینَ',
         enText:
           'The way of those upon whom Thou hast bestowed Thy blessings, not of those who have been condemned [by Thee], nor of those who go astray!',
         manzil: 1,
