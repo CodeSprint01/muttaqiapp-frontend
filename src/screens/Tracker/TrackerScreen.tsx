@@ -7,6 +7,7 @@ import {
   StatsList,
   StatsListArray,
 } from '../../utils/mocks/tracker/StatsListArray';
+import PrayerBarChart from './prayer-namaz/PrayerBarChart';
 
 const TrackerScreen = () => {
   const [isShowGraph, setIsShowGraph] = useState<StatsList[]>(StatsListArray);
@@ -25,6 +26,7 @@ const TrackerScreen = () => {
           graphData={isShowGraph}
           handleEyeClick={index => handleFilterSliderData(index)}
         />
+        <PrayerBarChart />
       </ScrollView>
     </AppContainer>
   );

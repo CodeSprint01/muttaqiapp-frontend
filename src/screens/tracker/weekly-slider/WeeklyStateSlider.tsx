@@ -64,12 +64,14 @@ const WeeklyStateSlider: FC<StatsProps> = ({handleEyeClick, graphData}) => {
             xAxisIndicesColor={'red'}
             xAxisLabelTexts={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
             dashWidth={0}
+            yAxisTextStyle={styles.yAxis}
             width={200}
             xAxisLength={165}
             thickness={1}
             spacing={22}
             xAxisColor={COLORS.green}
             xAxisThickness={2}
+            yAxisLabelTexts={['0', '20%', '40%', '60%', '80%', '100%']}
           />
         </View>
         <View style={styles.rightSide}>
@@ -136,5 +138,9 @@ const styles = StyleSheet.create({
   listCard: {
     marginTop: 9,
     marginRight: 7,
+  },
+  yAxis: {
+    color: COLORS.dark_gray,
+    fontFamily: fonts.dmSans[400],
   },
 });

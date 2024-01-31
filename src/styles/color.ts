@@ -30,6 +30,8 @@ export const COLORS = {
   royal_blue: '#5882DC',
   golden_rod: '#E5BD2B',
   light_greenish_blue: ' #AEF0DB',
+  powder_blue: '#B4E2DC',
+  blush: '#E97063',
 } as const;
 
 // font family is here
