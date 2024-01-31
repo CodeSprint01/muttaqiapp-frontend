@@ -5,7 +5,7 @@ import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
 import AppText from '../../components/atoms/app-text/AppText';
 
 interface CardProps {
-  surahName: string;
+  surahName: string | undefined;
   paraNo: string;
   onPress: () => void;
 }

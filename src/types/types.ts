@@ -1,3 +1,4 @@
+import {SuplicationData} from './types';
 export interface AppState {
   loading?: boolean;
   userLocation?: location[];
@@ -36,12 +37,22 @@ export interface location {
   longitude: number;
 }
 
+export interface SuplicationData {
+  id: number;
+  name: string;
+  purpose: string;
+  repeat?: number;
+  supplication: string;
+  translation: string | null;
+  virtue: string;
+  references?: string | null;
+}
+
 // inter face for 'azkaar', 'duas', 'hadith',
-export interface ReligiousContent {
+export interface Suplications {
   title: string;
   subTitle: string;
-  content: string[];
-  repeat?: number;
+  data: SuplicationData[];
 }
 
 export interface Ayat {
@@ -57,9 +68,24 @@ export interface Ayat {
 }
 
 export interface Surah {
+  number: number;
   name: string;
-  category: string; // makki or madni
-  ayats: Ayat[]; // arabic of ayats
+  enName: string;
+  type: string;
+  enTranslation: string;
+  numberOfAyahs: number;
+  numberOfRukoos: number;
+  ayahs: Ayah[];
+}
+
+export interface Ayah {
+  number: number;
+  numberInSurah: number;
+  text: string;
+  enText: string;
+  manzil: number;
+  ruku: number;
+  sajda: boolean;
 }
 
 export interface Juz {

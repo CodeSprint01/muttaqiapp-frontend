@@ -10,11 +10,9 @@ import AzkaarCard from '../../components/molecules/azkaarCard/azkaarCard';
 import {ReligiousContent} from '../../types/types';
 import {azkaars} from '../../utils/mocks/AzkaarMockData';
 import {duas} from '../../utils/mocks/DuasMock';
-import hadith from '../../../assets/images/discover-svg/hadith';
 import {hadiths} from '../../utils/mocks/HadithMock';
 import ScreenHeader from '../../components/molecules/app-header/ScreenHeader';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
-import {COLORS} from '../../styles/color';
 import {ScrollView} from 'react-native-gesture-handler';
 
 // interface cardScreenProps {
