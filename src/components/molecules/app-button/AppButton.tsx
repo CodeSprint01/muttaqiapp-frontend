@@ -2,9 +2,6 @@ import React, {FC} from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
-  StyleProp,
-  ViewStyle,
-  TextStyle,
   ImageSourcePropType,
   View,
 } from 'react-native';
@@ -14,13 +11,11 @@ import LinearGradient from 'react-native-linear-gradient';
 
 interface ButtonProps {
   buttonText: string;
-  textStyle?: StyleProp<TextStyle>;
-  withOpacity?: number;
   onPress: () => void;
-  buttonStyle?: ViewStyle;
   ImageName?: ImageSourcePropType;
   imageWidth?: number;
   imageHeight?: number;
+  fill?: boolean;
 }
 type PropsWithImage = ButtonProps &
   (ButtonProps['ImageName'] extends ImageSourcePropType
@@ -31,34 +26,46 @@ type PropsWithImage = ButtonProps &
     : {});
 
 const AppButton: FC<PropsWithImage> = ({
-  withOpacity = 0.5,
   onPress,
   buttonText,
-  textStyle,
-  buttonStyle,
   ImageName,
   imageWidth = 24,
   imageHeight = 24,
+  fill = true,
 }) => {
-  return (
-    <LinearGradient
-      colors={[
-        '#1290A1',
-        'rgba(24, 154, 151, 0.86)',
-        'rgba(29, 162, 143, 0.73)',
-      ]}
-      start={{x: 0, y: 0}}
-      end={{x: 1, y: 1}}
-      style={[styles.button, buttonStyle]}>
-      <TouchableOpacity onPress={onPress} activeOpacity={withOpacity}>
-        <AppText text={buttonText} style={[styles.txt, textStyle]} />
-        {ImageName && (
-          <View style={styles.iconContainer}>
-            <ImageName width={imageWidth} height={imageHeight} />
-          </View>
-        )}
-      </TouchableOpacity>
-    </LinearGradient>
+  return fill ? (
+    <TouchableOpacity onPress={onPress} activeOpacity={0.5}>
+      <LinearGradient
+        colors={[
+          '#1290A1',
+          'rgba(24, 154, 151, 0.86)',
+          'rgba(29, 162, 143, 0.73)',
+        ]}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 1}}
+        style={styles.button}>
+        <View>
+          <AppText text={buttonText} style={styles.txt} />
+          {ImageName && (
+            <View style={styles.iconContainer}>
+              <ImageName width={imageWidth} height={imageHeight} />
+            </View>
+          )}
+        </View>
+      </LinearGradient>
+    </TouchableOpacity>
+  ) : (
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.5}
+      style={styles.fillButton}>
+      <AppText text={buttonText} style={styles.fillTxt} />
+      {ImageName && (
+        <View style={styles.fillIconContainer}>
+          <ImageName width={imageWidth} height={imageHeight} />
+        </View>
+      )}
+    </TouchableOpacity>
   );
 };
 
@@ -78,6 +85,25 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   iconContainer: {
+    position: 'absolute',
+    right: 44,
+    top: 21,
+  },
+  fillButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 16,
+    borderWidth: 1,
+    borderColor: COLORS.green,
+    borderRadius: 13,
+  },
+  fillTxt: {
+    color: COLORS.green,
+    fontSize: 20,
+    fontStyle: 'normal',
+    fontWeight: '700',
+  },
+  fillIconContainer: {
     position: 'absolute',
     right: 44,
     top: 21,

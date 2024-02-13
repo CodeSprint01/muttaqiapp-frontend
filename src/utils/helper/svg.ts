@@ -66,6 +66,7 @@ export const Icons = {
   Refresh: 'REFRESH',
   Eye: 'EYE',
   EyeSlash: 'EYE_SLASH',
+  Finance: 'FINANCES',
 };
 
 export const Colors = {
@@ -139,9 +140,10 @@ export const Colors = {
   [Icons.Refresh]: {color: COLORS.light_gray},
   [Icons.Eye]: {color: COLORS.light_gray},
   [Icons.EyeSlash]: {color: COLORS.light_gray},
+  [Icons.Finance]: {color: COLORS.light_gray},
 };
 
-const SvgIcons = {};
+const SvgIcons: any = {};
 
 SvgIcons[Icons.HomeTabIcon] = require('../../../assets/images/home').default;
 SvgIcons[Icons.QiblaTabIcon] = require('../../../assets/images/qibla').default;
@@ -256,6 +258,7 @@ SvgIcons[Icons.OneOverTwo] =
   require('../../../assets/images/juz-part/oneOverTwo').default;
 SvgIcons[Icons.OneOverThree] =
   require('../../../assets/images/juz-part/oneOverThree').default;
+SvgIcons[Icons.Finance] = require('../../../assets/images/finances').default;
 // Azkaar icons
 SvgIcons[Icons.Night] =
   require('../../../assets/images/azkaar-section/night').default;

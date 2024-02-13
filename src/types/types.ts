@@ -17,6 +17,8 @@ export enum screens {
   APP_STACK = 'app-stack',
   SIGN_UP = 'sign-up',
   SIGN_IN = 'sign-in',
+  WELCOME_USER = 'welcome-user',
+  TAB_NAVIGATOR = 'tab-navigator',
 }
 import {SuplicationData} from './types';
 export interface AppState {

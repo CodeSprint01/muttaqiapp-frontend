@@ -61,7 +61,10 @@ const SignIn = () => {
           </View>
         </View>
         <View style={styles.bottomBtns}>
-          <AppButton buttonText="Login" />
+          <AppButton
+            buttonText="Login"
+            onPress={() => navigation.navigate(screens.WELCOME_USER)}
+          />
           <View style={styles.bottomtxt}>
             <AppText
               text={'Don’t have an account? '}
