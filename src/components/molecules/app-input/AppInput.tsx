@@ -1,157 +1,68 @@
-/* eslint-disable react-native/no-inline-styles */
-import {
-  StyleSheet,
-  TextInput,
-  View,
-  TextStyle,
-  ViewStyle,
-  ImageSourcePropType,
-  Animated,
-  Easing,
-  TextInputProps,
-} from 'react-native';
-import React, {FC, useState, useRef} from 'react';
-import {COLORS} from '../../../styles/color';
+import {StyleSheet, TextInput, View, TextInputProps} from 'react-native';
+import React, {FC} from 'react';
+import {COLORS, fonts} from '../../../styles/color';
 import AppText from '../../atoms/app-text/AppText';
 
-interface MyProps {
+interface InputProps extends TextInputProps {
   inputLabel: string;
-  textStyle?: TextStyle;
-  inputStyle?: ViewStyle;
-  ImageName?: ImageSourcePropType;
-  imageWidth?: number;
-  imageHeight?: number;
+  isRequired?: boolean;
+  placeholder: string;
+  handleInputChange: (val: string) => void;
+  inputValue: string | number;
 }
 
-type PropsWithImage = MyProps &
-  (MyProps['ImageName'] extends ImageSourcePropType
-    ? {
-        imageWidth: number;
-        imageHeight: number;
-      }
-    : {});
-const AppInput: FC<PropsWithImage & TextInputProps> = ({
+const AppInput: FC<InputProps> = ({
   inputLabel,
-  textStyle,
-  inputStyle,
-  ImageName,
-  imageWidth = 24,
-  imageHeight = 24,
-  ...rest
+  isRequired = false,
+  placeholder,
+  handleInputChange,
+  inputValue,
+  ...props
 }) => {
-  const [isFocused, setIsFocused] = useState<boolean>(false);
-  const [inputValue, setInputValue] = useState<string>(rest.value || ''); // Use state to track input value
-  const animatedValue = useRef(new Animated.Value(inputValue ? 1 : 0)).current;
-
-  const handleFocus = () => {
-    Animated.timing(animatedValue, {
-      toValue: 1,
-      duration: 200,
-      easing: Easing.ease,
-      useNativeDriver: false,
-    }).start();
-    setIsFocused(true);
-  };
-
-  const handleBlur = () => {
-    if (!inputValue) {
-      Animated.timing(animatedValue, {
-        toValue: 0,
-        duration: 200,
-        easing: Easing.ease,
-        useNativeDriver: false,
-      }).start();
-      setIsFocused(false);
-    }
-  };
-  const handleInputChange = (text: string) => {
-    setInputValue(text);
-  };
-  const labelStyle = {
-    transform: [
-      {
-        translateY: animatedValue.interpolate({
-          inputRange: [0, 1],
-          outputRange: [25, 0],
-        }),
-      },
-    ],
-  };
   return (
-    <>
-      <View>
-        <View style={styles.textView}>
-          <Animated.View style={[styles.animatedLabel, labelStyle]}>
-            <AppText
-              text={inputLabel}
-              onPress={handleFocus}
-              style={[
-                styles.txtSty,
-                textStyle,
-                {
-                  color: isFocused ? COLORS.lightBlack : COLORS.quaternary,
-                  fontSize: isFocused ? 12 : 14,
-                },
-              ]}
-            />
-          </Animated.View>
-        </View>
-        <TextInput
-          style={[styles.inputSty, inputStyle, {zIndex: isFocused ? 1 : 3}]}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChangeText={handleInputChange}
-          value={inputValue}
-          {...rest}
-        />
-        {ImageName && (
-          <View style={styles.iconContainer}>
-            <ImageName width={imageWidth} height={imageHeight} />
-          </View>
-        )}
+    <View style={styles.container}>
+      <View style={styles.headerTxt}>
+        <AppText text={inputLabel} style={styles.inputTxt} />
+        {isRequired && <AppText text={' *'} style={styles.requireDot} />}
       </View>
-    </>
+      <TextInput
+        placeholder={placeholder}
+        placeholderTextColor={COLORS.light_gray}
+        onChangeText={handleInputChange}
+        value={inputValue}
+        style={styles.inputSty}
+        {...props}
+      />
+    </View>
   );
 };
 
 export default AppInput;
 
 const styles = StyleSheet.create({
+  container: {
+    // backgroundColor: COLORS.light_black_gray,
+  },
   inputSty: {
-    height: 47,
-    borderWidth: 1,
-    borderColor: COLORS.tertiary,
-    borderRadius: 10,
-    paddingLeft: 14,
-    paddingRight: 40,
-    fontSize: 16,
-    fontFamily: 'DMSans-Italic-VariableFont_opsz,wght',
+    width: '100%',
+    height: 40,
+    borderBottomColor: COLORS.light_gray,
+    borderBottomWidth: 1,
   },
-  textView: {
-    position: 'absolute',
-    zIndex: 2,
-    marginLeft: 9,
-    left: 3,
-    backgroundColor: 'white',
-    top: -6,
-    marginBottom: 8,
+  headerTxt: {
+    flexDirection: 'row',
   },
-  txtSty: {
+  inputTxt: {
     fontSize: 14,
-    lineHeight: 12.64,
-    fontWeight: '400',
-    color: COLORS.lightBlack,
-    marginHorizontal: 5,
-    // backgroundColor:"red",
-    paddingTop: 2,
+    fontFamily: fonts.dmSans[500],
+    color: COLORS.green,
+    fontStyle: 'normal',
+    paddingLeft: 3,
   },
-  animatedLabel: {
-    position: 'absolute',
-    backgroundColor: 'white',
-  },
-  iconContainer: {
-    position: 'absolute',
-    right: 44,
-    top: 15,
+  requireDot: {
+    fontSize: 14,
+    fontFamily: fonts.dmSans[500],
+    color: COLORS.crimson,
+    fontStyle: 'normal',
   },
 });

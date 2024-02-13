@@ -1,3 +1,25 @@
+export enum screens {
+  TAB_HOME = 'tab-home',
+  TAB_QIBLA = 'tab-qibla',
+  TAB_TO_DO = 'tab-to-do',
+  TAB_TRACKER = 'tab-tracker',
+  TAB_SETTING = 'tab-setting',
+  KNOWLEDGE = 'knowledge',
+  HADITH = 'hadith',
+  ALLAH_NAMES_DESCRIPTION = 'allah-names-description',
+  ALLAH_NAMES = 'allah-names',
+  QURAN_SCREEN = 'quran-screen',
+  DETAIL_SCREENN = 'detail-screen',
+  CARD_SCREEN = 'card-screen',
+  SURAH_DETAILS_SCREEN = 'surah-details-screen',
+  TASBIH_COUNTER = 'tasbih-counter',
+  AUTH_STACK = 'auth-stack',
+  APP_STACK = 'app-stack',
+  SIGN_UP = 'sign-up',
+  SIGN_IN = 'sign-in',
+  WELCOME_USER = 'welcome-user',
+  TAB_NAVIGATOR = 'tab-navigator',
+}
 import {SuplicationData} from './types';
 export interface AppState {
   loading?: boolean;
@@ -67,6 +89,19 @@ export interface Ayat {
   audio: string;
 }
 
+export interface InputSignUp {
+  key: string;
+  inputLabel: string;
+  isRequired: boolean;
+  placeholder: string;
+}
+
+export interface InputSignIn {
+  key: string;
+  inputLabel: string;
+  placeholder: string;
+}
+
 export interface Surah {
   number: number;
   name: string;
@@ -99,21 +134,3 @@ export interface JuzData {
   verse: number;
 }
 // screens names
-
-export enum screens {
-  TAB_HOME = 'tab-home',
-  TAB_QIBLA = 'tab-qibla',
-  TAB_TO_DO = 'tab-to-do',
-  TAB_TRACKER = 'tab-tracker',
-  TAB_SETTING = 'tab-setting',
-  KNOWLEDGE = 'knowledge',
-  HADITH = 'hadith',
-  ALLAH_NAMES_DESCRIPTION = 'allah-names-description',
-  ALLAH_NAMES = 'allah-names',
-
-  QURAN_SCREEN = 'quran-screen',
-  DETAIL_SCREENN = 'detail-screen',
-  CARD_SCREEN = 'card-screen',
-  SURAH_DETAILS_SCREEN = 'surah-details-screen',
-  TASBIH_COUNTER = 'tasbih_counter',
-}
