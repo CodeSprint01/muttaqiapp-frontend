@@ -1,25 +1,25 @@
 import React from 'react';
 import TabNavigator from './TabNavigator';
 import {createStackNavigator} from '@react-navigation/stack';
-import UserProfile from '../screens/user-profile/UserProfile';
 import {NavigationContainer} from '@react-navigation/native';
 import HomeStack from './HomeStack';
+import AuthStack from './AuthStack';
 import {screens} from '../types/types';
-import Knowledge from '../screens/knowledge-screen/Knowledge';
+import AppStack from './AppStack';
 const MainStack = () => {
   const Stack = createStackNavigator();
   console.log('here is console o ');
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="TabNavigator">
+      <Stack.Navigator>
         <Stack.Screen
-          name="TabNavigator"
-          component={TabNavigator}
+          name={screens.AUTH_STACK}
+          component={AuthStack}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="HomeStack"
-          component={HomeStack}
+          name={screens.APP_STACK}
+          component={AppStack}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
