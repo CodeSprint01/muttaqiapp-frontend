@@ -9,11 +9,18 @@ import DetailScreen from '../screens/religious-content-detail/ReligiousContentDe
 import QuranScreen from '../screens/quran-screens/QuranScreen';
 import SurahDetailsScreen from '../screens/quran-screens/tab-items/SurahDetailsScreen';
 import TasbihCounter from '../screens/tasbih-screen/TasbihCounter';
+import AllBookmarks from '../screens/all-bookmarks/AllBookmarks';
+import AllBookmark from '../screens/all-bookmarks/top-tabs/AllBookmark';
 
 const HomeStack = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name={screens.ALL_BOOKMARKS}
+        component={AllBookmarks}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name={screens.KNOWLEDGE}
         component={Knowledge}
@@ -54,6 +61,17 @@ const HomeStack = () => {
         component={SurahDetailsScreen}
         options={{headerShown: false}}
       />
+      {/* here is our AllBookmarks tab screen */}
+      {/* <Stack.Screen
+        name={screens.SURAH_DETAILS_SCREEN}
+        component={AllBookmark}
+        options={{headerShown: false}}
+      />
+       <Stack.Screen
+        name={screens.SURAH_DETAILS_SCREEN}
+        component={SurahDetailsScreen}
+        options={{headerShown: false}}
+      /> */}
     </Stack.Navigator>
   );
 };
