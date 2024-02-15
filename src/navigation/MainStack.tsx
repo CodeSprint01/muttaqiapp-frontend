@@ -8,12 +8,11 @@ import {screens} from '../types/types';
 import AppStack from './AppStack';
 const MainStack = () => {
   const Stack = createStackNavigator();
-  console.log('here is console o ');
-  const isFirstTime = false;
+  const isLogedIn = false;
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {isFirstTime ? (
+        {isLogedIn ? (
           <Stack.Screen
             name={screens.AUTH_STACK}
             component={AuthStack}
