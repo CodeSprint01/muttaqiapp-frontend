@@ -45,6 +45,18 @@ export const compassTemplate: Array<{
 
 export const exploreArray: exploreInterface[] = [
   {
+    image: Icons.EmptyBookmark,
+    title: 'bookmark',
+    subTitle: '',
+    routeName: screens.ALL_BOOKMARKS,
+  },
+  {
+    image: Icons.FillHeart,
+    title: 'Favourites',
+    subTitle: '',
+    routeName: screens.ALL_FAVOURITES,
+  },
+  {
     image: Icons.Quran,
     title: 'Quran',
     subTitle: 'P.207',
