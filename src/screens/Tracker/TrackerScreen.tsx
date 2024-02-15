@@ -9,6 +9,9 @@ import {
 } from '../../utils/mocks/tracker/StatsListArray';
 import PrayerBarChart from './prayer-namaz/PrayerBarChart';
 import WeeklyTodoTask from './todo-task-record/WeeklyTodoTask';
+import {FastingArray} from '../../utils/mocks/tracker/FastingArray';
+import {QiyamArray} from '../../utils/mocks/tracker/QiyamPrayerArray';
+import {SurahMulkArray} from '../../utils/mocks/tracker/SurahMulk';
 
 const TrackerScreen = () => {
   const [isShowGraph, setIsShowGraph] = useState<StatsList[]>(StatsListArray);
@@ -22,13 +25,19 @@ const TrackerScreen = () => {
   return (
     <AppContainer>
       <ScreenHeader headerText="Stats" extraStyle={styles.screenHeader} />
-      <ScrollView>
+      <ScrollView style={styles.scrolView}>
         <WeeklyStateSlider
           graphData={isShowGraph}
           handleEyeClick={index => handleFilterSliderData(index)}
         />
         <PrayerBarChart />
-        <WeeklyTodoTask />
+        <WeeklyTodoTask todoName="Fasting" todoArray={FastingArray} />
+        <WeeklyTodoTask todoName="Qiyam prayer" todoArray={QiyamArray} />
+        <WeeklyTodoTask
+          todoName="Read surat Al-mulk before"
+          todoArray={SurahMulkArray}
+        />
+        <View style={styles.bottomView} />
       </ScrollView>
     </AppContainer>
   );
@@ -39,6 +48,11 @@ export default TrackerScreen;
 const styles = StyleSheet.create({
   screenHeader: {
     paddingHorizontal: 16,
-    // backgroundColor: 'red',
+  },
+  scrolView: {
+    flex: 1,
+  },
+  bottomView: {
+    paddingBottom: 110,
   },
 });

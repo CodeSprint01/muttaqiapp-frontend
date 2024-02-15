@@ -32,6 +32,7 @@ export const COLORS = {
   light_greenish_blue: ' #AEF0DB',
   powder_blue: '#B4E2DC',
   blush: '#E97063',
+  light_cyan: '#ECF7FA',
 } as const;
 
 // font family is here

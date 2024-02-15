@@ -133,4 +133,7 @@ export interface JuzData {
   surahName: string;
   verse: number;
 }
-// screens names
+export interface TodoTask {
+  dayName: string;
+  isDo: boolean;
+}
