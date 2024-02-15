@@ -9,7 +9,6 @@ export enum screens {
   ALLAH_NAMES_DESCRIPTION = 'allah-names-description',
   ALLAH_NAMES = 'allah-names',
   QURAN_SCREEN = 'quran-screen',
-  ALL_BOOKMARKS = 'all-bookmarks',
   DETAIL_SCREENN = 'detail-screen',
   CARD_SCREEN = 'card-screen',
   SURAH_DETAILS_SCREEN = 'surah-details-screen',
@@ -21,11 +20,19 @@ export enum screens {
   WELCOME_USER = 'welcome-user',
   TAB_NAVIGATOR = 'tab-navigator',
 
+  ALL_BOOKMARKS = 'all-bookmarks',
   ALL_BOOKMARK = 'all-bookmark',
   QURAN_BOOKMARK = 'quran-bookmark',
   AZKAR_BOOKMARK = 'azkar-bookmark',
   DUA_BOOKMARK = 'dua-bookmark',
   HADITH_BOOKMARK = 'hadith-bookmark',
+
+  ALL_FAVOURITES = 'all-favourites',
+  ALL_FAVOURITE = 'all-favourite',
+  QURAN_FAVOURITE = 'quran-favourite',
+  AZKAR_FAVOURITE = 'azkar-favourite',
+  DUA_FAVOURITE = 'dua-favourite',
+  HADITH_FAVOURITE = 'hadith-favourite',
 }
 import {SuplicationData} from './types';
 export interface AppState {
@@ -145,6 +152,16 @@ export interface AllBookmarksInter {
   bookmarkData: bookmarkData[];
 }
 export interface bookmarkData {
+  icon: any;
+  name: string;
+  verse: string | null;
+  detailText: string;
+}
+export interface AllFavouritesInter {
+  name: string;
+  favouriteData: FavouriteData[];
+}
+export interface FavouriteData {
   icon: any;
   name: string;
   verse: string | null;

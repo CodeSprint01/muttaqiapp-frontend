@@ -1,12 +1,12 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import BookmarkList from '../../../components/molecules/bookmarks/BookmarkList';
-import {bookmarkData} from '../../../types/types';
+import {FavouriteData} from '../../../types/types';
 import {COLORS} from '../../../styles/color';
-import {AllBookmarksArray} from '../../../utils/mocks/bookmarks-and-favourite/AllBookmarks';
+import {AllFavouriteArray} from '../../../utils/mocks/bookmarks-and-favourite/AllFavourite';
 
-const HadithBookmark = () => {
-  const renderItem = ({item, index}: {item: bookmarkData; index: number}) => {
+const DuaFavourite = () => {
+  const renderItem = ({item, index}: {item: FavouriteData; index: number}) => {
     return (
       <BookmarkList
         icon={item?.icon}
@@ -19,14 +19,14 @@ const HadithBookmark = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={AllBookmarksArray[0]?.bookmarkData}
+        data={AllFavouriteArray[0]?.favouriteData}
         renderItem={renderItem}
       />
     </View>
   );
 };
 
-export default HadithBookmark;
+export default DuaFavourite;
 
 const styles = StyleSheet.create({
   container: {
