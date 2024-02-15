@@ -47,8 +47,14 @@ export const exploreArray: exploreInterface[] = [
   {
     image: Icons.EmptyBookmark,
     title: 'bookmark',
-    subTitle: 'P.207',
+    subTitle: '',
     routeName: screens.ALL_BOOKMARKS,
+  },
+  {
+    image: Icons.FillHeart,
+    title: 'Favourites',
+    subTitle: '',
+    routeName: screens.ALL_FAVOURITES,
   },
   {
     image: Icons.Quran,

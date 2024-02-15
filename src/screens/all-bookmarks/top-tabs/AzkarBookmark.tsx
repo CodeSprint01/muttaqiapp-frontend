@@ -1,9 +1,9 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {AllBookmarksArray} from '../../../utils/mocks/all-bookmarks/AllBookmarks';
 import BookmarkList from '../../../components/molecules/bookmarks/BookmarkList';
 import {bookmarkData} from '../../../types/types';
 import {COLORS} from '../../../styles/color';
+import {AllBookmarksArray} from '../../../utils/mocks/bookmarks-and-favourite/AllBookmarks';
 
 const AzkarBookmark = () => {
   const renderItem = ({item, index}: {item: bookmarkData; index: number}) => {

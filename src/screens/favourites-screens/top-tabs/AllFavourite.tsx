@@ -4,10 +4,10 @@ import {COLORS, fonts} from '../../../styles/color';
 import AppText from '../../../components/atoms/app-text/AppText';
 import BookmarkList from '../../../components/molecules/bookmarks/BookmarkList';
 import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
-import {AllBookmarksInter, bookmarkData} from '../../../types/types';
-import {AllBookmarksArray} from '../../../utils/mocks/bookmarks-and-favourite/AllBookmarks';
+import {AllFavouritesInter, bookmarkData} from '../../../types/types';
+import {AllFavouriteArray} from '../../../utils/mocks/bookmarks-and-favourite/AllFavourite';
 
-const AllBookmark = () => {
+const AllFavourite = () => {
   const [isOpen, setIsOpen] = useState<number | null>(0);
 
   const handleCloseItem = (index: number) => {
@@ -18,7 +18,7 @@ const AllBookmark = () => {
     item,
     index,
   }: {
-    item: AllBookmarksInter;
+    item: AllFavouritesInter;
     index: number;
   }) => {
     return (
@@ -38,7 +38,7 @@ const AllBookmark = () => {
           </TouchableOpacity>
         </View>
         {isOpen === index &&
-          item?.bookmarkData?.map((item: bookmarkData) => (
+          item?.favouriteData?.map((item: bookmarkData) => (
             <BookmarkList
               key={index}
               icon={item?.icon}
@@ -55,7 +55,7 @@ const AllBookmark = () => {
     <View style={styles.container}>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={AllBookmarksArray}
+        data={AllFavouriteArray}
         renderItem={renderItem}
         keyExtractor={itm => itm.name}
       />
@@ -63,7 +63,7 @@ const AllBookmark = () => {
   );
 };
 
-export default AllBookmark;
+export default AllFavourite;
 
 const styles = StyleSheet.create({
   container: {

@@ -48,6 +48,7 @@ export const Icons = {
   ArrowRight: 'ARROW_RIGHT',
   EmptyBookmark: 'EMPTY_BOOKMARK',
   EmptyHeart: 'EMPTY_HEART',
+  FillHeart: 'FILL_HEART',
   BookSquare: 'BOOK_SQUARE',
   Pause: 'PAUSE',
   Play: 'PLAY',
@@ -120,6 +121,7 @@ export const Colors = {
   [Icons.ArrowRight]: {color: COLORS.light_gray},
   [Icons.EmptyBookmark]: {color: COLORS.light_gray},
   [Icons.EmptyHeart]: {color: COLORS.light_gray},
+  [Icons.FillHeart]: {color: COLORS.light_gray},
   [Icons.BookSquare]: {color: COLORS.light_gray},
   [Icons.Pause]: {color: COLORS.light_gray},
   [Icons.Play]: {color: COLORS.light_gray},
@@ -246,6 +248,7 @@ SvgIcons[Icons.EmptyBookmark] =
   require('../../../assets/images/explore-images/emptyBookmark').default;
 SvgIcons[Icons.EmptyHeart] =
   require('../../../assets/images/explore-images/emptyHeart').default;
+SvgIcons[Icons.FillHeart] = require('../../../assets/images/fillHeart').default;
 SvgIcons[Icons.BookSquare] =
   require('../../../assets/images/explore-images/bookSquare').default;
 SvgIcons[Icons.Pause] =
