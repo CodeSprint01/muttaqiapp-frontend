@@ -1,78 +1,51 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import React, {FC} from 'react';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
 import {COLORS, fonts} from '../../../styles/color';
 import {BarChart} from 'react-native-gifted-charts';
+import {BarChartInter} from '../../../types/types';
 
-const PrayerBarChart = () => {
-  const barData = [
-    {
-      value: 40,
-      spacing: 0,
-      frontColor: COLORS.turquoise_blue,
-    },
-    {
-      value: 20,
-      label: 'S',
+interface BarProps {
+  isWithDate?: boolean;
+  title: string;
+  handleShowmore?: () => void;
+  ArrayName: BarChartInter[];
+  weeklyAveg: number;
+  fallAveg: number;
+}
 
-      frontColor: COLORS.royal_blue,
-    },
-    {
-      value: 50,
-      spacing: 0,
-      frontColor: COLORS.turquoise_blue,
-    },
-    {value: 40, label: 'M', frontColor: COLORS.royal_blue},
-    {
-      value: 70,
-      spacing: 0,
-      frontColor: COLORS.turquoise_blue,
-    },
-    {value: 25, label: 'T', frontColor: COLORS.royal_blue},
-    {
-      value: 30,
-      spacing: 0,
-      frontColor: COLORS.turquoise_blue,
-    },
-    {value: 20, label: 'W', frontColor: COLORS.royal_blue},
-    {
-      value: 60,
-      spacing: 0,
-      frontColor: COLORS.turquoise_blue,
-    },
-    {value: 40, label: 'T', frontColor: COLORS.royal_blue},
-    {
-      value: 65,
-      spacing: 0,
-      frontColor: COLORS.turquoise_blue,
-    },
-    {value: 30, label: 'F', frontColor: COLORS.royal_blue},
-    {
-      value: 50,
-      spacing: 0,
-      frontColor: COLORS.turquoise_blue,
-    },
-    {value: 40, label: 'S', frontColor: COLORS.royal_blue},
-  ];
+const PrayerBarChart: FC<BarProps> = ({
+  isWithDate = true,
+  title,
+  handleShowmore,
+  ArrayName,
+  weeklyAveg,
+  fallAveg,
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerTxt}>
-        <AppText text={'Prayer/Namaz'} style={styles.prayerTxt} />
-        <TouchableOpacity activeOpacity={0.7} style={styles.textIcon}>
-          <AppText text={'Show more'} style={styles.showmoreTxt} />
-          <AppIconSvg
-            icon={Icons.ArrowRight}
-            width={22}
-            height={22}
-            color="black"
-          />
-        </TouchableOpacity>
+        <AppText text={title} style={styles.prayerTxt} />
+        {isWithDate ? null : (
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={handleShowmore}
+            style={styles.textIcon}>
+            <AppText text={'Show more'} style={styles.showmoreTxt} />
+            <AppIconSvg
+              icon={Icons.ArrowRight}
+              width={22}
+              height={22}
+              color="black"
+            />
+          </TouchableOpacity>
+        )}
       </View>
       <View style={styles.barChartContainer}>
         <View style={styles.barChart}>
           <BarChart
-            data={barData}
+            data={ArrayName}
             barWidth={4}
             spacing={18}
             stepValue={20}
@@ -85,19 +58,18 @@ const PrayerBarChart = () => {
             maxValue={100}
             height={120}
             yAxisLabelTexts={['0', '20%', '40%', '60%', '80%', '100%']}
-            // barBorderRadius={}
             xAxisLabelTextStyle={styles.xaxis}
           />
         </View>
         <View style={styles.weeklyAvg}>
           <AppText text={'Weekly average'} style={styles.weeklyAvgTxt} />
-          <AppText text={'76%'} style={styles.NumbAvg} />
+          <AppText text={`${weeklyAveg} %`} style={styles.NumbAvg} />
           <AppText
             text={'Fall of rate'}
             style={[styles.weeklyAvgTxt, {paddingTop: 10}]}
           />
           <AppText
-            text={'24%'}
+            text={`${fallAveg} %`}
             style={[styles.NumbAvg, {color: COLORS.blush}]}
           />
         </View>
@@ -121,7 +93,7 @@ export default PrayerBarChart;
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
     marginTop: 28,
   },
   headerTxt: {

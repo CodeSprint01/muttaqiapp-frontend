@@ -26,6 +26,8 @@ export enum screens {
   AZKAR_BOOKMARK = 'azkar-bookmark',
   DUA_BOOKMARK = 'dua-bookmark',
   HADITH_BOOKMARK = 'hadith-bookmark',
+  TRACKER_SCREEN = 'tracker-Screen',
+  ALL_DETAILS_STATS = 'all-details-stats',
 
   ALL_FAVOURITES = 'all-favourites',
   ALL_FAVOURITE = 'all-favourite',
@@ -33,8 +35,10 @@ export enum screens {
   AZKAR_FAVOURITE = 'azkar-favourite',
   DUA_FAVOURITE = 'dua-favourite',
   HADITH_FAVOURITE = 'hadith-favourite',
+  WEEKLY_STATS = 'weekly-stats',
+  MONTHLY_STATS = 'monthly-stats',
+  YEARLY_STATS = 'yearly-stats',
 }
-import {SuplicationData} from './types';
 export interface AppState {
   loading?: boolean;
   userLocation?: location[];
@@ -44,10 +48,6 @@ export interface Types {
   type: string;
   payload: any;
 }
-// export interface Action<T, P> {
-//   type: T;
-//   payload: P;
-// }
 export interface exploreInterface {
   image: any;
   title: string;
@@ -170,4 +170,10 @@ export interface FavouriteData {
   name: string;
   verse: string | null;
   detailText: string;
+}
+export interface BarChartInter {
+  value: number;
+  spacing?: number;
+  frontColor: string;
+  label?: string;
 }

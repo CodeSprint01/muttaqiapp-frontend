@@ -12,8 +12,12 @@ import WeeklyTodoTask from './todo-task-record/WeeklyTodoTask';
 import {FastingArray} from '../../utils/mocks/tracker/FastingArray';
 import {QiyamArray} from '../../utils/mocks/tracker/QiyamPrayerArray';
 import {SurahMulkArray} from '../../utils/mocks/tracker/SurahMulk';
+import {AllPrayersArray} from '../../utils/mocks/tracker/prayer-arrays/AllPrayersArray';
+import {useNavigation} from '@react-navigation/native';
+import {screens} from '../../types/types';
 
 const TrackerScreen = () => {
+  const navigation = useNavigation();
   const [isShowGraph, setIsShowGraph] = useState<StatsList[]>(StatsListArray);
   const handleFilterSliderData = (index: number) => {
     console.log(index);
@@ -30,7 +34,18 @@ const TrackerScreen = () => {
           graphData={isShowGraph}
           handleEyeClick={index => handleFilterSliderData(index)}
         />
-        <PrayerBarChart />
+        <View style={styles.prayerChart}>
+          <PrayerBarChart
+            ArrayName={AllPrayersArray}
+            weeklyAveg={54}
+            fallAveg={46}
+            title="Prayer/Namaz"
+            isWithDate={false}
+            handleShowmore={() =>
+              navigation.navigate(screens.ALL_DETAILS_STATS)
+            }
+          />
+        </View>
         <WeeklyTodoTask todoName="Fasting" todoArray={FastingArray} />
         <WeeklyTodoTask todoName="Qiyam prayer" todoArray={QiyamArray} />
         <WeeklyTodoTask
@@ -51,6 +66,9 @@ const styles = StyleSheet.create({
   },
   scrolView: {
     flex: 1,
+  },
+  prayerChart: {
+    paddingHorizontal: 20,
   },
   bottomView: {
     paddingBottom: 110,
