@@ -37,7 +37,10 @@ const WelcomeUser = () => {
       </View>
       <View style={styles.bottomBtns}>
         <View>
-          <AppButton buttonText="Start" />
+          <AppButton
+            buttonText="Start"
+            onPress={() => navigation.navigate(screens.USER_INFO_STACK)}
+          />
         </View>
         <View>
           <AppButton

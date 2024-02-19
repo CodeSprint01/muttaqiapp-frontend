@@ -1,52 +1,63 @@
-import {
-  StyleSheet,
-  View,
-  ImageSourcePropType,
-  TextInputProps,
-} from 'react-native';
-import React, {FC, useState} from 'react';
-import {COLORS} from '../../../styles/color';
+import {StyleSheet, View} from 'react-native';
+import React, {FC} from 'react';
+import {COLORS, fonts} from '../../../styles/color';
 import {SelectList} from 'react-native-dropdown-select-list';
-import {keyValue} from '../../../types/keyVlaue';
+import {AppIconSvg, Icons} from '../../atoms/app-icon-svg';
+import AppText from '../../atoms/app-text/AppText';
 
 interface MyProps {
   arrayData: Array<{label: string; value: string}>;
   placeholderText: string;
-  ImageName?: ImageSourcePropType;
-  imageWidth?: number;
-  imageHeight?: number;
+  inputLabel: string;
+  icon: any;
+  isRequired: boolean;
+  handleSelectValue: (val: string) => void;
 }
 
-type PropsWithImage = MyProps &
-  (MyProps['ImageName'] extends ImageSourcePropType
-    ? {
-        imageWidth: number;
-        imageHeight: number;
-      }
-    : {});
-const AppInputDropDown: FC<PropsWithImage & TextInputProps> = ({
+const AppInputDropDown: FC<MyProps> = ({
   arrayData,
   placeholderText,
-  ImageName,
-  imageWidth = 24,
-  imageHeight = 24,
+  inputLabel,
+  isRequired = false,
+  handleSelectValue,
+  icon,
+  ...props
 }) => {
-  const [selectedItem, setSelectedItem] = useState(null);
-
   return (
     <View>
+      <View style={styles.headerTxt}>
+        <AppText text={inputLabel} style={styles.inputTxt} />
+        {isRequired && <AppText text={' *'} style={styles.requireDot} />}
+      </View>
       <SelectList
-        setSelected={(val: keyValue) => setSelectedItem(val)}
+        setSelected={(val: string) => handleSelectValue(val)}
         data={arrayData}
         save="value"
         search={false}
-        arrowicon={<ImageName width={imageWidth} height={imageHeight} />}
+        arrowicon={
+          <AppIconSvg
+            icon={Icons.DropDown}
+            width={24}
+            height={24}
+            color="black"
+          />
+        }
+        closeicon={
+          <AppIconSvg
+            icon={Icons.DropUp}
+            width={24}
+            height={24}
+            color="black"
+          />
+        }
         placeholder={placeholderText}
         dropdownTextStyles={styles.dropdownTextSty}
         boxStyles={styles.boxSty}
         inputStyles={styles.inputSty}
         dropdownStyles={styles.dropdownsty}
+        {...props}
       />
+      <View style={styles.verticalLine} />
     </View>
   );
 };
@@ -54,12 +65,13 @@ export default AppInputDropDown;
 
 const styles = StyleSheet.create({
   dropdownTextSty: {
-    color: 'lightBlack',
+    color: COLORS.light_gray,
+    fontSize: 16,
+    fontFamily: fonts.dmSans[500],
   },
   boxSty: {
-    borderColor: COLORS.tertiary,
-    borderWidth: 1,
     height: 47,
+    borderColor: COLORS.pale_mint,
   },
   txtSty: {
     fontSize: 12,
@@ -69,19 +81,36 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   inputSty: {
-    color: COLORS.quaternary,
-    fontSize: 12,
-    paddingTop: 3,
+    color: COLORS.light_gray,
+    fontSize: 16,
+    marginLeft: -20,
+    fontFamily: fonts.dmSans[500],
   },
   dropdownsty: {
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.pale_mint,
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: COLORS.tertiary,
-    elevation: 2,
-    shadowColor: 'lightBlack',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.3,
-    shadowRadius: 9,
+    // borderWidth: 1,
+    borderColor: COLORS.pale_mint,
+  },
+  verticalLine: {
+    width: '100%',
+    paddingVertical: 0.5,
+    backgroundColor: COLORS.pale_aqua,
+  },
+  headerTxt: {
+    flexDirection: 'row',
+  },
+  inputTxt: {
+    fontSize: 14,
+    fontFamily: fonts.dmSans[500],
+    color: COLORS.green,
+    fontStyle: 'normal',
+    paddingLeft: 3,
+  },
+  requireDot: {
+    fontSize: 14,
+    fontFamily: fonts.dmSans[500],
+    color: COLORS.crimson,
+    fontStyle: 'normal',
   },
 });

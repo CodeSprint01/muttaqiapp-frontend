@@ -38,6 +38,10 @@ export enum screens {
   WEEKLY_STATS = 'weekly-stats',
   MONTHLY_STATS = 'monthly-stats',
   YEARLY_STATS = 'yearly-stats',
+
+  USER_INFO_STACK = 'user-info-stack',
+  GENERAL_INFORMATION = 'general-information',
+  FAMILY_INFORMATION_FIRST_FORM = 'family-information-first-form',
 }
 export interface AppState {
   loading?: boolean;

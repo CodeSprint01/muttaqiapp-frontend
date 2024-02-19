@@ -1,14 +1,12 @@
 import React from 'react';
-import TabNavigator from './TabNavigator';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-import HomeStack from './HomeStack';
 import AuthStack from './AuthStack';
 import {screens} from '../types/types';
 import AppStack from './AppStack';
 const MainStack = () => {
   const Stack = createStackNavigator();
-  const isLogedIn = false;
+  const isLogedIn = true;
   return (
     <NavigationContainer>
       <Stack.Navigator>

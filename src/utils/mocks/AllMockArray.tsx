@@ -7,6 +7,10 @@ export const SecteList: Array<{label: string; value: string}> = [
   {label: 'Shia', value: 'Shia'},
   {label: 'Sunni', value: 'Sunni'},
 ];
+export const Gender: Array<{label: string; value: string}> = [
+  {label: 'male', value: 'male'},
+  {label: 'Female', value: 'female'},
+];
 export const MartialStatus: Array<{label: string; value: string}> = [
   {label: 'Single', value: 'Single'},
   {label: 'Married', value: 'Married'},

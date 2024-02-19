@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   inputSty: {
     width: '100%',
     height: 40,
-    borderBottomColor: COLORS.light_gray,
+    borderBottomColor: COLORS.pale_aqua,
     borderBottomWidth: 1,
   },
   headerTxt: {

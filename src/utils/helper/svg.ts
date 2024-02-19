@@ -68,6 +68,14 @@ export const Icons = {
   Eye: 'EYE',
   EyeSlash: 'EYE_SLASH',
   Finance: 'FINANCES',
+  FirstStep: 'FIRST_STEP',
+  SecondStep: 'SECOND_STEP',
+  ThirdStep: 'THIRD_STEP',
+  FourthStep: 'FOURTH_STEP',
+  FifthStep: 'FIFTH_STEP',
+  SixthStep: 'SIXTH_STEP',
+  DropDown: 'DROP_DOWN',
+  DropUp: 'DROP_UP',
 };
 
 export const Colors = {
@@ -143,6 +151,14 @@ export const Colors = {
   [Icons.Eye]: {color: COLORS.light_gray},
   [Icons.EyeSlash]: {color: COLORS.light_gray},
   [Icons.Finance]: {color: COLORS.light_gray},
+  [Icons.FifthStep]: {color: COLORS.light_gray},
+  [Icons.SecondStep]: {color: COLORS.light_gray},
+  [Icons.ThirdStep]: {color: COLORS.light_gray},
+  [Icons.FourthStep]: {color: COLORS.light_gray},
+  [Icons.FifthStep]: {color: COLORS.light_gray},
+  [Icons.SixthStep]: {color: COLORS.light_gray},
+  [Icons.DropDown]: {color: COLORS.light_gray},
+  [Icons.DropUp]: {color: COLORS.light_gray},
 };
 
 const SvgIcons: any = {};
@@ -274,6 +290,22 @@ SvgIcons[Icons.Refresh] =
 SvgIcons[Icons.Eye] = require('../../../assets/images/tracker/eye').default;
 SvgIcons[Icons.EyeSlash] =
   require('../../../assets/images/tracker/eyeSlash').default;
+
+SvgIcons[Icons.FirstStep] =
+  require('../../../assets/images/user-info-forms/firstStep').default;
+SvgIcons[Icons.SecondStep] =
+  require('../../../assets/images/user-info-forms/secondStep').default;
+SvgIcons[Icons.ThirdStep] =
+  require('../../../assets/images/user-info-forms/thirdStep').default;
+SvgIcons[Icons.FourthStep] =
+  require('../../../assets/images/user-info-forms/fourthStep').default;
+SvgIcons[Icons.FifthStep] =
+  require('../../../assets/images/user-info-forms/fifthStep').default;
+SvgIcons[Icons.SixthStep] =
+  require('../../../assets/images/user-info-forms/sixthStep').default;
+SvgIcons[Icons.DropDown] = require('../../../assets/images/dropDown').default;
+SvgIcons[Icons.DropUp] = require('../../../assets/images/dropUp').default;
+
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];
   if (typeof SvgIcon === 'function' && color) {
