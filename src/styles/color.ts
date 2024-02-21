@@ -34,6 +34,7 @@ export const COLORS = {
   blush: '#E97063',
   light_cyan: '#ECF7FA',
   pale_aqua: '#E2EEED',
+  pale_gold: '#F5DC80',
 } as const;
 
 // font family is here

@@ -3,7 +3,8 @@ import React from 'react';
 import {COLORS, fonts} from '../../../styles/color';
 import MonthlyBarChart from '../bar-charts/MonthlyBarChart';
 import {
-  monthlyBarGraph,
+  YearlyBarChartArray,
+  YearlyBarChartArray2,
   xAxisMonthly,
 } from '../../../utils/mocks/tracker/StatsGraphArray';
 
@@ -12,7 +13,8 @@ const MonthlyStats = () => {
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.chartContainer}>
         <MonthlyBarChart
-          barChartArray={monthlyBarGraph}
+          barChartArray={YearlyBarChartArray}
+          barChartArray2={YearlyBarChartArray2}
           average={76}
           fallOfAvg={24}
           completeDate="JAN 2023"
@@ -21,7 +23,8 @@ const MonthlyStats = () => {
       </View>
       <View style={styles.chartContainer}>
         <MonthlyBarChart
-          barChartArray={monthlyBarGraph}
+          barChartArray={YearlyBarChartArray}
+          barChartArray2={YearlyBarChartArray2}
           average={76}
           fallOfAvg={24}
           completeDate="JAN 2023"
@@ -30,7 +33,8 @@ const MonthlyStats = () => {
       </View>
       <View style={styles.chartContainer}>
         <MonthlyBarChart
-          barChartArray={monthlyBarGraph}
+          barChartArray={YearlyBarChartArray}
+          barChartArray2={YearlyBarChartArray2}
           average={76}
           fallOfAvg={24}
           completeDate="JAN 2023"
@@ -39,7 +43,8 @@ const MonthlyStats = () => {
       </View>
       <View style={styles.chartContainer}>
         <MonthlyBarChart
-          barChartArray={monthlyBarGraph}
+          barChartArray={YearlyBarChartArray}
+          barChartArray2={YearlyBarChartArray2}
           average={76}
           fallOfAvg={24}
           completeDate="JAN 2023"

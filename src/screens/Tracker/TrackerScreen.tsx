@@ -8,13 +8,13 @@ import {
   StatsListArray,
 } from '../../utils/mocks/tracker/StatsListArray';
 import PrayerBarChart from './prayer-namaz/PrayerBarChart';
-import WeeklyTodoTask from './todo-task-record/WeeklyTodoTask';
 import {FastingArray} from '../../utils/mocks/tracker/FastingArray';
 import {QiyamArray} from '../../utils/mocks/tracker/QiyamPrayerArray';
 import {SurahMulkArray} from '../../utils/mocks/tracker/SurahMulk';
 import {AllPrayersArray} from '../../utils/mocks/tracker/prayer-arrays/AllPrayersArray';
 import {useNavigation} from '@react-navigation/native';
 import {screens} from '../../types/types';
+import TrackerTodoTask from './todo-task-record-screen/TrackerTodoTask';
 
 const TrackerScreen = () => {
   const navigation = useNavigation();
@@ -46,9 +46,21 @@ const TrackerScreen = () => {
             }
           />
         </View>
-        <WeeklyTodoTask todoName="Fasting" todoArray={FastingArray} />
-        <WeeklyTodoTask todoName="Qiyam prayer" todoArray={QiyamArray} />
-        <WeeklyTodoTask
+        <TrackerTodoTask
+          isShowmore={true}
+          todoName="Fasting"
+          todoArray={FastingArray}
+          handelShowmore={() =>
+            navigation.navigate(screens.ALL_TODO_STATS_SCREENS)
+          }
+        />
+        <TrackerTodoTask
+          isShowmore={true}
+          todoName="Qiyam prayer"
+          todoArray={QiyamArray}
+        />
+        <TrackerTodoTask
+          isShowmore={true}
           todoName="Read surat Al-mulk before"
           todoArray={SurahMulkArray}
         />

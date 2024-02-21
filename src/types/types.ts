@@ -42,6 +42,10 @@ export enum screens {
   USER_INFO_STACK = 'user-info-stack',
   GENERAL_INFORMATION = 'general-information',
   FAMILY_INFORMATION_FIRST_FORM = 'family-information-first-form',
+  ALL_TODO_STATS_SCREENS = 'all-todo-stats-screens',
+  WEEKLY_TODO_STAT = 'weekly-todo-stat',
+  MONTHLY_TODO_STAT = 'monthly-todo-stat',
+  YEARLY_TODO_STAT = 'yearly-todo-stat',
 }
 export interface AppState {
   loading?: boolean;

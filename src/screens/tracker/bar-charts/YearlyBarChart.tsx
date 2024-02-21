@@ -10,6 +10,7 @@ interface ChartProps {
   average: number;
   fallOfAvg: number;
   barChartArray: any;
+  barChartArray2: any;
 }
 
 const YearlyBarChart: FC<ChartProps> = ({
@@ -17,6 +18,7 @@ const YearlyBarChart: FC<ChartProps> = ({
   average,
   fallOfAvg,
   barChartArray,
+  barChartArray2,
 }) => {
   const screenWidth = Dimensions.get('window').height;
   return (
@@ -44,9 +46,14 @@ const YearlyBarChart: FC<ChartProps> = ({
           <LineChart
             curved
             data={barChartArray}
+            data2={barChartArray2}
             maxValue={100}
             height={118}
             stepValue={20}
+            color={COLORS.royal_blue}
+            color2={COLORS.turquoise_blue}
+            dataPointsColor={COLORS.royal_blue}
+            dataPointsColor2={COLORS.turquoise_blue}
             backgroundColor={COLORS.pale_mint}
             yAxisColor={COLORS.light_Powder_Blue}
             verticalLinesColor={'red'}

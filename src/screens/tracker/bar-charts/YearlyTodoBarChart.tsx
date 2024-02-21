@@ -1,76 +1,106 @@
-import {Dimensions, ScrollView, StyleSheet, View} from 'react-native';
+import {Dimensions, Platform, StyleSheet, View} from 'react-native';
 import React, {FC} from 'react';
 import {COLORS, fonts} from '../../../styles/color';
 import {LineChart} from 'react-native-gifted-charts';
 import AppText from '../../../components/atoms/app-text/AppText';
-import {xAxisMonthly} from '../../../utils/mocks/tracker/StatsGraphArray';
+import {xAxisYearly} from '../../../utils/mocks/tracker/StatsGraphArray';
 
 interface ChartProps {
   completeDate: string;
-  average: number;
-  fallOfAvg: number;
   barChartArray: any;
-  barChartArray2: any;
 }
 
-const MonthlyBarChart: FC<ChartProps> = ({
-  completeDate,
-  average,
-  fallOfAvg,
-  barChartArray,
-  barChartArray2,
-}) => {
-  const screenWidth = Dimensions.get('window').height;
+const YearlyTodoBarChart: FC<ChartProps> = ({completeDate, barChartArray}) => {
+  const screenWidth = Dimensions.get('window').width;
+  console.log(screenWidth);
+  const monthlyBarGraph1 = [
+    {value: 1},
+    {value: 23},
+    {value: 10},
+    {value: 20},
+    {value: 30},
+    {value: 10},
+    {value: 14},
+    {value: 22},
+    {value: 14},
+    {value: 17},
+    {value: 5},
+    {value: 25},
+  ];
+
+  const xAxisMonthly = [
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29',
+    '30',
+    '31',
+  ];
+
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <View style={styles.container}>
       <View style={styles.chartContainer}>
         <View style={styles.headerContainer}>
           <View style={styles.leftSide}>
             <AppText text={completeDate} style={styles.dateText} />
           </View>
           <View style={styles.rightSide}>
-            <View style={styles.leftTitle}>
-              <AppText text={'average'} style={styles.average} />
-              <AppText text={`${average}%`} style={styles.avgVal} />
-            </View>
-            <View style={styles.rightTitle}>
-              <AppText text={'Fall off'} style={styles.average} />
-              <AppText
-                text={`${fallOfAvg}%`}
-                style={[styles.avgVal, {color: COLORS.crimson}]}
-              />
-            </View>
+            <AppText text={'average'} style={styles.average} />
+            <AppText text={'50 days'} style={styles.daysTxt} />
           </View>
         </View>
         <View style={styles.barChart}>
           <LineChart
             // curved
-            data={barChartArray}
-            data2={barChartArray2}
-            color={COLORS.royal_blue}
-            color1={COLORS.turquoise_blue}
-            dataPointsColor={COLORS.royal_blue}
-            dataPointsColor1={COLORS.turquoise_blue}
-            maxValue={100}
-            height={118}
-            stepValue={20}
+            data={monthlyBarGraph1}
+            maxValue={31}
+            color={COLORS.pale_gold}
+            dataPointsColor={COLORS.pale_gold}
+            height={300}
+            stepValue={1}
             backgroundColor={COLORS.pale_mint}
             yAxisColor={COLORS.light_Powder_Blue}
             verticalLinesColor={'red'}
             xAxisIndicesHeight={2}
             xAxisIndicesWidth={1}
             xAxisIndicesColor={'red'}
-            xAxisLabelTexts={xAxisMonthly}
+            xAxisLabelTexts={xAxisYearly}
             dashWidth={0}
             yAxisTextStyle={styles.yAxis}
             xAxisLabelTextStyle={{fontSize: 8}}
-            width={screenWidth - 40}
-            xAxisLength={screenWidth}
+            width={screenWidth - 75}
+            xAxisLength={screenWidth - 95}
             thickness={1}
-            spacing={10}
+            spacing={Platform.OS === 'android' ? 23 : 28}
             xAxisColor={COLORS.green}
             xAxisThickness={1}
-            yAxisLabelTexts={['0', '20%', '40%', '60%', '80%', '100%']}
+            yAxisLabelTexts={xAxisMonthly}
           />
         </View>
       </View>
@@ -85,16 +115,16 @@ const MonthlyBarChart: FC<ChartProps> = ({
         />
         <AppText text={'Voluntary prayers'} style={styles.bottomtxt} />
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
-export default MonthlyBarChart;
+export default YearlyTodoBarChart;
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.pale_mint,
-    flex: 1,
+    // flex: 1,
   },
   chartContainer: {
     // marginTop: 20,
@@ -116,16 +146,8 @@ const styles = StyleSheet.create({
   rightSide: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-  },
-  leftTitle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  rightTitle: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   average: {
     color: COLORS.dark_gray,
@@ -133,10 +155,10 @@ const styles = StyleSheet.create({
     fontFamily: fonts.dmSans[500],
     paddingRight: 3,
   },
-  avgVal: {
-    color: COLORS.green,
+  daysTxt: {
     fontSize: 18,
     fontFamily: fonts.dmSans[500],
+    color: COLORS.green,
   },
   smallBox: {
     width: 6,
@@ -160,5 +182,6 @@ const styles = StyleSheet.create({
   yAxis: {
     color: COLORS.dark_gray,
     fontFamily: fonts.dmSans[400],
+    fontSize: 8,
   },
 });

@@ -6,7 +6,7 @@ import {screens} from '../types/types';
 import AppStack from './AppStack';
 const MainStack = () => {
   const Stack = createStackNavigator();
-  const isLogedIn = true;
+  const isLogedIn = false;
   return (
     <NavigationContainer>
       <Stack.Navigator>

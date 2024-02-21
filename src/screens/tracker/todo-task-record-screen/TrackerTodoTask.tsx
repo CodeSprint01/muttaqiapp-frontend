@@ -1,11 +1,4 @@
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
+import {FlatList, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React, {FC} from 'react';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
@@ -16,12 +9,14 @@ interface todoProps {
   todoName: string;
   handelShowmore?: () => void;
   todoArray: TodoTask[];
+  isShowmore: boolean;
 }
 
-const WeeklyTodoTask: FC<todoProps> = ({
+const TrackerTodoTask: FC<todoProps> = ({
   todoName,
   handelShowmore,
   todoArray,
+  isShowmore = false,
 }) => {
   return (
     <View style={styles.container}>
@@ -29,18 +24,20 @@ const WeeklyTodoTask: FC<todoProps> = ({
         <View style={styles.textContainer}>
           <AppText numberOfLines={1} text={todoName} style={styles.leftTxt} />
         </View>
-        <TouchableOpacity
-          activeOpacity={0.5}
-          onPress={handelShowmore}
-          style={styles.showIcon}>
-          <AppText text={'Show more'} style={styles.showmore} />
-          <AppIconSvg
-            icon={Icons.ArrowRight}
-            width={20}
-            height={20}
-            color="black"
-          />
-        </TouchableOpacity>
+        {isShowmore && (
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={handelShowmore}
+            style={styles.showIcon}>
+            <AppText text={'Show more'} style={styles.showmore} />
+            <AppIconSvg
+              icon={Icons.ArrowRight}
+              width={20}
+              height={20}
+              color="black"
+            />
+          </TouchableOpacity>
+        )}
       </View>
       <View style={styles.todoContainer}>
         <View style={styles.verticalLine} />
@@ -61,7 +58,7 @@ const WeeklyTodoTask: FC<todoProps> = ({
   );
 };
 
-export default WeeklyTodoTask;
+export default TrackerTodoTask;
 
 const styles = StyleSheet.create({
   container: {

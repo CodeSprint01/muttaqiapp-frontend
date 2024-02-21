@@ -1,7 +1,10 @@
 import {ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {COLORS, fonts} from '../../../styles/color';
-import {monthlyBarGraph} from '../../../utils/mocks/tracker/StatsGraphArray';
+import {
+  monthlyBarGraph,
+  monthlyBarGraph2,
+} from '../../../utils/mocks/tracker/StatsGraphArray';
 import YearlyBarChart from '../bar-charts/YearlyBarChart';
 
 const YearlyStats = () => {
@@ -10,6 +13,7 @@ const YearlyStats = () => {
       <View style={styles.chartContainer}>
         <YearlyBarChart
           barChartArray={monthlyBarGraph}
+          barChartArray2={monthlyBarGraph2}
           average={76}
           fallOfAvg={24}
           completeDate="2023"
@@ -18,6 +22,7 @@ const YearlyStats = () => {
       <View style={styles.chartContainer}>
         <YearlyBarChart
           barChartArray={monthlyBarGraph}
+          barChartArray2={monthlyBarGraph2}
           average={76}
           fallOfAvg={24}
           completeDate="2022"
@@ -26,6 +31,7 @@ const YearlyStats = () => {
       <View style={styles.chartContainer}>
         <YearlyBarChart
           barChartArray={monthlyBarGraph}
+          barChartArray2={monthlyBarGraph2}
           average={76}
           fallOfAvg={24}
           completeDate="2021"
@@ -34,6 +40,7 @@ const YearlyStats = () => {
       <View style={styles.chartContainer}>
         <YearlyBarChart
           barChartArray={monthlyBarGraph}
+          barChartArray2={monthlyBarGraph2}
           average={76}
           fallOfAvg={24}
           completeDate="2020"
