@@ -7,33 +7,7 @@ import {COLORS} from '../../styles/color';
 import TopTabs from './tab-items/TopTabs';
 
 const QuranScreen = () => {
-  // const heaaaderComponent = () => {
-  //   return (
-  //     <Fragment>
-  //       <View style={styles.header}>
-  //         <ScreenHeader />
-  //       </View>
-  //       <View style={styles.quranHeader}>
-  //         <QuranHeaderCard
-  //           surahName="At-Tuawbah"
-  //           paraNo="P. 209"
-  //           onPress={() => console.log('click')}
-  //         />
-  //       </View>
-  //     </Fragment>
-  //   );
-  // };
   return (
-    // <AppContainer>
-    //   <FlatList
-    //     data={[]}
-    //     renderItem={({item, index}) => {
-    //       return <Text>helllo</Text>;
-    //     }}
-    //     ListHeaderComponent={heaaaderComponent}
-    //   />
-    // </AppContainer>
-    // <ScrollView style={{flex: 1, backgroundColor: 'pink'}}>
     <AppContainer style={styles.container}>
       <View style={styles.header}>
         <ScreenHeader />

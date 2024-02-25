@@ -5,6 +5,7 @@ import {COLORS} from '../../../styles/color';
 import SurahListCard from './SurahListCard';
 import {AllSurah} from '../../../utils/mocks/SurahMock';
 import {useNavigation} from '@react-navigation/native';
+import {SurahBaqarah} from '../../../utils/mocks/quran-json-data/suraBaqarah';
 
 const SurahScreen = () => {
   const navigation = useNavigation();
@@ -12,11 +13,13 @@ const SurahScreen = () => {
     <View style={styles.container}>
       <View style={styles.container}>
         <FlatList
-          data={AllSurah}
+          data={SurahBaqarah}
           renderItem={({item, index}: {item: Surah; index: number}) => (
             <>
+              {/* {console.log(item, 'this is name')}
+              {console.log(index, 'this is name')} */}
               <SurahListCard
-                surahName={item?.name}
+                surahName={item?.enName}
                 surahType={item?.type}
                 indx={item?.number}
                 length={item?.numberOfAyahs}
@@ -29,7 +32,7 @@ const SurahScreen = () => {
               />
             </>
           )}
-          keyExtractor={item => item?.name?.toString()}
+          keyExtractor={item => item?.enName?.toString()}
         />
       </View>
     </View>

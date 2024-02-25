@@ -1,6 +1,6 @@
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {FC} from 'react';
-import {COLORS} from '../../../styles/color';
+import {COLORS, fonts} from '../../../styles/color';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
 import {JuzData} from '../../../types/types';
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     color: COLORS.green,
     textAlign: 'center',
     fontSize: 10,
-    fontWight: '400',
+    fontFamily: fonts.dmSans[400],
   },
 
   rightSide: {

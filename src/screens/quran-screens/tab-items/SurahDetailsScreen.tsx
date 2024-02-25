@@ -1,4 +1,12 @@
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useEffect, useMemo, useState} from 'react';
 import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
 import {COLORS, fonts} from '../../../styles/color';
@@ -18,7 +26,8 @@ import BottomSheetOverlapView from '../../../components/molecules/bottom-sheet-o
 
 const SurahDetailsScreen = ({route}) => {
   const surahData = route?.params?.data;
-  const [ayatDetails, setAyatDetails] = useState<null | Ayah[]>([]);
+  console.log(surahData, 'this is surahData');
+  const [ayatDetails, setAyatDetails] = useState<Ayah[]>([]);
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
   const [hideTranslation, setHideTranslation] = useState<boolean>(false);
   const [isShowBoottomSheet, setIsShowBoottomSheet] = useState<boolean>(false);
@@ -38,7 +47,7 @@ const SurahDetailsScreen = ({route}) => {
   const playbackState = usePlaybackState();
   var progress = useProgress();
 
-  console.log(surahData, 'surahData');
+  // console.log(surahData, 'surahData');
 
   useEffect(() => {
     setupPlayer();
@@ -179,6 +188,7 @@ const SurahDetailsScreen = ({route}) => {
             />
           </View>
         </View>
+
         {hideTranslation ? (
           <View style={{marginTop: 10}}>
             <SurahHeader
@@ -188,17 +198,27 @@ const SurahDetailsScreen = ({route}) => {
               onPressBooksquare={() => console.log('onPressBooksquare')}
               onPressPlayPause={() => console.log('onPressPlayPause')}
             />
-            <AppText
-              text={surahData?.ayahs?.map(ayah => ayah.text).join(' ۝ ')}
-              style={{fontSize: 24, textAlign: 'right', marginTop: 10}}
-            />
+            <ScrollView>
+              <View>
+                <Text style={{fontSize: 24, textAlign: 'right', marginTop: 10}}>
+                  {surahData?.ayahs?.map((item, index) => (
+                    <Text
+                      key={index}
+                      onPress={() => console.log(index)}
+                      style={{marginRight: 10}}>
+                      {`${item.text} (${item.sajda ? 'ع' : item.number}) `}
+                    </Text>
+                  ))}
+                </Text>
+              </View>
+            </ScrollView>
           </View>
         ) : (
           <FlatList
             data={surahData?.ayahs}
             showsVerticalScrollIndicator={false}
             renderItem={renderItem}
-            keyExtractor={(item, index) => index.toString()}
+            keyExtractor={(item, index) => item?.text.toString()}
           />
         )}
       </View>
@@ -290,3 +310,102 @@ const styles = StyleSheet.create({
   },
 });
 export default SurahDetailsScreen;
+// import React from 'react';
+// import {View, Text, Image, StyleSheet} from 'react-native';
+
+// const SurahDetailsScreen = () => {
+//   const verses = [
+//     {
+//       number: 8,
+//       numberInSurah: 1,
+//       text: 'بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ الۤمۤ',
+//       enText: 'Alif. Lam. Mim.',
+//       manzil: 1,
+//       ruku: 2,
+//       sajda: false,
+//     },
+//     {
+//       number: 9,
+//       numberInSurah: 2,
+//       text: 'ذَ ٰ⁠لِكَ ٱلۡكِتَـٰبُ لَا رَیۡبَۛ فِیهِۛ هُدࣰى لِّلۡمُتَّقِینَ',
+//       enText:
+//         'THIS DIVINE WRIT - let there be no doubt about it is [meant to be] a guidance for all the God-conscious.',
+//       manzil: 1,
+//       ruku: 2,
+//       sajda: false,
+//     },
+//     {
+//       number: 8,
+//       numberInSurah: 1,
+//       text: 'ذَ ٰ⁠لِكَ ٱلۡكِتَـٰبُ لَا رَیۡبَۛ فِیهِۛ هُدࣰى لِّلۡمُتَّقِینَ',
+//       enText: 'Alif. Lam. Mim.',
+//       manzil: 1,
+//       ruku: 2,
+//       sajda: false,
+//     },
+//     {
+//       number: 9,
+//       numberInSurah: 2,
+//       text: 'ذَ ٰ⁠لِكَ ٱلۡكِتَـٰبُ لَا رَیۡبَۛ فِیهِۛ هُدࣰى لِّلۡمُتَّقِینَ',
+//       enText:
+//         'THIS DIVINE WRIT - let there be no doubt about it is [meant to be] a guidance for all the God-conscious.',
+//       manzil: 1,
+//       ruku: 2,
+//       sajda: false,
+//     },
+//     // Add more verses here if needed
+//   ];
+
+//   return (
+//     // <View style={{marginTop: 100}}>
+//     //   {verses.map((verse, index) => (
+//     //     <View key={index} style={styles.verseContainer}>
+//     //       <Text style={styles.text}>{'(' + verse?.number + ')'}</Text>
+//     //       <Text style={[styles.text, {paddingLeft: 10, fontSize: 20}]}>
+//     //         {verse?.text}
+//     //       </Text>
+//     //     </View>
+//     //   ))}
+//     // </View>
+//     // <View style={{marginTop: 100}}>
+//     //   <Text
+//     //     onPress={() => console.log()}
+//     //     style={{fontSize: 24, textAlign: 'right', marginTop: 10}}>
+//     //     {verses?.map((verse , index) => `${verse.text}  (${verse.number})`).join(' ')}
+//     //   </Text>
+//     // </View>
+//     <View style={{marginTop: 100}}>
+//       <Text style={{fontSize: 24, textAlign: 'right', marginTop: 10}}>
+//         {verses?.map((verse, index) => (
+//           <Text
+//             key={index}
+//             onPress={() => console.log(index)}
+//             style={{marginRight: 10}}>
+//             {`${verse.text} (${verse.number})`}
+//           </Text>
+//         ))}
+//       </Text>
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   verseContainer: {
+//     flexDirection: 'row',
+//     alignItems: 'center',
+//     marginBottom: 10,
+//     alignSelf: 'flex-end',
+//     backgroundColor: 'pink',
+//   },
+//   text: {
+//     textAlign: 'right',
+//     fontSize: 34,
+//     color: 'red',
+//   },
+//   image: {
+//     width: 30, // Adjust image width as needed
+//     height: 30, // Adjust image height as needed
+//   },
+// });
+
+// export default SurahDetailsScreen;

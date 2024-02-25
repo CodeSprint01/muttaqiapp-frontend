@@ -124,11 +124,34 @@ export interface InputSignIn {
   placeholder: string;
 }
 
+// export interface Surah {
+//   number: number;
+//   name: string;
+//   enName: string;
+//   type: string;
+//   enTranslation: string;
+//   numberOfAyahs: number;
+//   numberOfRukoos: number;
+//   ayahs: Ayah[];
+// }
+
+// export interface Ayah {
+//   number: number;
+//   numberInSurah: number;
+//   text: string;
+//   enText: string;
+//   manzil: number;
+//   ruku: number;
+//   sajda: boolean;
+// }
+// surah intterface
 export interface Surah {
   number: number;
   name: string;
   enName: string;
   type: string;
+  rukuos: number[];
+  sajda: number[] | null;
   enTranslation: string;
   numberOfAyahs: number;
   numberOfRukoos: number;
