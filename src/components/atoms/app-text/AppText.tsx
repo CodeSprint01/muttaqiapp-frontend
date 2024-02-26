@@ -31,6 +31,5 @@ export default AppText;
 const styles = StyleSheet.create({
   txt: {
     color: COLORS.lightBlack,
-    fontFamily: fonts.dmSans['500'],
   },
 });

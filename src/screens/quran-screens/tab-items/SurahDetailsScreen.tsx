@@ -1,6 +1,6 @@
 import {
+  Alert,
   FlatList,
-  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -39,6 +39,9 @@ const SurahDetailsScreen = ({route}) => {
     verse: 0,
     playerPlaybackState: '',
   });
+
+  const rukuos = surahData?.rukuos;
+  console.log(rukuos);
 
   const handleHideTranslation = () => {
     setHideTranslation(!hideTranslation);
@@ -160,7 +163,7 @@ const SurahDetailsScreen = ({route}) => {
           onPressBooksquare={() => handleShowBottoomsheet(item)}
           onPressPlayPause={() => handlePlayerClick(item, index)}
         />
-        <AppText text={item?.text} style={styles.arabicTxt} />
+        <Text style={styles.arabicTxt}>{item?.text}</Text>
         <AppText text={item?.enText} style={styles.translation} />
       </View>
     );
@@ -198,20 +201,45 @@ const SurahDetailsScreen = ({route}) => {
               onPressBooksquare={() => console.log('onPressBooksquare')}
               onPressPlayPause={() => console.log('onPressPlayPause')}
             />
-            <ScrollView>
-              <View>
-                <Text style={{fontSize: 24, textAlign: 'right', marginTop: 10}}>
-                  {surahData?.ayahs?.map((item, index) => (
-                    <Text
-                      key={index}
-                      onPress={() => console.log(index)}
-                      style={{marginRight: 10}}>
-                      {`${item.text} (${item.sajda ? 'ع' : item.number}) `}
-                    </Text>
-                  ))}
-                </Text>
-              </View>
-            </ScrollView>
+            <View style={{}}>
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                style={{marginBottom: 170}}>
+                <View style={{}}>
+                  <Text
+                    style={{fontSize: 24, textAlign: 'right', marginTop: 10}}>
+                    {surahData?.ayahs?.map((item: Ayah, index: number) => (
+                      <>
+                        <Text
+                          key={index}
+                          onLongPress={() => Alert.alert(item?.enText)}
+                          style={{
+                            marginRight: 10,
+                            lineHeight: 40,
+                            fontFamily: 'Arabic',
+                            fontSize: 30,
+                          }}>
+                          {`${item.text} (${item.number}) `}
+                        </Text>
+                        <Text style={{textAlign: 'center'}}>
+                          {rukuos.map(itm =>
+                            itm === item.number ? (
+                              <Text
+                                style={{
+                                  backgroundColor: 'pink',
+                                }}>{`\n (${item.ruku}ع) \n`}</Text>
+                            ) : null,
+                          )}
+                        </Text>
+                        <Text style={{textAlign: 'center'}}>
+                          {item?.sajda ? `\n (سَجْدَہ) \n` : null}
+                        </Text>
+                      </>
+                    ))}
+                  </Text>
+                </View>
+              </ScrollView>
+            </View>
           </View>
         ) : (
           <FlatList
@@ -259,7 +287,7 @@ const SurahDetailsScreen = ({route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
   },
   listView: {
     marginBottom: 16,
@@ -310,102 +338,3 @@ const styles = StyleSheet.create({
   },
 });
 export default SurahDetailsScreen;
-// import React from 'react';
-// import {View, Text, Image, StyleSheet} from 'react-native';
-
-// const SurahDetailsScreen = () => {
-//   const verses = [
-//     {
-//       number: 8,
-//       numberInSurah: 1,
-//       text: 'بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ الۤمۤ',
-//       enText: 'Alif. Lam. Mim.',
-//       manzil: 1,
-//       ruku: 2,
-//       sajda: false,
-//     },
-//     {
-//       number: 9,
-//       numberInSurah: 2,
-//       text: 'ذَ ٰ⁠لِكَ ٱلۡكِتَـٰبُ لَا رَیۡبَۛ فِیهِۛ هُدࣰى لِّلۡمُتَّقِینَ',
-//       enText:
-//         'THIS DIVINE WRIT - let there be no doubt about it is [meant to be] a guidance for all the God-conscious.',
-//       manzil: 1,
-//       ruku: 2,
-//       sajda: false,
-//     },
-//     {
-//       number: 8,
-//       numberInSurah: 1,
-//       text: 'ذَ ٰ⁠لِكَ ٱلۡكِتَـٰبُ لَا رَیۡبَۛ فِیهِۛ هُدࣰى لِّلۡمُتَّقِینَ',
-//       enText: 'Alif. Lam. Mim.',
-//       manzil: 1,
-//       ruku: 2,
-//       sajda: false,
-//     },
-//     {
-//       number: 9,
-//       numberInSurah: 2,
-//       text: 'ذَ ٰ⁠لِكَ ٱلۡكِتَـٰبُ لَا رَیۡبَۛ فِیهِۛ هُدࣰى لِّلۡمُتَّقِینَ',
-//       enText:
-//         'THIS DIVINE WRIT - let there be no doubt about it is [meant to be] a guidance for all the God-conscious.',
-//       manzil: 1,
-//       ruku: 2,
-//       sajda: false,
-//     },
-//     // Add more verses here if needed
-//   ];
-
-//   return (
-//     // <View style={{marginTop: 100}}>
-//     //   {verses.map((verse, index) => (
-//     //     <View key={index} style={styles.verseContainer}>
-//     //       <Text style={styles.text}>{'(' + verse?.number + ')'}</Text>
-//     //       <Text style={[styles.text, {paddingLeft: 10, fontSize: 20}]}>
-//     //         {verse?.text}
-//     //       </Text>
-//     //     </View>
-//     //   ))}
-//     // </View>
-//     // <View style={{marginTop: 100}}>
-//     //   <Text
-//     //     onPress={() => console.log()}
-//     //     style={{fontSize: 24, textAlign: 'right', marginTop: 10}}>
-//     //     {verses?.map((verse , index) => `${verse.text}  (${verse.number})`).join(' ')}
-//     //   </Text>
-//     // </View>
-//     <View style={{marginTop: 100}}>
-//       <Text style={{fontSize: 24, textAlign: 'right', marginTop: 10}}>
-//         {verses?.map((verse, index) => (
-//           <Text
-//             key={index}
-//             onPress={() => console.log(index)}
-//             style={{marginRight: 10}}>
-//             {`${verse.text} (${verse.number})`}
-//           </Text>
-//         ))}
-//       </Text>
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   verseContainer: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     marginBottom: 10,
-//     alignSelf: 'flex-end',
-//     backgroundColor: 'pink',
-//   },
-//   text: {
-//     textAlign: 'right',
-//     fontSize: 34,
-//     color: 'red',
-//   },
-//   image: {
-//     width: 30, // Adjust image width as needed
-//     height: 30, // Adjust image height as needed
-//   },
-// });
-
-// export default SurahDetailsScreen;
