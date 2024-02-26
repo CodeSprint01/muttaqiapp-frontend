@@ -23,6 +23,8 @@
 		B4DAF128453B419F8BB413B4 /* DMSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 774634D2AAD54D758C2629D6 /* DMSans-Bold.ttf */; };
 		C2AF7D27BE37428A85E3CCBD /* Arabic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DCFF024E95444A59FE8D705 /* Arabic.ttf */; };
 		F7C08E288DD243BE8259B172 /* DMSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CE645AD7D9B44C2AEB3EA9D /* DMSans-ExtraLight.ttf */; };
+		74B9957C28044B6C9C4CFC60 /* Al Qalam Quran Majeed Web2_D.otf in Resources */ = {isa = PBXBuildFile; fileRef = 143F32BBD93C4E3196604578 /* Al Qalam Quran Majeed Web2_D.otf */; };
+		68EA8C005366484CB4F23CCD /* AlQalamQuranMajeedWeb2_D.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79A0AC8C6A9345A486425C4C /* AlQalamQuranMajeedWeb2_D.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		DFF85B7EACB943468C179155 /* DMSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-Medium.ttf"; path = "../assets/fonts/DMSans-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F986C9D0A6AF431BB7E1939B /* DMSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-Regular.ttf"; path = "../assets/fonts/DMSans-Regular.ttf"; sourceTree = "<group>"; };
+		143F32BBD93C4E3196604578 /* Al Qalam Quran Majeed Web2_D.otf */ = {isa = PBXFileReference; name = "Al Qalam Quran Majeed Web2_D.otf"; path = "../assets/fonts/Al Qalam Quran Majeed Web2_D.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		79A0AC8C6A9345A486425C4C /* AlQalamQuranMajeedWeb2_D.otf */ = {isa = PBXFileReference; name = "AlQalamQuranMajeedWeb2_D.otf"; path = "../assets/fonts/AlQalamQuranMajeedWeb2_D.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +185,8 @@
 				F986C9D0A6AF431BB7E1939B /* DMSans-Regular.ttf */,
 				3B0DCF8020F84DCB986290F9 /* DMSans-SemiBold.ttf */,
 				8DCFF024E95444A59FE8D705 /* Arabic.ttf */,
+				143F32BBD93C4E3196604578 /* Al Qalam Quran Majeed Web2_D.otf */,
+				79A0AC8C6A9345A486425C4C /* AlQalamQuranMajeedWeb2_D.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -289,6 +295,8 @@
 				1EA4237C1F5B46EF8518C766 /* DMSans-Regular.ttf in Resources */,
 				43B85371DBD74F98B3B4CE84 /* DMSans-SemiBold.ttf in Resources */,
 				C2AF7D27BE37428A85E3CCBD /* Arabic.ttf in Resources */,
+				74B9957C28044B6C9C4CFC60 /* Al Qalam Quran Majeed Web2_D.otf in Resources */,
+				68EA8C005366484CB4F23CCD /* AlQalamQuranMajeedWeb2_D.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

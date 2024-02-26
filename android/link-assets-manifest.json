@@ -2,6 +2,14 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/Al Qalam Quran Majeed Web2_D.otf",
+      "sha1": "804dc849ba719b30ca260603800663ce690cbbf5"
+    },
+    {
+      "path": "assets/fonts/AlQalamQuranMajeedWeb2_D.otf",
+      "sha1": "bb8c21223ad071a75fe99485588294decd8dbf55"
+    },
+    {
       "path": "assets/fonts/Arabic.ttf",
       "sha1": "128302d0933738006cf9ab24f09fa8f73d90870a"
     },

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useMemo, useState} from 'react';
 import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
-import {COLORS, fonts} from '../../../styles/color';
+import {COLORS, arabicFnt, fonts} from '../../../styles/color';
 import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import SurahHeader from './SurahHeader';
@@ -195,8 +195,8 @@ const SurahDetailsScreen = ({route}) => {
         {hideTranslation ? (
           <View style={{marginTop: 10}}>
             <SurahHeader
-              bookmark={Icons.EmptyBookmark}
-              favourite={Icons.EmptyHeart}
+              // bookmark={Icons.EmptyBookmark}
+              // favourite={Icons.EmptyHeart}
               playPause={Icons.Play}
               onPressBooksquare={() => console.log('onPressBooksquare')}
               onPressPlayPause={() => console.log('onPressPlayPause')}
@@ -216,8 +216,9 @@ const SurahDetailsScreen = ({route}) => {
                           style={{
                             marginRight: 10,
                             lineHeight: 40,
-                            fontFamily: 'Arabic',
-                            fontSize: 30,
+                            fontFamily: arabicFnt[0],
+                            fontSize: 25,
+                            color: 'black',
                           }}>
                           {`${item.text} (${item.number}) `}
                         </Text>

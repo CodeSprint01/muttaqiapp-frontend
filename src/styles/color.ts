@@ -50,6 +50,10 @@ export const fonts = {
     800: 'DMSans-ExtraBold',
   },
 };
+export const arabicFnt = {
+  0: 'AlQalamQuranMajeedWeb2_D',
+  1: 'Arabic',
+};
 
 export const spacing = {
   bottomSheetHeader: 24,
