@@ -18,13 +18,13 @@
 		20B6D85902AF4B4B8EBA36DB /* DMSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37DD4A28E1E2488B82B30FEF /* DMSans-ExtraBold.ttf */; };
 		43B85371DBD74F98B3B4CE84 /* DMSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B0DCF8020F84DCB986290F9 /* DMSans-SemiBold.ttf */; };
 		6800E0E71AD54DE48F1E79EB /* DMSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04F8A532F5914DEFA3EB8682 /* DMSans-Light.ttf */; };
+		68EA8C005366484CB4F23CCD /* AlQalamQuranMajeedWeb2_D.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79A0AC8C6A9345A486425C4C /* AlQalamQuranMajeedWeb2_D.otf */; };
+		74B9957C28044B6C9C4CFC60 /* Al Qalam Quran Majeed Web2_D.otf in Resources */ = {isa = PBXBuildFile; fileRef = 143F32BBD93C4E3196604578 /* Al Qalam Quran Majeed Web2_D.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A98DE0392B5E5A2B001BEE08 /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98DE0382B5E5A2B001BEE08 /* dummy.swift */; };
 		B4DAF128453B419F8BB413B4 /* DMSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 774634D2AAD54D758C2629D6 /* DMSans-Bold.ttf */; };
 		C2AF7D27BE37428A85E3CCBD /* Arabic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DCFF024E95444A59FE8D705 /* Arabic.ttf */; };
 		F7C08E288DD243BE8259B172 /* DMSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CE645AD7D9B44C2AEB3EA9D /* DMSans-ExtraLight.ttf */; };
-		74B9957C28044B6C9C4CFC60 /* Al Qalam Quran Majeed Web2_D.otf in Resources */ = {isa = PBXBuildFile; fileRef = 143F32BBD93C4E3196604578 /* Al Qalam Quran Majeed Web2_D.otf */; };
-		68EA8C005366484CB4F23CCD /* AlQalamQuranMajeedWeb2_D.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79A0AC8C6A9345A486425C4C /* AlQalamQuranMajeedWeb2_D.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +48,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = muttaqi/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = muttaqi/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = muttaqi/main.m; sourceTree = "<group>"; };
+		143F32BBD93C4E3196604578 /* Al Qalam Quran Majeed Web2_D.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Al Qalam Quran Majeed Web2_D.otf"; path = "../assets/fonts/Al Qalam Quran Majeed Web2_D.otf"; sourceTree = "<group>"; };
 		1CE645AD7D9B44C2AEB3EA9D /* DMSans-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-ExtraLight.ttf"; path = "../assets/fonts/DMSans-ExtraLight.ttf"; sourceTree = "<group>"; };
 		37DD4A28E1E2488B82B30FEF /* DMSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-ExtraBold.ttf"; path = "../assets/fonts/DMSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		3A09C1ACE370E6D10D6D98C4 /* libPods-muttaqi-muttaqiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-muttaqi-muttaqiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +56,7 @@
 		65DC9E6E06083524F65A8D65 /* Pods-muttaqi-muttaqiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muttaqi-muttaqiTests.release.xcconfig"; path = "Target Support Files/Pods-muttaqi-muttaqiTests/Pods-muttaqi-muttaqiTests.release.xcconfig"; sourceTree = "<group>"; };
 		74DADFAAD2A3510EA4FB575F /* Pods-muttaqi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muttaqi.release.xcconfig"; path = "Target Support Files/Pods-muttaqi/Pods-muttaqi.release.xcconfig"; sourceTree = "<group>"; };
 		774634D2AAD54D758C2629D6 /* DMSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-Bold.ttf"; path = "../assets/fonts/DMSans-Bold.ttf"; sourceTree = "<group>"; };
+		79A0AC8C6A9345A486425C4C /* AlQalamQuranMajeedWeb2_D.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlQalamQuranMajeedWeb2_D.otf; path = ../assets/fonts/AlQalamQuranMajeedWeb2_D.otf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = muttaqi/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DCFF024E95444A59FE8D705 /* Arabic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Arabic.ttf; path = ../assets/fonts/Arabic.ttf; sourceTree = "<group>"; };
 		98B3A3A81148D6C03AC684F6 /* Pods-muttaqi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muttaqi.debug.xcconfig"; path = "Target Support Files/Pods-muttaqi/Pods-muttaqi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -65,8 +67,6 @@
 		DFF85B7EACB943468C179155 /* DMSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-Medium.ttf"; path = "../assets/fonts/DMSans-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F986C9D0A6AF431BB7E1939B /* DMSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-Regular.ttf"; path = "../assets/fonts/DMSans-Regular.ttf"; sourceTree = "<group>"; };
-		143F32BBD93C4E3196604578 /* Al Qalam Quran Majeed Web2_D.otf */ = {isa = PBXFileReference; name = "Al Qalam Quran Majeed Web2_D.otf"; path = "../assets/fonts/Al Qalam Quran Majeed Web2_D.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		79A0AC8C6A9345A486425C4C /* AlQalamQuranMajeedWeb2_D.otf */ = {isa = PBXFileReference; name = "AlQalamQuranMajeedWeb2_D.otf"; path = "../assets/fonts/AlQalamQuranMajeedWeb2_D.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

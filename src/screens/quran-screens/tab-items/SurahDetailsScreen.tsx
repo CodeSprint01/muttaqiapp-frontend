@@ -1,6 +1,7 @@
 import {
   Alert,
   FlatList,
+  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -16,6 +17,7 @@ import SurahHeader from './SurahHeader';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {Ayah, Ayat} from '../../../types/types';
 import AudioPlayer from '../../../components/molecules/audio-player/AudioPlayer';
+import {SurahBaqarahdemo} from '../../../utils/mocks/quran-json-data/surahArray';
 import TrackPlayer, {
   Capability,
   usePlaybackState,
@@ -39,9 +41,6 @@ const SurahDetailsScreen = ({route}) => {
     verse: 0,
     playerPlaybackState: '',
   });
-
-  const rukuos = surahData?.rukuos;
-  console.log(rukuos);
 
   const handleHideTranslation = () => {
     setHideTranslation(!hideTranslation);
@@ -202,44 +201,65 @@ const SurahDetailsScreen = ({route}) => {
               onPressPlayPause={() => console.log('onPressPlayPause')}
             />
             <View style={{}}>
-              <ScrollView
-                showsVerticalScrollIndicator={false}
-                style={{marginBottom: 170}}>
-                <View style={{}}>
-                  <Text
-                    style={{fontSize: 24, textAlign: 'right', marginTop: 10}}>
-                    {surahData?.ayahs?.map((item: Ayah, index: number) => (
-                      <>
-                        <Text
-                          key={index}
-                          onLongPress={() => Alert.alert(item?.enText)}
+              {/* <FlatList
+                data={SurahBaqarahdemo}
+                renderItem={({item}) => {
+                  return (
+                    <View style={{backgroundColor: 'pink'}}>
+                      <Text style={{textAlign: 'right'}}>
+                        {item.ayahs.map(itm => (
+                          <Text
+                            key={
+                              itm.number
+                            }>{`${itm?.text} (${itm?.number}) `}</Text>
+                        ))}
+                      </Text>
+                      {item?.seprater?.map(ruk => (
+                        <View
                           style={{
-                            marginRight: 10,
-                            lineHeight: 40,
-                            fontFamily: arabicFnt[0],
-                            fontSize: 25,
-                            color: 'black',
+                            flexDirection: 'row',
+                            backgroundColor: 'red',
+                            alignItems: 'center',
                           }}>
-                          {`${item.text} (${item.number}) `}
-                        </Text>
-                        <Text style={{textAlign: 'center'}}>
-                          {rukuos.map(itm =>
-                            itm === item.number ? (
-                              <Text
-                                style={{
-                                  backgroundColor: 'pink',
-                                }}>{`\n (${item.ruku}ع) \n`}</Text>
-                            ) : null,
-                          )}
-                        </Text>
-                        <Text style={{textAlign: 'center'}}>
-                          {item?.sajda ? `\n (سَجْدَہ) \n` : null}
-                        </Text>
-                      </>
-                    ))}
-                  </Text>
-                </View>
-              </ScrollView>
+                          <Text style={{textAlign: 'center'}}> {ruk} </Text>
+                        </View>
+                      ))}
+                    </View>
+                  );
+                }}
+              /> */}
+              <FlatList
+                data={SurahBaqarahdemo}
+                renderItem={({item}) => {
+                  return (
+                    <View style={{backgroundColor: 'pink'}}>
+                      <Text style={{textAlign: 'right'}}>
+                        {item.ayahs.map(itm => (
+                          <Text
+                            key={
+                              itm.number
+                            }>{`${itm?.text} (${itm?.number}) `}</Text>
+                        ))}
+                      </Text>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          backgroundColor: 'green',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}>
+                        {item?.seprater?.map(ruk => (
+                          <View>
+                            <Text style={{textAlign: 'center'}}>
+                              {`${ruk?.name} ${ruk?.rukuNumber} `}
+                            </Text>
+                          </View>
+                        ))}
+                      </View>
+                    </View>
+                  );
+                }}
+              />
             </View>
           </View>
         ) : (

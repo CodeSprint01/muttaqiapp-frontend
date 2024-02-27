@@ -5,7 +5,7 @@ import AppText from '../../../components/atoms/app-text/AppText';
 import {COLORS} from '../../../styles/color';
 
 interface headerprops {
-  onPressBookmark: () => void;
+  onPressBookmark?: () => void;
   ayatNumber: number;
   bookmark: any;
   onPressFavourite: () => void;

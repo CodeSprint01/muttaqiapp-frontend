@@ -165,7 +165,7 @@ export interface Ayah {
   enText: string;
   manzil: number;
   ruku: number;
-  sajda: boolean;
+  sajda?: boolean;
 }
 
 export interface Juz {
