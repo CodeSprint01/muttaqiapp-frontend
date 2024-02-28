@@ -3,9 +3,8 @@ import {Surah, screens} from '../../../types/types';
 import React from 'react';
 import {COLORS} from '../../../styles/color';
 import SurahListCard from './SurahListCard';
-import {AllSurah} from '../../../utils/mocks/SurahMock';
 import {useNavigation} from '@react-navigation/native';
-import {SurahBaqarah} from '../../../utils/mocks/quran-json-data/suraBaqarah';
+import {QuranAllSurahs} from '../../../utils/mocks/quran-json-data/surahArray';
 
 const SurahScreen = () => {
   const navigation = useNavigation();
@@ -13,7 +12,7 @@ const SurahScreen = () => {
     <View style={styles.container}>
       <View style={styles.container}>
         <FlatList
-          data={SurahBaqarah}
+          data={QuranAllSurahs}
           renderItem={({item, index}: {item: Surah; index: number}) => (
             <>
               {/* {console.log(item, 'this is name')}

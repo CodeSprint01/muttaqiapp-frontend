@@ -1,7 +1,5 @@
 import {
-  Alert,
   FlatList,
-  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -10,14 +8,13 @@ import {
 } from 'react-native';
 import React, {useEffect, useMemo, useState} from 'react';
 import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
-import {COLORS, arabicFnt, fonts} from '../../../styles/color';
+import {COLORS, fonts} from '../../../styles/color';
 import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import SurahHeader from './SurahHeader';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {Ayah, Ayat} from '../../../types/types';
 import AudioPlayer from '../../../components/molecules/audio-player/AudioPlayer';
-import {SurahBaqarahdemo} from '../../../utils/mocks/quran-json-data/surahArray';
 import TrackPlayer, {
   Capability,
   usePlaybackState,
@@ -25,9 +22,11 @@ import TrackPlayer, {
   useProgress,
 } from 'react-native-track-player';
 import BottomSheetOverlapView from '../../../components/molecules/bottom-sheet-overlap/BottomSheetOverlapView';
+import SurahContainer from '../../../components/molecules/quran-cards/SurahContainer';
 
 const SurahDetailsScreen = ({route}) => {
   const surahData = route?.params?.data;
+
   console.log(surahData, 'this is surahData');
   const [ayatDetails, setAyatDetails] = useState<Ayah[]>([]);
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
@@ -41,6 +40,18 @@ const SurahDetailsScreen = ({route}) => {
     verse: 0,
     playerPlaybackState: '',
   });
+
+  const extractedValues = [surahData]?.flatMap(surah =>
+    surah.surahDetails.flatMap(detail =>
+      detail.ayahs.map(({numberInSurah, text, enText}) => ({
+        numberInSurah,
+        text,
+        enText,
+      })),
+    ),
+  );
+
+  console.log(extractedValues, 'this is neccessary');
 
   const handleHideTranslation = () => {
     setHideTranslation(!hideTranslation);
@@ -146,28 +157,6 @@ const SurahDetailsScreen = ({route}) => {
   };
   const DetailsnapPoint = useMemo(() => ['95%', '96%', '77%'], []);
   const PlayersnapPoint = useMemo(() => ['16%', '16.01%'], []);
-
-  const renderItem = ({item, index}: {item: Ayah; index: number}) => {
-    return (
-      <View style={[styles.listView, {marginTop: index === 0 ? 23 : 0}]}>
-        <SurahHeader
-          ayatNumber={index + 1}
-          bookmark={Icons.EmptyBookmark}
-          favourite={Icons.EmptyHeart}
-          playPause={
-            playerData?.audioIndex === index && playerData.isPlay
-              ? Icons.Pause
-              : Icons.Play
-          }
-          onPressBooksquare={() => handleShowBottoomsheet(item)}
-          onPressPlayPause={() => handlePlayerClick(item, index)}
-        />
-        <Text style={styles.arabicTxt}>{item?.text}</Text>
-        <AppText text={item?.enText} style={styles.translation} />
-      </View>
-    );
-  };
-
   return (
     <AppContainer>
       <View style={{paddingHorizontal: 20}}>
@@ -194,81 +183,55 @@ const SurahDetailsScreen = ({route}) => {
         {hideTranslation ? (
           <View style={{marginTop: 10}}>
             <SurahHeader
-              // bookmark={Icons.EmptyBookmark}
-              // favourite={Icons.EmptyHeart}
               playPause={Icons.Play}
               onPressBooksquare={() => console.log('onPressBooksquare')}
               onPressPlayPause={() => console.log('onPressPlayPause')}
             />
-            <View style={{}}>
-              {/* <FlatList
-                data={SurahBaqarahdemo}
-                renderItem={({item}) => {
-                  return (
-                    <View style={{backgroundColor: 'pink'}}>
-                      <Text style={{textAlign: 'right'}}>
-                        {item.ayahs.map(itm => (
-                          <Text
-                            key={
-                              itm.number
-                            }>{`${itm?.text} (${itm?.number}) `}</Text>
-                        ))}
-                      </Text>
-                      {item?.seprater?.map(ruk => (
-                        <View
-                          style={{
-                            flexDirection: 'row',
-                            backgroundColor: 'red',
-                            alignItems: 'center',
-                          }}>
-                          <Text style={{textAlign: 'center'}}> {ruk} </Text>
-                        </View>
-                      ))}
-                    </View>
-                  );
-                }}
-              /> */}
+            <View style={styles.surahContainer}>
               <FlatList
-                data={SurahBaqarahdemo}
+                data={surahData?.surahDetails}
+                showsVerticalScrollIndicator={false}
                 renderItem={({item}) => {
                   return (
-                    <View style={{backgroundColor: 'pink'}}>
-                      <Text style={{textAlign: 'right'}}>
-                        {item.ayahs.map(itm => (
-                          <Text
-                            key={
-                              itm.number
-                            }>{`${itm?.text} (${itm?.number}) `}</Text>
-                        ))}
-                      </Text>
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          backgroundColor: 'green',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}>
-                        {item?.seprater?.map(ruk => (
-                          <View>
-                            <Text style={{textAlign: 'center'}}>
-                              {`${ruk?.name} ${ruk?.rukuNumber} `}
-                            </Text>
-                          </View>
-                        ))}
-                      </View>
-                    </View>
+                    <SurahContainer
+                      item={item}
+                      handleTextPress={() => console.log('jj')}
+                    />
                   );
                 }}
               />
             </View>
           </View>
         ) : (
-          <FlatList
-            data={surahData?.ayahs}
-            showsVerticalScrollIndicator={false}
-            renderItem={renderItem}
-            keyExtractor={(item, index) => item?.text.toString()}
-          />
+          <>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              {extractedValues.map(item => (
+                <View
+                  style={[
+                    styles.listView,
+                    {marginTop: item?.numberInSurah === 0 ? 23 : 0},
+                  ]}>
+                  <SurahHeader
+                    ayatNumber={item?.numberInSurah + 1}
+                    bookmark={Icons.EmptyBookmark}
+                    favourite={Icons.EmptyHeart}
+                    playPause={
+                      playerData?.audioIndex === item?.numberInSurah &&
+                      playerData.isPlay
+                        ? Icons.Pause
+                        : Icons.Play
+                    }
+                    onPressBooksquare={() => handleShowBottoomsheet(item)}
+                    onPressPlayPause={() =>
+                      handlePlayerClick(item, item?.numberInSurah)
+                    }
+                  />
+                  <Text style={styles.arabicTxt}>{item?.text}</Text>
+                  <AppText style={styles.translation} text={item?.enText} />
+                </View>
+              ))}
+            </ScrollView>
+          </>
         )}
       </View>
       <BottomSheetOverlapView
@@ -356,6 +319,10 @@ const styles = StyleSheet.create({
   playerModal: {
     justifyContent: 'flex-end',
     marginBottom: 23,
+  },
+  surahContainer: {
+    backgroundColor: COLORS.pale_mint,
+    paddingBottom: 160,
   },
 });
 export default SurahDetailsScreen;

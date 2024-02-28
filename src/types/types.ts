@@ -156,6 +156,7 @@ export interface Surah {
   numberOfAyahs: number;
   numberOfRukoos: number;
   ayahs: Ayah[];
+  seprater?: Seprater[];
 }
 
 export interface Ayah {
@@ -166,6 +167,10 @@ export interface Ayah {
   manzil: number;
   ruku: number;
   sajda?: boolean;
+}
+export interface Seprater {
+  name: string;
+  rukuSajdaNumber: number;
 }
 
 export interface Juz {
