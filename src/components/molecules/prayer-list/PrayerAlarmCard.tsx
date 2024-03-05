@@ -6,16 +6,23 @@ import LinearGradient from 'react-native-linear-gradient';
 import AppText from '../../atoms/app-text/AppText';
 
 interface AlarmProps {
-  onPress: () => void;
+  onPress: (item: any) => void;
   name: string;
   time: string;
   prayerIcon: any;
+  item: any;
 }
-const PrayerAlarmCard: FC<AlarmProps> = ({onPress, name, time, prayerIcon}) => {
+const PrayerAlarmCard: FC<AlarmProps> = ({
+  onPress,
+  name,
+  time,
+  prayerIcon,
+  item,
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconText}>
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={() => onPress(item)}>
           <LinearGradient
             colors={['#1290A1', '#1DA28F']}
             style={styles.iconContaiuner}>

@@ -1,56 +1,48 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {FC, useEffect, useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import PrayerAlarmCard from '../../components/molecules/prayer-list/PrayerAlarmCard';
 import {FlatList} from 'react-native-gesture-handler';
-
-import {Coordinates, CalculationMethod, PrayerTimes} from 'adhan';
 import moment from 'moment-timezone';
 import {Icons} from '../../utils/helper/svg';
+import {Prayers} from '../../utils/helper/constant';
+import {useDispatch} from 'react-redux';
+import {getPrayers} from '../../redux/prayer/action';
 
 const PrayerTimesList = () => {
-  const [isPrayerTime, setIsPrayerTime] = useState({
-    fajr: true,
-    duhar: true,
-    asr: false,
-    maghrib: true,
-    isha: true,
-  });
-  const [offerCount, setOfferCount] = useState(0);
-  const [alarmCount, setAlarmCount] = useState(0);
-
-  const coordinates = new Coordinates(31.5204, 74.3587);
-  const params = CalculationMethod.MoonsightingCommittee();
-  const date = new Date();
-  const prayerTimes = new PrayerTimes(coordinates, date, params);
+  const [updatedPrayers, setUpdatePrayers] = useState(Prayers);
+  const dispatch = useDispatch();
 
   // here is prayer time array
-  const Prayers = [
-    {id: 0, name: 'Fajr', time: moment(prayerTimes.fajr).format('h:mm A')},
-    {
-      id: 1,
-      name: 'sunrise',
-      time: moment(prayerTimes.sunrise).format('h:mm A'),
-    },
-    {id: 2, name: 'Dhuhr', time: moment(prayerTimes.dhuhr).format('h:mm A')},
-    {id: 3, name: 'Asr', time: moment(prayerTimes.asr).format('h:mm A')},
-    {
-      id: 4,
-      name: 'Maghrib',
-      time: moment(prayerTimes.maghrib).format('h:mm A'),
-    },
-    {id: 5, name: 'Isha', time: moment(prayerTimes.isha).format('h:mm A')},
-  ];
+
+  useEffect(() => {
+    const currentTime = moment(new Date()).format('h:mm A');
+    const updated = [...updatedPrayers];
+    // const interval = setInterval(() => {
+    updated.forEach(item => {
+      if (item.prayerTime < currentTime) {
+        item.isOfferedTimePassed = item.prayerTime < currentTime;
+      } else item.notification.isOn = true;
+    });
+    setUpdatePrayers(updated);
+    dispatch(getPrayers(updated));
+    // console.log(updated, 'this is updated');
+
+    console.log('test');
+    // }, 4000);
+    // return () => clearTimeout(interval);
+  }, []);
 
   // here is offer prayed icon fun
   const offerPrayed = () => {
-    switch (offerCount) {
-      case 0:
-        return Icons.EmptyCircle;
-      case 1:
-        return Icons.TickCircle;
-      default:
-        return Icons.EmptyCircle;
-    }
+    return Icons.TickCircle;
+    // switch (offerCount) {
+    //   case 0:
+    //     return Icons.EmptyCircle;
+    //   case 1:
+    //     return Icons.TickCircle;
+    //   default:
+    //     return Icons.EmptyCircle;
+    // }
   };
 
   const alarmState = () => {
@@ -65,40 +57,6 @@ const PrayerTimesList = () => {
         return Icons.Alarm;
     }
   };
-
-  // current prayer time
-
-  const currentPrayer = () => {
-    switch (prayerTimes.nextPrayer()) {
-      case 'fajr':
-        return 0;
-      case 'sunrise':
-        return 1;
-      case 'dhuhr':
-        return 2;
-      case 'asr':
-        return 3;
-      case 'maghrib':
-        return 4;
-      case 'isha':
-        return 5;
-      default:
-        return 6;
-    }
-  };
-
-  // check prayer time fun
-
-  // const checkPrayersTime = () => {
-  //   switch () {
-  //     case value:
-
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-  // };
 
   useEffect(() => {}, []);
 
@@ -123,23 +81,38 @@ const PrayerTimesList = () => {
   //   }
   // };
   // {moment(prayerTimes.fajr).format('h:mm A')}
+
+  const didPressPrayer = (item: any) => {
+    console.log(item);
+  };
+
+  const getPrayerIcon = (item: any) => {
+    if (item.isOfferedTimePassed) {
+      if (item.isOffered) {
+        return Icons.TickCircle;
+      } else return Icons.EmptyCircle;
+    } else if (item.notification.isSilent) return Icons.AlarmCross;
+    else if (item.notification.isOff) return Icons.AlarmSlash;
+    else if (item.notification.isOn) return Icons.Alarm;
+    // item.isOffered ? offerPrayed() : alarmState()
+  };
+
   return (
     <View style={styles.container}>
       {/* <Text> {prayerTimes.nextPrayer()}</Text> */}
       <FlatList
-        data={Prayers}
-        renderItem={({item, index}) =>
-          index === 1 ? null : (
-            <PrayerAlarmCard
-              key={item.id}
-              name={item.name}
-              time={item.time}
-              prayerIcon={isPrayerTime ? offerPrayed() : alarmState()}
-              // onPress={() => onPress(index)}
-            />
-          )
-        }
-        keyExtractor={item => item.name}
+        data={updatedPrayers}
+        renderItem={({item, index}) => (
+          <PrayerAlarmCard
+            key={item.id}
+            item={item}
+            name={item.name}
+            time={item.prayerTime}
+            prayerIcon={getPrayerIcon(item)}
+            onPress={didPressPrayer}
+          />
+        )}
+        keyExtractor={(_item, index) => index.toString()}
       />
     </View>
   );

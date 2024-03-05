@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createStore} from 'redux';
 import {persistStore, persistReducer} from 'redux-persist';
-import rootReducer from './reducer';
+import rootReducer from './reducers';
 
 const persistConfig = {
   // timeout: 15000,

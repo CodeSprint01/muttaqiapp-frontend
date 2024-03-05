@@ -1,11 +1,11 @@
 import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import '../../components/atoms/error/LogBox';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Swiper from 'react-native-swiper';
 import {Icons} from '../../components/atoms/app-icon-svg';
 import PrayerSwiper from './PrayerSwiper';
 import {COLORS, fonts} from '../../styles/color';
-import TaskSwiper from './TaskSwiper';
+import TaskSwiper from './';
 import {exploreArray} from '../../utils/mocks/AllMockArray';
 import ExploreCard from '../../components/atoms/explore-card/ExploreCard';
 import AppText from '../../components/atoms/app-text/AppText';
@@ -13,34 +13,26 @@ import PrayerTimesList from './PrayerTimesList';
 import notifee from '@notifee/react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
+import UserStatsSwiper from './UserStatsSwiper';
+import {StatsListArray} from '../../utils/mocks/tracker/StatsListArray';
+import TodayProgressSwiper from './TodayProgressSwiper';
+import {useSelector} from 'react-redux';
 
 const HomeScreen = () => {
-  const initialCheckboxes = [
-    {id: 1, label: 'memorize quran', isChecked: false},
-    {id: 2, label: 'memorize quran', isChecked: false},
-    {id: 3, label: 'memorize quran', isChecked: false},
-    {id: 4, label: 'memorize quran', isChecked: false},
-    {id: 5, label: 'memorize quran', isChecked: false},
-    {id: 6, label: 'memorize quran', isChecked: false},
-    {id: 7, label: 'memorize quran', isChecked: false},
-  ];
-  const [checkboxes, setCheckboxes] = useState(initialCheckboxes);
-
-  const handleCheckboxChange = (checkboxId: number) => {
-    setCheckboxes(prevCheckboxes =>
-      prevCheckboxes.map(checkbox =>
-        checkbox.id === checkboxId
-          ? {...checkbox, isChecked: !checkbox.isChecked}
-          : checkbox,
-      ),
-    );
+  const [isShowGraph, setIsShowGraph] = useState<StatsList[]>(StatsListArray);
+  const handleFilterSliderData = (index: number) => {
+    console.log(index);
+    const graphData = [...isShowGraph];
+    graphData[index].isShowEye = !graphData[index]?.isShowEye;
+    setIsShowGraph(graphData);
   };
   const navigation = useNavigation();
-  // here is explore sction
 
-  const handelExploreCard = (index: number) => {
-    console.log(index);
-  };
+  // get data
+  const data = useSelector(state => state?.prayerReducer?.PrayerData);
+  console.log(data, 'this is useselector');
+  console.log('this is useselecto');
+
   // here is notification code
   async function onCreateTriggerNotification() {
     const setupChannels = async () => {
@@ -51,16 +43,7 @@ const HomeScreen = () => {
         sound: 'alarm',
       });
     };
-    // const timestamp = new Date().getTime() + 5000;
-    // const date = new Date();
-    // const hours = date.getHours();
-    // const min = date.getMinutes();
 
-    // const trigger: TimestampTrigger = {
-    //   type: TriggerType.TIMESTAMP,
-    //   timestamp: timestamp,
-    //   alarmManager: true,
-    // };
     setupChannels();
     await notifee.displayNotification({
       // title: `Meeting with Jane ${hours} : ${min}`,
@@ -82,7 +65,7 @@ const HomeScreen = () => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.sliderContainer}>
-        <View style={{height: 210}}>
+        <View style={styles.swipercontainer}>
           <Swiper
             scrollEnabled={true}
             nestedScrollEnabled={true}
@@ -90,7 +73,7 @@ const HomeScreen = () => {
             activeDot={<View style={styles.activeDot} />}>
             <View style={styles.slide}>
               <PrayerSwiper
-                heartValue={70}
+                heartValue={80}
                 icon={Icons.Notification}
                 prayerName="Maghrib"
                 time="05:22 AM"
@@ -98,11 +81,13 @@ const HomeScreen = () => {
               />
             </View>
             <View style={styles.slide}>
-              <TaskSwiper
-                circleValue={77}
-                checkboxes={checkboxes}
-                handleCheckboxChange={handleCheckboxChange}
+              <UserStatsSwiper
+                graphData={isShowGraph}
+                handleEyeClick={index => handleFilterSliderData(index)}
               />
+            </View>
+            <View style={styles.slide}>
+              <TodayProgressSwiper taskAvg={70} />
             </View>
           </Swiper>
         </View>
@@ -151,6 +136,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.lightBlack,
+    // backgroundColor: 'orange',
+  },
+  swipercontainer: {
+    height: 230,
   },
   slide: {
     marginHorizontal: 20,
@@ -170,7 +159,7 @@ const styles = StyleSheet.create({
     marginTop: 3,
     marginBottom: 3,
     position: 'relative',
-    bottom: -7,
+    bottom: 5,
   },
   activeDot: {
     backgroundColor: COLORS.green,
@@ -182,13 +171,13 @@ const styles = StyleSheet.create({
     marginTop: 3,
     marginBottom: 3,
     position: 'relative',
-    bottom: -7,
+    bottom: 5,
   },
   explore: {
     fontSize: 25,
     fontWeight: 'bold',
-    paddingTop: 10,
     marginLeft: 20,
+    // backgroundColor: 'red',
   },
   prayerAlarmContainer: {
     flex: 1,
