@@ -1,20 +1,20 @@
 import {ActionTypes} from './types';
 
 const initialState: any = {
-  PrayerData: [],
+  prayerData: [],
 };
 
 // Reducers
-export default function prayerReducer(state = initialState, action: any = {}) {
+export default function reducer(state = initialState, action: any = {}) {
   switch (action.type) {
     case ActionTypes.PRAYER_TIMES_UPDATE:
-      console.log(
-        action?.payloads?.prayerDatas,
-        'action  action?.payload?.prayerDatas',
-      );
+      // console.log(
+      //   action?.payload?.prayerDatas,
+      //   'reducer  action?.payload?.prayerDatas',
+      // );
       return {
         ...state,
-        PrayerData: action?.payload?.prayerDatas,
+        prayerData: action?.payload?.prayerDatas,
       };
     default:
       return state;

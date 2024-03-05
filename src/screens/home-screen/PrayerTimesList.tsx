@@ -1,90 +1,18 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {FC} from 'react';
 import PrayerAlarmCard from '../../components/molecules/prayer-list/PrayerAlarmCard';
 import {FlatList} from 'react-native-gesture-handler';
 import moment from 'moment-timezone';
 import {Icons} from '../../utils/helper/svg';
-import {Prayers} from '../../utils/helper/constant';
-import {useDispatch} from 'react-redux';
-import {getPrayers} from '../../redux/prayer/action';
+import {useSelector} from 'react-redux';
 
-const PrayerTimesList = () => {
-  const [updatedPrayers, setUpdatePrayers] = useState(Prayers);
-  const dispatch = useDispatch();
+interface PrayerProps {
+  didPressPrayer: (item: any) => void;
+}
 
-  // here is prayer time array
-
-  useEffect(() => {
-    const currentTime = moment(new Date()).format('h:mm A');
-    const updated = [...updatedPrayers];
-    // const interval = setInterval(() => {
-    updated.forEach(item => {
-      if (item.prayerTime < currentTime) {
-        item.isOfferedTimePassed = item.prayerTime < currentTime;
-      } else item.notification.isOn = true;
-    });
-    setUpdatePrayers(updated);
-    dispatch(getPrayers(updated));
-    // console.log(updated, 'this is updated');
-
-    console.log('test');
-    // }, 4000);
-    // return () => clearTimeout(interval);
-  }, []);
-
-  // here is offer prayed icon fun
-  const offerPrayed = () => {
-    return Icons.TickCircle;
-    // switch (offerCount) {
-    //   case 0:
-    //     return Icons.EmptyCircle;
-    //   case 1:
-    //     return Icons.TickCircle;
-    //   default:
-    //     return Icons.EmptyCircle;
-    // }
-  };
-
-  const alarmState = () => {
-    switch (alarmCount) {
-      case 0:
-        return Icons.Alarm;
-      case 1:
-        return Icons.AlarmSlash;
-      case 2:
-        return Icons.AlarmCross;
-      default:
-        return Icons.Alarm;
-    }
-  };
-
-  useEffect(() => {}, []);
-
-  // // here return prayer name
-  // const prayerName = (prayer: any) => {
-  //   // Define how you want to display the prayer name
-  //   switch (prayer) {
-  //     case Prayer.Fajr:
-  //       return 'Fajr';
-  //     case Prayer.Sunrise:
-  //       return 'Sunrise';
-  //     case Prayer.Dhuhr:
-  //       return 'Dhuhr';
-  //     case Prayer.Asr:
-  //       return 'Asr';
-  //     case Prayer.Maghrib:
-  //       return 'Maghrib';
-  //     case Prayer.Isha:
-  //       return 'Isha';
-  //     default:
-  //       return 'None';
-  //   }
-  // };
-  // {moment(prayerTimes.fajr).format('h:mm A')}
-
-  const didPressPrayer = (item: any) => {
-    console.log(item);
-  };
+const PrayerTimesList: FC<PrayerProps> = ({didPressPrayer}) => {
+  const prayerData = useSelector((state: any) => state.prayer.prayerData);
+  console.log(prayerData, 'this is new log');
 
   const getPrayerIcon = (item: any) => {
     if (item.isOfferedTimePassed) {
@@ -101,15 +29,17 @@ const PrayerTimesList = () => {
     <View style={styles.container}>
       {/* <Text> {prayerTimes.nextPrayer()}</Text> */}
       <FlatList
-        data={updatedPrayers}
+        data={prayerData}
         renderItem={({item, index}) => (
           <PrayerAlarmCard
-            key={item.id}
+            key={item?.id}
             item={item}
-            name={item.name}
-            time={item.prayerTime}
+            name={item?.name}
+            time={
+              item?.prayerTime ? moment(item?.prayerTime).format('h:mm A') : ''
+            }
             prayerIcon={getPrayerIcon(item)}
-            onPress={didPressPrayer}
+            onPress={() => didPressPrayer(item)}
           />
         )}
         keyExtractor={(_item, index) => index.toString()}

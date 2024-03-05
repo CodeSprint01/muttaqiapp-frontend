@@ -213,3 +213,16 @@ export interface BarChartInter {
   frontColor: string;
   label?: string;
 }
+export interface UserPrayers {
+  id: number;
+  name: string;
+  prayerTime: Date;
+  notification: PrayerNotificattion;
+  isOffered: boolean;
+  isOfferedTimePassed: boolean;
+}
+export interface PrayerNotificattion {
+  isSilent: boolean;
+  isOff: boolean;
+  isOn: boolean;
+}

@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   leftSide: {
     width: '60%',
     justifyContent: 'center',
-    alignItems: 'center',
+    paddingLeft: '7%',
   },
   rightSide: {
     width: '40%',

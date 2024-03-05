@@ -1,11 +1,13 @@
 import {ActionTypes} from './types';
 
-export const getPrayers = (prayerDatas: any) => {
-  console.log(prayerDatas, 'this is action prayerDatas');
+export function getPrayers(prayerDatas: any) {
+  // console.log(prayerDatas, 'action data');
   return {
     type: ActionTypes.PRAYER_TIMES_UPDATE,
     payload: {
       prayerDatas,
     },
   };
-};
+}
+
+// export function

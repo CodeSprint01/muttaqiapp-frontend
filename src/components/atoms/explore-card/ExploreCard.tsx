@@ -23,7 +23,6 @@ const ExploreCard: FC<ExploreProps> = ({
 }) => {
   const navigation = useNavigation();
   const navigateFromCard = (category: string) => {
-    console.log(category);
     switch (category.toLowerCase()) {
       case 'azkaar':
         navigation.navigate('HomeStack', {

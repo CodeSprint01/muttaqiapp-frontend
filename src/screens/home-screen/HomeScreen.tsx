@@ -1,37 +1,95 @@
 import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import '../../components/atoms/error/LogBox';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Swiper from 'react-native-swiper';
-import {Icons} from '../../components/atoms/app-icon-svg';
 import PrayerSwiper from './PrayerSwiper';
 import {COLORS, fonts} from '../../styles/color';
-import TaskSwiper from './';
 import {exploreArray} from '../../utils/mocks/AllMockArray';
 import ExploreCard from '../../components/atoms/explore-card/ExploreCard';
 import AppText from '../../components/atoms/app-text/AppText';
 import PrayerTimesList from './PrayerTimesList';
 import notifee from '@notifee/react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {useNavigation} from '@react-navigation/native';
 import UserStatsSwiper from './UserStatsSwiper';
 import {StatsListArray} from '../../utils/mocks/tracker/StatsListArray';
 import TodayProgressSwiper from './TodayProgressSwiper';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {Coordinates, CalculationMethod, PrayerTimes} from 'adhan';
+import {Icons} from '../../utils/helper/svg';
+import moment from 'moment-timezone';
+import {Prayers} from '../../utils/helper/constant';
+import {getPrayers} from '../../redux/prayer/action';
+import {UserPrayers} from '../../types/types';
 
 const HomeScreen = () => {
+  const dispatch = useDispatch();
   const [isShowGraph, setIsShowGraph] = useState<StatsList[]>(StatsListArray);
+  const [prayerAry, setPrayerAry] = useState(Prayers);
+
+  const coordinates = new Coordinates(31.5204, 74.3587);
+  const date = new Date();
+  const params = CalculationMethod.MoonsightingCommittee();
+  const prayerTimes = new PrayerTimes(coordinates, date, params);
+
+  const nextPrayer = prayerTimes?.nextPrayer();
+  let timedd = moment(prayerTimes?.isha).format('h:mm A');
+  console.log(timedd, 'jhkvjkvkhj');
+
   const handleFilterSliderData = (index: number) => {
     console.log(index);
     const graphData = [...isShowGraph];
     graphData[index].isShowEye = !graphData[index]?.isShowEye;
     setIsShowGraph(graphData);
   };
-  const navigation = useNavigation();
 
-  // get data
-  const data = useSelector(state => state?.prayerReducer?.PrayerData);
-  console.log(data, 'this is useselector');
-  console.log('this is useselecto');
+  useEffect(() => {
+    const currentTime = new Date();
+    // const interval = setInterval(() => {
+    const updated = [...prayerAry];
+    updated.forEach(item => {
+      if (item.prayerTime < currentTime) {
+        item.isOfferedTimePassed = item.prayerTime < currentTime;
+      } else {
+        item.notification.isOn = true;
+      }
+    });
+    console.log(updated, 'prayerResult');
+    setPrayerAry(updated);
+    dispatch(getPrayers(updated));
+    // }, 3000);
+    // return () => clearTimeout(interval);
+  }, []);
+
+  const prayerData = useSelector((state: any) => state.prayer.prayerData);
+
+  const getAlarmIcon = data => {
+    if (data?.notification.isOn) {
+      return Icons.Alarm;
+    } else {
+      return Icons.AlarmSlash;
+    }
+  };
+  const getBackgroundImage = (data: any) => {
+    switch (data?.name) {
+      case 'fajr':
+        return require('../../../assets/images/prayer-background-img/fajrImage.png');
+      case 'dhuhr':
+        return require('../../../assets/images/prayer-background-img/duhrImage.png');
+      case 'asr':
+        return require('../../../assets/images/prayer-background-img/duhrImage.png');
+      case 'maghrib':
+        return require('../../../assets/images/prayer-background-img/maghribImage.png');
+      default:
+        return require('../../../assets/images/prayer-background-img/ishaImage.png');
+    }
+  };
+  const nextPrayerData = prayerData?.find(
+    (item: UserPrayers) => nextPrayer == item?.name,
+  );
+
+  const handlePrayerPress = (item: UserPrayers) => {
+    console.log(item, 'jjjjj');
+  };
 
   // here is notification code
   async function onCreateTriggerNotification() {
@@ -43,7 +101,6 @@ const HomeScreen = () => {
         sound: 'alarm',
       });
     };
-
     setupChannels();
     await notifee.displayNotification({
       // title: `Meeting with Jane ${hours} : ${min}`,
@@ -57,8 +114,6 @@ const HomeScreen = () => {
       },
     });
   }
-
-  // Call the function to create the notification
 
   return (
     <View style={styles.container}>
@@ -74,10 +129,14 @@ const HomeScreen = () => {
             <View style={styles.slide}>
               <PrayerSwiper
                 heartValue={80}
-                icon={Icons.Notification}
-                prayerName="Maghrib"
-                time="05:22 AM"
-                backgroundImg={require('../../../assets/images/prayer-background-img/maghribImage.png')}
+                icon={getAlarmIcon(nextPrayerData)}
+                prayerName={nextPrayerData?.name}
+                time={
+                  nextPrayerData?.prayerTime
+                    ? moment(nextPrayerData?.prayerTime).format('h:mm A')
+                    : ''
+                }
+                backgroundImg={getBackgroundImage(nextPrayerData)}
               />
             </View>
             <View style={styles.slide}>
@@ -92,12 +151,6 @@ const HomeScreen = () => {
           </Swiper>
         </View>
         <View style={{marginBottom: 2}}>
-          {/* <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('HomeStack', {screen: screens.HADITH})
-            }>
-            <Text>click to move</Text>
-          </TouchableOpacity> */}
           <AppText text={'Explore'} style={styles.explore} />
           <FlatList
             data={exploreArray}
@@ -118,7 +171,7 @@ const HomeScreen = () => {
         </View>
         <View style={styles.prayerAlarmContainer}>
           <AppText text={'Prayer times'} style={styles.prayerTimes} />
-          <PrayerTimesList />
+          <PrayerTimesList didPressPrayer={item => handlePrayerPress(item)} />
         </View>
         <View style={styles.bottom} />
       </ScrollView>
