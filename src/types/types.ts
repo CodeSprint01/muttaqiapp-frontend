@@ -217,12 +217,7 @@ export interface UserPrayers {
   id: number;
   name: string;
   prayerTime: Date;
-  notification: PrayerNotificattion;
+  notification: number;
   isOffered: boolean;
   isOfferedTimePassed: boolean;
-}
-export interface PrayerNotificattion {
-  isSilent: boolean;
-  isOff: boolean;
-  isOn: boolean;
 }

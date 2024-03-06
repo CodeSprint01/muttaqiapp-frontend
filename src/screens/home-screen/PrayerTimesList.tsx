@@ -5,23 +5,24 @@ import {FlatList} from 'react-native-gesture-handler';
 import moment from 'moment-timezone';
 import {Icons} from '../../utils/helper/svg';
 import {useSelector} from 'react-redux';
+import {UserPrayers} from '../../types/types';
 
 interface PrayerProps {
   didPressPrayer: (item: any) => void;
+  prayerData: UserPrayers;
 }
 
-const PrayerTimesList: FC<PrayerProps> = ({didPressPrayer}) => {
-  const prayerData = useSelector((state: any) => state.prayer.prayerData);
-  console.log(prayerData, 'this is new log');
+const PrayerTimesList: FC<PrayerProps> = ({didPressPrayer, prayerData}) => {
+  // const prayerData = useSelector((state: any) => state.prayer.prayerData);
 
   const getPrayerIcon = (item: any) => {
-    if (item.isOfferedTimePassed) {
-      if (item.isOffered) {
+    if (item?.isOfferedTimePassed) {
+      if (item?.isOffered) {
         return Icons.TickCircle;
       } else return Icons.EmptyCircle;
-    } else if (item.notification.isSilent) return Icons.AlarmCross;
-    else if (item.notification.isOff) return Icons.AlarmSlash;
-    else if (item.notification.isOn) return Icons.Alarm;
+    } else if (item?.notification === 0) return Icons.Alarm;
+    else if (item?.notification === 1) return Icons.AlarmSlash;
+    else if (item?.notification === 2) return Icons.AlarmCross;
     // item.isOffered ? offerPrayed() : alarmState()
   };
 

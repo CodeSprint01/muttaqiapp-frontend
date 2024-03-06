@@ -17,50 +17,50 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Coordinates, CalculationMethod, PrayerTimes} from 'adhan';
 import {Icons} from '../../utils/helper/svg';
 import moment from 'moment-timezone';
-import {Prayers} from '../../utils/helper/constant';
-import {getPrayers} from '../../redux/prayer/action';
+import {getPrayers, offeredPrayerAndAlarm} from '../../redux/prayer/action';
 import {UserPrayers} from '../../types/types';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
+  const prayerData = useSelector((state: any) => state.prayer.prayerData);
   const [isShowGraph, setIsShowGraph] = useState<StatsList[]>(StatsListArray);
-  const [prayerAry, setPrayerAry] = useState(Prayers);
+  // const [prayerAry, setPrayerAry] = useState(prayerData);
+  const [isFirstTime, setisFirstTime] = useState(true);
 
   const coordinates = new Coordinates(31.5204, 74.3587);
   const date = new Date();
   const params = CalculationMethod.MoonsightingCommittee();
   const prayerTimes = new PrayerTimes(coordinates, date, params);
-
   const nextPrayer = prayerTimes?.nextPrayer();
-  let timedd = moment(prayerTimes?.isha).format('h:mm A');
-  console.log(timedd, 'jhkvjkvkhj');
 
   const handleFilterSliderData = (index: number) => {
-    console.log(index);
     const graphData = [...isShowGraph];
     graphData[index].isShowEye = !graphData[index]?.isShowEye;
     setIsShowGraph(graphData);
   };
-
-  useEffect(() => {
+  const updatePrayerData = () => {
     const currentTime = new Date();
-    // const interval = setInterval(() => {
-    const updated = [...prayerAry];
-    updated.forEach(item => {
+    prayerData.forEach(item => {
       if (item.prayerTime < currentTime) {
-        item.isOfferedTimePassed = item.prayerTime < currentTime;
+        return (item.isOfferedTimePassed = item.prayerTime < currentTime);
       } else {
-        item.notification.isOn = true;
+        return item;
       }
     });
-    console.log(updated, 'prayerResult');
-    setPrayerAry(updated);
-    dispatch(getPrayers(updated));
-    // }, 3000);
-    // return () => clearTimeout(interval);
-  }, []);
+    dispatch(getPrayers(prayerData));
+    setisFirstTime(false);
+  };
 
-  const prayerData = useSelector((state: any) => state.prayer.prayerData);
+  useEffect(() => {
+    if (isFirstTime) {
+      updatePrayerData();
+    }
+    const interval = setInterval(() => {
+      updatePrayerData();
+    }, 5000);
+    return () => clearTimeout(interval);
+  }, []);
+  // console.log(prayerData, ' jjjj');
 
   const getAlarmIcon = data => {
     if (data?.notification.isOn) {
@@ -83,12 +83,29 @@ const HomeScreen = () => {
         return require('../../../assets/images/prayer-background-img/ishaImage.png');
     }
   };
+  const filterNextPrayer = () => {
+    if (nextPrayer == 'none') {
+      return 'fajr';
+    } else if (nextPrayer == 'sunrise') {
+      return 'dhuhr';
+    } else if (nextPrayer == 'fajr') {
+      return 'fajr';
+    } else if (nextPrayer == 'dhuhr') {
+      return 'dhuhr';
+    } else if (nextPrayer == 'asr') {
+      return 'asr';
+    } else if (nextPrayer == 'maghrib') {
+      return 'maghrib';
+    } else if (nextPrayer == 'isha') {
+      return 'isha';
+    } else return 'no Prayer Time';
+  };
   const nextPrayerData = prayerData?.find(
-    (item: UserPrayers) => nextPrayer == item?.name,
+    (item: UserPrayers) => filterNextPrayer() == item?.name,
   );
 
   const handlePrayerPress = (item: UserPrayers) => {
-    console.log(item, 'jjjjj');
+    dispatch(offeredPrayerAndAlarm(item));
   };
 
   // here is notification code
@@ -171,7 +188,10 @@ const HomeScreen = () => {
         </View>
         <View style={styles.prayerAlarmContainer}>
           <AppText text={'Prayer times'} style={styles.prayerTimes} />
-          <PrayerTimesList didPressPrayer={item => handlePrayerPress(item)} />
+          <PrayerTimesList
+            didPressPrayer={item => handlePrayerPress(item)}
+            prayerData={prayerData}
+          />
         </View>
         <View style={styles.bottom} />
       </ScrollView>
