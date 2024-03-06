@@ -19,9 +19,9 @@ export const Prayers: UserPrayers[] = [
     name: 'fajr',
     prayerTime: prayerTimes?.fajr,
     notification: 0,
-    // isOffered: false,
+    isOffered: false,
     // isOfferedTimePassed: curtime > prayerTimes?.fajr,
-    // isOfferedTimePassed: false,
+    isOfferedTimePassed: false,
   },
   {
     id: 1,

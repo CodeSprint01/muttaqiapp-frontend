@@ -24,7 +24,7 @@ const HomeScreen = () => {
   const dispatch = useDispatch();
   const prayerData = useSelector((state: any) => state.prayer.prayerData);
   const [isShowGraph, setIsShowGraph] = useState<StatsList[]>(StatsListArray);
-  // const [prayerAry, setPrayerAry] = useState(prayerData);
+  const [prayerAry, setPrayerAry] = useState(prayerData);
   const [isFirstTime, setisFirstTime] = useState(true);
 
   const coordinates = new Coordinates(31.5204, 74.3587);
@@ -40,14 +40,16 @@ const HomeScreen = () => {
   };
   const updatePrayerData = () => {
     const currentTime = new Date();
-    prayerData.forEach(item => {
+    const updated = [...prayerAry];
+    updated.forEach(item => {
       if (item.prayerTime < currentTime) {
         return (item.isOfferedTimePassed = item.prayerTime < currentTime);
       } else {
         return item;
       }
     });
-    dispatch(getPrayers(prayerData));
+    setPrayerAry(updated);
+    dispatch(getPrayers(updated));
     setisFirstTime(false);
   };
 
@@ -57,10 +59,11 @@ const HomeScreen = () => {
     }
     const interval = setInterval(() => {
       updatePrayerData();
-    }, 5000);
+    }, 6000);
     return () => clearTimeout(interval);
   }, []);
-  // console.log(prayerData, ' jjjj');
+
+  console.log(prayerData, ' jjjj');
 
   const getAlarmIcon = data => {
     if (data?.notification.isOn) {
