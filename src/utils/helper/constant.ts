@@ -11,7 +11,6 @@ console.log(
   prayerTimes?.currentPrayer,
   'android next',
 );
-const curtime = new Date();
 
 export const Prayers: UserPrayers[] = [
   {
@@ -19,9 +18,8 @@ export const Prayers: UserPrayers[] = [
     name: 'fajr',
     prayerTime: prayerTimes?.fajr,
     notification: 0,
-    isOffered: true,
-    // isOfferedTimePassed: curtime > prayerTimes?.fajr,
-    isOfferedTimePassed: true,
+    isOffered: false,
+    isOfferedTimePassed: false,
   },
   {
     id: 1,
@@ -30,7 +28,6 @@ export const Prayers: UserPrayers[] = [
     notification: 0,
     isOffered: false,
     isOfferedTimePassed: false,
-    // isOfferedTimePassed: curtime > prayerTimes?.dhuhr,
   },
   {
     id: 2,
@@ -39,7 +36,6 @@ export const Prayers: UserPrayers[] = [
     notification: 0,
     isOffered: false,
     isOfferedTimePassed: false,
-    // isOfferedTimePassed: curtime > prayerTimes.asr,
   },
   {
     id: 3,
@@ -48,7 +44,6 @@ export const Prayers: UserPrayers[] = [
     notification: 0,
     isOffered: false,
     isOfferedTimePassed: false,
-    // isOfferedTimePassed: curtime > prayerTimes.maghrib,
   },
   {
     id: 4,
@@ -57,6 +52,5 @@ export const Prayers: UserPrayers[] = [
     notification: 0,
     isOffered: false,
     isOfferedTimePassed: false,
-    // isOfferedTimePassed: curtime > prayerTimes.isha,
   },
 ];

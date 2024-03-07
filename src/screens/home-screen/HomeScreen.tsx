@@ -1,12 +1,4 @@
-import {
-  Button,
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
 import '../../components/atoms/error/LogBox';
 import React, {useEffect, useState} from 'react';
 import Swiper from 'react-native-swiper';
@@ -25,11 +17,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Coordinates, CalculationMethod, PrayerTimes} from 'adhan';
 import {Icons} from '../../utils/helper/svg';
 import moment from 'moment-timezone';
-import {
-  getPrayers,
-  offeredPrayerAndAlarm,
-  testFun,
-} from '../../redux/prayer/action';
+import {getPrayers, offeredPrayerAndAlarm} from '../../redux/prayer/action';
 import {UserPrayers} from '../../types/types';
 
 const HomeScreen = () => {
@@ -37,11 +25,8 @@ const HomeScreen = () => {
   const prayerData = useSelector(
     (state: any) => state?.prayerReducer?.prayerData,
   );
-
   const [isShowGraph, setIsShowGraph] = useState<StatsList[]>(StatsListArray);
-  const [prayerAry, setPrayerAry] = useState(prayerData);
-  const [isFirstTime, setisFirstTime] = useState(true);
-
+  const [testCall, setTestCall] = useState(true);
   const coordinates = new Coordinates(31.5204, 74.3587);
   const date = new Date();
   const params = CalculationMethod.MoonsightingCommittee();
@@ -55,33 +40,29 @@ const HomeScreen = () => {
   };
   const updatePrayerData = () => {
     const currentTime = new Date();
-    const updated = [...prayerAry];
+    const updated = [...prayerData];
     updated.forEach(item => {
-      if (item.prayerTime < currentTime) {
-        item.isOfferedTimePassed = item.prayerTime < currentTime;
-      } else {
+      let formatedTime = new Date(item?.prayerTime);
+      let isTimePass = formatedTime < currentTime;
+      item.isOfferedTimePassed = isTimePass;
+      if (!isTimePass) {
         return item;
       }
     });
-    setPrayerAry(updated);
     dispatch(getPrayers(updated));
-    setisFirstTime(false);
   };
 
   useEffect(() => {
-    if (isFirstTime) {
-      updatePrayerData();
-    }
-    const interval = setInterval(() => {
-      updatePrayerData();
-    }, 6000);
-    return () => clearTimeout(interval);
-  }, []);
-
-  console.log(prayerAry, ' jjjj');
+    updatePrayerData();
+  }, [testCall]);
+  useEffect(() => {
+    setTimeout(() => {
+      setTestCall(!testCall);
+    }, 15000);
+  }, [testCall]);
 
   const getAlarmIcon = data => {
-    if (data?.notification.isOn) {
+    if (data?.notification?.isOn) {
       return Icons.Alarm;
     } else {
       return Icons.AlarmSlash;

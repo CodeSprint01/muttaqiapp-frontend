@@ -10,13 +10,13 @@ const initialState: any = {
 export default function reducer(state = initialState, action: any = {}) {
   switch (action.type) {
     case ActionTypes.PRAYER_TIMES_UPDATE:
-      console.log(
-        action?.payload?.prayerDatas,
-        'reducer  action?.payload?.prayerDatas',
-      );
+      // console.log(
+      //   action?.payload?.prayerTimes,
+      //   'reducer  action?.payload?.prayerTimes',
+      // );
       return {
         ...state,
-        prayerData: action?.payload?.prayerDatas,
+        prayerData: action?.payload.prayerData,
       };
     case ActionTypes.PRAYER_OFFERED_AND_ALARM:
       // console.log(action?.payload?.prayer, 'reducer  action?.payload?.prayer');

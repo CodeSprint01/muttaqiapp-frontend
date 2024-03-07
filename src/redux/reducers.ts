@@ -8,7 +8,7 @@ import userReducer from './user/reducer';
 const prayerPersistConfig = {
   key: 'prayerReducer',
   storage: AsyncStorage,
-  whitelist: ['prayerData', 'test'], // our initial state that is persist
+  whitelist: ['prayerData'], // our initial state that is persist
   blacklist: [''], //  our initial state that is Not persist
 };
 const userPersistConfig = {

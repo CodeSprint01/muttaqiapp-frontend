@@ -1,12 +1,12 @@
 import {UserPrayers} from '../../types/types';
 import {ActionTypes} from './types';
 
-export function getPrayers(prayerDatas: any) {
-  console.log(prayerDatas, 'action data');
+export function getPrayers(prayerData: any) {
+  // console.log(prayerData, 'action data');
   return {
     type: ActionTypes.PRAYER_TIMES_UPDATE,
     payload: {
-      prayerDatas,
+      prayerData,
     },
   };
 }
