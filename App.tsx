@@ -7,20 +7,28 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import configureStore from './src/redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
+import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 
 const App = () => {
   LogBox.ignoreAllLogs();
   const {store, persistor} = configureStore();
+  // Initialize Apollo Client
+  const client = new ApolloClient({
+    uri: 'http://localhost:4000/graphql',
+    cache: new InMemoryCache(),
+  });
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <GestureHandlerRootView style={styles.container}>
-          <BottomSheetModalProvider>
-            <MainStack />
-          </BottomSheetModalProvider>
-        </GestureHandlerRootView>
-      </PersistGate>
-    </Provider>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <GestureHandlerRootView style={styles.container}>
+            <BottomSheetModalProvider>
+              <MainStack />
+            </BottomSheetModalProvider>
+          </GestureHandlerRootView>
+        </PersistGate>
+      </Provider>
+    </ApolloProvider>
   );
 };
 

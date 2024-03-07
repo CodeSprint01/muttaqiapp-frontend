@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@apollo/client": "^3.9.6",
     "@gorhom/bottom-sheet": "^4.6.0",
     "@notifee/react-native": "^7.8.2",
     "@react-native-async-storage/async-storage": "^1.21.0",
@@ -22,6 +23,7 @@
     "@react-navigation/stack": "^6.3.20",
     "adhan": "^4.4.3",
     "axios": "^1.6.5",
+    "graphql": "^16.8.1",
     "install": "^0.13.0",
     "moment-timezone": "^0.5.43",
     "react": "18.2.0",
