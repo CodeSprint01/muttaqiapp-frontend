@@ -6,10 +6,10 @@ import userReducer from './user/reducer';
 
 // below every reducer config
 const prayerPersistConfig = {
-  key: 'prayer',
+  key: 'prayerReducer',
   storage: AsyncStorage,
-  whitelist: ['prayerData'], // our initial state that is persist
-  // blacklist: [''] //  our initial state that is Not persist
+  whitelist: ['prayerData', 'test'], // our initial state that is persist
+  blacklist: [''], //  our initial state that is Not persist
 };
 const userPersistConfig = {
   key: 'user',
@@ -20,8 +20,8 @@ const userPersistConfig = {
 
 // here we combine all reducer
 const rootReducer = combineReducers({
-  prayer: persistReducer(prayerPersistConfig, prayerReducer as any),
-  user: persistReducer(userPersistConfig, userReducer as any),
+  prayerReducer: persistReducer(prayerPersistConfig, prayerReducer as any),
+  userReducer: persistReducer(userPersistConfig, userReducer as any),
 });
 
 export default rootReducer;

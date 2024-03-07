@@ -4,18 +4,22 @@ import './src/components/atoms/error/LogBox';
 import MainStack from './src/navigation/MainStack';
 import {Provider} from 'react-redux';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import store from './src/redux/store';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import configureStore from './src/redux/store';
+import {PersistGate} from 'redux-persist/integration/react';
 
 const App = () => {
   LogBox.ignoreAllLogs();
+  const {store, persistor} = configureStore();
   return (
     <Provider store={store}>
-      <GestureHandlerRootView style={styles.container}>
-        <BottomSheetModalProvider>
-          <MainStack />
-        </BottomSheetModalProvider>
-      </GestureHandlerRootView>
+      <PersistGate loading={null} persistor={persistor}>
+        <GestureHandlerRootView style={styles.container}>
+          <BottomSheetModalProvider>
+            <MainStack />
+          </BottomSheetModalProvider>
+        </GestureHandlerRootView>
+      </PersistGate>
     </Provider>
   );
 };

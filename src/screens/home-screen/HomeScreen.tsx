@@ -1,4 +1,12 @@
-import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  Button,
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import '../../components/atoms/error/LogBox';
 import React, {useEffect, useState} from 'react';
 import Swiper from 'react-native-swiper';
@@ -17,12 +25,19 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Coordinates, CalculationMethod, PrayerTimes} from 'adhan';
 import {Icons} from '../../utils/helper/svg';
 import moment from 'moment-timezone';
-import {getPrayers, offeredPrayerAndAlarm} from '../../redux/prayer/action';
+import {
+  getPrayers,
+  offeredPrayerAndAlarm,
+  testFun,
+} from '../../redux/prayer/action';
 import {UserPrayers} from '../../types/types';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
-  const prayerData = useSelector((state: any) => state.prayer.prayerData);
+  const prayerData = useSelector(
+    (state: any) => state?.prayerReducer?.prayerData,
+  );
+
   const [isShowGraph, setIsShowGraph] = useState<StatsList[]>(StatsListArray);
   const [prayerAry, setPrayerAry] = useState(prayerData);
   const [isFirstTime, setisFirstTime] = useState(true);
@@ -43,7 +58,7 @@ const HomeScreen = () => {
     const updated = [...prayerAry];
     updated.forEach(item => {
       if (item.prayerTime < currentTime) {
-        return (item.isOfferedTimePassed = item.prayerTime < currentTime);
+        item.isOfferedTimePassed = item.prayerTime < currentTime;
       } else {
         return item;
       }
@@ -63,7 +78,7 @@ const HomeScreen = () => {
     return () => clearTimeout(interval);
   }, []);
 
-  console.log(prayerData, ' jjjj');
+  console.log(prayerAry, ' jjjj');
 
   const getAlarmIcon = data => {
     if (data?.notification.isOn) {
