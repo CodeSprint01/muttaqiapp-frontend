@@ -1,10 +1,10 @@
 import React, {ReactNode} from 'react';
-import {View, StyleSheet, ViewProps, ViewStyle} from 'react-native';
+import {View, StyleSheet, ViewStyle} from 'react-native';
 import Modal from 'react-native-modal';
 
 interface AppModalProps {
   isVisible: boolean;
-  toggleModal: () => void;
+  toggleModal?: () => void;
   children: ReactNode;
   extraViewStyle?: ViewStyle;
   extraModalStyle?: ViewStyle;
@@ -31,14 +31,11 @@ const AppModal: React.FC<AppModalProps> = ({
 
 const styles = StyleSheet.create({
   modal: {
-    justifyContent: 'flex-end',
-    margin: 0,
+    justifyContent: 'center',
   },
   modalContent: {
     backgroundColor: 'white',
-    // padding: 22,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderRadius: 10,
   },
 });
 

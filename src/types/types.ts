@@ -48,8 +48,10 @@ export enum screens {
   YEARLY_TODO_STAT = 'yearly-todo-stat',
 }
 export interface AppState {
+  error: string | undefined;
   loading?: boolean;
   userLocation?: location[];
+  userInfo: UserInfo[];
 }
 
 export interface Types {
@@ -220,4 +222,10 @@ export interface UserPrayers {
   notification: number;
   isOffered: boolean;
   isOfferedTimePassed: boolean;
+}
+export interface UserInfo {
+  userID: string;
+  token: string;
+  name: string;
+  email: string;
 }

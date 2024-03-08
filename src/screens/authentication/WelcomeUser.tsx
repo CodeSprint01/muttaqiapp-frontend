@@ -1,5 +1,5 @@
-import {StyleSheet, View, Platform} from 'react-native';
-import React from 'react';
+import {StyleSheet, View, Platform, BackHandler} from 'react-native';
+import React, {useEffect} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS, fonts} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
@@ -7,9 +7,30 @@ import {screens} from '../../types/types';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
 import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
+import {CommonActions} from '@react-navigation/native';
 
 const WelcomeUser = () => {
   const navigation = useNavigation();
+
+  const gotoHome = () => {
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{name: screens.APP_STACK}],
+      }),
+    );
+    return true;
+  };
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      gotoHome,
+    );
+    return () => {
+      backHandler.remove();
+    };
+  }, []);
+
   return (
     <AppContainer style={styles.container}>
       <View style={styles.iconContainer}>

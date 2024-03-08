@@ -8,7 +8,7 @@ import UserInfoStack from './UserInfoStack';
 const AuthStack = () => {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator initialRouteName={screens.USER_INFO_STACK}>
+    <Stack.Navigator initialRouteName={screens.SIGN_UP}>
       <Stack.Screen
         name={screens.SIGN_UP}
         component={SignUp}

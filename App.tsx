@@ -8,13 +8,15 @@ import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import configureStore from './src/redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+import Config from 'react-native-config';
 
 const App = () => {
   LogBox.ignoreAllLogs();
   const {store, persistor} = configureStore();
   // Initialize Apollo Client
   const client = new ApolloClient({
-    uri: 'http://localhost:4000/graphql',
+    uri: Config.LOCAL_URL,
+    // uri: 'Config.LOCAL_URL',
     cache: new InMemoryCache(),
   });
   return (

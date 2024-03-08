@@ -4,6 +4,9 @@ import {
   View,
   Platform,
   KeyboardAvoidingView,
+  Text,
+  Alert,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useState} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
@@ -14,6 +17,10 @@ import {InputSignUp, screens} from '../../types/types';
 import AppInput from '../../components/molecules/app-input/AppInput';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
+import AppModal from '../../components/atoms/app-modal/AppModal';
+import {handleSignUp, useSignUpMutation} from '../../services/api';
+import {useDispatch} from 'react-redux';
+import {actionGetUserInfoSucess} from '../../redux/user/action';
 
 const SignUp = () => {
   const [userData, setUserData] = useState<{[key: string]: string}>({
@@ -22,10 +29,43 @@ const SignUp = () => {
     password: '',
     confPassowrd: '',
   });
+  const [signUpErr, setSignUpErr] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [signUpMutation] = useSignUpMutation();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const handleInputChange = (val: string, key: string) => {
     setUserData(prev => ({...prev, [key]: val}));
+  };
+
+  const didPressCreateAccount = async () => {
+    const isMatched = userData?.password == userData?.confPassowrd;
+    if (!isMatched) {
+      Alert.alert('Password', 'Password and Re-enter Password not matched');
+      return;
+    }
+    let isEmpty = Object.values(userData).some(val => val === '');
+    if (isEmpty) {
+      Alert.alert('Validation failed', 'Please fill all the fields');
+      return;
+    }
+    try {
+      setLoading(true);
+      const data = await handleSignUp(signUpMutation, userData);
+      let response = {
+        userID: data?.createUser?.user?.id,
+        token: data?.createUser?.token,
+        name: data?.createUser?.user?.username,
+        email: data?.createUser?.user?.emailaddress,
+      };
+      setLoading(false);
+      dispatch(actionGetUserInfoSucess(response));
+      navigation.navigate(screens.WELCOME_USER);
+    } catch (error: any) {
+      if (error) setLoading(false);
+      return Alert.alert(error?.message);
+    }
   };
 
   const renderItem = ({item, index}: {item: InputSignUp; index: any}) => {
@@ -65,7 +105,10 @@ const SignUp = () => {
           </View>
         </View>
         <View style={styles.bottomBtns}>
-          <AppButton buttonText="Create account" />
+          <AppButton
+            onPress={didPressCreateAccount}
+            buttonText="Create account"
+          />
           <View style={styles.bottomtxt}>
             <AppText
               text={'Already have an account? '}
@@ -79,6 +122,11 @@ const SignUp = () => {
           </View>
         </View>
       </KeyboardAvoidingView>
+      <AppModal
+        isVisible={loading}
+        children={<ActivityIndicator size={'large'} color={COLORS.green} />}
+        extraViewStyle={styles.modalSty}
+      />
     </AppContainer>
   );
 };
@@ -156,5 +204,12 @@ const styles = StyleSheet.create({
     fontFamily: fonts.dmSans[500],
     color: COLORS.green,
     textDecorationLine: 'underline',
+  },
+  modalSty: {
+    paddingVertical: 70,
+  },
+  errorTxt: {
+    color: 'red',
+    paddingTop: 4,
   },
 });
