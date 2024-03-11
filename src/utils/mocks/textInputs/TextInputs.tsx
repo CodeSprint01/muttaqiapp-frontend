@@ -30,7 +30,7 @@ export const SignUpArray: InputSignUp[] = [
 export const SignInArray: InputSignIn[] = [
   {
     key: 'userOrEmail',
-    inputLabel: 'Username/email',
+    inputLabel: 'Email',
     placeholder: 'Enter your username or e-mail address',
   },
   {

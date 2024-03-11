@@ -25,9 +25,14 @@ export default function reducer(state = initialState, action: any = {}) {
         ...state,
         userInfo: action?.payload?.userInfo,
       };
+    case ActionTypes.USER_SIGN_IN_INFO_SCUCESS:
+      console.log(
+        action?.payload?.userInfo,
+        'in redducer login action?.payload?.userInfo,',
+      );
       return {
-        ...state,
-        error: action?.payload?.error,
+        // ...state,
+        userInfo: action?.payload?.userInfo,
       };
     default:
       return state;

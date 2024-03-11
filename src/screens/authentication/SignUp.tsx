@@ -13,13 +13,13 @@ import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS, fonts} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
 import {SignUpArray} from '../../utils/mocks/textInputs/TextInputs';
-import {InputSignUp, screens} from '../../types/types';
+import {InputSignUp, State, screens} from '../../types/types';
 import AppInput from '../../components/molecules/app-input/AppInput';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
 import AppModal from '../../components/atoms/app-modal/AppModal';
 import {handleSignUp, useSignUpMutation} from '../../services/api';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {actionGetUserInfoSucess} from '../../redux/user/action';
 
 const SignUp = () => {
@@ -38,6 +38,9 @@ const SignUp = () => {
   const handleInputChange = (val: string, key: string) => {
     setUserData(prev => ({...prev, [key]: val}));
   };
+
+  const uData = useSelector((state: State) => state?.userReducer?.userInfo);
+  console.log(uData, 'hhhga');
 
   const didPressCreateAccount = async () => {
     const isMatched = userData?.password == userData?.confPassowrd;
@@ -59,6 +62,7 @@ const SignUp = () => {
         name: data?.createUser?.user?.username,
         email: data?.createUser?.user?.emailaddress,
       };
+      console.log(response, 'resp after apis');
       setLoading(false);
       dispatch(actionGetUserInfoSucess(response));
       navigation.navigate(screens.WELCOME_USER);

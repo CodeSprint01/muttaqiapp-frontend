@@ -53,6 +53,9 @@ export interface AppState {
   userLocation?: location[];
   userInfo: UserInfo[];
 }
+export interface State {
+  userReducer: AppState;
+}
 
 export interface Types {
   type: string;

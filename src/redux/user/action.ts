@@ -20,3 +20,12 @@ export const actionGetUserInfoSucess = (userInfo: UserInfo) => {
     },
   };
 };
+export const actionLoginUserInfoSucess = (userInfo: UserInfo) => {
+  console.log(userInfo, 'in acrion');
+  return {
+    type: ActionTypes.USER_SIGN_IN_INFO_SCUCESS,
+    payload: {
+      userInfo,
+    },
+  };
+};

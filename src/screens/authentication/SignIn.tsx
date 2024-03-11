@@ -4,16 +4,20 @@ import {
   View,
   Platform,
   KeyboardAvoidingView,
+  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS, fonts} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
 import {SignInArray} from '../../utils/mocks/textInputs/TextInputs';
-import {InputSignIn, screens} from '../../types/types';
+import {InputSignIn, State, screens} from '../../types/types';
 import AppInput from '../../components/molecules/app-input/AppInput';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
+import {handleLogin, useSignInMutation} from '../../services/api';
+import {useDispatch, useSelector} from 'react-redux';
+import {actionLoginUserInfoSucess} from '../../redux/user/action';
 
 const SignIn = () => {
   const [userData, setUserData] = useState<{[key: string]: string}>({
@@ -21,10 +25,35 @@ const SignIn = () => {
     password: '',
   });
   const navigation = useNavigation();
+  const [signInMutation] = useSignInMutation();
+  const dispatch = useDispatch();
 
   const handleInputChange = (val: string, key: string) => {
     setUserData(prev => ({...prev, [key]: val}));
   };
+
+  const didLoginPress = async () => {
+    const isEmpty = Object.values(userData).some(val => val === '');
+    try {
+      if (isEmpty) {
+        Alert.alert('Please fill all the fields');
+        return;
+      }
+      const data = await handleLogin(signInMutation, userData);
+      let response = {
+        userID: data?.loginUser?.user?.id,
+        token: data?.loginUser?.token,
+        name: data?.loginUser?.user?.username,
+        email: data?.loginUser?.user?.emailaddress,
+      };
+      dispatch(actionLoginUserInfoSucess(response));
+      navigation.navigate(screens.WELCOME_USER);
+    } catch (error) {
+      Alert.alert(error?.message);
+    }
+  };
+  const uData = useSelector((state: State) => state?.userReducer?.userInfo);
+  console.log(uData, 'hhhga');
 
   const renderItem = ({item, index}: {item: InputSignIn; index: any}) => {
     return (
@@ -61,10 +90,7 @@ const SignIn = () => {
           </View>
         </View>
         <View style={styles.bottomBtns}>
-          <AppButton
-            buttonText="Login"
-            onPress={() => navigation.navigate(screens.WELCOME_USER)}
-          />
+          <AppButton buttonText="Login" onPress={didLoginPress} />
           <View style={styles.bottomtxt}>
             <AppText
               text={'Don’t have an account? '}
