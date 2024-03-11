@@ -15,9 +15,10 @@ import {InputSignIn, State, screens} from '../../types/types';
 import AppInput from '../../components/molecules/app-input/AppInput';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
-import {handleLogin, useSignInMutation} from '../../services/api';
+import {handleLogin, schhemaMutation} from '../../services/api';
 import {useDispatch, useSelector} from 'react-redux';
 import {actionLoginUserInfoSucess} from '../../redux/user/action';
+import {SIGN_IN} from '../../services/graphQL';
 
 const SignIn = () => {
   const [userData, setUserData] = useState<{[key: string]: string}>({
@@ -25,7 +26,7 @@ const SignIn = () => {
     password: '',
   });
   const navigation = useNavigation();
-  const [signInMutation] = useSignInMutation();
+  const [signInMutation] = schhemaMutation(SIGN_IN);
   const dispatch = useDispatch();
 
   const handleInputChange = (val: string, key: string) => {

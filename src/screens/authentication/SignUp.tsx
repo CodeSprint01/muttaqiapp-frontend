@@ -18,9 +18,10 @@ import AppInput from '../../components/molecules/app-input/AppInput';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
 import AppModal from '../../components/atoms/app-modal/AppModal';
-import {handleSignUp, useSignUpMutation} from '../../services/api';
+import {handleSignUp, schhemaMutation} from '../../services/api';
 import {useDispatch, useSelector} from 'react-redux';
 import {actionGetUserInfoSucess} from '../../redux/user/action';
+import {SIGN_UP} from '../../services/graphQL';
 
 const SignUp = () => {
   const [userData, setUserData] = useState<{[key: string]: string}>({
@@ -31,7 +32,7 @@ const SignUp = () => {
   });
   const [signUpErr, setSignUpErr] = useState('');
   const [loading, setLoading] = useState(false);
-  const [signUpMutation] = useSignUpMutation();
+  const [signUpMutation] = schhemaMutation(SIGN_UP);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 

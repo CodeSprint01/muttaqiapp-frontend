@@ -1,12 +1,8 @@
-import {MutationFunction, gql, useMutation} from '@apollo/client';
-import {SIGN_IN, SIGN_UP} from './graphQL';
-// user authtication CURD operations
+import {MutationFunction, useMutation} from '@apollo/client';
 
-export const useSignUpMutation = () => {
-  return useMutation(SIGN_UP);
-};
-export const useSignInMutation = () => {
-  return useMutation(SIGN_IN);
+// get user schema and set
+export const schhemaMutation = (schema: any) => {
+  return useMutation(schema);
 };
 export const handleSignUp = async (
   signUpMutation: MutationFunction,
