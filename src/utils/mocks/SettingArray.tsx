@@ -3,9 +3,29 @@ import {Icons} from '../helper/svg';
 
 export const settingArray: settingScreen[] = [
   {
-    image: Icons.Profile,
-    name: 'My Profile',
-    type: settingEnum.PROFILE,
+    image: Icons.EmptyBookmark,
+    name: 'Bookmarks',
+    type: settingEnum.BOOKMARKS,
+  },
+  {
+    image: Icons.FillHeart,
+    name: 'Favorities',
+    type: settingEnum.FAVORITIES,
+  },
+  {
+    image: Icons.ZakatCal,
+    name: 'Zakat calculation',
+    type: settingEnum.ZAKAT_CALCULATION,
+  },
+  {
+    image: Icons.InheritanceCal,
+    name: 'Inheritance calculation',
+    type: settingEnum.INHERITANCE_CALCULATION,
+  },
+  {
+    image: Icons.PasswordSecurity,
+    name: 'Password & security',
+    type: settingEnum.PASSWORD_SECURITY,
   },
   {
     image: Icons.Vault,
@@ -13,43 +33,43 @@ export const settingArray: settingScreen[] = [
     type: settingEnum.VAULT,
   },
   {
-    image: Icons.Notification,
-    name: 'Notifications',
-    type: settingEnum.NOTIFICATIONS,
+    image: Icons.PersonalFinancialInfo,
+    name: 'Personal/financial info',
+    type: settingEnum.PERSONAL_FINANCIAL_INFO,
   },
   {
-    image: Icons.Languages,
-    name: 'Languages',
-    type: settingEnum.LANGUAGES,
+    image: Icons.Language,
+    name: 'Language',
+    type: settingEnum.LANGUAGE,
   },
   {
     image: Icons.Faq,
-    name: 'Frequently Asked Question',
-    type: settingEnum.FAQ,
+    name: 'Frequently asked questions',
+    type: settingEnum.FREQUENTLY_ASKED_QUESTION,
   },
   {
-    image: Icons.Feedback,
-    name: 'Feedback',
-    type: settingEnum.FEEDBACK,
-  },
-  {
-    image: Icons.Support,
-    name: 'Support',
-    type: settingEnum.SUPPORT,
+    image: Icons.HelpSupport,
+    name: 'Help & support',
+    type: settingEnum.HELP_SUPPORT,
   },
   {
     image: Icons.TermsConditions,
-    name: 'Terms & Condition',
+    name: 'Terms & conditions',
     type: settingEnum.TERMS_CONDITION,
   },
   {
     image: Icons.PrivacyPolicy,
-    name: 'Privacy Policy',
-    type: settingEnum.PRIVACY,
+    name: 'Privacy policy',
+    type: settingEnum.PRIVACY_POLICY,
   },
   {
     image: Icons.AboutMuttaqi,
     name: 'About Muttaqi',
-    type: settingEnum.ABOUT,
+    type: settingEnum.ABOUT_MUTTAQI,
+  },
+  {
+    image: Icons.LogOut,
+    name: 'Log out',
+    type: settingEnum.LOG_OUT,
   },
 ];

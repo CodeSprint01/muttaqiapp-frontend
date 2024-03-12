@@ -20,11 +20,7 @@ export const Icons = {
   Planner: 'PLANNER',
   Setting: 'SETTING',
   Profile: 'PROFILE',
-  Vault: 'VAULT',
-  Languages: 'LANGUAGES',
   Faq: 'FAQ',
-  Feedback: 'FEEDBACK',
-  Support: 'SUPPORT',
   TermsConditions: 'TERMS_CONDITIONS',
   PrivacyPolicy: 'PRIVACY_POLICY',
   AboutMuttaqi: 'ABOUT_MUTTAQI',
@@ -76,6 +72,14 @@ export const Icons = {
   SixthStep: 'SIXTH_STEP',
   DropDown: 'DROP_DOWN',
   DropUp: 'DROP_UP',
+  ZakatCal: 'ZAKAT_CAL',
+  InheritanceCal: 'INHERITANCE_CAL',
+  PasswordSecurity: 'PASSWORD_SECURITY',
+  Vault: 'VAULT',
+  PersonalFinancialInfo: 'PERSONAL_FINANCIAL_INFO',
+  Language: 'LANGUAGE',
+  HelpSupport: 'HELP_SUPPORTT',
+  LogOut: 'LOG_OUT',
 };
 
 export const Colors = {
@@ -96,12 +100,10 @@ export const Colors = {
   [Icons.Notification]: {color: COLORS.light_gray},
   [Icons.Adhan]: {color: COLORS.light_gray},
   [Icons.Planner]: {color: COLORS.light_gray},
-  [Icons.Profile]: {color: COLORS.light_gray},
+  [Icons.Profile]: {color: COLORS.light_gray}, // verify
   [Icons.Vault]: {color: COLORS.light_gray},
-  [Icons.Languages]: {color: COLORS.light_gray},
+  [Icons.Language]: {color: COLORS.light_gray},
   [Icons.Faq]: {color: COLORS.light_gray},
-  [Icons.Feedback]: {color: COLORS.light_gray},
-  [Icons.Support]: {color: COLORS.light_gray},
   [Icons.TermsConditions]: {color: COLORS.light_gray},
   [Icons.PrivacyPolicy]: {color: COLORS.light_gray},
   [Icons.AboutMuttaqi]: {color: COLORS.light_gray},
@@ -159,6 +161,19 @@ export const Colors = {
   [Icons.SixthStep]: {color: COLORS.light_gray},
   [Icons.DropDown]: {color: COLORS.light_gray},
   [Icons.DropUp]: {color: COLORS.light_gray},
+  [Icons.ZakatCal]: {color: COLORS.light_gray},
+  [Icons.InheritanceCal]: {color: COLORS.light_gray},
+  [Icons.PasswordSecurity]: {color: COLORS.light_gray},
+  [Icons.Vault]: {color: COLORS.light_gray},
+  [Icons.PersonalFinancialInfo]: {color: COLORS.light_gray},
+  [Icons.Notification]: {color: COLORS.light_gray},
+  [Icons.Language]: {color: COLORS.light_gray},
+  [Icons.Faq]: {color: COLORS.light_gray},
+  [Icons.HelpSupport]: {color: COLORS.light_gray},
+  [Icons.TermsConditions]: {color: COLORS.light_gray},
+  [Icons.PrivacyPolicy]: {color: COLORS.light_gray},
+  [Icons.AboutMuttaqi]: {color: COLORS.light_gray},
+  [Icons.LogOut]: {color: COLORS.light_gray},
 };
 
 const SvgIcons: any = {};
@@ -208,25 +223,6 @@ SvgIcons[Icons.Hadith] =
   require('../../../assets/images/explore-images/hadith').default;
 SvgIcons[Icons.Knowledge] =
   require('../../../assets/images/explore-images/knowledge').default;
-
-SvgIcons[Icons.Profile] =
-  require('../../../assets/images/setting-screen-svg/myProfile').default;
-SvgIcons[Icons.Vault] =
-  require('../../../assets/images/setting-screen-svg/vault').default;
-SvgIcons[Icons.Languages] =
-  require('../../../assets/images/setting-screen-svg/languages').default;
-SvgIcons[Icons.Faq] =
-  require('../../../assets/images/setting-screen-svg/faq').default;
-SvgIcons[Icons.Feedback] =
-  require('../../../assets/images/setting-screen-svg/feedback').default;
-SvgIcons[Icons.Support] =
-  require('../../../assets/images/setting-screen-svg/support').default;
-SvgIcons[Icons.TermsConditions] =
-  require('../../../assets/images/setting-screen-svg/termsCond').default;
-SvgIcons[Icons.PrivacyPolicy] =
-  require('../../../assets/images/setting-screen-svg/privacy').default;
-SvgIcons[Icons.AboutMuttaqi] =
-  require('../../../assets/images/setting-screen-svg/about').default;
 SvgIcons[Icons.Setting] =
   require('../../../assets/images/setting-screen-svg/setting').default;
 SvgIcons[Icons.PlusIcon] = require('../../../assets/images/plusIcon').default;
@@ -305,6 +301,31 @@ SvgIcons[Icons.SixthStep] =
   require('../../../assets/images/user-info-forms/sixthStep').default;
 SvgIcons[Icons.DropDown] = require('../../../assets/images/dropDown').default;
 SvgIcons[Icons.DropUp] = require('../../../assets/images/dropUp').default;
+SvgIcons[Icons.ZakatCal] =
+  require('../../../assets/images/setting-icon/zakatCal').default;
+SvgIcons[Icons.InheritanceCal] =
+  require('../../../assets/images/setting-icon/InheritanceCal').default;
+SvgIcons[Icons.PasswordSecurity] =
+  require('../../../assets/images/setting-icon/passwordSecurity').default;
+SvgIcons[Icons.Vault] =
+  require('../../../assets/images/setting-icon/valut').default;
+SvgIcons[Icons.PersonalFinancialInfo] =
+  require('../../../assets/images/setting-icon/passwordSecurity').default;
+SvgIcons[Icons.Setting] = require('../../../assets/images/setting').default;
+SvgIcons[Icons.Language] =
+  require('../../../assets/images/setting-icon/language').default;
+SvgIcons[Icons.Faq] =
+  require('../../../assets/images/setting-icon/FAQ').default;
+SvgIcons[Icons.HelpSupport] =
+  require('../../../assets/images/setting-icon/helpSupport').default;
+SvgIcons[Icons.TermsConditions] =
+  require('../../../assets/images/setting-icon/termsCond').default;
+SvgIcons[Icons.PrivacyPolicy] =
+  require('../../../assets/images/setting-icon/privacyPol').default;
+SvgIcons[Icons.AboutMuttaqi] =
+  require('../../../assets/images/setting-icon/aboutMuttaqi').default;
+SvgIcons[Icons.LogOut] =
+  require('../../../assets/images/setting-icon/logout').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];
