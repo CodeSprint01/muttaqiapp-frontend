@@ -48,6 +48,7 @@ export enum screens {
   YEARLY_TODO_STAT = 'yearly-todo-stat',
   HOME_STACK = 'home-stack',
 
+  PROFILE_STACK = 'profile-stack',
   USER_PROFILE_SETTING = 'user-profile-setting',
   BOOKMARKS_SETTING = 'bookmarks-setting',
   FAVORITIES_SETTING = 'favorities-setting',

@@ -1,12 +1,16 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import UserProfile from '../screens/user-profile/UserProfile';
+import UserProfileSetting from '../screens/setting/user-profile-setting/UserProfileSetting';
+import {screens} from '../types/types';
 
 const ProfileStack = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="UserProfile" component={UserProfile} />
+      <Stack.Screen
+        name={screens.USER_PROFILE_SETTING}
+        component={UserProfileSetting}
+      />
     </Stack.Navigator>
   );
 };

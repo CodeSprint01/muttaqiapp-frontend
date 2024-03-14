@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeStack from './HomeStack';
 import {screens} from '../types/types';
 import ProfileStack from './ProfileStack';
+import UserProfileSetting from '../screens/setting/user-profile-setting/UserProfileSetting';
 const AppStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -19,7 +20,7 @@ const AppStack = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="ProfileStack"
+        name={screens.PROFILE_STACK}
         component={ProfileStack}
         options={{headerShown: false}}
       />

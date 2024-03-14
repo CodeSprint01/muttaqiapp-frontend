@@ -7,6 +7,7 @@ import UserInfoCard from './UserInfoCard';
 import SettingList from './SettingList';
 import {settingArray} from '../../../utils/mocks/SettingArray';
 import {settingEnum, settingScreen} from '../../../types/keyVlaue';
+import {screens} from '../../../types/types';
 
 const MainSetting = () => {
   const navigation = useNavigation();
@@ -80,7 +81,7 @@ const MainSetting = () => {
           userName="Code sprint"
           email="codesprints@gmail.com"
           userImage={require('../../../../assets/images/Profilepic.png')}
-          didOpenProfile={() => console.log('open profile')}
+          didOpenProfile={() => navigation.navigate(screens.PROFILE_STACK)}
         />
       </View>
       <View style={styles.setting}>
