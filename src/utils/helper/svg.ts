@@ -81,6 +81,7 @@ export const Icons = {
   HelpSupport: 'HELP_SUPPORTT',
   LogOut: 'LOG_OUT',
   EmptyNotification: 'EMPTY_NOTIFICATION',
+  UploadDoc: 'UPLOAD_DOC',
 };
 
 export const Colors = {
@@ -176,6 +177,7 @@ export const Colors = {
   [Icons.AboutMuttaqi]: {color: COLORS.light_gray},
   [Icons.LogOut]: {color: COLORS.light_gray},
   [Icons.EmptyNotification]: {color: COLORS.light_gray},
+  [Icons.UploadDoc]: {color: COLORS.light_gray},
 };
 
 const SvgIcons: any = {};
@@ -302,6 +304,7 @@ SvgIcons[Icons.SixthStep] =
   require('../../../assets/images/user-info-forms/sixthStep').default;
 SvgIcons[Icons.DropDown] = require('../../../assets/images/dropDown').default;
 SvgIcons[Icons.DropUp] = require('../../../assets/images/dropUp').default;
+SvgIcons[Icons.UploadDoc] = require('../../../assets/images/uploadDoc').default;
 SvgIcons[Icons.ZakatCal] =
   require('../../../assets/images/setting-icon/zakatCal').default;
 SvgIcons[Icons.InheritanceCal] =

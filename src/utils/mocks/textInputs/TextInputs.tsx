@@ -39,3 +39,23 @@ export const SignInArray: InputSignIn[] = [
     placeholder: 'Enter password',
   },
 ];
+// export const HelpSupport: InputSignUp[] = [
+//   {
+//     key: 'name',
+//     inputLabel: 'Name',
+//     placeholder: 'Enter your name',
+//     isRequired: true,
+//   },
+//   {
+//     key: 'email',
+//     inputLabel: 'E-mail',
+//     placeholder: 'Enter your Email',
+//     isRequired: true,
+//   },
+//   {
+//     key: 'message',
+//     inputLabel: 'Message',
+//     placeholder: 'Enter  your message',
+//     isRequired: true,
+//   },
+// ];

@@ -33,7 +33,7 @@ const UserProfileSetting = () => {
 
   return (
     <AppContainer style={styles.container}>
-      <ScreenHeader headerText="Profile" extraStyle={{paddingHorizontal: 20}} />
+      <ScreenHeader headerText="Profile" extraStyle={{paddingHorizontal: 10}} />
       <View style={styles.userProfile}>
         <View style={styles.userContainer}>
           <View>

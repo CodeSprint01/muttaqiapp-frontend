@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.dmSans[500],
     color: COLORS.green,
     fontStyle: 'normal',
-    paddingLeft: 3,
   },
   requireDot: {
     fontSize: 14,

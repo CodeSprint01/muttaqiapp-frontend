@@ -1,7 +1,7 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import UserProfileSetting from '../screens/setting/user-profile-setting/UserProfileSetting';
-import {screens} from '../types/types';
+import UserProfileSetting from '../../screens/setting/user-profile-setting/UserProfileSetting';
+import {screens} from '../../types/types';
 
 const ProfileStack = () => {
   const Stack = createStackNavigator();

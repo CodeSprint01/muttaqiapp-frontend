@@ -44,7 +44,7 @@ const MainSetting = () => {
         console.log('switch 9');
         break;
       case settingEnum.HELP_SUPPORT:
-        console.log('switch 10');
+        navigation.navigate(screens.HELP_SUPPORT_SETTING);
         break;
       case settingEnum.TERMS_CONDITION:
         console.log('switch 11');

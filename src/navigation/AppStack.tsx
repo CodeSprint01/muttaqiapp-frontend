@@ -3,8 +3,9 @@ import TabNavigator from './TabNavigator';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeStack from './HomeStack';
 import {screens} from '../types/types';
-import ProfileStack from './ProfileStack';
+import ProfileStack from './setting/ProfileStack';
 import UserProfileSetting from '../screens/setting/user-profile-setting/UserProfileSetting';
+import HelpSupportSetting from '../screens/setting/help-support-setting/HelpSupportSetting';
 const AppStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -25,12 +26,12 @@ const AppStack = () => {
         options={{headerShown: false}}
       />
 
-      {/*
       <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
+        name={screens.HELP_SUPPORT_SETTING}
+        component={HelpSupportSetting}
         options={{headerShown: false}}
       />
+      {/*
       <Stack.Screen
         name="ProfileStack"
         component={ProfileStack}
