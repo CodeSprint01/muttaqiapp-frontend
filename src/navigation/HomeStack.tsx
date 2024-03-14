@@ -17,7 +17,7 @@ const HomeStack = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator>
-      <Stack.Screen
+      {/* <Stack.Screen
         name={screens.ALL_BOOKMARKS}
         component={AllBookmarks}
         options={{headerShown: false}}
@@ -26,7 +26,7 @@ const HomeStack = () => {
         name={screens.ALL_FAVOURITES}
         component={AllFavourites}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name={screens.KNOWLEDGE}
         component={Knowledge}

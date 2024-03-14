@@ -34,7 +34,7 @@ const TrackerTodoTask: FC<todoProps> = ({
               icon={Icons.ArrowRight}
               width={20}
               height={20}
-              color="black"
+              color={COLORS.green}
             />
           </TouchableOpacity>
         )}

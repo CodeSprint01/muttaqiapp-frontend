@@ -37,7 +37,7 @@ const PrayerBarChart: FC<BarProps> = ({
               icon={Icons.ArrowRight}
               width={22}
               height={22}
-              color="black"
+              color={COLORS.green}
             />
           </TouchableOpacity>
         )}

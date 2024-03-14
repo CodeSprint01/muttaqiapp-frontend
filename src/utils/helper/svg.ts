@@ -80,6 +80,7 @@ export const Icons = {
   Language: 'LANGUAGE',
   HelpSupport: 'HELP_SUPPORTT',
   LogOut: 'LOG_OUT',
+  EmptyNotification: 'EMPTY_NOTIFICATION',
 };
 
 export const Colors = {
@@ -128,7 +129,7 @@ export const Colors = {
   [Icons.Night]: {color: COLORS.primary},
   [Icons.ArrowUp]: {color: COLORS.light_gray},
   [Icons.ArrowDown]: {color: COLORS.light_gray},
-  [Icons.ArrowRight]: {color: COLORS.light_gray},
+  [Icons.ArrowRight]: {color: COLORS.green},
   [Icons.EmptyBookmark]: {color: COLORS.light_gray},
   [Icons.EmptyHeart]: {color: COLORS.light_gray},
   [Icons.FillHeart]: {color: COLORS.light_gray},
@@ -174,6 +175,7 @@ export const Colors = {
   [Icons.PrivacyPolicy]: {color: COLORS.light_gray},
   [Icons.AboutMuttaqi]: {color: COLORS.light_gray},
   [Icons.LogOut]: {color: COLORS.light_gray},
+  [Icons.EmptyNotification]: {color: COLORS.light_gray},
 };
 
 const SvgIcons: any = {};
@@ -223,8 +225,7 @@ SvgIcons[Icons.Hadith] =
   require('../../../assets/images/explore-images/hadith').default;
 SvgIcons[Icons.Knowledge] =
   require('../../../assets/images/explore-images/knowledge').default;
-SvgIcons[Icons.Setting] =
-  require('../../../assets/images/setting-screen-svg/setting').default;
+SvgIcons[Icons.Setting] = require('../../../assets/images/setting').default;
 SvgIcons[Icons.PlusIcon] = require('../../../assets/images/plusIcon').default;
 SvgIcons[Icons.UserHeart] = require('../../../assets/images/userHeart').default;
 SvgIcons[Icons.CheckBoxTickIcon] =
@@ -326,6 +327,8 @@ SvgIcons[Icons.AboutMuttaqi] =
   require('../../../assets/images/setting-icon/aboutMuttaqi').default;
 SvgIcons[Icons.LogOut] =
   require('../../../assets/images/setting-icon/logout').default;
+SvgIcons[Icons.EmptyNotification] =
+  require('../../../assets/images/setting-icon/emptyNotification').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

@@ -23,7 +23,7 @@ const SurahScreen = () => {
                 indx={item?.number}
                 length={item?.numberOfAyahs}
                 onPress={() =>
-                  navigation.navigate('HomeStack', {
+                  navigation.navigate(screens.HOME_STACK, {
                     screen: screens.SURAH_DETAILS_SCREEN,
                     params: {data: item},
                   })

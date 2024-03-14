@@ -1,6 +1,5 @@
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
-import HomeStack from './HomeStack';
 import QiblaStack from './QiblaStack';
 import TrackerStack from './TrackerStack';
 import SettingStack from './SettingStack';

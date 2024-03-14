@@ -16,7 +16,6 @@ const App = () => {
   // Initialize Apollo Client
   const client = new ApolloClient({
     uri: Config.LOCAL_URL,
-    // uri: 'http://localhost:3000/khjghj',
     cache: new InMemoryCache(),
   });
   return (

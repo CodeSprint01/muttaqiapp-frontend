@@ -37,7 +37,7 @@ const AllahNames = () => {
                 style={styles.cardShadow}
                 index={index}
                 onPress={() =>
-                  navigation.navigate('HomeStack', {
+                  navigation.navigate(screens.HOME_STACK, {
                     screen: screens.ALLAH_NAMES_DESCRIPTION,
                     params: {
                       item,

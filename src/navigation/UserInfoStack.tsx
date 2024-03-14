@@ -18,7 +18,6 @@ const UserInfoStack = () => {
         component={FamilyInformationFirstFrom}
         options={{headerShown: false}}
       />
-
       <Stack.Screen
         name={screens.APP_STACK}
         component={AppStack}

@@ -5,6 +5,7 @@ import AppText from '../app-text/AppText';
 import {AppIconSvg} from '../app-icon-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
+import {screens} from '../../../types/types';
 
 export interface ExploreProps {
   image: any;
@@ -25,7 +26,7 @@ const ExploreCard: FC<ExploreProps> = ({
   const navigateFromCard = (category: string) => {
     switch (category.toLowerCase()) {
       case 'azkaar':
-        navigation.navigate('HomeStack', {
+        navigation.navigate(screens.HOME_STACK, {
           screen: routeName,
           params: {
             title: category,
@@ -33,7 +34,7 @@ const ExploreCard: FC<ExploreProps> = ({
         });
         break;
       case 'dua':
-        navigation.navigate('HomeStack', {
+        navigation.navigate(screens.HOME_STACK, {
           screen: routeName,
           params: {
             title: category,
@@ -41,7 +42,7 @@ const ExploreCard: FC<ExploreProps> = ({
         });
         break;
       case 'hadith':
-        navigation.navigate('HomeStack', {
+        navigation.navigate(screens.HOME_STACK, {
           screen: routeName,
           params: {
             title: category,
@@ -49,7 +50,7 @@ const ExploreCard: FC<ExploreProps> = ({
         });
         break;
       default:
-        navigation.navigate('HomeStack', {screen: routeName});
+        navigation.navigate(screens.HOME_STACK, {screen: routeName});
         break;
     }
   };

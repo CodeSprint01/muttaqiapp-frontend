@@ -37,7 +37,7 @@ const QuranHeaderCard: FC<CardProps> = ({surahName, paraNo, onPress}) => {
               icon={Icons.ArrowRight}
               width={30}
               height={30}
-              color="green"
+              color={COLORS.green}
               style={styles.svgIcn}
             />
           </TouchableOpacity>

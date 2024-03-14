@@ -3,6 +3,7 @@ import TabNavigator from './TabNavigator';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeStack from './HomeStack';
 import {screens} from '../types/types';
+import ProfileStack from './ProfileStack';
 const AppStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -13,10 +14,87 @@ const AppStack = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="HomeStack"
+        name={screens.HOME_STACK}
         component={HomeStack}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+
+      {/*
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      /> */}
     </Stack.Navigator>
   );
 };

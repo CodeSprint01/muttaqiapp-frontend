@@ -19,7 +19,7 @@ const TodayProgressSwiper: FC<ProgProps> = ({taskAvg}) => {
             icon={Icons.ArrowRight}
             width={24}
             height={24}
-            color="green"
+            color={COLORS.green}
           />
         </TouchableOpacity>
         <AppText text={'(5/8 completed)'} style={styles.taskTxt} />

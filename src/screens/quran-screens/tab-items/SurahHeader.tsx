@@ -34,7 +34,12 @@ const SurahHeader: FC<headerprops> = ({
       </View>
       <View style={styles.rightView}>
         <TouchableOpacity onPress={onPressFavourite}>
-          <AppIconSvg icon={favourite} width={25} height={25} color="black" />
+          <AppIconSvg
+            icon={favourite}
+            width={25}
+            height={25}
+            color={COLORS.green}
+          />
         </TouchableOpacity>
         <TouchableOpacity onPress={onPressBooksquare}>
           <AppIconSvg

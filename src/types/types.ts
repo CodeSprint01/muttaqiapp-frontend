@@ -46,6 +46,24 @@ export enum screens {
   WEEKLY_TODO_STAT = 'weekly-todo-stat',
   MONTHLY_TODO_STAT = 'monthly-todo-stat',
   YEARLY_TODO_STAT = 'yearly-todo-stat',
+  HOME_STACK = 'home-stack',
+
+  USER_PROFILE_SETTING = 'user-profile-setting',
+  BOOKMARKS_SETTING = 'bookmarks-setting',
+  FAVORITIES_SETTING = 'favorities-setting',
+  ZAKAT_CALCULATION_SETTING = 'zakat-calculation-setting',
+  INHERITANCE_CALCULATION_SETTING = 'inheritance-calculation-setting',
+  PASSWORD_SECURITY_SETTING = 'password-security-setting',
+  VAULT_SETTING = 'vault-setting',
+  PERSONAL_FINANCIAL_INFO_SETTING = 'personal-financial-info-setting',
+  NOTIFICATION_SETTINGS = 'notification-setting',
+  LANGUAGE_SETTING = 'language-setting',
+  FREQUENTLY_ASKED_QUESTION_SETTING = 'frequently-asked-question-setting',
+  HELP_SUPPORT_SETTING = 'help-support-setting',
+  TERMS_CONDITION_SETTING = 'terms-condition-setting',
+  PRIVACY_POLICY_SETTING = 'privacy-policy-setting',
+  ABOUT_MUTTAQI_SETTING = 'about-muttaqi-app',
+  LOG_OUT_SETTING = 'logout-setting',
 }
 export interface AppState {
   error: string | undefined;

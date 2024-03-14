@@ -8,7 +8,7 @@ export const settingArray: settingScreen[] = [
     type: settingEnum.BOOKMARKS,
   },
   {
-    image: Icons.FillHeart,
+    image: Icons.EmptyHeart,
     name: 'Favorities',
     type: settingEnum.FAVORITIES,
   },
@@ -36,6 +36,11 @@ export const settingArray: settingScreen[] = [
     image: Icons.PersonalFinancialInfo,
     name: 'Personal/financial info',
     type: settingEnum.PERSONAL_FINANCIAL_INFO,
+  },
+  {
+    image: Icons.EmptyNotification,
+    name: 'Notification settings',
+    type: settingEnum.NOTIFICATION_SETTINGS,
   },
   {
     image: Icons.Language,

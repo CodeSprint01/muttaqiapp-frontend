@@ -10,7 +10,7 @@ import React, {FC} from 'react';
 import {COLORS} from '../../../styles/color';
 import AppText from '../../atoms/app-text/AppText';
 import {useNavigation} from '@react-navigation/native';
-import {ReligiousContent} from '../../../types/types';
+import {ReligiousContent, screens} from '../../../types/types';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {AppIconSvg, Icons} from '../../atoms/app-icon-svg';
 
@@ -27,7 +27,7 @@ const AzkaarCard: FC<cardProps> = ({data, category}) => {
     <TouchableOpacity
       style={styles.card}
       onPress={() =>
-        navigation.navigate('HomeStack', {
+        navigation.navigate(screens.HOME_STACK, {
           screen: 'detail-screen',
           params: {
             data,
