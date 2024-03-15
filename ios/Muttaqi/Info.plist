@@ -43,6 +43,18 @@
 	<string>Muttaqi needs access to your camera to upload photo</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Muttaqi needs access to your gallery to upload photo</string>
+	<!-- <key>NSDocumentPickerUsageDescription</key>
+	<string>Muttaqi needs access to your gallery to upload Document</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+    <string>To access device files for upload upon user request</string>  -->
+	<key>NSDocumentsFolderUsageDescription</key>
+    <string>App wants to access your documents folder</string>
+    <key>NSDownloadsFolderUsageDescription</key>
+    <string>App wants to access your downloads folder</string>
+    <key>LSSupportsOpeningDocumentsInPlace</key>
+    <true/>
+    <key>UIFileSharingEnabled</key>
+    <true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

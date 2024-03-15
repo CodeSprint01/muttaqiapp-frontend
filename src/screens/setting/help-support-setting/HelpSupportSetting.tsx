@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
@@ -7,7 +7,9 @@ import AppButton from '../../../components/molecules/app-button/AppButton';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {COLORS, fonts} from '../../../styles/color';
 import AppUploadDoc from '../../../components/molecules/app-input/AppUploadDoc';
-import DocumentPicker from 'react-native-document-picker';
+import DocumentPicker, {
+  DocumentPickerResponse,
+} from 'react-native-document-picker';
 
 const HelpSupportSetting = () => {
   const [userData, setUserData] = useState({
@@ -15,6 +17,7 @@ const HelpSupportSetting = () => {
     email: '',
     message: '',
   });
+  const [document, setDocument] = useState<DocumentPickerResponse>();
   const [textLength, setTextLength] = useState(1000);
 
   const handleOnChnage = (key: number, txt: string) => {
@@ -25,8 +28,8 @@ const HelpSupportSetting = () => {
     } else {
       let textLeng = txt.length;
       let total = 1000;
-      let res = total - textLeng;
-      setTextLength(res);
+      let result = total - textLeng;
+      setTextLength(result);
       setUserData(preVal => ({...preVal, message: txt}));
     }
   };
@@ -35,22 +38,15 @@ const HelpSupportSetting = () => {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.allFiles],
       });
-
-      console.log('URI:', res.uri);
-      console.log('Type:', res.type);
-      console.log('Name:', res.name);
-      console.log('Size:', res.size);
+      setDocument(res[0]);
     } catch (err) {
       if (DocumentPicker.isCancel(err)) {
-        // User cancelled the picker
         console.log('Picker was cancelled');
       } else {
-        // Error occurred while picking the document
         console.error('Error picking document:', err);
       }
     }
   };
-
   return (
     <AppContainer>
       <ScreenHeader
@@ -90,6 +86,9 @@ const HelpSupportSetting = () => {
           inputLabel="Attachmentts"
           isRequired
           didPress={handleUploadDoc}
+          placeholder={
+            document ? document?.name : 'Please insert your attachment'
+          }
         />
       </View>
       <View></View>

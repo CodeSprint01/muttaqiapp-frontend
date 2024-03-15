@@ -1,25 +1,21 @@
-import {
-  StyleSheet,
-  TextInput,
-  View,
-  TextInputProps,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, View, TouchableOpacity} from 'react-native';
 import React, {FC} from 'react';
 import {COLORS, fonts} from '../../../styles/color';
 import AppText from '../../atoms/app-text/AppText';
 import {AppIconSvg, Icons} from '../../atoms/app-icon-svg';
 
-interface InputProps extends TextInputProps {
+interface InputProps {
   inputLabel: string;
   isRequired?: boolean;
   didPress: () => void;
+  placeholder: string | null;
 }
 
 const AppUploadDoc: FC<InputProps> = ({
   inputLabel,
   isRequired = false,
   didPress,
+  placeholder,
 }) => {
   return (
     <TouchableOpacity
@@ -33,10 +29,7 @@ const AppUploadDoc: FC<InputProps> = ({
         )}
       </View>
       <View style={styles.txtLogo}>
-        <AppText
-          text={'Please insert your attachment'}
-          style={styles.placeholderTxt}
-        />
+        <AppText text={placeholder} style={styles.placeholderTxt} />
         <AppIconSvg
           icon={Icons.UploadDoc}
           width={24}
