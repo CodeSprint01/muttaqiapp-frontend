@@ -38,10 +38,10 @@ const MainSetting = () => {
         console.log('switch 7');
         break;
       case settingEnum.LANGUAGE:
-        console.log('switch 8');
+        navigation.navigate(screens.LANGUAGE_SETTING);
         break;
       case settingEnum.FREQUENTLY_ASKED_QUESTION:
-        console.log('switch 9');
+        navigation.navigate(screens.FREQUENTLY_ASKED_QUESTION_SETTING);
         break;
       case settingEnum.HELP_SUPPORT:
         navigation.navigate(screens.HELP_SUPPORT_SETTING);
@@ -50,10 +50,10 @@ const MainSetting = () => {
         console.log('switch 11');
         break;
       case settingEnum.PRIVACY_POLICY:
-        console.log('switch 12');
+        navigation.navigate(screens.PRIVACY_POLICY_SETTING);
         break;
       case settingEnum.ABOUT_MUTTAQI:
-        console.log('switch 13');
+        navigation.navigate(screens.ABOUT_MUTTAQI_SETTING);
         break;
       case settingEnum.LOG_OUT:
         console.log('switch 14');

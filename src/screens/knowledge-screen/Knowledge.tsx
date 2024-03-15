@@ -20,7 +20,7 @@ const Knowledge = () => {
           style={styles.icon}
           onPress={() => handleArrowIcon(index)}>
           <AppIconSvg
-            icon={showItems.includes(index) ? Icons.ArrowDown : Icons.ArrowUp}
+            icon={showItems.includes(index) ? Icons.ArrowUp : Icons.ArrowDown}
             width={24}
             height={24}
             color={COLORS.dark_gray}

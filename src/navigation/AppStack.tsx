@@ -4,8 +4,11 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeStack from './HomeStack';
 import {screens} from '../types/types';
 import ProfileStack from './setting/ProfileStack';
-import UserProfileSetting from '../screens/setting/user-profile-setting/UserProfileSetting';
 import HelpSupportSetting from '../screens/setting/help-support-setting/HelpSupportSetting';
+import FAQSetting from '../screens/setting/FAQ-setting/FAQSetting';
+import AboutMuttaqiSetting from '../screens/setting/about-muttaqi-setting/AboutMuttaqiSetting';
+import PrivacyPolicySetting from '../screens/setting/privacy-policy-setting/PrivacyPolicySetting';
+import LanguageSetting from '../screens/setting/language-setting/LanguageSetting';
 const AppStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -31,27 +34,27 @@ const AppStack = () => {
         component={HelpSupportSetting}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name={screens.FREQUENTLY_ASKED_QUESTION_SETTING}
+        component={FAQSetting}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.ABOUT_MUTTAQI_SETTING}
+        component={AboutMuttaqiSetting}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.PRIVACY_POLICY_SETTING}
+        component={PrivacyPolicySetting}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.LANGUAGE_SETTING}
+        component={LanguageSetting}
+        options={{headerShown: false}}
+      />
       {/*
-      <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
-        options={{headerShown: false}}
-      />
       <Stack.Screen
         name="ProfileStack"
         component={ProfileStack}
