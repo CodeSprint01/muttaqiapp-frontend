@@ -82,6 +82,17 @@ export const Icons = {
   LogOut: 'LOG_OUT',
   EmptyNotification: 'EMPTY_NOTIFICATION',
   UploadDoc: 'UPLOAD_DOC',
+  AllItems: 'ALL_ITEMS',
+  Lock: 'LOCK',
+  SecureNotes: 'SECURE_NOTES',
+  CreditCards: 'CREDITCARDS',
+  Identities: 'IDENTITIES',
+  Passwords: 'PASSWORD',
+  Documents: 'DOCUMENTS',
+  Bank: 'BANK',
+  License: 'LICENSE',
+  SocialSecurity: 'SOCIAL_SECURITY',
+  archive: 'ARCHIVE',
 };
 
 export const Colors = {
@@ -178,6 +189,17 @@ export const Colors = {
   [Icons.LogOut]: {color: COLORS.light_gray},
   [Icons.EmptyNotification]: {color: COLORS.light_gray},
   [Icons.UploadDoc]: {color: COLORS.light_gray},
+  [Icons.AllItems]: {color: COLORS.light_gray},
+  [Icons.Lock]: {color: COLORS.light_gray},
+  [Icons.SecureNotes]: {color: COLORS.light_gray},
+  [Icons.CreditCards]: {color: COLORS.light_gray},
+  [Icons.Identities]: {color: COLORS.light_gray},
+  [Icons.Passwords]: {color: COLORS.light_gray},
+  [Icons.Documents]: {color: COLORS.light_gray},
+  [Icons.Bank]: {color: COLORS.light_gray},
+  [Icons.License]: {color: COLORS.light_gray},
+  [Icons.SocialSecurity]: {color: COLORS.light_gray},
+  [Icons.archive]: {color: COLORS.light_gray},
 };
 
 const SvgIcons: any = {};
@@ -332,6 +354,26 @@ SvgIcons[Icons.LogOut] =
   require('../../../assets/images/setting-icon/logout').default;
 SvgIcons[Icons.EmptyNotification] =
   require('../../../assets/images/setting-icon/emptyNotification').default;
+SvgIcons[Icons.AllItems] =
+  require('../../../assets/images/vault/AllItems').default;
+SvgIcons[Icons.Lock] = require('../../../assets/images/vault/lock').default;
+SvgIcons[Icons.SecureNotes] =
+  require('../../../assets/images/vault/notes').default;
+SvgIcons[Icons.CreditCards] =
+  require('../../../assets/images/vault/creditCards').default;
+SvgIcons[Icons.Identities] =
+  require('../../../assets/images/vault/identity').default;
+SvgIcons[Icons.Passwords] =
+  require('../../../assets/images/vault/password').default;
+SvgIcons[Icons.Documents] =
+  require('../../../assets/images/vault/documents').default;
+SvgIcons[Icons.Bank] = require('../../../assets/images/vault/bank').default;
+SvgIcons[Icons.License] =
+  require('../../../assets/images/vault/driverLicense').default;
+SvgIcons[Icons.SocialSecurity] =
+  require('../../../assets/images/vault/socialSecurity').default;
+SvgIcons[Icons.archive] =
+  require('../../../assets/images/vault/archive').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

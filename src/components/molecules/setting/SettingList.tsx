@@ -1,7 +1,7 @@
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {FC} from 'react';
-import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
-import AppText from '../../../components/atoms/app-text/AppText';
+import {AppIconSvg, Icons} from '../../atoms/app-icon-svg';
+import AppText from '../../atoms/app-text/AppText';
 import {COLORS, fonts} from '../../../styles/color';
 
 interface ListProps {

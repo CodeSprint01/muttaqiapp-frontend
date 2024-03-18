@@ -56,6 +56,7 @@ export enum screens {
   INHERITANCE_CALCULATION_SETTING = 'inheritance-calculation-setting',
   PASSWORD_SECURITY_SETTING = 'password-security-setting',
   VAULT_SETTING = 'vault-setting',
+  VAULT_STACK = 'vault-stack',
   PERSONAL_FINANCIAL_INFO_SETTING = 'personal-financial-info-setting',
   NOTIFICATION_SETTINGS = 'notification-setting',
   LANGUAGE_SETTING = 'language-setting',
@@ -65,6 +66,18 @@ export enum screens {
   PRIVACY_POLICY_SETTING = 'privacy-policy-setting',
   ABOUT_MUTTAQI_SETTING = 'about-muttaqi-app',
   LOG_OUT_SETTING = 'logout-setting',
+
+  All_ITEMS_SETTING = 'all-items-setting',
+  VAULT_LOGINS_SETTING = 'vault-logins-setting',
+  SECURE_NOTES_SETTING = 'secure-notes-setting',
+  CREDIT_CARDS_SETTING = 'credit-cards-setting',
+  IDENTITIES_SETTING = 'identities-setting',
+  PASSWORD_SETTING = 'password-setting',
+  DOCUMENTS_SETTING = 'documents-setting',
+  BANK_ACCOUNTS_SETTING = 'bank-account-setting',
+  DRIVER_LICENES_SETTING = 'driver-license-setting',
+  SOCAIL_SECURITY_NUMBERS_SETTING = 'social-security-numbers-setting',
+  ARCHIVE_SETTING = 'archive-setting',
 }
 export interface AppState {
   error: string | undefined;

@@ -13,6 +13,11 @@ export interface settingScreen {
   name: string;
   type: settingEnum;
 }
+export interface vaultScreen {
+  image: string;
+  name: string;
+  type: VaultEnum;
+}
 
 export interface fivePrayer {
   id: number;
@@ -52,4 +57,17 @@ export enum settingEnum {
   PRIVACY_POLICY,
   ABOUT_MUTTAQI,
   LOG_OUT,
+}
+export enum VaultEnum {
+  All_ITEMS,
+  LOGINS,
+  SECURE_NOTES,
+  CREDIT_CARDS,
+  IDENTITIES,
+  PASSWORD,
+  DOCUMENTS,
+  BANK_ACCOUNTS,
+  DRIVER_LICENSES,
+  SOCIAL_SECURITY_NUMBER,
+  ARCHIVE,
 }

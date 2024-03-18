@@ -4,8 +4,8 @@ import {useNavigation} from '@react-navigation/native';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {COLORS, fonts} from '../../../styles/color';
 import UserInfoCard from './UserInfoCard';
-import SettingList from './SettingList';
-import {settingArray} from '../../../utils/mocks/SettingArray';
+import SettingList from '../../../components/molecules/setting/SettingList';
+import {settingArray} from '../../../utils/mocks/setting-array/SettingArray';
 import {settingEnum, settingScreen} from '../../../types/keyVlaue';
 import {screens} from '../../../types/types';
 
@@ -29,7 +29,7 @@ const MainSetting = () => {
         console.log('switch 4');
         break;
       case settingEnum.VAULT:
-        console.log('switch 5');
+        navigation.navigate(screens.VAULT_STACK);
         break;
       case settingEnum.PERSONAL_FINANCIAL_INFO:
         console.log('switch 6');

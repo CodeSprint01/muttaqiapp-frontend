@@ -1,5 +1,5 @@
-import {settingEnum, settingScreen} from '../../types/keyVlaue';
-import {Icons} from '../helper/svg';
+import {settingEnum, settingScreen} from '../../../types/keyVlaue';
+import {Icons} from '../../helper/svg';
 
 export const settingArray: settingScreen[] = [
   {

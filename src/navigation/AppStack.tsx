@@ -9,6 +9,8 @@ import FAQSetting from '../screens/setting/FAQ-setting/FAQSetting';
 import AboutMuttaqiSetting from '../screens/setting/about-muttaqi-setting/AboutMuttaqiSetting';
 import PrivacyPolicySetting from '../screens/setting/privacy-policy-setting/PrivacyPolicySetting';
 import LanguageSetting from '../screens/setting/language-setting/LanguageSetting';
+import VaultSetting from '../screens/setting/vault-setting/VaultSetting';
+import VaultStack from './setting/VaultStack';
 const AppStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -54,12 +56,12 @@ const AppStack = () => {
         component={LanguageSetting}
         options={{headerShown: false}}
       />
-      {/*
       <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
+        name={screens.VAULT_STACK}
+        component={VaultStack}
         options={{headerShown: false}}
       />
+      {/*
       <Stack.Screen
         name="ProfileStack"
         component={ProfileStack}
