@@ -15,7 +15,7 @@ const userPersistConfig = {
   key: 'user',
   storage: AsyncStorage,
   whitelist: ['userLocation'], // our initial state that is persist
-  // blacklist: [''] //  our initial state that is Not persist
+  blacklist: ['loginsData'], //  our initial state that is Not persist
 };
 
 // here we combine all reducer

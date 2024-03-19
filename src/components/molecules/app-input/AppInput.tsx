@@ -22,7 +22,7 @@ const AppInput: FC<InputProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.headerTxt}>
-        <AppText text={inputLabel} style={styles.inputTxt} />
+        <AppText text={` ${inputLabel}`} style={styles.inputTxt} />
         {isRequired && <AppText text={' *'} style={styles.requireDot} />}
       </View>
       <TextInput

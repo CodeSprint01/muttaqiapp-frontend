@@ -78,12 +78,14 @@ export enum screens {
   DRIVER_LICENES_SETTING = 'driver-license-setting',
   SOCAIL_SECURITY_NUMBERS_SETTING = 'social-security-numbers-setting',
   ARCHIVE_SETTING = 'archive-setting',
+  LOGINS_CREDENTIALS = 'login-credentials',
 }
 export interface AppState {
   error: string | undefined;
   loading?: boolean;
   userLocation?: location[];
   userInfo: UserInfo[];
+  loginsData: LoginsInfo[];
 }
 export interface State {
   userReducer: AppState;
@@ -263,4 +265,10 @@ export interface UserInfo {
   token: string;
   name: string;
   email: string;
+}
+export interface LoginsInfo {
+  id: number;
+  title: string;
+  email: string;
+  password: string;
 }
