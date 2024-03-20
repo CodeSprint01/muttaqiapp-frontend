@@ -16,6 +16,7 @@ interface ButtonProps {
   imageWidth?: number;
   imageHeight?: number;
   fill?: boolean;
+  isEnable?: boolean;
 }
 type PropsWithImage = ButtonProps &
   (ButtonProps['ImageName'] extends ImageSourcePropType
@@ -32,19 +33,24 @@ const AppButton: FC<PropsWithImage> = ({
   imageWidth = 24,
   imageHeight = 24,
   fill = true,
+  isEnable = false,
 }) => {
   return fill ? (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.5}>
-      <LinearGradient
-        colors={[
-          '#1290A1',
-          'rgba(24, 154, 151, 0.86)',
-          'rgba(29, 162, 143, 0.73)',
-        ]}
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 1}}
-        style={styles.button}>
-        <View>
+    isEnable ? (
+      <TouchableOpacity
+        onPress={onPress}
+        activeOpacity={0.5}
+        disabled={isEnable}>
+        {/* <LinearGradient
+          colors={[
+            '#1290A1',
+            'rgba(24, 154, 151, 0.86)',
+            'rgba(29, 162, 143, 0.73)',
+          ]}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 1}}
+          style={styles.button}> */}
+        <View style={styles.fillButtonBlur}>
           <AppText text={buttonText} style={styles.txt} />
           {ImageName && (
             <View style={styles.iconContainer}>
@@ -52,8 +58,33 @@ const AppButton: FC<PropsWithImage> = ({
             </View>
           )}
         </View>
-      </LinearGradient>
-    </TouchableOpacity>
+        {/* </LinearGradient> */}
+      </TouchableOpacity>
+    ) : (
+      <TouchableOpacity
+        onPress={onPress}
+        activeOpacity={0.5}
+        disabled={isEnable}>
+        <LinearGradient
+          colors={[
+            '#1290A1',
+            'rgba(24, 154, 151, 0.86)',
+            'rgba(29, 162, 143, 0.73)',
+          ]}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 1}}
+          style={styles.button}>
+          <View>
+            <AppText text={buttonText} style={styles.txt} />
+            {ImageName && (
+              <View style={styles.iconContainer}>
+                <ImageName width={imageWidth} height={imageHeight} />
+              </View>
+            )}
+          </View>
+        </LinearGradient>
+      </TouchableOpacity>
+    )
   ) : (
     <TouchableOpacity
       onPress={onPress}
@@ -96,6 +127,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.green,
     borderRadius: 13,
+  },
+  fillButtonBlur: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 16,
+    borderRadius: 13,
+    backgroundColor: COLORS.light_gray,
   },
   fillTxt: {
     color: COLORS.green,

@@ -12,7 +12,6 @@ export const getUserLocation = (location: location): Types => {
 };
 
 export const actionGetUserInfoSucess = (userInfo: UserInfo) => {
-  console.log(userInfo, 'in acrion');
   return {
     type: ActionTypes.USER_SIGN_UP_INFO_SCUCESS,
     payload: {
@@ -21,7 +20,6 @@ export const actionGetUserInfoSucess = (userInfo: UserInfo) => {
   };
 };
 export const actionLoginUserInfoSucess = (userInfo: UserInfo) => {
-  console.log(userInfo, 'in acrion');
   return {
     type: ActionTypes.USER_SIGN_IN_INFO_SCUCESS,
     payload: {
@@ -30,7 +28,6 @@ export const actionLoginUserInfoSucess = (userInfo: UserInfo) => {
   };
 };
 export const actionUserLoginsCredentialsCreate = (loginInfo: LoginsInfo) => {
-  console.log(loginInfo, 'in acrion');
   return {
     type: ActionTypes.USER_LOGINS_CREDENTIALS_CREATE,
     payload: {
@@ -39,11 +36,20 @@ export const actionUserLoginsCredentialsCreate = (loginInfo: LoginsInfo) => {
   };
 };
 export const actionUserLoginsCredentialsUpdate = (loginInfo: LoginsInfo) => {
-  console.log(loginInfo, 'in acrion');
   return {
-    type: ActionTypes.USER_LOGINS_CREDENTIALS_CREATE,
+    type: ActionTypes.USER_LOGINS_CREDENTIALS_UPDATE,
     payload: {
       loginInfo,
+    },
+  };
+};
+
+export const actionUserLoginsCredentialsDelete = (loginId: number) => {
+  // console.log(loginId, 'in acrion');
+  return {
+    type: ActionTypes.USER_LOGINS_CREDENTIALS_DELETE,
+    payload: {
+      loginId,
     },
   };
 };

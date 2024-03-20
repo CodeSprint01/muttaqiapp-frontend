@@ -267,8 +267,8 @@ export interface UserInfo {
   email: string;
 }
 export interface LoginsInfo {
-  id: number;
-  title: string;
+  id?: number;
+  title?: string;
   email: string;
   password: string;
 }

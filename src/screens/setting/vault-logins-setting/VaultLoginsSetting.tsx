@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, View} from 'react-native';
+import {Alert, FlatList, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import PlusIconWithText from '../../../components/molecules/app-button/PlusIconWithText';
@@ -15,20 +15,24 @@ import SettingAndNumber from '../../../components/molecules/setting/SettingAndNu
 import {useNavigation} from '@react-navigation/native';
 
 const VaultLoginsSetting = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [userData, setUserData] = useState({
+  let dataInitialState = {
     title: '',
     email: '',
     password: '',
-  });
+  };
+  const [isVisible, setIsVisible] = useState(false);
+  const [userData, setUserData] = useState(dataInitialState);
+  const [validationError, setValidationError] = useState(false);
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const didAddPress = () => {
-    setIsVisible(!isVisible);
-  };
+
+  const Loginsdata = useSelector(
+    (state: State) => state?.userReducer?.loginsData,
+  );
+  const arrayLength = Loginsdata.length;
+
   // add details
   const onChangeText = (number: number, txt: string) => {
-    console.log(number, txt);
     if (number === 0) {
       setUserData(preVal => ({...preVal, title: txt}));
     } else if (number === 1) {
@@ -39,30 +43,37 @@ const VaultLoginsSetting = () => {
   };
   // cancel and save buttons
   const didCancel = () => {
-    setUserData({
-      title: '',
-      email: '',
-      password: '',
-    });
+    setValidationError(false);
+    setUserData(dataInitialState);
     setIsVisible(false);
+  };
+  const didAddPress = () => {
+    setIsVisible(!isVisible);
   };
   const createCredentail = () => {
-    dispatch(actionUserLoginsCredentialsCreate(userData));
-    setIsVisible(false);
+    const isValidate = Object.values(userData).some(val => val === '');
+    if (!isValidate) {
+      dispatch(actionUserLoginsCredentialsCreate(userData));
+      setUserData(dataInitialState);
+      setIsVisible(false);
+      setValidationError(false);
+    } else {
+      setValidationError(true);
+    }
   };
-  const Logindata = useSelector(
-    (state: State) => state?.userReducer?.loginsData,
-  );
   // display user credentail list
   const renderItem = ({item, index}: {item: LoginsInfo; index: number}) => {
     return (
-      <SettingAndNumber
-        number={index + 1}
-        title={item?.title}
-        didSettingPress={() =>
-          navigation.navigate(screens.LOGINS_CREDENTIALS, {data: item})
-        }
-      />
+      <>
+        <SettingAndNumber
+          number={index + 1}
+          title={item?.title}
+          didSettingPress={() =>
+            navigation.navigate(screens.LOGINS_CREDENTIALS, {data: item})
+          }
+        />
+        {index === arrayLength - 1 && <View style={{paddingBottom: 20}} />}
+      </>
     );
   };
 
@@ -74,7 +85,7 @@ const VaultLoginsSetting = () => {
       </View>
       <AppModal
         isVisible={isVisible}
-        toggleModal={didAddPress}
+        toggleModal={didCancel}
         extraViewStyle={{paddingHorizontal: 20}}
         children={
           <View style={{backgroundColor: 'white'}}>
@@ -103,6 +114,12 @@ const VaultLoginsSetting = () => {
                 inputValue={userData?.password}
               />
             </View>
+            {validationError && (
+              <AppText
+                text={'Please fill all the fields'}
+                style={styles.errorTxt}
+              />
+            )}
             <View style={styles.buttons}>
               <View style={styles.btn}>
                 <AppButton
@@ -120,8 +137,9 @@ const VaultLoginsSetting = () => {
       />
       <View style={styles.setting}>
         <FlatList
-          data={Logindata}
+          data={Loginsdata}
           renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
           keyExtractor={(_item, index) => index.toString()}
         />
       </View>
@@ -148,9 +166,11 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginTop: 50,
   },
-
   passwordInput: {
     marginTop: 10,
+  },
+  errorTxt: {
+    color: COLORS.crimson,
   },
   buttons: {
     flexDirection: 'row',
@@ -163,5 +183,7 @@ const styles = StyleSheet.create({
   },
   setting: {
     paddingHorizontal: 20,
+    flex: 1,
+    // paddingBottom: 0,
   },
 });
