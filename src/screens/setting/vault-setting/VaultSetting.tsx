@@ -20,7 +20,7 @@ const VaultSetting = () => {
         navigation.navigate(screens.VAULT_LOGINS_SETTING, {data: 'usman'});
         break;
       case VaultEnum.SECURE_NOTES:
-        console.log('switch 2');
+        navigation.navigate(screens.VAULT_SECURE_NOTES_SETTING);
         break;
       case VaultEnum.CREDIT_CARDS:
         console.log('switch 3');

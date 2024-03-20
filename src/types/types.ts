@@ -79,6 +79,7 @@ export enum screens {
   SOCAIL_SECURITY_NUMBERS_SETTING = 'social-security-numbers-setting',
   ARCHIVE_SETTING = 'archive-setting',
   LOGINS_CREDENTIALS = 'login-credentials',
+  VAULT_SECURE_NOTES_SETTING = 'vault-secure-notes-setting',
 }
 export interface AppState {
   error: string | undefined;

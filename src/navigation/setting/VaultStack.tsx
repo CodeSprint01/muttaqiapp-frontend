@@ -4,6 +4,7 @@ import {screens} from '../../types/types';
 import VaultSetting from '../../screens/setting/vault-setting/VaultSetting';
 import VaultLoginsSetting from '../../screens/setting/vault-logins-setting/VaultLoginsSetting';
 import LoginCredentials from '../../screens/setting/logins-credential/LoginCredentials';
+import VaultSecureNotesSetting from '../../screens/setting/vault-secure-notes-setting/VaultSecureNotesSetting';
 const VaultStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -21,6 +22,11 @@ const VaultStack = () => {
       <Stack.Screen
         name={screens.LOGINS_CREDENTIALS}
         component={LoginCredentials}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_SECURE_NOTES_SETTING}
+        component={VaultSecureNotesSetting}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
