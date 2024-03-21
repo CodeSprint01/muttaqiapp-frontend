@@ -7,7 +7,7 @@ const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
   // blacklist: [], // our reducer names that is not persist
-  whitelist: ['prayerReducer', 'userReducer'], // our reducer names that is persist
+  whitelist: ['prayerReducer', 'userReducer', 'settingReducer'], // our reducer names that is persist
 };
 
 export default function configureStore() {

@@ -42,12 +42,7 @@ const AzkaarCard: FC<cardProps> = ({data, category}) => {
       />
       <View style={styles.column}>
         <Image source={night} resizeMode="cover" />
-        {/* <AppIconSvg
-          color={COLORS.primary}
-          icon={Icons.Night}
-          height={30}
-          width={30}
-        /> */}
+
         <View>
           <AppText style={styles.name} text={data.title}></AppText>
           <AppText style={styles.time} text={data.subTitle}></AppText>

@@ -93,6 +93,7 @@ export const Icons = {
   License: 'LICENSE',
   SocialSecurity: 'SOCIAL_SECURITY',
   archive: 'ARCHIVE',
+  Tick: 'TICK',
 };
 
 export const Colors = {
@@ -200,6 +201,7 @@ export const Colors = {
   [Icons.License]: {color: COLORS.light_gray},
   [Icons.SocialSecurity]: {color: COLORS.light_gray},
   [Icons.archive]: {color: COLORS.light_gray},
+  [Icons.Tick]: {color: COLORS.green},
 };
 
 const SvgIcons: any = {};
@@ -326,6 +328,7 @@ SvgIcons[Icons.SixthStep] =
   require('../../../assets/images/user-info-forms/sixthStep').default;
 SvgIcons[Icons.DropDown] = require('../../../assets/images/dropDown').default;
 SvgIcons[Icons.DropUp] = require('../../../assets/images/dropUp').default;
+SvgIcons[Icons.Tick] = require('../../../assets/images/tick').default;
 SvgIcons[Icons.UploadDoc] = require('../../../assets/images/uploadDoc').default;
 SvgIcons[Icons.ZakatCal] =
   require('../../../assets/images/setting-icon/zakatCal').default;

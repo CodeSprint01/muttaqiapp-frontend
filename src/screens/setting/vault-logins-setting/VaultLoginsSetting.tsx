@@ -1,4 +1,4 @@
-import {Alert, FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import PlusIconWithText from '../../../components/molecules/app-button/PlusIconWithText';
@@ -10,9 +10,9 @@ import {COLORS, fonts} from '../../../styles/color';
 import AppButton from '../../../components/molecules/app-button/AppButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {LoginsInfo, State, screens} from '../../../types/types';
-import {actionUserLoginsCredentialsCreate} from '../../../redux/user/action';
 import SettingAndNumber from '../../../components/molecules/setting/SettingAndNumber';
 import {useNavigation} from '@react-navigation/native';
+import {actionUserLoginsCredentialsCreate} from '../../../redux/setting/action';
 
 const VaultLoginsSetting = () => {
   let dataInitialState = {
@@ -27,7 +27,7 @@ const VaultLoginsSetting = () => {
   const navigation = useNavigation();
 
   const Loginsdata = useSelector(
-    (state: State) => state?.userReducer?.loginsData,
+    (state: State) => state?.settingReducer.loginsData,
   );
   const arrayLength = Loginsdata.length;
 

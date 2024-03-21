@@ -80,16 +80,24 @@ export enum screens {
   ARCHIVE_SETTING = 'archive-setting',
   LOGINS_CREDENTIALS = 'login-credentials',
   VAULT_SECURE_NOTES_SETTING = 'vault-secure-notes-setting',
+  VAULT_SECURE_NOTES_READ = 'vault-secure-notes-read',
+  VAULT_SECURE_NOTES_UPDATE = 'vault-secure-notes-update',
 }
 export interface AppState {
   error: string | undefined;
   loading?: boolean;
   userLocation?: location[];
   userInfo: UserInfo[];
-  loginsData: LoginsInfo[];
 }
+
+export interface SettingState {
+  loginsData: LoginsInfo[];
+  secureNotes: NotesInfo[];
+}
+
 export interface State {
   userReducer: AppState;
+  settingReducer: SettingState;
 }
 
 export interface Types {
@@ -272,4 +280,9 @@ export interface LoginsInfo {
   title?: string;
   email: string;
   password: string;
+}
+export interface NotesInfo {
+  id?: number;
+  title?: string;
+  details: string;
 }

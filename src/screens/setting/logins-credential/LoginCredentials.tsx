@@ -5,11 +5,11 @@ import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader'
 import AppInput from '../../../components/molecules/app-input/AppInput';
 import AppButton from '../../../components/molecules/app-button/AppButton';
 import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 import {
   actionUserLoginsCredentialsDelete,
   actionUserLoginsCredentialsUpdate,
-} from '../../../redux/user/action';
-import {useNavigation} from '@react-navigation/native';
+} from '../../../redux/setting/action';
 
 const LoginCredentials = ({route}) => {
   const credentail = route?.params?.data;
