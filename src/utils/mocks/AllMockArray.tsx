@@ -16,6 +16,12 @@ export const MartialStatus: Array<{label: string; value: string}> = [
   {label: 'Married', value: 'Married'},
   {label: 'Divored', value: 'Divored'},
 ];
+export const CardArray: Array<{label: string; value: string}> = [
+  {label: 'master', value: 'master'},
+  {label: 'visa', value: 'visa'},
+  {label: 'paypak', value: 'paypak'},
+];
+
 import {allahNamesProps, exploreInterface, screens} from '../../types/types';
 import {Icons} from '../helper/svg';
 

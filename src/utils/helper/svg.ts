@@ -94,6 +94,9 @@ export const Icons = {
   SocialSecurity: 'SOCIAL_SECURITY',
   archive: 'ARCHIVE',
   Tick: 'TICK',
+  MasterCard: 'MASTER_CARD',
+  VisaCard: 'VISA_CARD',
+  Paypak: 'PAYPAK',
 };
 
 export const Colors = {
@@ -202,6 +205,9 @@ export const Colors = {
   [Icons.SocialSecurity]: {color: COLORS.light_gray},
   [Icons.archive]: {color: COLORS.light_gray},
   [Icons.Tick]: {color: COLORS.green},
+  [Icons.MasterCard]: {color: COLORS.green},
+  [Icons.VisaCard]: {color: COLORS.green},
+  [Icons.Paypak]: {color: COLORS.green},
 };
 
 const SvgIcons: any = {};
@@ -377,6 +383,11 @@ SvgIcons[Icons.SocialSecurity] =
   require('../../../assets/images/vault/socialSecurity').default;
 SvgIcons[Icons.archive] =
   require('../../../assets/images/vault/archive').default;
+SvgIcons[Icons.MasterCard] =
+  require('../../../assets/images/vault/mastercard').default;
+SvgIcons[Icons.VisaCard] =
+  require('../../../assets/images/vault/visacard').default;
+SvgIcons[Icons.Paypak] = require('../../../assets/images/vault/paypak').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

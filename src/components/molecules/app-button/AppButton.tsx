@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   fillButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 16,
+    paddingVertical: 15,
     borderWidth: 1,
     borderColor: COLORS.green,
     borderRadius: 13,

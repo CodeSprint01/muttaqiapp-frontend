@@ -7,9 +7,9 @@ import AppText from '../../atoms/app-text/AppText';
 
 interface MyProps {
   arrayData: Array<{label: string; value: string}>;
-  placeholderText: string;
+  placeholderText?: string;
   inputLabel: string;
-  icon: any;
+  icon?: any;
   isRequired: boolean;
   handleSelectValue: (val: string) => void;
 }

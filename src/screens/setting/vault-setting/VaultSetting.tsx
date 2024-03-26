@@ -23,7 +23,7 @@ const VaultSetting = () => {
         navigation.navigate(screens.VAULT_SECURE_NOTES_SETTING);
         break;
       case VaultEnum.CREDIT_CARDS:
-        console.log('switch 3');
+        navigation.navigate(screens.VAULT_CREDIT_CARD_ADD);
         break;
       case VaultEnum.IDENTITIES:
         console.log('switch 4');

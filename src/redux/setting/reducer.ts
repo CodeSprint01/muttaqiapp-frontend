@@ -6,6 +6,7 @@ import {generateRendomNumber} from '../../utils/helper/helpers';
 const initialState: SettingState = {
   loginsData: [],
   secureNotes: [],
+  creditCard: [],
 };
 
 // Reducers
@@ -23,7 +24,7 @@ export default function reducer(state = initialState, action: any = {}) {
       return {
         ...state,
         loginsData:
-          state?.loginsData.length > 0
+          state?.loginsData?.length > 0
             ? [...state?.loginsData, newData]
             : [newData],
       };
@@ -84,7 +85,6 @@ export default function reducer(state = initialState, action: any = {}) {
     case ActionTypes.USER_SECURE_NOTES_UPDATE: {
       const updatedNote = action?.payload?.updata;
       console.log(updatedNote, 'this is from reducer');
-
       const allNotes = state.secureNotes;
       const newUpdateNote = allNotes.map(item => {
         if (item?.id === updatedNote?.id) {
@@ -99,6 +99,54 @@ export default function reducer(state = initialState, action: any = {}) {
       return {
         ...state,
         secureNotes: newUpdateNote,
+      };
+    }
+    case ActionTypes.USER_CREDIT_CARD_CREATE: {
+      const cardData = action?.payload?.cardInfo;
+      console.log(cardData, 'in reducer');
+      const id = generateRendomNumber();
+      const newData = {
+        id: id,
+        number: cardData?.number,
+        name: cardData?.name,
+        expiry: cardData?.expiry,
+        cvv: cardData?.cvv,
+        type: cardData?.type,
+      };
+      return {
+        ...state,
+        creditCard:
+          state?.creditCard?.length > 0
+            ? [...state.creditCard, newData]
+            : [newData],
+      };
+    }
+    case ActionTypes.USER_CREDIT_CARD_UPDATE: {
+      const updatedData = action?.payload?.updata;
+      let updated = state?.creditCard?.map(itm => {
+        if (itm?.id === updatedData?.id) {
+          return {
+            ...itm,
+            number: updatedData?.id,
+            name: updatedData?.name,
+            expiry: updatedData?.expiry,
+            cvv: updatedData?.cvv,
+            type: updatedData?.type,
+          };
+        }
+        return itm;
+      });
+      return {
+        ...state,
+        creditCard: updated,
+      };
+    }
+    case ActionTypes.USER_CREDIT_CARD_DELETE: {
+      const cardID = action?.payload?.id;
+      const afterDelete = state?.creditCard.filter(itm => itm?.id != cardID);
+      return {
+        ...state,
+        creditCard: afterDelete,
       };
     }
     default:

@@ -1,4 +1,4 @@
-import {LoginsInfo, NotesInfo} from '../../types/types';
+import {CardInfo, LoginsInfo, NotesInfo} from '../../types/types';
 import {ActionTypes} from './types';
 
 // Action
@@ -51,6 +51,33 @@ export const actionUserSecureNotesUpdate = (updata: NotesInfo) => {
     type: ActionTypes.USER_SECURE_NOTES_UPDATE,
     payload: {
       updata,
+    },
+  };
+};
+export const actionUserCreditCardCreate = (cardInfo: CardInfo) => {
+  console.log(cardInfo, 'this is user card info aaction');
+  return {
+    type: ActionTypes.USER_CREDIT_CARD_CREATE,
+    payload: {
+      cardInfo,
+    },
+  };
+};
+export const actionUserCreditCardUpdate = (updata: CardInfo) => {
+  console.log(updata, 'this is user card info aaction');
+  return {
+    type: ActionTypes.USER_CREDIT_CARD_UPDATE,
+    payload: {
+      updata,
+    },
+  };
+};
+export const actionUserCreditCardDelete = (id: number) => {
+  console.log(id, 'this is user note info aaction');
+  return {
+    type: ActionTypes.USER_CREDIT_CARD_DELETE,
+    payload: {
+      id,
     },
   };
 };
