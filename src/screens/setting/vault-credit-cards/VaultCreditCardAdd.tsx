@@ -102,8 +102,6 @@ const styles = StyleSheet.create({
   },
   addBtn: {
     marginTop: 32,
-    // flex: 1,
-    backgroundColor: 'pink',
   },
   flatlists: {
     marginTop: 30,
