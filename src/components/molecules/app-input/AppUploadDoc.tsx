@@ -9,6 +9,7 @@ interface InputProps {
   isRequired?: boolean;
   didPress: () => void;
   placeholder: string | null;
+  icon: any;
 }
 
 const AppUploadDoc: FC<InputProps> = ({
@@ -16,6 +17,7 @@ const AppUploadDoc: FC<InputProps> = ({
   isRequired = false,
   didPress,
   placeholder,
+  icon,
 }) => {
   return (
     <TouchableOpacity
@@ -31,7 +33,7 @@ const AppUploadDoc: FC<InputProps> = ({
       <View style={styles.txtLogo}>
         <AppText text={placeholder} style={styles.placeholderTxt} />
         <AppIconSvg
-          icon={Icons.UploadDoc}
+          icon={icon}
           width={24}
           height={24}
           color={COLORS.dark_gray}

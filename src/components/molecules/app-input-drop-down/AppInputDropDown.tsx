@@ -10,7 +10,7 @@ interface MyProps {
   placeholderText?: string;
   inputLabel: string;
   icon?: any;
-  isRequired: boolean;
+  isRequired?: boolean;
   handleSelectValue: (val: string) => void;
 }
 

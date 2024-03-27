@@ -8,6 +8,8 @@ import VaultSecureNotesSetting from '../../screens/setting/vault-secure-notes-se
 import ReadSecureNotes from '../../screens/setting/vault-secure-notes-setting/ReadSecureNotes';
 import VaultCreditCardAdd from '../../screens/setting/vault-credit-cards/VaultCreditCardAdd';
 import VaultCreditCardCreateUpdate from '../../screens/setting/vault-credit-cards/VaultCreditCardCreateUpdate';
+import VaultIdentities from '../../screens/setting/vault-indentities/VaultIdentities';
+import VaultIdentitiesCreateUpdate from '../../screens/setting/vault-indentities/VaultIdentitiesCreateUpdate';
 const VaultStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -50,6 +52,16 @@ const VaultStack = () => {
       <Stack.Screen
         name={screens.VAULT_CREDIT_CARD_CREATE_UPDATE}
         component={VaultCreditCardCreateUpdate}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_IDENTITIES_SETTING}
+        component={VaultIdentities}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_IDENTITIES_CREATE_UPDATE}
+        component={VaultIdentitiesCreateUpdate}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

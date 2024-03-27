@@ -84,6 +84,8 @@ export enum screens {
   VAULT_SECURE_NOTES_UPDATE = 'vault-secure-notes-update',
   VAULT_CREDIT_CARD_ADD = 'vault-credit-card-add',
   VAULT_CREDIT_CARD_CREATE_UPDATE = 'vault-credit-card-create-update',
+  VAULT_IDENTITIES_SETTING = 'vault-identities-setting',
+  VAULT_IDENTITIES_CREATE_UPDATE = 'vault-identities-create-update',
 }
 export interface AppState {
   error: string | undefined;
@@ -96,6 +98,7 @@ export interface SettingState {
   loginsData: LoginsInfo[];
   secureNotes: NotesInfo[];
   creditCard: CardInfo[];
+  identities: IdentityInfo[];
 }
 
 export interface State {
@@ -296,4 +299,12 @@ export interface CardInfo {
   expiry: string;
   cvv: string;
   type: string;
+}
+export interface IdentityInfo {
+  id?: number;
+  type: string;
+  name: string;
+  number: string;
+  photo: string;
+  photoName: string;
 }

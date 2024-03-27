@@ -7,6 +7,7 @@ const initialState: SettingState = {
   loginsData: [],
   secureNotes: [],
   creditCard: [],
+  identities: [],
 };
 
 // Reducers
@@ -149,6 +150,60 @@ export default function reducer(state = initialState, action: any = {}) {
         creditCard: afterDelete,
       };
     }
+    case ActionTypes.USER_VAULT_IDENTITY_CREATE: {
+      const identity = action?.payload?.identityInfo;
+      console.log(identity, 'in reducer');
+
+      const id = generateRendomNumber();
+      const newIdentity = {
+        id: id,
+        type: identity?.type,
+        name: identity?.name,
+        number: identity?.number,
+        photo: identity?.photo,
+        photoName: identity?.photoName,
+      };
+      return {
+        ...state,
+        identities:
+          state?.identities?.length > 0
+            ? [...state?.identities, newIdentity]
+            : [newIdentity],
+      };
+    }
+    case ActionTypes.USER_VAULT_IDENTITY_UPDATE: {
+      const identity = action?.payload?.identityInfo;
+      const oldData = state?.identities;
+      let updatedData = oldData.map(itm => {
+        if (itm?.id === identity?.id) {
+          return {
+            ...itm,
+            id: identity?.id,
+            type: identity?.type,
+            name: identity?.name,
+            number: identity?.number,
+            photo: identity?.photo,
+            photoName: identity?.photoName,
+          };
+        }
+        return itm;
+      });
+      return {
+        ...state,
+        identities: updatedData,
+      };
+    }
+    case ActionTypes.USER_VAULT_IDENTITY_DELETE: {
+      const id = action?.payload?.id;
+      const oldData = state?.identities;
+      let aftreDelete = oldData.filter(itm => itm?.id !== id);
+      return {
+        ...state,
+        identities: aftreDelete,
+      };
+    }
+
+    // default is below
     default:
       return state;
   }

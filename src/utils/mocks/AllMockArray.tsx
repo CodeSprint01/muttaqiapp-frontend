@@ -21,7 +21,16 @@ export const CardArray: Array<{label: string; value: string}> = [
   {label: 'visa', value: 'visa'},
   {label: 'paypak', value: 'paypak'},
 ];
-
+export const IdentityArray: Array<{label: string; value: string}> = [
+  {
+    label: 'National ID',
+    value: 'National ID',
+  },
+  {
+    label: 'Passport',
+    value: 'Passport',
+  },
+];
 import {allahNamesProps, exploreInterface, screens} from '../../types/types';
 import {Icons} from '../helper/svg';
 

@@ -1,4 +1,4 @@
-import {CardInfo, LoginsInfo, NotesInfo} from '../../types/types';
+import {CardInfo, IdentityInfo, LoginsInfo, NotesInfo} from '../../types/types';
 import {ActionTypes} from './types';
 
 // Action
@@ -76,6 +76,33 @@ export const actionUserCreditCardDelete = (id: number) => {
   console.log(id, 'this is user note info aaction');
   return {
     type: ActionTypes.USER_CREDIT_CARD_DELETE,
+    payload: {
+      id,
+    },
+  };
+};
+export const actionUserIdentityCreate = (identityInfo: IdentityInfo) => {
+  console.log(identityInfo, 'this is user identity info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_IDENTITY_CREATE,
+    payload: {
+      identityInfo,
+    },
+  };
+};
+export const actionUserIdentityUpdate = (identityInfo: IdentityInfo) => {
+  console.log(identityInfo, 'this is user identity info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_IDENTITY_UPDATE,
+    payload: {
+      identityInfo,
+    },
+  };
+};
+export const actionUserIdentityDelete = (id: number) => {
+  console.log(id, 'this is user identity info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_IDENTITY_DELETE,
     payload: {
       id,
     },

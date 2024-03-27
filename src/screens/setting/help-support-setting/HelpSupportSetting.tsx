@@ -10,6 +10,7 @@ import AppUploadDoc from '../../../components/molecules/app-input/AppUploadDoc';
 import DocumentPicker, {
   DocumentPickerResponse,
 } from 'react-native-document-picker';
+import {Icons} from '../../../utils/helper/svg';
 
 const HelpSupportSetting = () => {
   const [userData, setUserData] = useState({
@@ -89,6 +90,7 @@ const HelpSupportSetting = () => {
           placeholder={
             document ? document?.name : 'Please insert your attachment'
           }
+          icon={Icons.UploadDoc}
         />
       </View>
       <View></View>
