@@ -10,6 +10,8 @@ import VaultCreditCardAdd from '../../screens/setting/vault-credit-cards/VaultCr
 import VaultCreditCardCreateUpdate from '../../screens/setting/vault-credit-cards/VaultCreditCardCreateUpdate';
 import VaultIdentities from '../../screens/setting/vault-indentities/VaultIdentities';
 import VaultIdentitiesCreateUpdate from '../../screens/setting/vault-indentities/VaultIdentitiesCreateUpdate';
+import VaultPasswordAdd from '../../screens/setting/vault-password/VaultPasswordAdd';
+import VaultPasswordCreateUpdate from '../../screens/setting/vault-password/VaultPasswordCreateUpdate';
 const VaultStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -62,6 +64,16 @@ const VaultStack = () => {
       <Stack.Screen
         name={screens.VAULT_IDENTITIES_CREATE_UPDATE}
         component={VaultIdentitiesCreateUpdate}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_PASSWORD_ADD}
+        component={VaultPasswordAdd}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_PASSWORD_CREATE_UPDATE}
+        component={VaultPasswordCreateUpdate}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

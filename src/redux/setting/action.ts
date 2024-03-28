@@ -1,4 +1,10 @@
-import {CardInfo, IdentityInfo, LoginsInfo, NotesInfo} from '../../types/types';
+import {
+  CardInfo,
+  IdentityInfo,
+  LoginsInfo,
+  NotesInfo,
+  PasswordsInfo,
+} from '../../types/types';
 import {ActionTypes} from './types';
 
 // Action
@@ -103,6 +109,33 @@ export const actionUserIdentityDelete = (id: number) => {
   console.log(id, 'this is user identity info aaction');
   return {
     type: ActionTypes.USER_VAULT_IDENTITY_DELETE,
+    payload: {
+      id,
+    },
+  };
+};
+export const actionUserPasswordsCreate = (passwordInfo: PasswordsInfo) => {
+  console.log(passwordInfo, 'this is user password info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_PASSWORD_CREATE,
+    payload: {
+      passwordInfo,
+    },
+  };
+};
+export const actionUserPasswordsUpdate = (passwordInfo: PasswordsInfo) => {
+  console.log(passwordInfo, 'this is user password info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_PASSWORD_UPDATE,
+    payload: {
+      passwordInfo,
+    },
+  };
+};
+export const actionUserPasswordsDelete = (id: number) => {
+  console.log(id, 'this is user password info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_PASSWORD_DELETE,
     payload: {
       id,
     },

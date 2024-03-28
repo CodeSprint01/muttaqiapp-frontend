@@ -29,7 +29,7 @@ const VaultSetting = () => {
         navigation.navigate(screens.VAULT_IDENTITIES_SETTING);
         break;
       case VaultEnum.PASSWORD:
-        console.log('switch 5');
+        navigation.navigate(screens.VAULT_PASSWORD_ADD);
         break;
       case VaultEnum.DOCUMENTS:
         console.log('switch 6');

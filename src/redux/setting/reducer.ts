@@ -8,6 +8,7 @@ const initialState: SettingState = {
   secureNotes: [],
   creditCard: [],
   identities: [],
+  passwords: [],
 };
 
 // Reducers
@@ -104,7 +105,6 @@ export default function reducer(state = initialState, action: any = {}) {
     }
     case ActionTypes.USER_CREDIT_CARD_CREATE: {
       const cardData = action?.payload?.cardInfo;
-      console.log(cardData, 'in reducer');
       const id = generateRendomNumber();
       const newData = {
         id: id,
@@ -152,8 +152,6 @@ export default function reducer(state = initialState, action: any = {}) {
     }
     case ActionTypes.USER_VAULT_IDENTITY_CREATE: {
       const identity = action?.payload?.identityInfo;
-      console.log(identity, 'in reducer');
-
       const id = generateRendomNumber();
       const newIdentity = {
         id: id,
@@ -202,7 +200,58 @@ export default function reducer(state = initialState, action: any = {}) {
         identities: aftreDelete,
       };
     }
+    case ActionTypes.USER_VAULT_PASSWORD_CREATE: {
+      const password = action?.payload?.passwordInfo;
+      console.log(password, 'ds');
+      const id = generateRendomNumber();
+      const newPassword = {
+        id: id,
+        name: password?.name,
+        email: password?.email,
+        password: password?.password,
+      };
+      return {
+        ...state,
+        passwords:
+          state?.passwords?.length > 0
+            ? [...state?.passwords, newPassword]
+            : [newPassword],
+      };
+    }
+    case ActionTypes.USER_VAULT_PASSWORD_UPDATE: {
+      const password = action?.payload?.passwordInfo;
+      const oldData = state?.passwords;
+      console.log(password, 'in reducer password');
 
+      const updatedPass = oldData?.map(item => {
+        if (item?.id == password?.id) {
+          return {
+            ...item,
+            id: password?.id,
+            name: password?.name,
+            email: password?.email,
+            password: password?.password,
+          };
+        }
+        return item;
+      });
+      return {
+        ...state,
+        passwords: updatedPass,
+      };
+    }
+    case ActionTypes.USER_VAULT_PASSWORD_DELETE: {
+      const id = action?.payload?.id;
+      const oldData = state?.passwords;
+
+      let aftreDelete = oldData?.filter(itm => itm?.id !== id);
+      console.log(aftreDelete, 'thsi is after delete in redu');
+
+      return {
+        ...state,
+        passwords: aftreDelete,
+      };
+    }
     // default is below
     default:
       return state;
