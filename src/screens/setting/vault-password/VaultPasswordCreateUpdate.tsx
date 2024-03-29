@@ -39,12 +39,9 @@ const VaultPasswordCreateUpdate = ({route}) => {
   };
   const isEmpty = Object?.values(credential)?.some(itm => itm == '');
   // checck chnages
-
   const changes = (obj1: any, obj2 = {}) => {
     const keys1 = Object?.keys(obj1);
     const keys2 = Object?.keys(obj2);
-    console.log(keys2, 'jjjjj');
-
     if (keys1?.length !== keys2?.length) {
       return true;
     }

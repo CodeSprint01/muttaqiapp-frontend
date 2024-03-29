@@ -99,6 +99,7 @@ export const Icons = {
   Paypak: 'PAYPAK',
   Camera: 'CAMERA',
   idCard: 'ID_CARD',
+  Document: 'document',
 };
 
 export const Colors = {
@@ -212,6 +213,7 @@ export const Colors = {
   [Icons.Paypak]: {color: COLORS.green},
   [Icons.Camera]: {color: COLORS.dark_gray},
   [Icons.idCard]: {color: COLORS.dark_gray},
+  [Icons.Document]: {color: COLORS.green},
 };
 
 const SvgIcons: any = {};
@@ -394,6 +396,8 @@ SvgIcons[Icons.VisaCard] =
 SvgIcons[Icons.Camera] = require('../../../assets/images/vault/camera').default;
 SvgIcons[Icons.idCard] = require('../../../assets/images/vault/idCrad').default;
 SvgIcons[Icons.Paypak] = require('../../../assets/images/vault/paypak').default;
+SvgIcons[Icons.Document] =
+  require('../../../assets/images/vault/document').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

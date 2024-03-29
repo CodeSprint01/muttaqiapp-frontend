@@ -9,6 +9,7 @@ const initialState: SettingState = {
   creditCard: [],
   identities: [],
   passwords: [],
+  documents: [],
 };
 
 // Reducers
@@ -250,6 +251,33 @@ export default function reducer(state = initialState, action: any = {}) {
       return {
         ...state,
         passwords: aftreDelete,
+      };
+    }
+    case ActionTypes.USER_VAULT_DOCUMENT_ADD: {
+      const docData = action?.payload?.documentInfo;
+      console.log(docData, 'thsi is after docu in redu');
+      const id = generateRendomNumber();
+      const newDoc = {
+        id: id,
+        docName: docData?.name,
+        docUri: docData?.uri,
+      };
+      return {
+        ...state,
+        documents:
+          state?.documents?.length > 0
+            ? [...state?.documents, newDoc]
+            : [newDoc],
+      };
+    }
+    case ActionTypes.USER_VAULT_DOCUMENT_DELETE: {
+      const id = action?.payload?.id;
+      console.log(id, 'thsi is after docu in redu');
+      const oldData = state?.documents;
+      const afterDelete = oldData.filter(itm => itm?.id !== id);
+      return {
+        ...state,
+        documents: afterDelete,
       };
     }
     // default is below

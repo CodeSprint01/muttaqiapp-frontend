@@ -1,5 +1,6 @@
 import {
   CardInfo,
+  DocumentInfo,
   IdentityInfo,
   LoginsInfo,
   NotesInfo,
@@ -136,6 +137,24 @@ export const actionUserPasswordsDelete = (id: number) => {
   console.log(id, 'this is user password info aaction');
   return {
     type: ActionTypes.USER_VAULT_PASSWORD_DELETE,
+    payload: {
+      id,
+    },
+  };
+};
+export const actionUserDocumentAdd = (documentInfo: DocumentInfo) => {
+  console.log(documentInfo, 'this is user doc info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_DOCUMENT_ADD,
+    payload: {
+      documentInfo,
+    },
+  };
+};
+export const actionUserDocumentDelete = (id: number) => {
+  console.log(id, 'this is user doc id info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_DOCUMENT_DELETE,
     payload: {
       id,
     },

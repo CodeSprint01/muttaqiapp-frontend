@@ -12,6 +12,8 @@ import VaultIdentities from '../../screens/setting/vault-indentities/VaultIdenti
 import VaultIdentitiesCreateUpdate from '../../screens/setting/vault-indentities/VaultIdentitiesCreateUpdate';
 import VaultPasswordAdd from '../../screens/setting/vault-password/VaultPasswordAdd';
 import VaultPasswordCreateUpdate from '../../screens/setting/vault-password/VaultPasswordCreateUpdate';
+import VaultDocumentAddDelete from '../../screens/setting/vault-documents/VaultDocumentAddDelete';
+import VaultDocumentRead from '../../screens/setting/vault-documents/VaultDocumentRead';
 const VaultStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -74,6 +76,16 @@ const VaultStack = () => {
       <Stack.Screen
         name={screens.VAULT_PASSWORD_CREATE_UPDATE}
         component={VaultPasswordCreateUpdate}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_DOCUMENT_ADD_DELETE}
+        component={VaultDocumentAddDelete}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_DOCUMENT_READ}
+        component={VaultDocumentRead}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
