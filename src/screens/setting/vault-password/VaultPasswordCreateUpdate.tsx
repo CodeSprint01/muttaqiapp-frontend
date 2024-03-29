@@ -1,4 +1,4 @@
-import {Alert, StyleSheet, Text, View} from 'react-native';
+import {Alert, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import AppInput from '../../../components/molecules/app-input/AppInput';
@@ -13,6 +13,8 @@ import {
 import {State} from '../../../types/types';
 import {useNavigation} from '@react-navigation/native';
 import DeleteModal from '../../../components/organisums/delete-modal/DeleteModal';
+import {Icons} from '../../../utils/helper/svg';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 const VaultPasswordCreateUpdate = ({route}) => {
   const itemID = route?.params?.data;
@@ -25,11 +27,15 @@ const VaultPasswordCreateUpdate = ({route}) => {
   const AllreduxData = useSelector(
     (state: State) => state?.settingReducer?.passwords,
   );
-  const filteredData = AllreduxData?.filter(itm => itm?.id == itemID);
+  const filteredData =
+    AllreduxData?.length > 0
+      ? AllreduxData?.filter(itm => itm?.id == itemID)
+      : [];
   const finalState = itemID == undefined ? initialState : filteredData[0];
 
   const [credential, SetCredential] = useState(finalState);
   const [isVisible, setIsVisible] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -60,6 +66,12 @@ const VaultPasswordCreateUpdate = ({route}) => {
     itemID == undefined ? true : changes(credential, filteredData[0]);
   console.log(isChanges, 'this is changes finl');
 
+  const handleCopyPassword = () => {
+    Clipboard.setString(credential?.password);
+  };
+  const handleCopyEmail = () => {
+    Clipboard.setString(credential?.email);
+  };
   const onPressCancel = () => {
     if (itemID == undefined) {
       SetCredential(finalState);
@@ -116,6 +128,8 @@ const VaultPasswordCreateUpdate = ({route}) => {
             <AppInput
               inputLabel="Username/email"
               placeholder="Enter username/email"
+              onPressRightIconSecond={handleCopyEmail}
+              rightIconSecond={Icons.Copy}
               handleInputChange={txt => onChangeText('email', txt)}
               inputValue={credential?.email}
             />
@@ -124,6 +138,11 @@ const VaultPasswordCreateUpdate = ({route}) => {
             <AppInput
               inputLabel="Password"
               placeholder="Enter your password"
+              secureTextEntry={showPassword}
+              onPressRightIcon={() => setShowPassword(prev => !prev)}
+              rightIcon={showPassword ? Icons.EyeSlash : Icons.Eye}
+              rightIconSecond={Icons.Copy}
+              onPressRightIconSecond={handleCopyPassword}
               handleInputChange={txt => onChangeText('password', txt)}
               inputValue={credential?.password}
             />

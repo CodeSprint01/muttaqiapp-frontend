@@ -20,16 +20,17 @@ const VaultPasswordAdd = () => {
   const reduxData = useSelector(
     (state: State) => state?.settingReducer?.passwords,
   );
-  const arrayLength = reduxData.length;
+  const arrayLength = reduxData?.length;
   console.log(reduxData, 'this is redux data');
 
   const filterData = () => {
-    return reduxData?.filter(item => {
-      return item?.name.toLowerCase().includes(searchPassword.toLowerCase());
-    });
+    return reduxData?.length > 0
+      ? reduxData?.filter(item =>
+          item?.name?.toLowerCase()?.includes(searchPassword?.toLowerCase()),
+        )
+      : null;
   };
   console.log(filterData(), 'this is filter res');
-  let test = filterData();
   const renderItem = ({item, index}: {item: PasswordsInfo; index: number}) => {
     return (
       <View style={{marginBottom: index + 1 == arrayLength ? 240 : 0}}>
@@ -65,11 +66,12 @@ const VaultPasswordAdd = () => {
         <View>
           <FlatList
             data={filterData()}
+            // data={[]}
             renderItem={renderItem}
             showsVerticalScrollIndicator={false}
             keyExtractor={(_item, index) => index.toString()}
           />
-          {test.length !== 0 ? null : searchPassword == '' ? null : (
+          {filterData()?.length !== 0 ? null : searchPassword == '' ? null : (
             <AppText text={'No Credential found!'} style={styles.noData} />
           )}
         </View>

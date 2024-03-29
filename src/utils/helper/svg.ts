@@ -100,6 +100,7 @@ export const Icons = {
   Camera: 'CAMERA',
   idCard: 'ID_CARD',
   Document: 'document',
+  Copy: 'copy',
 };
 
 export const Colors = {
@@ -214,6 +215,7 @@ export const Colors = {
   [Icons.Camera]: {color: COLORS.dark_gray},
   [Icons.idCard]: {color: COLORS.dark_gray},
   [Icons.Document]: {color: COLORS.green},
+  [Icons.Copy]: {color: COLORS.green},
 };
 
 const SvgIcons: any = {};
@@ -396,6 +398,7 @@ SvgIcons[Icons.VisaCard] =
 SvgIcons[Icons.Camera] = require('../../../assets/images/vault/camera').default;
 SvgIcons[Icons.idCard] = require('../../../assets/images/vault/idCrad').default;
 SvgIcons[Icons.Paypak] = require('../../../assets/images/vault/paypak').default;
+SvgIcons[Icons.Copy] = require('../../../assets/images/vault/copy').default;
 SvgIcons[Icons.Document] =
   require('../../../assets/images/vault/document').default;
 
