@@ -520,6 +520,8 @@ PODS:
   - RNCCheckbox (0.5.16):
     - BEMCheckBox (~> 1.4)
     - React-Core
+  - RNCClipboard (1.13.2):
+    - React-Core
   - RNGestureHandler (2.14.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
@@ -639,6 +641,7 @@ DEPENDENCIES:
   - ReactNativeGetLocation (from `../node_modules/react-native-get-location`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCCheckbox (from `../node_modules/@react-native-community/checkbox`)"
+  - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - "RNNotifee (from `../node_modules/@notifee/react-native`)"
@@ -776,6 +779,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCCheckbox:
     :path: "../node_modules/@react-native-community/checkbox"
+  RNCClipboard:
+    :path: "../node_modules/@react-native-clipboard/clipboard"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNImageCropPicker:
@@ -863,6 +868,7 @@ SPEC CHECKSUMS:
   ReactNativeGetLocation: 87f83bee4dfecc88772de04afd076d9ae265cc42
   RNCAsyncStorage: 618d03a5f52fbccb3d7010076bc54712844c18ef
   RNCCheckbox: 75255b03e604bbcc26411eb31c4cbe3e3865f538
+  RNCClipboard: 60fed4b71560d7bfe40e9d35dea9762b024da86d
   RNGestureHandler: 32a01c29ecc9bb0b5bf7bc0a33547f61b4dc2741
   RNImageCropPicker: e7ab6fb43d2fc3e84651e786ef4a080d63b0ed3d
   RNNotifee: 8e2d3df3f0e9ce8f5d1fe4c967431138190b6175
