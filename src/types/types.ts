@@ -92,6 +92,8 @@ export enum screens {
   VAULT_DOCUMENT_READ = 'vault-document-read',
   VAULT_BANK_ACCOUNT_ADD = 'vault-bank-account-add',
   VAULT_BANK_ACCOUNT_CREATE_UPDATE = 'vault-bank-account-create-update',
+  VAULT_SOCIAL_SECURITY_ADD = 'vault-social-security-add',
+  VAULT_SOCIAL_SECURITY_CREATE_UPDATE = 'vault-social-security-create-update',
 }
 export interface AppState {
   error: string | undefined;
@@ -108,6 +110,7 @@ export interface SettingState {
   passwords: PasswordsInfo[];
   documents: DocumentInfo[];
   bankAccount: BankAccount[];
+  socialNumbers: SocialNumbers[];
 }
 
 export interface State {
@@ -329,6 +332,11 @@ export interface DocumentInfo {
   docUri: string;
 }
 export interface BankAccount {
+  id?: number;
+  name: string;
+  number: string;
+}
+export interface SocialNumbers {
   id?: number;
   name: string;
   number: string;

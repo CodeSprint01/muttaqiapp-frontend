@@ -11,6 +11,7 @@ const initialState: SettingState = {
   passwords: [],
   documents: [],
   bankAccount: [],
+  socialNumbers: [],
 };
 
 // Reducers
@@ -62,7 +63,6 @@ export default function reducer(state = initialState, action: any = {}) {
     }
     case ActionTypes.USER_SECURE_NOTES_CREATE: {
       const newNote = action?.payload?.noteInfo;
-      console.log(newNote, 'this is reducer create');
       const cretId = generateRendomNumber();
       const createNote = {
         id: cretId,
@@ -88,7 +88,6 @@ export default function reducer(state = initialState, action: any = {}) {
     }
     case ActionTypes.USER_SECURE_NOTES_UPDATE: {
       const updatedNote = action?.payload?.updata;
-      console.log(updatedNote, 'this is from reducer');
       const allNotes = state.secureNotes;
       const newUpdateNote = allNotes.map(item => {
         if (item?.id === updatedNote?.id) {
@@ -204,7 +203,6 @@ export default function reducer(state = initialState, action: any = {}) {
     }
     case ActionTypes.USER_VAULT_PASSWORD_CREATE: {
       const password = action?.payload?.passwordInfo;
-      console.log(password, 'ds');
       const id = generateRendomNumber();
       const newPassword = {
         id: id,
@@ -223,7 +221,6 @@ export default function reducer(state = initialState, action: any = {}) {
     case ActionTypes.USER_VAULT_PASSWORD_UPDATE: {
       const password = action?.payload?.passwordInfo;
       const oldData = state?.passwords;
-      console.log(password, 'in reducer password');
 
       const updatedPass = oldData?.map(item => {
         if (item?.id == password?.id) {
@@ -247,7 +244,6 @@ export default function reducer(state = initialState, action: any = {}) {
       const oldData = state?.passwords;
 
       let aftreDelete = oldData?.filter(itm => itm?.id !== id);
-      console.log(aftreDelete, 'thsi is after delete in redu');
 
       return {
         ...state,
@@ -256,7 +252,6 @@ export default function reducer(state = initialState, action: any = {}) {
     }
     case ActionTypes.USER_VAULT_DOCUMENT_ADD: {
       const docData = action?.payload?.documentInfo;
-      console.log(docData, 'thsi is after docu in redu');
       const id = generateRendomNumber();
       const newDoc = {
         id: id,
@@ -273,7 +268,6 @@ export default function reducer(state = initialState, action: any = {}) {
     }
     case ActionTypes.USER_VAULT_DOCUMENT_DELETE: {
       const id = action?.payload?.id;
-      console.log(id, 'thsi is after docu in redu');
       const oldData = state?.documents;
       const afterDelete = oldData.filter(itm => itm?.id !== id);
       return {
@@ -283,7 +277,6 @@ export default function reducer(state = initialState, action: any = {}) {
     }
     case ActionTypes.USER_VAULT_BANK_ACCOUNT_ADD: {
       const bankInfo = action?.payload?.bankInfo;
-      console.log(bankInfo, 'thsi is after bankInfo in add');
       const id = generateRendomNumber();
       const newObject = {
         id: id,
@@ -294,13 +287,12 @@ export default function reducer(state = initialState, action: any = {}) {
         ...state,
         bankAccount:
           state?.bankAccount?.length > 0
-            ? [state?.bankAccount, newObject]
+            ? [...state?.bankAccount, newObject]
             : [newObject],
       };
     }
     case ActionTypes.USER_VAULT_BANK_ACCOUNT_UPDATE: {
       const bankInfo = action?.payload?.bankInfo;
-      console.log(bankInfo, 'thsi is after bankInfo in add');
       const oldData = state?.bankAccount;
       const updateObj = oldData?.map(item => {
         if (item?.id === bankInfo?.id) {
@@ -321,11 +313,55 @@ export default function reducer(state = initialState, action: any = {}) {
     case ActionTypes.USER_VAULT_BANK_ACCOUNT_DELETE: {
       const id = action?.payload?.id;
       const oldData = state?.bankAccount;
-      console.log(id, 'thsi is after bankInfo in add');
       const afterDelete = oldData?.filter(itm => itm?.id !== id);
       return {
         ...state,
         bankAccount: afterDelete,
+      };
+    }
+
+    case ActionTypes.USER_VAULT_SOCIAL_SECURITY_NUMBER_ADD: {
+      const socialInfo = action?.payload?.socialInfo;
+      const id = generateRendomNumber();
+      const newObject = {
+        id: id,
+        name: socialInfo?.name,
+        number: socialInfo?.number,
+      };
+      return {
+        ...state,
+        socialNumbers:
+          state?.socialNumbers?.length > 0
+            ? [...state?.socialNumbers, newObject]
+            : [newObject],
+      };
+    }
+    case ActionTypes.USER_VAULT_SOCIAL_SECURITY_NUMBER_UPDATE: {
+      const socialInfo = action?.payload?.socialInfo;
+      const oldData = state?.socialNumbers;
+      const updateObj = oldData?.map(item => {
+        if (item?.id === socialInfo?.id) {
+          return {
+            ...item,
+            id: socialInfo?.id,
+            name: socialInfo?.name,
+            number: socialInfo?.number,
+          };
+        }
+        return item;
+      });
+      return {
+        ...state,
+        socialNumbers: updateObj,
+      };
+    }
+    case ActionTypes.USER_VAULT_SOCIAL_SECURITY_NUMBER_DELETE: {
+      const id = action?.payload?.id;
+      const oldData = state?.socialNumbers;
+      const afterDelete = oldData?.filter(itm => itm?.id !== id);
+      return {
+        ...state,
+        socialNumbers: afterDelete,
       };
     }
     // default is below

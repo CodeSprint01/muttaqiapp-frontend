@@ -16,6 +16,8 @@ import VaultDocumentAddDelete from '../../screens/setting/vault-documents/VaultD
 import VaultDocumentRead from '../../screens/setting/vault-documents/VaultDocumentRead';
 import VaultBankAccountAdd from '../../screens/setting/vault-bank-account/VaultBankAccountAdd';
 import VaultBankAccountCreateUpdate from '../../screens/setting/vault-bank-account/VaultBankAccountCreateUpdate';
+import VaultSocialSecurityNumberAdd from '../../screens/setting/vault-social-security/VaultSocialSecurityNumberAdd';
+import VaultSocialSecurityCreateUpdate from '../../screens/setting/vault-social-security/VaultSocialSecurityCreateUpdate';
 const VaultStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -98,6 +100,16 @@ const VaultStack = () => {
       <Stack.Screen
         name={screens.VAULT_BANK_ACCOUNT_CREATE_UPDATE}
         component={VaultBankAccountCreateUpdate}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_SOCIAL_SECURITY_ADD}
+        component={VaultSocialSecurityNumberAdd}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_SOCIAL_SECURITY_CREATE_UPDATE}
+        component={VaultSocialSecurityCreateUpdate}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

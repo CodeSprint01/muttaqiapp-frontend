@@ -6,6 +6,7 @@ import {
   LoginsInfo,
   NotesInfo,
   PasswordsInfo,
+  SocialNumbers,
 } from '../../types/types';
 import {ActionTypes} from './types';
 
@@ -168,6 +169,38 @@ export const actionUserBankAccountDelete = (id: number) => {
   console.log(id, 'this is user doc id info aaction');
   return {
     type: ActionTypes.USER_VAULT_BANK_ACCOUNT_DELETE,
+    payload: {
+      id,
+    },
+  };
+};
+
+export const actionUserSocialSecurityNumberAdd = (
+  socialInfo: SocialNumbers,
+) => {
+  console.log(socialInfo, 'this is user doc socialInfo info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_SOCIAL_SECURITY_NUMBER_ADD,
+    payload: {
+      socialInfo,
+    },
+  };
+};
+export const actionUserSocialSecurityNumberUpdate = (
+  socialInfo: BankAccount,
+) => {
+  console.log(socialInfo, 'this is user doc socialInfo info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_SOCIAL_SECURITY_NUMBER_UPDATE,
+    payload: {
+      socialInfo,
+    },
+  };
+};
+export const actionUserSocialSecurityNumberDelete = (id: number) => {
+  console.log(id, 'this is user doc id info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_SOCIAL_SECURITY_NUMBER_DELETE,
     payload: {
       id,
     },

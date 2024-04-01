@@ -41,7 +41,7 @@ const VaultSetting = () => {
         console.log('switch 8');
         break;
       case VaultEnum.SOCIAL_SECURITY_NUMBER:
-        console.log('switch 9');
+        navigation.navigate(screens.VAULT_SOCIAL_SECURITY_ADD);
         break;
       case VaultEnum.ARCHIVE:
         console.log('switch 10');
