@@ -9,6 +9,7 @@ interface cardProps {
   cardName: string;
   didOpenDetails: () => void;
   didRemovePress: () => void;
+  bankNumber: string;
 }
 
 const VaultList: FC<cardProps> = ({
@@ -16,6 +17,7 @@ const VaultList: FC<cardProps> = ({
   cardName,
   didRemovePress,
   didOpenDetails,
+  bankNumber,
 }) => {
   return (
     <TouchableOpacity onPress={didOpenDetails} style={styles.contianer}>
@@ -30,6 +32,7 @@ const VaultList: FC<cardProps> = ({
         </View>
         <View style={styles.name}>
           <AppText text={cardName} />
+          {bankNumber && <AppText text={bankNumber} style={styles.number} />}
         </View>
         <TouchableOpacity onPress={didRemovePress} style={styles.remove}>
           <AppText text={'Remove'} style={styles.removeTxt} />
@@ -67,6 +70,11 @@ const styles = StyleSheet.create({
     width: '25%',
     justifyContent: 'center',
     alignItems: 'flex-end',
+  },
+  number: {
+    fontSize: 12,
+    fontFamily: fonts.dmSans[400],
+    color: COLORS.medium_gray,
   },
   removeTxt: {
     fontSize: 16,

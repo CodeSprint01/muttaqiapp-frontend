@@ -10,6 +10,7 @@ const initialState: SettingState = {
   identities: [],
   passwords: [],
   documents: [],
+  bankAccount: [],
 };
 
 // Reducers
@@ -278,6 +279,53 @@ export default function reducer(state = initialState, action: any = {}) {
       return {
         ...state,
         documents: afterDelete,
+      };
+    }
+    case ActionTypes.USER_VAULT_BANK_ACCOUNT_ADD: {
+      const bankInfo = action?.payload?.bankInfo;
+      console.log(bankInfo, 'thsi is after bankInfo in add');
+      const id = generateRendomNumber();
+      const newObject = {
+        id: id,
+        name: bankInfo?.name,
+        number: bankInfo?.number,
+      };
+      return {
+        ...state,
+        bankAccount:
+          state?.bankAccount?.length > 0
+            ? [state?.bankAccount, newObject]
+            : [newObject],
+      };
+    }
+    case ActionTypes.USER_VAULT_BANK_ACCOUNT_UPDATE: {
+      const bankInfo = action?.payload?.bankInfo;
+      console.log(bankInfo, 'thsi is after bankInfo in add');
+      const oldData = state?.bankAccount;
+      const updateObj = oldData?.map(item => {
+        if (item?.id === bankInfo?.id) {
+          return {
+            ...item,
+            id: bankInfo?.id,
+            name: bankInfo?.name,
+            number: bankInfo?.number,
+          };
+        }
+        return item;
+      });
+      return {
+        ...state,
+        bankAccount: updateObj,
+      };
+    }
+    case ActionTypes.USER_VAULT_BANK_ACCOUNT_DELETE: {
+      const id = action?.payload?.id;
+      const oldData = state?.bankAccount;
+      console.log(id, 'thsi is after bankInfo in add');
+      const afterDelete = oldData?.filter(itm => itm?.id !== id);
+      return {
+        ...state,
+        bankAccount: afterDelete,
       };
     }
     // default is below

@@ -14,6 +14,8 @@ import VaultPasswordAdd from '../../screens/setting/vault-password/VaultPassword
 import VaultPasswordCreateUpdate from '../../screens/setting/vault-password/VaultPasswordCreateUpdate';
 import VaultDocumentAddDelete from '../../screens/setting/vault-documents/VaultDocumentAddDelete';
 import VaultDocumentRead from '../../screens/setting/vault-documents/VaultDocumentRead';
+import VaultBankAccountAdd from '../../screens/setting/vault-bank-account/VaultBankAccountAdd';
+import VaultBankAccountCreateUpdate from '../../screens/setting/vault-bank-account/VaultBankAccountCreateUpdate';
 const VaultStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -86,6 +88,16 @@ const VaultStack = () => {
       <Stack.Screen
         name={screens.VAULT_DOCUMENT_READ}
         component={VaultDocumentRead}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_BANK_ACCOUNT_ADD}
+        component={VaultBankAccountAdd}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_BANK_ACCOUNT_CREATE_UPDATE}
+        component={VaultBankAccountCreateUpdate}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

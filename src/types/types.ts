@@ -90,6 +90,8 @@ export enum screens {
   VAULT_PASSWORD_CREATE_UPDATE = 'vault-password-create-update',
   VAULT_DOCUMENT_ADD_DELETE = 'vault-document-add-delete',
   VAULT_DOCUMENT_READ = 'vault-document-read',
+  VAULT_BANK_ACCOUNT_ADD = 'vault-bank-account-add',
+  VAULT_BANK_ACCOUNT_CREATE_UPDATE = 'vault-bank-account-create-update',
 }
 export interface AppState {
   error: string | undefined;
@@ -105,6 +107,7 @@ export interface SettingState {
   identities: IdentityInfo[];
   passwords: PasswordsInfo[];
   documents: DocumentInfo[];
+  bankAccount: BankAccount[];
 }
 
 export interface State {
@@ -324,4 +327,9 @@ export interface DocumentInfo {
   id?: number;
   docName: string;
   docUri: string;
+}
+export interface BankAccount {
+  id?: number;
+  name: string;
+  number: string;
 }

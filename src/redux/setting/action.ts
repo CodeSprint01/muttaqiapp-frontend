@@ -1,4 +1,5 @@
 import {
+  BankAccount,
   CardInfo,
   DocumentInfo,
   IdentityInfo,
@@ -26,7 +27,6 @@ export const actionUserLoginsCredentialsUpdate = (loginInfo: LoginsInfo) => {
   };
 };
 export const actionUserLoginsCredentialsDelete = (loginId: number) => {
-  // console.log(loginId, 'in acrion');
   return {
     type: ActionTypes.USER_LOGINS_CREDENTIALS_DELETE,
     payload: {
@@ -35,7 +35,6 @@ export const actionUserLoginsCredentialsDelete = (loginId: number) => {
   };
 };
 export const actionUserSecureNotesCreate = (noteInfo: NotesInfo) => {
-  console.log(noteInfo, 'this is user note info aaction');
   return {
     type: ActionTypes.USER_SECURE_NOTES_CREATE,
     payload: {
@@ -44,7 +43,6 @@ export const actionUserSecureNotesCreate = (noteInfo: NotesInfo) => {
   };
 };
 export const actionUserSecureNotesDelete = (noteId: number) => {
-  console.log(noteId, 'this is user note info aaction');
   return {
     type: ActionTypes.USER_SECURE_NOTES_DELETE,
     payload: {
@@ -53,7 +51,6 @@ export const actionUserSecureNotesDelete = (noteId: number) => {
   };
 };
 export const actionUserSecureNotesUpdate = (updata: NotesInfo) => {
-  console.log(updata, 'this is user note info aaction');
   return {
     type: ActionTypes.USER_SECURE_NOTES_UPDATE,
     payload: {
@@ -62,7 +59,6 @@ export const actionUserSecureNotesUpdate = (updata: NotesInfo) => {
   };
 };
 export const actionUserCreditCardCreate = (cardInfo: CardInfo) => {
-  console.log(cardInfo, 'this is user card info aaction');
   return {
     type: ActionTypes.USER_CREDIT_CARD_CREATE,
     payload: {
@@ -71,7 +67,6 @@ export const actionUserCreditCardCreate = (cardInfo: CardInfo) => {
   };
 };
 export const actionUserCreditCardUpdate = (updata: CardInfo) => {
-  console.log(updata, 'this is user card info aaction');
   return {
     type: ActionTypes.USER_CREDIT_CARD_UPDATE,
     payload: {
@@ -80,7 +75,6 @@ export const actionUserCreditCardUpdate = (updata: CardInfo) => {
   };
 };
 export const actionUserCreditCardDelete = (id: number) => {
-  console.log(id, 'this is user note info aaction');
   return {
     type: ActionTypes.USER_CREDIT_CARD_DELETE,
     payload: {
@@ -89,7 +83,6 @@ export const actionUserCreditCardDelete = (id: number) => {
   };
 };
 export const actionUserIdentityCreate = (identityInfo: IdentityInfo) => {
-  console.log(identityInfo, 'this is user identity info aaction');
   return {
     type: ActionTypes.USER_VAULT_IDENTITY_CREATE,
     payload: {
@@ -98,7 +91,6 @@ export const actionUserIdentityCreate = (identityInfo: IdentityInfo) => {
   };
 };
 export const actionUserIdentityUpdate = (identityInfo: IdentityInfo) => {
-  console.log(identityInfo, 'this is user identity info aaction');
   return {
     type: ActionTypes.USER_VAULT_IDENTITY_UPDATE,
     payload: {
@@ -107,7 +99,6 @@ export const actionUserIdentityUpdate = (identityInfo: IdentityInfo) => {
   };
 };
 export const actionUserIdentityDelete = (id: number) => {
-  console.log(id, 'this is user identity info aaction');
   return {
     type: ActionTypes.USER_VAULT_IDENTITY_DELETE,
     payload: {
@@ -116,7 +107,6 @@ export const actionUserIdentityDelete = (id: number) => {
   };
 };
 export const actionUserPasswordsCreate = (passwordInfo: PasswordsInfo) => {
-  console.log(passwordInfo, 'this is user password info aaction');
   return {
     type: ActionTypes.USER_VAULT_PASSWORD_CREATE,
     payload: {
@@ -125,7 +115,6 @@ export const actionUserPasswordsCreate = (passwordInfo: PasswordsInfo) => {
   };
 };
 export const actionUserPasswordsUpdate = (passwordInfo: PasswordsInfo) => {
-  console.log(passwordInfo, 'this is user password info aaction');
   return {
     type: ActionTypes.USER_VAULT_PASSWORD_UPDATE,
     payload: {
@@ -134,7 +123,6 @@ export const actionUserPasswordsUpdate = (passwordInfo: PasswordsInfo) => {
   };
 };
 export const actionUserPasswordsDelete = (id: number) => {
-  console.log(id, 'this is user password info aaction');
   return {
     type: ActionTypes.USER_VAULT_PASSWORD_DELETE,
     payload: {
@@ -143,7 +131,6 @@ export const actionUserPasswordsDelete = (id: number) => {
   };
 };
 export const actionUserDocumentAdd = (documentInfo: DocumentInfo) => {
-  console.log(documentInfo, 'this is user doc info aaction');
   return {
     type: ActionTypes.USER_VAULT_DOCUMENT_ADD,
     payload: {
@@ -152,9 +139,35 @@ export const actionUserDocumentAdd = (documentInfo: DocumentInfo) => {
   };
 };
 export const actionUserDocumentDelete = (id: number) => {
-  console.log(id, 'this is user doc id info aaction');
   return {
     type: ActionTypes.USER_VAULT_DOCUMENT_DELETE,
+    payload: {
+      id,
+    },
+  };
+};
+export const actionUserBankAccountAdd = (bankInfo: BankAccount) => {
+  console.log(bankInfo, 'this is user doc bankInfo info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_BANK_ACCOUNT_ADD,
+    payload: {
+      bankInfo,
+    },
+  };
+};
+export const actionUserBankAccountUpdate = (bankInfo: BankAccount) => {
+  console.log(bankInfo, 'this is user doc bankInfo info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_BANK_ACCOUNT_UPDATE,
+    payload: {
+      bankInfo,
+    },
+  };
+};
+export const actionUserBankAccountDelete = (id: number) => {
+  console.log(id, 'this is user doc id info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_BANK_ACCOUNT_DELETE,
     payload: {
       id,
     },
