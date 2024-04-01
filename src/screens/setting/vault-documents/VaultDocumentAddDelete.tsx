@@ -89,7 +89,7 @@ const VaultDocumentAddDelete = () => {
           <PlusIconWithText text="Add document" onPress={onPressAddDoc} />
         </View>
         <View style={styles.flatlist}>
-          {reduxData.length > 0 ? null : (
+          {reduxData?.length > 0 ? null : (
             <AppText
               text={'No document please upload document'}
               style={styles.noDocTxt}
