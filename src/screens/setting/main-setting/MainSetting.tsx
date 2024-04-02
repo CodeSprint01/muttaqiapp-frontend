@@ -35,7 +35,7 @@ const MainSetting = () => {
         console.log('switch 6');
         break;
       case settingEnum.NOTIFICATION_SETTINGS:
-        console.log('switch 7');
+        navigation.navigate(screens.NOTIFICATION_SETTINGS);
         break;
       case settingEnum.LANGUAGE:
         navigation.navigate(screens.LANGUAGE_SETTING);

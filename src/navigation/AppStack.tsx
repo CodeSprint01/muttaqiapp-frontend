@@ -11,6 +11,8 @@ import PrivacyPolicySetting from '../screens/setting/privacy-policy-setting/Priv
 import LanguageSetting from '../screens/setting/language-setting/LanguageSetting';
 import VaultSetting from '../screens/setting/vault-setting/VaultSetting';
 import VaultStack from './setting/VaultStack';
+import NotificationStack from './setting/NotificationStack';
+import NotificationSetting from '../screens/setting/notification-settting/NotificationSetting';
 const AppStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -61,12 +63,12 @@ const AppStack = () => {
         component={VaultStack}
         options={{headerShown: false}}
       />
-      {/*
       <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
+        name={screens.NOTIFICATION_SETTINGS}
+        component={NotificationSetting}
         options={{headerShown: false}}
       />
+      {/*
       <Stack.Screen
         name="ProfileStack"
         component={ProfileStack}
