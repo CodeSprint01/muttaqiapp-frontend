@@ -94,6 +94,8 @@ export enum screens {
   VAULT_BANK_ACCOUNT_CREATE_UPDATE = 'vault-bank-account-create-update',
   VAULT_SOCIAL_SECURITY_ADD = 'vault-social-security-add',
   VAULT_SOCIAL_SECURITY_CREATE_UPDATE = 'vault-social-security-create-update',
+  VAULT_DRIVER_LICENSE_ADD = 'vault-driver-license-add',
+  VAULT_DRIVER_LICENSE_CREATE_UPDATE = 'vault-driver-license-create-update',
 }
 export interface AppState {
   error: string | undefined;
@@ -111,6 +113,7 @@ export interface SettingState {
   documents: DocumentInfo[];
   bankAccount: BankAccount[];
   socialNumbers: SocialNumbers[];
+  licenses: DriverLicense[];
 }
 
 export interface State {
@@ -337,6 +340,11 @@ export interface BankAccount {
   number: string;
 }
 export interface SocialNumbers {
+  id?: number;
+  name: string;
+  number: string;
+}
+export interface DriverLicense {
   id?: number;
   name: string;
   number: string;

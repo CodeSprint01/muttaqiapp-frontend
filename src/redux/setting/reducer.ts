@@ -12,6 +12,7 @@ const initialState: SettingState = {
   documents: [],
   bankAccount: [],
   socialNumbers: [],
+  licenses: [],
 };
 
 // Reducers
@@ -319,7 +320,6 @@ export default function reducer(state = initialState, action: any = {}) {
         bankAccount: afterDelete,
       };
     }
-
     case ActionTypes.USER_VAULT_SOCIAL_SECURITY_NUMBER_ADD: {
       const socialInfo = action?.payload?.socialInfo;
       const id = generateRendomNumber();
@@ -362,6 +362,51 @@ export default function reducer(state = initialState, action: any = {}) {
       return {
         ...state,
         socialNumbers: afterDelete,
+      };
+    }
+
+    case ActionTypes.USER_VAULT_DRIVER_LICENSE_ADD: {
+      const license = action?.payload?.license;
+      const id = generateRendomNumber();
+      const newObject = {
+        id: id,
+        name: license?.name,
+        number: license?.number,
+      };
+      return {
+        ...state,
+        licenses:
+          state?.licenses?.length > 0
+            ? [...state?.licenses, newObject]
+            : [newObject],
+      };
+    }
+    case ActionTypes.USER_VAULT_DRIVER_LICENSE_UPDATE: {
+      const license = action?.payload?.license;
+      const oldData = state?.licenses;
+      const updateObj = oldData?.map(item => {
+        if (item?.id === license?.id) {
+          return {
+            ...item,
+            id: license?.id,
+            name: license?.name,
+            number: license?.number,
+          };
+        }
+        return item;
+      });
+      return {
+        ...state,
+        licenses: updateObj,
+      };
+    }
+    case ActionTypes.USER_VAULT_DRIVER_LICENSE_DELETE: {
+      const id = action?.payload?.id;
+      const oldData = state?.licenses;
+      const afterDelete = oldData?.filter(itm => itm?.id !== id);
+      return {
+        ...state,
+        licenses: afterDelete,
       };
     }
     // default is below

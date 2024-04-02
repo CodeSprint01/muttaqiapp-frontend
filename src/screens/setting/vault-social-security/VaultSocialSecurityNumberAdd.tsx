@@ -47,7 +47,7 @@ const VaultSocialSecurityNumberAdd = () => {
       <View style={{flex: 1}}>
         <VaultList
           cardName={item?.name}
-          iconName={Icons.Bank}
+          iconName={Icons.idCard}
           bankNumber={item?.number}
           didOpenDetails={() => onPressOpenDetail(item?.id)}
           didRemovePress={() => onPressRemove(item?.id)}

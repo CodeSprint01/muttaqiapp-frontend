@@ -38,7 +38,7 @@ const VaultSetting = () => {
         navigation.navigate(screens.VAULT_BANK_ACCOUNT_ADD);
         break;
       case VaultEnum.DRIVER_LICENSES:
-        console.log('switch 8');
+        navigation.navigate(screens.VAULT_DRIVER_LICENSE_ADD);
         break;
       case VaultEnum.SOCIAL_SECURITY_NUMBER:
         navigation.navigate(screens.VAULT_SOCIAL_SECURITY_ADD);

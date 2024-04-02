@@ -2,6 +2,7 @@ import {
   BankAccount,
   CardInfo,
   DocumentInfo,
+  DriverLicense,
   IdentityInfo,
   LoginsInfo,
   NotesInfo,
@@ -201,6 +202,34 @@ export const actionUserSocialSecurityNumberDelete = (id: number) => {
   console.log(id, 'this is user doc id info aaction');
   return {
     type: ActionTypes.USER_VAULT_SOCIAL_SECURITY_NUMBER_DELETE,
+    payload: {
+      id,
+    },
+  };
+};
+
+export const actionUsergDriverLicenseAdd = (license: DriverLicense) => {
+  console.log(license, 'this is user doc license info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_DRIVER_LICENSE_ADD,
+    payload: {
+      license,
+    },
+  };
+};
+export const actionUsergDriverLicenseUpdate = (license: DriverLicense) => {
+  console.log(license, 'this is user doc license info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_DRIVER_LICENSE_UPDATE,
+    payload: {
+      license,
+    },
+  };
+};
+export const actionUserDriverLicenseDelete = (id: number) => {
+  console.log(id, 'this is user doc id info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_DRIVER_LICENSE_DELETE,
     payload: {
       id,
     },

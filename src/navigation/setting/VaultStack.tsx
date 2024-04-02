@@ -18,6 +18,8 @@ import VaultBankAccountAdd from '../../screens/setting/vault-bank-account/VaultB
 import VaultBankAccountCreateUpdate from '../../screens/setting/vault-bank-account/VaultBankAccountCreateUpdate';
 import VaultSocialSecurityNumberAdd from '../../screens/setting/vault-social-security/VaultSocialSecurityNumberAdd';
 import VaultSocialSecurityCreateUpdate from '../../screens/setting/vault-social-security/VaultSocialSecurityCreateUpdate';
+import VaultDriverLicenseAdd from '../../screens/setting/vault-driver-license/VaultDriverLicenseAdd';
+import VaultDriverLicenseCreateUpdate from '../../screens/setting/vault-driver-license/VaultDriverLicenseCreateUpdate';
 const VaultStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -110,6 +112,16 @@ const VaultStack = () => {
       <Stack.Screen
         name={screens.VAULT_SOCIAL_SECURITY_CREATE_UPDATE}
         component={VaultSocialSecurityCreateUpdate}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_DRIVER_LICENSE_ADD}
+        component={VaultDriverLicenseAdd}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_DRIVER_LICENSE_CREATE_UPDATE}
+        component={VaultDriverLicenseCreateUpdate}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
