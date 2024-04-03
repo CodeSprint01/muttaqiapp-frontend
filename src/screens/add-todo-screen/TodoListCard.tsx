@@ -1,6 +1,6 @@
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {FC} from 'react';
-import AppCheckBox from '../../components/molecules/app-checkbox/AppCheckBox';
+import AppCheckBoxTick from '../../components/molecules/app-checkbox/AppCheckBoxTick';
 import AppText from '../../components/atoms/app-text/AppText';
 import {COLORS, fonts} from '../../styles/color';
 import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
@@ -25,7 +25,7 @@ const TodoListCard: FC<ListProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.checkBox}>
-        <AppCheckBox isChecked={isCheckBox} onToggle={handleCheckBox} />
+        <AppCheckBoxTick isChecked={isCheckBox} onToggle={handleCheckBox} />
       </View>
       <View style={styles.todoTxt}>
         <AppText text={todoName} style={styles.txt} />

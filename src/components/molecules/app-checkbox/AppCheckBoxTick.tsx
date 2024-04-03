@@ -23,7 +23,7 @@ interface Props {
   checkBoxStyle?: StyleProp<ViewStyle>;
 }
 
-const AppCheckBox = ({
+const AppCheckBoxTick = ({
   label,
   isChecked,
   onToggle,
@@ -80,8 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     paddingBottom: 8,
-    paddingTop: 3,
   },
 });
 
-export default AppCheckBox;
+export default AppCheckBoxTick;

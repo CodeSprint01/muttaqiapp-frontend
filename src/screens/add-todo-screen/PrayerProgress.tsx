@@ -3,7 +3,7 @@ import React, {FC, useState} from 'react';
 import AppText from '../../components/atoms/app-text/AppText';
 import {COLORS, fonts} from '../../styles/color';
 import LinearGradient from 'react-native-linear-gradient';
-import AppCheckBox from '../../components/molecules/app-checkbox/AppCheckBox';
+import AppCheckBoxTick from '../../components/molecules/app-checkbox/AppCheckBoxTick';
 
 interface PrayerProps {
   handleCheckBox: (index: number) => void;
@@ -31,14 +31,14 @@ const PrayerProgress: FC<PrayerProps> = ({
                   start={{x: 0, y: 0}}
                   end={{x: 1, y: 1}}
                   style={styles.prayerBox}>
-                  <AppCheckBox
+                  <AppCheckBoxTick
                     isChecked={prayerData[prayerKey]}
                     checkBoxStyle={styles.boxCircle}
                     onToggle={() => handleCheckBox(index)}
                   />
                 </LinearGradient>
               ) : (
-                <AppCheckBox
+                <AppCheckBoxTick
                   isChecked={false}
                   checkBoxStyle={styles.boxCircle}
                 />

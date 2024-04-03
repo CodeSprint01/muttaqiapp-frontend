@@ -17,6 +17,7 @@ const AppSwitch: FC<SwitchProps> = ({
   toggleSwitch,
   bottomText,
   isEnabled,
+  ...props
 }) => {
   return (
     <View>
@@ -32,6 +33,8 @@ const AppSwitch: FC<SwitchProps> = ({
             ios_backgroundColor={COLORS.pale_gray}
             onValueChange={toggleSwitch}
             value={isEnabled}
+            {...props}
+            accessibilityLabel={'ddd'}
           />
         </View>
       </View>
