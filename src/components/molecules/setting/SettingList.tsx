@@ -1,26 +1,31 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {FC} from 'react';
 import {AppIconSvg, Icons} from '../../atoms/app-icon-svg';
 import AppText from '../../atoms/app-text/AppText';
 import {COLORS, fonts} from '../../../styles/color';
 
 interface ListProps {
-  iconName: any;
+  iconName?: any;
   title: string;
   didSettingPress: () => void;
 }
 
 const SettingList: FC<ListProps> = ({iconName, title, didSettingPress}) => {
   return (
-    <TouchableOpacity activeOpacity={0.5} onPress={didSettingPress}>
+    <TouchableOpacity
+      style={{height: 60}}
+      activeOpacity={0.5}
+      onPress={didSettingPress}>
       <View style={styles.listContainer}>
         <View style={styles.iconAndName}>
-          <AppIconSvg
-            icon={iconName}
-            width={24}
-            height={24}
-            color={COLORS.medium_gray}
-          />
+          {iconName && (
+            <AppIconSvg
+              icon={iconName}
+              width={24}
+              height={24}
+              color={COLORS.medium_gray}
+            />
+          )}
           <AppText style={styles.title} text={title} />
         </View>
         <View style={styles.icon}>
@@ -41,7 +46,6 @@ export default SettingList;
 
 const styles = StyleSheet.create({
   listContainer: {
-    backgroundColor: COLORS.pale_mint,
     flexDirection: 'row',
     height: 50,
     flex: 1,
@@ -66,7 +70,7 @@ const styles = StyleSheet.create({
   },
   verticalLine: {
     width: '100%',
-    backgroundColor: COLORS.pale_aqua,
     height: 1,
+    backgroundColor: COLORS.pale_aqua,
   },
 });

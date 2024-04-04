@@ -26,7 +26,7 @@ const MainSetting = () => {
         console.log('switch 3');
         break;
       case settingEnum.PASSWORD_SECURITY:
-        console.log('switch 4');
+        navigation.navigate(screens.PASSWORD_SECURITY_STACK);
         break;
       case settingEnum.VAULT:
         navigation.navigate(screens.VAULT_STACK);

@@ -8,9 +8,12 @@ import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
 import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
 import {CommonActions} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {actionUserLogedIn} from '../../redux/user/action';
 
 const WelcomeUser = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const gotoHome = () => {
     navigation.dispatch(
@@ -67,7 +70,7 @@ const WelcomeUser = () => {
           <AppButton
             buttonText="Skip"
             fill={false}
-            onPress={() => navigation.navigate(screens.APP_STACK)}
+            onPress={() => dispatch(actionUserLogedIn(true))}
           />
         </View>
       </View>

@@ -19,6 +19,7 @@ import {Icons} from '../../utils/helper/svg';
 import moment from 'moment-timezone';
 import {getPrayers, offeredPrayerAndAlarm} from '../../redux/prayer/action';
 import {UserPrayers} from '../../types/types';
+import SettingList from '../../components/molecules/setting/SettingList';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -168,6 +169,7 @@ const HomeScreen = () => {
         </View>
         <View style={{marginBottom: 2}}>
           <AppText text={'Explore'} style={styles.explore} />
+
           <FlatList
             data={exploreArray}
             keyExtractor={item => item.title}

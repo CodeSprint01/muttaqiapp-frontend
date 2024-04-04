@@ -96,12 +96,16 @@ export enum screens {
   VAULT_SOCIAL_SECURITY_CREATE_UPDATE = 'vault-social-security-create-update',
   VAULT_DRIVER_LICENSE_ADD = 'vault-driver-license-add',
   VAULT_DRIVER_LICENSE_CREATE_UPDATE = 'vault-driver-license-create-update',
+  PASSWORD_SECURITY_STACK = 'password-security-stack',
+  ALL_PASSWORDS_SETTING = 'all-passwords-setting',
+  CHANGE_PASSWORD = 'change-password',
 }
 export interface AppState {
   error: string | undefined;
   loading?: boolean;
   userLocation?: location[];
   userInfo: UserInfo[];
+  isLogedIn: boolean;
 }
 
 export interface SettingState {

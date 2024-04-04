@@ -54,7 +54,7 @@ const SignIn = () => {
     }
   };
   const uData = useSelector((state: State) => state?.userReducer?.userInfo);
-  console.log(uData, 'hhhga');
+  // console.log(uData, 'hhhga');
 
   const renderItem = ({item, index}: {item: InputSignIn; index: any}) => {
     return (

@@ -13,6 +13,7 @@ import VaultSetting from '../screens/setting/vault-setting/VaultSetting';
 import VaultStack from './setting/VaultStack';
 import NotificationStack from './setting/NotificationStack';
 import NotificationSetting from '../screens/setting/notification-settting/NotificationSetting';
+import PasswordSecurityStack from './setting/PasswordSecurityStack';
 const AppStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -68,12 +69,12 @@ const AppStack = () => {
         component={NotificationSetting}
         options={{headerShown: false}}
       />
-      {/*
       <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
+        name={screens.PASSWORD_SECURITY_STACK}
+        component={PasswordSecurityStack}
         options={{headerShown: false}}
       />
+      {/*
       <Stack.Screen
         name="ProfileStack"
         component={ProfileStack}

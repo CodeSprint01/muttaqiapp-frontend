@@ -7,21 +7,21 @@ import AppStack from './AppStack';
 import {useSelector} from 'react-redux';
 const MainStack = () => {
   const Stack = createStackNavigator();
-  const isLogin = useSelector((state: State) => state?.userReducer?.userInfo);
-  const isLogedIn = isLogin ? true : false;
+  const isLogin = useSelector((state: State) => state?.userReducer?.isLogedIn);
+  console.log(isLogin, 'this is user login detail');
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {isLogedIn ? (
+        {isLogin !== true ? (
           <Stack.Screen
-            name={screens.APP_STACK}
-            component={AppStack}
+            name={screens.AUTH_STACK}
+            component={AuthStack}
             options={{headerShown: false}}
           />
         ) : (
           <Stack.Screen
-            name={screens.AUTH_STACK}
-            component={AuthStack}
+            name={screens.APP_STACK}
+            component={AppStack}
             options={{headerShown: false}}
           />
         )}

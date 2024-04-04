@@ -6,6 +6,7 @@ const initialState: AppState = {
   error: undefined,
   userLocation: [],
   userInfo: [],
+  isLogedIn: false,
 };
 
 // Reducers
@@ -29,7 +30,13 @@ export default function reducer(state = initialState, action: any = {}) {
         userInfo: action?.payload?.userInfo,
       };
     }
-
+    case ActionTypes.USER_IS_LOGED_IN: {
+      console.log('in redeucer ', action?.payload?.isLogin);
+      return {
+        ...state,
+        isLogedIn: action?.payload?.isLogin,
+      };
+    }
     default:
       return state;
   }
