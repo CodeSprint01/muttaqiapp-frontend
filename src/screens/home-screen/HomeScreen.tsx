@@ -1,4 +1,4 @@
-import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
+import {Alert, FlatList, ScrollView, StyleSheet, View} from 'react-native';
 import '../../components/atoms/error/LogBox';
 import React, {useEffect, useState} from 'react';
 import Swiper from 'react-native-swiper';
@@ -19,7 +19,6 @@ import {Icons} from '../../utils/helper/svg';
 import moment from 'moment-timezone';
 import {getPrayers, offeredPrayerAndAlarm} from '../../redux/prayer/action';
 import {UserPrayers} from '../../types/types';
-import SettingList from '../../components/molecules/setting/SettingList';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -59,7 +58,7 @@ const HomeScreen = () => {
   useEffect(() => {
     setTimeout(() => {
       setTestCall(!testCall);
-    }, 15000);
+    }, 12000);
   }, [testCall]);
 
   const getAlarmIcon = data => {

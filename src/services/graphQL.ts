@@ -10,13 +10,13 @@ export const SIGN_UP = gql`
     createUser(
       createUserInput: {
         username: $username
-        emailaddress: $emailaddress
+        email: $emailaddress
         password: $password
       }
     ) {
       user {
         id
-        emailaddress
+        email
         username
       }
       token
@@ -28,7 +28,7 @@ export const SIGN_IN = gql`
     loginUser(email: $email, password: $password) {
       user {
         id
-        emailaddress
+        email
         username
       }
       token
