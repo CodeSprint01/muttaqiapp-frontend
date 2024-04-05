@@ -18,7 +18,7 @@ import {Coordinates, CalculationMethod, PrayerTimes} from 'adhan';
 import {Icons} from '../../utils/helper/svg';
 import moment from 'moment-timezone';
 import {getPrayers, offeredPrayerAndAlarm} from '../../redux/prayer/action';
-import {UserPrayers} from '../../types/types';
+import {State, UserPrayers} from '../../types/types';
 import SettingList from '../../components/molecules/setting/SettingList';
 
 const HomeScreen = () => {
@@ -26,6 +26,7 @@ const HomeScreen = () => {
   const prayerData = useSelector(
     (state: any) => state?.prayerReducer?.prayerData,
   );
+
   const [isShowGraph, setIsShowGraph] = useState<StatsList[]>(StatsListArray);
   const [testCall, setTestCall] = useState(true);
   const coordinates = new Coordinates(31.5204, 74.3587);
@@ -39,6 +40,9 @@ const HomeScreen = () => {
     graphData[index].isShowEye = !graphData[index]?.isShowEye;
     setIsShowGraph(graphData);
   };
+  const isLogin = useSelector((state: State) => state?.userReducer?.isLoged);
+  console.log(isLogin, 'in home screen');
+
   const updatePrayerData = () => {
     const currentTime = new Date();
     const updated = [...prayerData];
@@ -131,6 +135,7 @@ const HomeScreen = () => {
       },
     });
   }
+  console.log(useSelector((staete: State) => staete?.userReducer?.userInfo));
 
   return (
     <View style={styles.container}>

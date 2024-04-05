@@ -4,7 +4,6 @@ import {
   View,
   Platform,
   KeyboardAvoidingView,
-  Text,
   Alert,
   ActivityIndicator,
 } from 'react-native';
@@ -30,7 +29,6 @@ const SignUp = () => {
     password: '',
     confPassowrd: '',
   });
-  const [signUpErr, setSignUpErr] = useState('');
   const [loading, setLoading] = useState(false);
   const [signUpMutation] = schhemaMutation(SIGN_UP);
   const navigation = useNavigation();
@@ -39,9 +37,8 @@ const SignUp = () => {
   const handleInputChange = (val: string, key: string) => {
     setUserData(prev => ({...prev, [key]: val}));
   };
-
-  const uData = useSelector((state: State) => state?.userReducer?.userInfo);
-  console.log(uData, 'hhhga');
+  const isLogin = useSelector((state: State) => state?.userReducer?.userInfo);
+  console.log(isLogin, 'in signup is logg');
 
   const didPressCreateAccount = async () => {
     const isMatched = userData?.password == userData?.confPassowrd;

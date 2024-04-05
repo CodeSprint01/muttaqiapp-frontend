@@ -105,7 +105,7 @@ export interface AppState {
   loading?: boolean;
   userLocation?: location[];
   userInfo: UserInfo[];
-  isLogedIn: boolean;
+  isLoged?: boolean | null;
 }
 
 export interface SettingState {

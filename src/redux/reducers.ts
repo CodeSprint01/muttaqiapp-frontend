@@ -15,8 +15,8 @@ const prayerPersistConfig = {
 const userPersistConfig = {
   key: 'userReducer',
   storage: AsyncStorage,
-  whitelist: ['userLocation', 'isLogedIn'], // our initial state that is persist
-  // blacklist: [''], //  our initial state that is Not persist
+  whitelist: ['userLocation'], // our initial state that is persist
+  blacklist: [''], //  our initial state that is Not persist
 };
 const settingPersistConfig = {
   key: 'setting',

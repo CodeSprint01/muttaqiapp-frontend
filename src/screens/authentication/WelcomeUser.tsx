@@ -15,24 +15,28 @@ const WelcomeUser = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const gotoHome = () => {
-    navigation.dispatch(
-      CommonActions.reset({
-        index: 0,
-        routes: [{name: screens.APP_STACK}],
-      }),
-    );
-    return true;
+  // const gotoHome = () => {
+  //   navigation.dispatch(
+  //     CommonActions.reset({
+  //       index: 0,
+  //       routes: [{name: screens.APP_STACK}],
+  //     }),
+  //   );
+  //   return true;
+  // };
+  // useEffect(() => {
+  //   const backHandler = BackHandler.addEventListener(
+  //     'hardwareBackPress',
+  //     gotoHome,
+  //   );
+  //   return () => {
+  //     backHandler.remove();
+  //   };
+  // }, []);
+  const handleHome = () => {
+    console.log('click');
+    dispatch(actionUserLogedIn(true));
   };
-  useEffect(() => {
-    const backHandler = BackHandler.addEventListener(
-      'hardwareBackPress',
-      gotoHome,
-    );
-    return () => {
-      backHandler.remove();
-    };
-  }, []);
 
   return (
     <AppContainer style={styles.container}>
@@ -67,11 +71,7 @@ const WelcomeUser = () => {
           />
         </View>
         <View>
-          <AppButton
-            buttonText="Skip"
-            fill={false}
-            onPress={() => dispatch(actionUserLogedIn(true))}
-          />
+          <AppButton buttonText="Skip" fill={false} onPress={handleHome} />
         </View>
       </View>
     </AppContainer>

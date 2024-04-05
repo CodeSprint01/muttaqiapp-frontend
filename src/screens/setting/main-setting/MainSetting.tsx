@@ -8,9 +8,16 @@ import SettingList from '../../../components/molecules/setting/SettingList';
 import {settingArray} from '../../../utils/mocks/setting-array/SettingArray';
 import {settingEnum, settingScreen} from '../../../types/keyVlaue';
 import {screens} from '../../../types/types';
+import {useDispatch} from 'react-redux';
+import {
+  actionGetUserInfoSucess,
+  actionUserLogedIn,
+} from '../../../redux/user/action';
 
 const MainSetting = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   const handleListClick = (type: settingEnum) => {
     switch (type) {
       case settingEnum.BOOKMARKS:
@@ -56,11 +63,15 @@ const MainSetting = () => {
         navigation.navigate(screens.ABOUT_MUTTAQI_SETTING);
         break;
       case settingEnum.LOG_OUT:
-        console.log('switch 14');
+        handleLogout();
         break;
       default:
         break;
     }
+  };
+  const handleLogout = () => {
+    dispatch(actionGetUserInfoSucess(null));
+    dispatch(actionUserLogedIn(false));
   };
 
   const renderItem = ({item, index}: {item: settingScreen; index: number}) => {
