@@ -1,4 +1,4 @@
-import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
+import {Alert, FlatList, ScrollView, StyleSheet, View} from 'react-native';
 import '../../components/atoms/error/LogBox';
 import React, {useEffect, useState} from 'react';
 import Swiper from 'react-native-swiper';
@@ -63,7 +63,7 @@ const HomeScreen = () => {
   useEffect(() => {
     setTimeout(() => {
       setTestCall(!testCall);
-    }, 15000);
+    }, 12000);
   }, [testCall]);
 
   const getAlarmIcon = data => {
