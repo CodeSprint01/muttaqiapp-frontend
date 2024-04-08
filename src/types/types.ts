@@ -18,6 +18,9 @@ export enum screens {
   SIGN_UP = 'sign-up',
   SIGN_IN = 'sign-in',
   WELCOME_USER = 'welcome-user',
+  FORGOT_PASSWORD = 'forgot-password',
+  OTP_SCREEN = 'otp-screen',
+  NEW_PASSWORD = 'new-password',
   TAB_NAVIGATOR = 'tab-navigator',
 
   ALL_BOOKMARKS = 'all-bookmarks',
