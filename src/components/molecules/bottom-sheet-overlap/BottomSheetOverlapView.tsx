@@ -118,7 +118,7 @@ const BottomSheetOverlapView = ({
                 // onSharePress();
               }}
               style={[styles.avatarViewStyle]}>
-              <DownloadAvatar />
+              {/* <DownloadAvatar /> */}
             </TouchableOpacity>
           </View>
         )}

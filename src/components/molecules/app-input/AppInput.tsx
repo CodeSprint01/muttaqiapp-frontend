@@ -11,7 +11,7 @@ import AppText from '../../atoms/app-text/AppText';
 import {AppIconSvg, Icons} from '../../atoms/app-icon-svg';
 
 interface InputProps extends TextInputProps {
-  inputLabel: string;
+  inputLabel?: string;
   isRequired?: boolean;
   placeholder: string;
   rightIcon?: any;
@@ -37,7 +37,9 @@ const AppInput: FC<InputProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.headerTxt}>
-        <AppText text={` ${inputLabel}`} style={styles.inputTxt} />
+        {inputLabel && (
+          <AppText text={` ${inputLabel}`} style={styles.inputTxt} />
+        )}
         {isRequired && <AppText text={' *'} style={styles.requireDot} />}
       </View>
       {rightIcon && (

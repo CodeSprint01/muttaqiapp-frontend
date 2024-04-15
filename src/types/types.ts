@@ -122,6 +122,10 @@ export interface SettingState {
   socialNumbers: SocialNumbers[];
   licenses: DriverLicense[];
 }
+export interface PrayerState {
+  task: TodoTask[];
+  prayerData: UserPrayers[];
+}
 
 export interface State {
   userReducer: AppState;
@@ -355,4 +359,10 @@ export interface DriverLicense {
   id?: number;
   name: string;
   number: string;
+}
+export interface TodoTask {
+  id?: number;
+  taskName: string;
+  repeat?: string;
+  isChecked: boolean;
 }

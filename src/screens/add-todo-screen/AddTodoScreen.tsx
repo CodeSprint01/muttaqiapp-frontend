@@ -1,12 +1,18 @@
 import {ScrollView, StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import ScreenHeader from '../../components/molecules/app-header/ScreenHeader';
 import UserProgressCard from './UserProgressCard';
 import TodoTask from './TodoTask';
 import PrayerProgress from './PrayerProgress';
+import {useDispatch} from 'react-redux';
+import {addToDoTask} from '../../redux/prayer/action';
+import BottomSheetOverlapView from '../../components/molecules/bottom-sheet-overlap/BottomSheetOverlapView';
+import AppText from '../../components/atoms/app-text/AppText';
+import TodoTaskForm from './TodoTaskForm';
 
 const AddTodoScreen = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const [prayerTime, setprayerTime] = useState({
     fajr: true,
     duhr: true,
@@ -21,6 +27,8 @@ const AddTodoScreen = () => {
     maghrib: false,
     isha: false,
   });
+  const dispatch = useDispatch();
+  const snapPoint = useMemo(() => ['90%', '91%', '92%'], []);
 
   const handleCheckBox = (index: number) => {
     setPrayerData(prevState => {
@@ -30,6 +38,10 @@ const AddTodoScreen = () => {
       return updatedPrayerData;
     });
     console.log(index);
+  };
+  const onPressAddTodo = () => {
+    // dispatch(addToDoTask())
+    setIsVisible(true);
   };
 
   return (
@@ -48,8 +60,15 @@ const AddTodoScreen = () => {
             />
           </View>
           <View style={styles.todoConntainer}>
-            <TodoTask handleAddTodo={() => console.log('add to do')} />
+            <TodoTask handleAddTodo={onPressAddTodo} />
           </View>
+          <BottomSheetOverlapView
+            showBottomSheet={isVisible}
+            enableHeaderLine
+            setShowBottomSheet={() => setIsVisible(false)}
+            snapPoints={snapPoint}
+            children={<TodoTaskForm />}
+          />
         </View>
       </ScrollView>
     </AppContainer>

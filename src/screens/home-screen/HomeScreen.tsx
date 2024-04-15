@@ -18,8 +18,13 @@ import {Coordinates, CalculationMethod, PrayerTimes} from 'adhan';
 import {Icons} from '../../utils/helper/svg';
 import moment from 'moment-timezone';
 import {getPrayers, offeredPrayerAndAlarm} from '../../redux/prayer/action';
-import {State, UserPrayers} from '../../types/types';
+import {State, UserPrayers, screens} from '../../types/types';
 import SettingList from '../../components/molecules/setting/SettingList';
+import TrackerTodoTask from '../tracker/todo-task-record-screen/TrackerTodoTask';
+import {FastingArray} from '../../utils/mocks/tracker/FastingArray';
+import ShowmoreButton from '../../components/molecules/app-header/ShowmoreButton';
+import TodoTask from '../add-todo-screen/TodoTask';
+import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -34,6 +39,8 @@ const HomeScreen = () => {
   const params = CalculationMethod.MoonsightingCommittee();
   const prayerTimes = new PrayerTimes(coordinates, date, params);
   const nextPrayer = prayerTimes?.nextPrayer();
+
+  const navigation = useNavigation();
 
   const handleFilterSliderData = (index: number) => {
     const graphData = [...isShowGraph];
@@ -56,7 +63,10 @@ const HomeScreen = () => {
     });
     dispatch(getPrayers(updated));
   };
-
+  // todo list task
+  const onPressTodoCheck = () => {
+    //
+  };
   useEffect(() => {
     updatePrayerData();
   }, [testCall]);
@@ -172,9 +182,21 @@ const HomeScreen = () => {
             </View>
           </Swiper>
         </View>
+        <View style={styles.todoTask}>
+          <ShowmoreButton
+            todoName="To-do list"
+            isShowmore
+            rightTxt="View planner"
+            handelShowmore={() => navigation.navigate(screens.TAB_TO_DO)}
+          />
+          <TodoTask
+            handleCheckBox={onPressTodoCheck}
+            todoName="Read surat Al-mulk before sleep"
+            repeatText="daily"
+          />
+        </View>
         <View style={{marginBottom: 2}}>
           <AppText text={'Explore'} style={styles.explore} />
-
           <FlatList
             data={exploreArray}
             keyExtractor={item => item.title}
@@ -269,6 +291,10 @@ const styles = StyleSheet.create({
     marginLeft: 24,
     paddingBottom: 16,
     fontFamily: fonts.dmSans[400],
+  },
+  todoTask: {
+    // backgroundColor: 'pink',
+    paddingHorizontal: 20,
   },
   gradient: {
     position: 'absolute',

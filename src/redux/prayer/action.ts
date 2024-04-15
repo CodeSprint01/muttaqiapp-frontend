@@ -19,3 +19,12 @@ export function offeredPrayerAndAlarm(prayer: UserPrayers) {
     },
   };
 }
+export function addToDoTask(task: any) {
+  console.log(task, 'action data');
+  return {
+    type: ActionTypes.PRAYER_OFFERED_AND_ALARM,
+    payload: {
+      task,
+    },
+  };
+}
