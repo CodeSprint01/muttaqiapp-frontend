@@ -25,12 +25,14 @@ const TodoTask: FC<TodoProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.todo}>
-        <AppText text={'To-do list'} style={styles.todoTxt} />
-        <TouchableOpacity onPress={handleAddTodo}>
-          <AppText text={'+ Add'} style={styles.addTxt} />
-        </TouchableOpacity>
-      </View>
+      {handleAddTodo && (
+        <View style={styles.todo}>
+          <AppText text={'To-do list'} style={styles.todoTxt} />
+          <TouchableOpacity onPress={handleAddTodo}>
+            <AppText text={'+ Add'} style={styles.addTxt} />
+          </TouchableOpacity>
+        </View>
+      )}
       <TodoListCard
         handleCheckBox={handleCheckBox}
         handleDeleteTodo={handleDeleteTodo}
@@ -47,7 +49,7 @@ export default TodoTask;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 32,
+    paddingTop: 20,
   },
   todo: {
     flexDirection: 'row',

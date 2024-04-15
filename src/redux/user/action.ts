@@ -27,11 +27,12 @@ export const actionLoginUserInfoSucess = (userInfo: UserInfo) => {
     },
   };
 };
-export const actionUserLogedIn = (isLogin: boolean) => {
+
+export const actionUserLogedIn = (islog: any) => {
   return {
-    type: ActionTypes.USER_IS_LOGED_IN,
+    type: ActionTypes.USER_LOGED_IN,
     payload: {
-      isLogin,
+      islog,
     },
   };
 };

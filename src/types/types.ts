@@ -18,6 +18,9 @@ export enum screens {
   SIGN_UP = 'sign-up',
   SIGN_IN = 'sign-in',
   WELCOME_USER = 'welcome-user',
+  FORGOT_PASSWORD = 'forgot-password',
+  OTP_SCREEN = 'otp-screen',
+  NEW_PASSWORD = 'new-password',
   TAB_NAVIGATOR = 'tab-navigator',
 
   ALL_BOOKMARKS = 'all-bookmarks',
@@ -105,7 +108,7 @@ export interface AppState {
   loading?: boolean;
   userLocation?: location[];
   userInfo: UserInfo[];
-  isLogedIn: boolean;
+  isLoged?: boolean | null;
 }
 
 export interface SettingState {
@@ -118,6 +121,10 @@ export interface SettingState {
   bankAccount: BankAccount[];
   socialNumbers: SocialNumbers[];
   licenses: DriverLicense[];
+}
+export interface PrayerState {
+  task: TodoTask[];
+  prayerData: UserPrayers[];
 }
 
 export interface State {
@@ -356,4 +363,10 @@ export interface DriverLicense {
   id?: number;
   name: string;
   number: string;
+}
+export interface TodoTask {
+  id?: number;
+  taskName: string;
+  repeat?: string;
+  isChecked: boolean;
 }

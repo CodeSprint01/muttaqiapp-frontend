@@ -5,6 +5,9 @@ import SignUp from '../screens/authentication/SignUp';
 import SignIn from '../screens/authentication/SignIn';
 import WelcomeUser from '../screens/authentication/WelcomeUser';
 import UserInfoStack from './UserInfoStack';
+import ForgotPassword from '../screens/authentication/ForgotPassword';
+import OTPScreen from '../screens/authentication/OTPScreen';
+import NewPassword from '../screens/authentication/NewPassword';
 const AuthStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -22,6 +25,21 @@ const AuthStack = () => {
       <Stack.Screen
         name={screens.WELCOME_USER}
         component={WelcomeUser}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.FORGOT_PASSWORD}
+        component={ForgotPassword}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.OTP_SCREEN}
+        component={OTPScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.NEW_PASSWORD}
+        component={NewPassword}
         options={{headerShown: false}}
       />
       <Stack.Screen

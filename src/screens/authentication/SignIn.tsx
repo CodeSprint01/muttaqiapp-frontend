@@ -5,6 +5,7 @@ import {
   Platform,
   KeyboardAvoidingView,
   Alert,
+  TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
@@ -31,6 +32,9 @@ const SignIn = () => {
 
   const handleInputChange = (val: string, key: string) => {
     setUserData(prev => ({...prev, [key]: val}));
+  };
+  const onPressForgotPass = () => {
+    navigation.navigate(screens.FORGOT_PASSWORD);
   };
 
   const didLoginPress = async () => {
@@ -66,6 +70,13 @@ const SignIn = () => {
           handleInputChange={val => handleInputChange(val, item.key)}
           inputValue={userData[item.key]}
         />
+        {index == 1 && (
+          <TouchableOpacity
+            onPress={onPressForgotPass}
+            style={styles.forgotPass}>
+            <AppText text={'Forgot password?'} style={styles.forTxt} />
+          </TouchableOpacity>
+        )}
       </View>
     );
   };
@@ -182,5 +193,13 @@ const styles = StyleSheet.create({
     fontFamily: fonts.dmSans[500],
     color: COLORS.green,
     textDecorationLine: 'underline',
+  },
+  forgotPass: {
+    marginTop: 8,
+  },
+  forTxt: {
+    fontSize: 10,
+    color: COLORS.dark_gray,
+    fontFamily: fonts.dmSans[400],
   },
 });

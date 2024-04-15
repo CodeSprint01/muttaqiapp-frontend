@@ -39,14 +39,19 @@ const AppCheckBoxTick = ({
         style={[styles.checkboxUnchecked, checkBoxStyle]}>
         {isChecked && (
           <AppIconSvg
-            icon={Icons.CheckBoxTickIcon}
+            icon={Icons.Tick}
             width={15}
             height={15}
-            color={COLORS.white}
+            color={COLORS.green}
           />
         )}
       </TouchableOpacity>
-      <AppText style={[styles.textContent, style?.textContent]} text={label} />
+      <>
+        <AppText
+          style={[styles.textContent, style?.textContent]}
+          text={label}
+        />
+      </>
     </View>
   );
 };
@@ -55,6 +60,7 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    height: 40,
   },
   checkboxUnchecked: {
     width: 25,
@@ -65,6 +71,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
+    // backgroundColor: 'green',
   },
   checkboxChecked: {
     width: 20,
@@ -79,7 +86,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 16,
     lineHeight: 24,
-    paddingBottom: 8,
+    paddingTop: 7,
   },
 });
 

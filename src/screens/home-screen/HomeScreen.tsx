@@ -23,12 +23,20 @@ import {
   prayerAlarmUpdate,
 } from '../../redux/prayer/action';
 import {UserPrayers} from '../../types/types';
+import {State, screens} from '../../types/types';
+import SettingList from '../../components/molecules/setting/SettingList';
+import TrackerTodoTask from '../tracker/todo-task-record-screen/TrackerTodoTask';
+import {FastingArray} from '../../utils/mocks/tracker/FastingArray';
+import ShowmoreButton from '../../components/molecules/app-header/ShowmoreButton';
+import TodoTask from '../add-todo-screen/TodoTask';
+import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
   const prayerData = useSelector(
     (state: any) => state?.prayerReducer?.prayerData,
   );
+
   const [isShowGraph, setIsShowGraph] = useState<StatsList[]>(StatsListArray);
   const [testCall, setTestCall] = useState(true);
   const coordinates = new Coordinates(31.5204, 74.3587);
@@ -37,11 +45,16 @@ const HomeScreen = () => {
   const prayerTimes = new PrayerTimes(coordinates, date, params);
   const nextPrayer = prayerTimes?.nextPrayer();
 
+  const navigation = useNavigation();
+
   const handleFilterSliderData = (index: number) => {
     const graphData = [...isShowGraph];
     graphData[index].isShowEye = !graphData[index]?.isShowEye;
     setIsShowGraph(graphData);
   };
+  const isLogin = useSelector((state: State) => state?.userReducer?.isLoged);
+  console.log(isLogin, 'in home screen');
+
   const updatePrayerData = () => {
     const currentTime = new Date();
     const updated = [...prayerData];
@@ -55,7 +68,10 @@ const HomeScreen = () => {
     });
     dispatch(getPrayers(updated));
   };
-
+  // todo list task
+  const onPressTodoCheck = () => {
+    //
+  };
   useEffect(() => {
     updatePrayerData();
   }, [testCall]);
@@ -143,6 +159,7 @@ const HomeScreen = () => {
       },
     });
   }
+  console.log(useSelector((staete: State) => staete?.userReducer?.userInfo));
 
   return (
     <View style={styles.container}>
@@ -179,9 +196,21 @@ const HomeScreen = () => {
             </View>
           </Swiper>
         </View>
+        <View style={styles.todoTask}>
+          <ShowmoreButton
+            todoName="To-do list"
+            isShowmore
+            rightTxt="View planner"
+            handelShowmore={() => navigation.navigate(screens.TAB_TO_DO)}
+          />
+          <TodoTask
+            handleCheckBox={onPressTodoCheck}
+            todoName="Read surat Al-mulk before sleep"
+            repeatText="daily"
+          />
+        </View>
         <View style={{marginBottom: 2}}>
           <AppText text={'Explore'} style={styles.explore} />
-
           <FlatList
             data={exploreArray}
             keyExtractor={item => item.title}
@@ -277,6 +306,10 @@ const styles = StyleSheet.create({
     marginLeft: 24,
     paddingBottom: 16,
     fontFamily: fonts.dmSans[400],
+  },
+  todoTask: {
+    // backgroundColor: 'pink',
+    paddingHorizontal: 20,
   },
   gradient: {
     position: 'absolute',
