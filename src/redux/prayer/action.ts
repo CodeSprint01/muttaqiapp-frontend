@@ -1,4 +1,4 @@
-import {UserPrayers} from '../../types/types';
+import {AlarmUpdate, UserPrayers} from '../../types/types';
 import {ActionTypes} from './types';
 
 export function getPrayers(prayerData: any) {
@@ -11,11 +11,20 @@ export function getPrayers(prayerData: any) {
   };
 }
 export function offeredPrayerAndAlarm(prayer: UserPrayers) {
-  // console.log(prayer, 'action data');
+  console.log(prayer, 'action data');
   return {
     type: ActionTypes.PRAYER_OFFERED_AND_ALARM,
     payload: {
       prayer,
+    },
+  };
+}
+export function prayerAlarmUpdate(alarmData: AlarmUpdate) {
+  console.log(alarmData);
+  return {
+    type: ActionTypes.PRAYER_ALARM_UPDATE,
+    payload: {
+      alarmData,
     },
   };
 }

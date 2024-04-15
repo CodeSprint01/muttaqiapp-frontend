@@ -12,7 +12,7 @@ const MainStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {isLogin !== true ? (
+        {!isLogin ? (
           <Stack.Screen
             name={screens.AUTH_STACK}
             component={AuthStack}

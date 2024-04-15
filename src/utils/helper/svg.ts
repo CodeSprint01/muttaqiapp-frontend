@@ -139,7 +139,7 @@ export const Colors = {
   [Icons.Search]: {color: COLORS.light_gray},
   [Icons.Cross]: {color: COLORS.light_gray},
 
-  [Icons.EmptyCircle]: {color: COLORS.light_gray},
+  [Icons.EmptyCircle]: {color: COLORS.green},
   [Icons.TickCircle]: {color: COLORS.light_gray},
   [Icons.Alarm]: {color: COLORS.light_gray},
   [Icons.AlarmSlash]: {color: COLORS.light_gray},

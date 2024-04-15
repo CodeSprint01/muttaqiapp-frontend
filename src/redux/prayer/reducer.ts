@@ -52,6 +52,28 @@ export default function reducer(state = initialState, action: any = {}) {
         ...state,
         prayerData: updatedPrayerData,
       };
+    case ActionTypes.PRAYER_ALARM_UPDATE: {
+      const alarm = action?.payload?.alarmData;
+      console.log(alarm, 'alarm in reducer');
+
+      const alarmData = state?.prayerData;
+      const updated = alarmData.map((itm: any) => {
+        if (itm?.id === alarm?.id) {
+          return {
+            ...itm,
+            id: alarm?.id,
+            notification:
+              itm.notification == 0 ? 1 : itm?.notification == 1 ? 2 : 0,
+          };
+        }
+        return itm;
+      });
+      return {
+        ...state,
+        prayerData: updated,
+      };
+    }
+
     default:
       return state;
   }

@@ -7,39 +7,54 @@ import AppText from '../../atoms/app-text/AppText';
 
 interface AlarmProps {
   onPress: (item: any) => void;
+  onPressAlarm: (item: any) => void;
   name: string;
   time: string;
   prayerIcon: any;
+  alarmIcon: any;
   item: any;
 }
 const PrayerAlarmCard: FC<AlarmProps> = ({
   onPress,
+  onPressAlarm,
   name,
   time,
   prayerIcon,
+  alarmIcon,
   item,
 }) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconText}>
         <TouchableOpacity onPress={() => onPress(item)}>
-          <LinearGradient
-            colors={['#1290A1', '#1DA28F']}
-            style={styles.iconContaiuner}>
+          <View style={styles.circleView}>
             <AppIconSvg
               icon={prayerIcon}
               width={24}
               height={24}
-              color={COLORS.white}
+              color={COLORS.green}
             />
-          </LinearGradient>
+          </View>
         </TouchableOpacity>
         <AppText text={name} style={styles.prayerText} />
       </View>
-
       <View style={styles.prayerTime}>
         <AppText text={time} style={styles.prayerTimeTxt} />
       </View>
+      <TouchableOpacity
+        onPress={() => onPressAlarm(item)}
+        style={styles.alarmContainer}>
+        <LinearGradient
+          colors={['#1290A1', '#1DA28F']}
+          style={styles.iconContaiuner}>
+          <AppIconSvg
+            icon={alarmIcon}
+            width={24}
+            height={24}
+            color={COLORS.white}
+          />
+        </LinearGradient>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -51,6 +66,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: 3,
     marginVertical: 5,
+    // backgroundColor: 'pink',
+  },
+  circleView: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   iconContaiuner: {
     width: 36,
@@ -66,7 +89,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   prayerText: {
-    paddingLeft: 16,
+    paddingLeft: 5,
     fontSize: 18,
     fontWeight: '500',
     color: COLORS.dark_gray,
@@ -81,5 +104,13 @@ const styles = StyleSheet.create({
     color: COLORS.dark_gray,
     textAlign: 'right',
     marginRight: 20,
+  },
+  alarmContainer: {
+    // backgroundColor: 'green',
+    // width: '5%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 10,
+    paddingHorizontal: 3,
   },
 });

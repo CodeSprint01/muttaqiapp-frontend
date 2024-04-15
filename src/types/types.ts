@@ -294,6 +294,10 @@ export interface UserPrayers {
   isOffered: boolean;
   isOfferedTimePassed: boolean;
 }
+export interface AlarmUpdate {
+  id: number;
+  // notification: number;
+}
 export interface UserInfo {
   userID: string;
   token: string;

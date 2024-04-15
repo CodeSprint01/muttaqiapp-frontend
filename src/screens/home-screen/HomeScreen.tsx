@@ -17,7 +17,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Coordinates, CalculationMethod, PrayerTimes} from 'adhan';
 import {Icons} from '../../utils/helper/svg';
 import moment from 'moment-timezone';
-import {getPrayers, offeredPrayerAndAlarm} from '../../redux/prayer/action';
+import {
+  getPrayers,
+  offeredPrayerAndAlarm,
+  prayerAlarmUpdate,
+} from '../../redux/prayer/action';
 import {UserPrayers} from '../../types/types';
 
 const HomeScreen = () => {
@@ -106,7 +110,16 @@ const HomeScreen = () => {
   const handlePrayerPress = (item: UserPrayers) => {
     dispatch(offeredPrayerAndAlarm(item));
   };
-
+  const handleAlarmPress = (item: UserPrayers) => {
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+    const data = {
+      id: item?.id,
+      // notification: item?.notification,
+    };
+    dispatch(prayerAlarmUpdate(data));
+  };
   // here is notification code
   async function onCreateTriggerNotification() {
     const setupChannels = async () => {
@@ -191,6 +204,7 @@ const HomeScreen = () => {
           <PrayerTimesList
             didPressPrayer={item => handlePrayerPress(item)}
             prayerData={prayerData}
+            onPressAlarm={item => handleAlarmPress(item)}
           />
         </View>
         <View style={styles.bottom} />
