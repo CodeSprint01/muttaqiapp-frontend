@@ -53,12 +53,30 @@ const AllBookmark = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={AllBookmarksArray}
-        renderItem={renderItem}
-        keyExtractor={itm => itm.name}
-      />
+      {AllBookmarksArray.length > 0 ? (
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={AllBookmarksArray}
+          renderItem={renderItem}
+          keyExtractor={itm => itm.name}
+        />
+      ) : (
+        <View style={styles.emptyArray}>
+          <AppIconSvg
+            icon={Icons.WateringPlants}
+            width={200}
+            height={200}
+            color="green"
+          />
+          <AppText text={'No bookmarks yet'} style={styles.emptyLabel} />
+          <AppText
+            style={styles.emptyDescription}
+            text={
+              'You haven’t added any bookmarks. Explore our homepage and start your adding some.'
+            }
+          />
+        </View>
+      )}
     </View>
   );
 };
@@ -89,5 +107,23 @@ const styles = StyleSheet.create({
     paddingTop: 13,
     position: 'absolute',
     right: 10,
+  },
+  emptyArray: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  emptyLabel: {
+    fontSize: 24,
+    fontFamily: fonts.dmSans[700],
+    color: COLORS.green,
+    marginTop: 42,
+  },
+  emptyDescription: {
+    fontSize: 16,
+    fontFamily: fonts.dmSans[400],
+    color: COLORS.dark_gray,
+    marginTop: 16,
   },
 });

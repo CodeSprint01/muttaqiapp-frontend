@@ -68,6 +68,43 @@ export const Icons = {
   Eye: 'EYE',
   EyeSlash: 'EYE_SLASH',
   Finance: 'FINANCES',
+  FirstStep: 'FIRST_STEP',
+  SecondStep: 'SECOND_STEP',
+  ThirdStep: 'THIRD_STEP',
+  FourthStep: 'FOURTH_STEP',
+  FifthStep: 'FIFTH_STEP',
+  SixthStep: 'SIXTH_STEP',
+  DropDown: 'DROP_DOWN',
+  DropUp: 'DROP_UP',
+  ZakatCal: 'ZAKAT_CAL',
+  InheritanceCal: 'INHERITANCE_CAL',
+  PasswordSecurity: 'PASSWORD_SECURITY',
+  PersonalFinancialInfo: 'PERSONAL_FINANCIAL_INFO',
+  Language: 'LANGUAGE',
+  HelpSupport: 'HELP_SUPPORTT',
+  LogOut: 'LOG_OUT',
+  EmptyNotification: 'EMPTY_NOTIFICATION',
+  UploadDoc: 'UPLOAD_DOC',
+  AllItems: 'ALL_ITEMS',
+  Lock: 'LOCK',
+  SecureNotes: 'SECURE_NOTES',
+  CreditCards: 'CREDITCARDS',
+  Identities: 'IDENTITIES',
+  Passwords: 'PASSWORD',
+  Documents: 'DOCUMENTS',
+  Bank: 'BANK',
+  License: 'LICENSE',
+  SocialSecurity: 'SOCIAL_SECURITY',
+  archive: 'ARCHIVE',
+  Tick: 'TICK',
+  MasterCard: 'MASTER_CARD',
+  VisaCard: 'VISA_CARD',
+  Paypak: 'PAYPAK',
+  Camera: 'CAMERA',
+  idCard: 'ID_CARD',
+  Document: 'DOCUMENTS',
+  Copy: 'COPY',
+  WateringPlants: 'WATERING_PLANTS',
 };
 
 export const Colors = {
@@ -143,6 +180,48 @@ export const Colors = {
   [Icons.Eye]: {color: COLORS.light_gray},
   [Icons.EyeSlash]: {color: COLORS.light_gray},
   [Icons.Finance]: {color: COLORS.light_gray},
+  [Icons.FifthStep]: {color: COLORS.light_gray},
+  [Icons.SecondStep]: {color: COLORS.light_gray},
+  [Icons.ThirdStep]: {color: COLORS.light_gray},
+  [Icons.FourthStep]: {color: COLORS.light_gray},
+  [Icons.FifthStep]: {color: COLORS.light_gray},
+  [Icons.SixthStep]: {color: COLORS.light_gray},
+  [Icons.DropDown]: {color: COLORS.light_gray},
+  [Icons.DropUp]: {color: COLORS.light_gray},
+  [Icons.ZakatCal]: {color: COLORS.light_gray},
+  [Icons.InheritanceCal]: {color: COLORS.light_gray},
+  [Icons.PasswordSecurity]: {color: COLORS.light_gray},
+  [Icons.PersonalFinancialInfo]: {color: COLORS.light_gray},
+  [Icons.Notification]: {color: COLORS.light_gray},
+  [Icons.Language]: {color: COLORS.light_gray},
+  [Icons.Faq]: {color: COLORS.light_gray},
+  [Icons.HelpSupport]: {color: COLORS.light_gray},
+  [Icons.TermsConditions]: {color: COLORS.light_gray},
+  [Icons.PrivacyPolicy]: {color: COLORS.light_gray},
+  [Icons.AboutMuttaqi]: {color: COLORS.light_gray},
+  [Icons.LogOut]: {color: COLORS.light_gray},
+  [Icons.EmptyNotification]: {color: COLORS.light_gray},
+  [Icons.UploadDoc]: {color: COLORS.light_gray},
+  [Icons.AllItems]: {color: COLORS.light_gray},
+  [Icons.Lock]: {color: COLORS.light_gray},
+  [Icons.SecureNotes]: {color: COLORS.light_gray},
+  [Icons.CreditCards]: {color: COLORS.light_gray},
+  [Icons.Identities]: {color: COLORS.light_gray},
+  [Icons.Passwords]: {color: COLORS.light_gray},
+  [Icons.Documents]: {color: COLORS.light_gray},
+  [Icons.Bank]: {color: COLORS.light_gray},
+  [Icons.License]: {color: COLORS.light_gray},
+  [Icons.SocialSecurity]: {color: COLORS.light_gray},
+  [Icons.archive]: {color: COLORS.light_gray},
+  [Icons.Tick]: {color: COLORS.green},
+  [Icons.MasterCard]: {color: COLORS.green},
+  [Icons.VisaCard]: {color: COLORS.green},
+  [Icons.Paypak]: {color: COLORS.green},
+  [Icons.Camera]: {color: COLORS.dark_gray},
+  [Icons.idCard]: {color: COLORS.dark_gray},
+  [Icons.Document]: {color: COLORS.green},
+  [Icons.Copy]: {color: COLORS.green},
+  [Icons.WateringPlants]: {color: COLORS.green},
 };
 
 const SvgIcons: any = {};
@@ -195,8 +274,6 @@ SvgIcons[Icons.Knowledge] =
 
 SvgIcons[Icons.Profile] =
   require('../../../assets/images/setting-screen-svg/myProfile').default;
-SvgIcons[Icons.Vault] =
-  require('../../../assets/images/setting-screen-svg/vault').default;
 SvgIcons[Icons.Languages] =
   require('../../../assets/images/setting-screen-svg/languages').default;
 SvgIcons[Icons.Faq] =
@@ -274,6 +351,83 @@ SvgIcons[Icons.Refresh] =
 SvgIcons[Icons.Eye] = require('../../../assets/images/tracker/eye').default;
 SvgIcons[Icons.EyeSlash] =
   require('../../../assets/images/tracker/eyeSlash').default;
+
+SvgIcons[Icons.FirstStep] =
+  require('../../../assets/images/user-info-forms/firstStep').default;
+SvgIcons[Icons.SecondStep] =
+  require('../../../assets/images/user-info-forms/secondStep').default;
+SvgIcons[Icons.ThirdStep] =
+  require('../../../assets/images/user-info-forms/thirdStep').default;
+SvgIcons[Icons.FourthStep] =
+  require('../../../assets/images/user-info-forms/fourthStep').default;
+SvgIcons[Icons.FifthStep] =
+  require('../../../assets/images/user-info-forms/fifthStep').default;
+SvgIcons[Icons.SixthStep] =
+  require('../../../assets/images/user-info-forms/sixthStep').default;
+SvgIcons[Icons.DropDown] = require('../../../assets/images/dropDown').default;
+SvgIcons[Icons.DropUp] = require('../../../assets/images/dropUp').default;
+SvgIcons[Icons.Tick] = require('../../../assets/images/tick').default;
+SvgIcons[Icons.UploadDoc] = require('../../../assets/images/uploadDoc').default;
+SvgIcons[Icons.WateringPlants] =
+  require('../../../assets/images/wateringPlants').default;
+SvgIcons[Icons.ZakatCal] =
+  require('../../../assets/images/setting-icon/zakatCal').default;
+SvgIcons[Icons.InheritanceCal] =
+  require('../../../assets/images/setting-icon/InheritanceCal').default;
+SvgIcons[Icons.PasswordSecurity] =
+  require('../../../assets/images/setting-icon/passwordSecurity').default;
+SvgIcons[Icons.Vault] =
+  require('../../../assets/images/setting-icon/valut').default;
+SvgIcons[Icons.PersonalFinancialInfo] =
+  require('../../../assets/images/setting-icon/passwordSecurity').default;
+SvgIcons[Icons.Setting] = require('../../../assets/images/setting').default;
+SvgIcons[Icons.Language] =
+  require('../../../assets/images/setting-icon/language').default;
+SvgIcons[Icons.Faq] =
+  require('../../../assets/images/setting-icon/FAQ').default;
+SvgIcons[Icons.HelpSupport] =
+  require('../../../assets/images/setting-icon/helpSupport').default;
+SvgIcons[Icons.TermsConditions] =
+  require('../../../assets/images/setting-icon/termsCond').default;
+SvgIcons[Icons.PrivacyPolicy] =
+  require('../../../assets/images/setting-icon/privacyPol').default;
+SvgIcons[Icons.AboutMuttaqi] =
+  require('../../../assets/images/setting-icon/aboutMuttaqi').default;
+SvgIcons[Icons.LogOut] =
+  require('../../../assets/images/setting-icon/logout').default;
+SvgIcons[Icons.EmptyNotification] =
+  require('../../../assets/images/setting-icon/emptyNotification').default;
+SvgIcons[Icons.AllItems] =
+  require('../../../assets/images/vault/AllItems').default;
+SvgIcons[Icons.Lock] = require('../../../assets/images/vault/lock').default;
+SvgIcons[Icons.SecureNotes] =
+  require('../../../assets/images/vault/notes').default;
+SvgIcons[Icons.CreditCards] =
+  require('../../../assets/images/vault/creditCards').default;
+SvgIcons[Icons.Identities] =
+  require('../../../assets/images/vault/identity').default;
+SvgIcons[Icons.Passwords] =
+  require('../../../assets/images/vault/password').default;
+SvgIcons[Icons.Documents] =
+  require('../../../assets/images/vault/documents').default;
+SvgIcons[Icons.Bank] = require('../../../assets/images/vault/bank').default;
+SvgIcons[Icons.License] =
+  require('../../../assets/images/vault/driverLicense').default;
+SvgIcons[Icons.SocialSecurity] =
+  require('../../../assets/images/vault/socialSecurity').default;
+SvgIcons[Icons.archive] =
+  require('../../../assets/images/vault/archive').default;
+SvgIcons[Icons.MasterCard] =
+  require('../../../assets/images/vault/mastercard').default;
+SvgIcons[Icons.VisaCard] =
+  require('../../../assets/images/vault/visacard').default;
+SvgIcons[Icons.Camera] = require('../../../assets/images/vault/camera').default;
+SvgIcons[Icons.idCard] = require('../../../assets/images/vault/idCrad').default;
+SvgIcons[Icons.Paypak] = require('../../../assets/images/vault/paypak').default;
+SvgIcons[Icons.Copy] = require('../../../assets/images/vault/copy').default;
+SvgIcons[Icons.Document] =
+  require('../../../assets/images/vault/document').default;
+
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];
   if (typeof SvgIcon === 'function' && color) {

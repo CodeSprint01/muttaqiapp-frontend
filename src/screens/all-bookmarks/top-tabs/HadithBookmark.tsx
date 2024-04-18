@@ -2,8 +2,10 @@ import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import BookmarkList from '../../../components/molecules/bookmarks/BookmarkList';
 import {bookmarkData} from '../../../types/types';
-import {COLORS} from '../../../styles/color';
+import {COLORS, fonts} from '../../../styles/color';
 import {AllBookmarksArray} from '../../../utils/mocks/bookmarks-and-favourite/AllBookmarks';
+import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
+import AppText from '../../../components/atoms/app-text/AppText';
 
 const HadithBookmark = () => {
   const renderItem = ({item, index}: {item: bookmarkData; index: number}) => {
@@ -18,10 +20,28 @@ const HadithBookmark = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={AllBookmarksArray[0]?.bookmarkData}
-        renderItem={renderItem}
-      />
+      {AllBookmarksArray.length > 0 ? (
+        <FlatList
+          data={AllBookmarksArray[0]?.bookmarkData}
+          renderItem={renderItem}
+        />
+      ) : (
+        <View style={styles.emptyArray}>
+          <AppIconSvg
+            icon={Icons.WateringPlants}
+            width={200}
+            height={200}
+            color="green"
+          />
+          <AppText text={'No bookmarks yet'} style={styles.emptyLabel} />
+          <AppText
+            style={styles.emptyDescription}
+            text={
+              'You haven’t added any bookmarks. Explore our homepage and start your adding some.'
+            }
+          />
+        </View>
+      )}
     </View>
   );
 };
@@ -32,5 +52,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.pale_mint,
+  },
+  emptyArray: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  emptyLabel: {
+    fontSize: 24,
+    fontFamily: fonts.dmSans[700],
+    color: COLORS.green,
+    marginTop: 42,
+  },
+  emptyDescription: {
+    fontSize: 16,
+    fontFamily: fonts.dmSans[400],
+    color: COLORS.dark_gray,
+    marginTop: 16,
   },
 });
