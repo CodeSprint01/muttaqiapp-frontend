@@ -189,12 +189,7 @@ export const Colors = {
   [Icons.Vault]: {color: COLORS.light_gray},
   [Icons.PersonalFinancialInfo]: {color: COLORS.light_gray},
   [Icons.Notification]: {color: COLORS.light_gray},
-  [Icons.Language]: {color: COLORS.light_gray},
-  [Icons.Faq]: {color: COLORS.light_gray},
   [Icons.HelpSupport]: {color: COLORS.light_gray},
-  [Icons.TermsConditions]: {color: COLORS.light_gray},
-  [Icons.PrivacyPolicy]: {color: COLORS.light_gray},
-  [Icons.AboutMuttaqi]: {color: COLORS.light_gray},
   [Icons.LogOut]: {color: COLORS.light_gray},
   [Icons.EmptyNotification]: {color: COLORS.light_gray},
   [Icons.UploadDoc]: {color: COLORS.light_gray},
@@ -268,21 +263,6 @@ SvgIcons[Icons.Hadith] =
 SvgIcons[Icons.Knowledge] =
   require('../../../assets/images/explore-images/knowledge').default;
 SvgIcons[Icons.Setting] = require('../../../assets/images/setting').default;
-
-SvgIcons[Icons.Profile] =
-  require('../../../assets/images/setting-screen-svg/myProfile').default;
-SvgIcons[Icons.Language] =
-  require('../../../assets/images/setting-screen-svg/languages').default;
-SvgIcons[Icons.Faq] =
-  require('../../../assets/images/setting-screen-svg/faq').default;
-SvgIcons[Icons.TermsConditions] =
-  require('../../../assets/images/setting-screen-svg/termsCond').default;
-SvgIcons[Icons.PrivacyPolicy] =
-  require('../../../assets/images/setting-screen-svg/privacy').default;
-SvgIcons[Icons.AboutMuttaqi] =
-  require('../../../assets/images/setting-screen-svg/about').default;
-SvgIcons[Icons.Setting] =
-  require('../../../assets/images/setting-screen-svg/setting').default;
 SvgIcons[Icons.PlusIcon] = require('../../../assets/images/plusIcon').default;
 SvgIcons[Icons.UserHeart] = require('../../../assets/images/userHeart').default;
 SvgIcons[Icons.CheckBoxTickIcon] =
