@@ -10,7 +10,6 @@ import QuranScreen from '../screens/quran-screens/QuranScreen';
 import SurahDetailsScreen from '../screens/quran-screens/tab-items/SurahDetailsScreen';
 import TasbihCounter from '../screens/tasbih-screen/TasbihCounter';
 import AllBookmarks from '../screens/all-bookmarks/AllBookmarks';
-import AllBookmark from '../screens/all-bookmarks/top-tabs/AllBookmark';
 import AllFavourites from '../screens/favourites-screens/AllFavourite';
 
 const HomeStack = () => {
@@ -73,7 +72,7 @@ const HomeStack = () => {
         component={AllBookmark}
         options={{headerShown: false}}
       />
-       <Stack.Screen
+      <Stack.Screen
         name={screens.SURAH_DETAILS_SCREEN}
         component={SurahDetailsScreen}
         options={{headerShown: false}}

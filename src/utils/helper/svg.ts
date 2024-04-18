@@ -99,8 +99,9 @@ export const Icons = {
   Paypak: 'PAYPAK',
   Camera: 'CAMERA',
   idCard: 'ID_CARD',
-  Document: 'document',
-  Copy: 'copy',
+  Document: 'DOCUMENTS',
+  Copy: 'COPY',
+  WateringPlants: 'WATERING_PLANTS',
 };
 
 export const Colors = {
@@ -216,6 +217,7 @@ export const Colors = {
   [Icons.idCard]: {color: COLORS.dark_gray},
   [Icons.Document]: {color: COLORS.green},
   [Icons.Copy]: {color: COLORS.green},
+  [Icons.WateringPlants]: {color: COLORS.green},
 };
 
 const SvgIcons: any = {};
@@ -266,6 +268,21 @@ SvgIcons[Icons.Hadith] =
 SvgIcons[Icons.Knowledge] =
   require('../../../assets/images/explore-images/knowledge').default;
 SvgIcons[Icons.Setting] = require('../../../assets/images/setting').default;
+
+SvgIcons[Icons.Profile] =
+  require('../../../assets/images/setting-screen-svg/myProfile').default;
+SvgIcons[Icons.Language] =
+  require('../../../assets/images/setting-screen-svg/languages').default;
+SvgIcons[Icons.Faq] =
+  require('../../../assets/images/setting-screen-svg/faq').default;
+SvgIcons[Icons.TermsConditions] =
+  require('../../../assets/images/setting-screen-svg/termsCond').default;
+SvgIcons[Icons.PrivacyPolicy] =
+  require('../../../assets/images/setting-screen-svg/privacy').default;
+SvgIcons[Icons.AboutMuttaqi] =
+  require('../../../assets/images/setting-screen-svg/about').default;
+SvgIcons[Icons.Setting] =
+  require('../../../assets/images/setting-screen-svg/setting').default;
 SvgIcons[Icons.PlusIcon] = require('../../../assets/images/plusIcon').default;
 SvgIcons[Icons.UserHeart] = require('../../../assets/images/userHeart').default;
 SvgIcons[Icons.CheckBoxTickIcon] =
@@ -344,6 +361,8 @@ SvgIcons[Icons.DropDown] = require('../../../assets/images/dropDown').default;
 SvgIcons[Icons.DropUp] = require('../../../assets/images/dropUp').default;
 SvgIcons[Icons.Tick] = require('../../../assets/images/tick').default;
 SvgIcons[Icons.UploadDoc] = require('../../../assets/images/uploadDoc').default;
+SvgIcons[Icons.WateringPlants] =
+  require('../../../assets/images/wateringPlants').default;
 SvgIcons[Icons.ZakatCal] =
   require('../../../assets/images/setting-icon/zakatCal').default;
 SvgIcons[Icons.InheritanceCal] =
