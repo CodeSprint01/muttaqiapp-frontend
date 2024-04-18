@@ -17,7 +17,7 @@ import AppInput from '../../components/molecules/app-input/AppInput';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
 import AppModal from '../../components/atoms/app-modal/AppModal';
-import {handleSignUp, schhemaMutation} from '../../services/api';
+import {handleSignUp, schemaMutation} from '../../services/api';
 import {useDispatch, useSelector} from 'react-redux';
 import {actionGetUserInfoSucess} from '../../redux/user/action';
 import {SIGN_UP} from '../../services/graphQL';
@@ -30,7 +30,7 @@ const SignUp = () => {
     confPassowrd: '',
   });
   const [loading, setLoading] = useState(false);
-  const [signUpMutation] = schhemaMutation(SIGN_UP);
+  const [signUpMutation] = schemaMutation(SIGN_UP);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 

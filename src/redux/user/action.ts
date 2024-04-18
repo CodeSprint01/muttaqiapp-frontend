@@ -36,3 +36,12 @@ export const actionUserLogedIn = (islog: any) => {
     },
   };
 };
+
+export const actionSendEmailForOtp = (email: string) => {
+  return {
+    type: ActionTypes.USER_LOGED_IN,
+    payload: {
+      email,
+    },
+  };
+};

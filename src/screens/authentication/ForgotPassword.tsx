@@ -1,4 +1,10 @@
-import {StyleSheet, View, Platform, KeyboardAvoidingView} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Platform,
+  KeyboardAvoidingView,
+  Alert,
+} from 'react-native';
 import React, {useState} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS, fonts} from '../../styles/color';
@@ -7,15 +13,33 @@ import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
 import AppInput from '../../components/molecules/app-input/AppInput';
 import {screens} from '../../types/types';
+import {handleSendOtpEmail, schemaMutation} from '../../services/api';
+import {SEND_EMAIL_OTP} from '../../services/graphQL';
+import AppLoader from '../../components/atoms/loader/AppLoader';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [forgotPasswordMutation] = schemaMutation(SEND_EMAIL_OTP);
+
   const navigation = useNavigation();
   const handleInputChange = (val: string) => {
     setEmail(val);
   };
-  const didLoginPress = () => {
-    navigation.navigate(screens.OTP_SCREEN);
+  const didLoginPress = async () => {
+    try {
+      setLoading(true);
+      const data = await handleSendOtpEmail(forgotPasswordMutation, email);
+      if (data?.forgotPassword) {
+        navigation.navigate(screens.OTP_SCREEN, {email: email});
+      } else {
+        Alert.alert('Alert', 'User not exist,please check your email address');
+      }
+      setLoading(false);
+    } catch (error: any) {
+      if (error) setLoading(false);
+      return Alert.alert('Alert', error);
+    }
   };
 
   return (
@@ -40,6 +64,7 @@ const ForgotPassword = () => {
               />
             </View>
           </View>
+          <AppLoader isVisible={loading} />
         </View>
         <View style={styles.bottomBtns}>
           <AppButton buttonText="Send OTP" onPress={didLoginPress} />
@@ -102,6 +127,9 @@ const styles = StyleSheet.create({
   },
   inputEmail: {
     marginTop: 30,
+  },
+  modalSty: {
+    paddingVertical: 100,
   },
   bottomBtns: {
     flex: 1,

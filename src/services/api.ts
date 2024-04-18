@@ -1,19 +1,13 @@
 import {MutationFunction, useMutation} from '@apollo/client';
-import {useSelector} from 'react-redux';
-import {State} from '../types/types';
-import {Alert} from 'react-native';
+import {ResetPassData} from '../screens/authentication/NewPassword';
 
-// get user token
-// get user schema and set
-export const schhemaMutation = (schema: any) => {
+export const schemaMutation = (schema: any) => {
   return useMutation(schema);
 };
 export const handleSignUp = async (
   signUpMutation: MutationFunction,
   userData: any,
 ) => {
-  console.log(userData, 'api call');
-
   try {
     const {data} = await signUpMutation({
       variables: {
@@ -31,8 +25,6 @@ export const handleLogin = async (
   signInMutation: MutationFunction,
   userData: any,
 ) => {
-  console.log(userData, 'AApi call');
-
   try {
     const {data} = await signInMutation({
       variables: {
@@ -51,7 +43,6 @@ export const changePassword = async (
   userData: any,
   token: string,
 ) => {
-  console.log(userData, token, 'AApi call');
   try {
     const {data} = await changePasswordMutation({
       variables: {
@@ -63,6 +54,51 @@ export const changePassword = async (
           Authorization: `Bearer ${token}`,
         },
       },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const handleSendOtpEmail = async (
+  forgotPasswordMutation: MutationFunction,
+  email: string,
+) => {
+  try {
+    const {data} = await forgotPasswordMutation({
+      variables: {
+        email: email,
+        newPassword: 'Test@123',
+        otp: '0383302',
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const handleOtpVerify = async (
+  otpVerifyMutation: MutationFunction,
+  otp: string,
+) => {
+  try {
+    const data = await otpVerifyMutation({
+      variables: {otp: otp},
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const handleResetPassword = async (
+  resetPasswordMutation: MutationFunction,
+  userData: ResetPassData,
+) => {
+  try {
+    const data = await resetPasswordMutation({
+      variables: {otp: userData?.otp, newPassword: userData?.password},
     });
     return data;
   } catch (error) {

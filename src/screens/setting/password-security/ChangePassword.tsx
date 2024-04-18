@@ -5,7 +5,7 @@ import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader'
 import AppInput from '../../../components/molecules/app-input/AppInput';
 import AppButton from '../../../components/molecules/app-button/AppButton';
 import {Icons} from '../../../utils/helper/svg';
-import {changePassword, schhemaMutation} from '../../../services/api';
+import {changePassword, schemaMutation} from '../../../services/api';
 import {CHANGE_PASSWORD} from '../../../services/graphQL';
 import {useSelector} from 'react-redux';
 import {State} from '../../../types/types';
@@ -22,7 +22,7 @@ const ChangePassword = () => {
     newPass: false,
     retypePass: false,
   });
-  const [changePasswordMutation] = schhemaMutation(CHANGE_PASSWORD);
+  const [changePasswordMutation] = schemaMutation(CHANGE_PASSWORD);
 
   const userInfo = useSelector((state: State) => state?.userReducer?.userInfo);
   const token = userInfo?.token;

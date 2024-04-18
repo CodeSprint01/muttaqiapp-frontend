@@ -4,8 +4,9 @@ import {
   Platform,
   KeyboardAvoidingView,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS, fonts} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
@@ -13,19 +14,76 @@ import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
 import AppInput from '../../components/molecules/app-input/AppInput';
 import {screens} from '../../types/types';
+import {
+  handleOtpVerify,
+  handleSendOtpEmail,
+  schemaMutation,
+} from '../../services/api';
+import {SEND_EMAIL_OTP, VERIFY_OTP} from '../../services/graphQL';
+import AppLoader from '../../components/atoms/loader/AppLoader';
 
-const OTPScreen = () => {
+const OTPScreen = ({route}) => {
+  const userEmail = route.params.email;
   const [OTP, setOTP] = useState('');
+  const [timer, setTimer] = useState(30);
+  const [isVisible, setVisible] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   const handleInputChange = (val: string) => {
     setOTP(val);
   };
+  const [otpVerifyMutation] = schemaMutation(VERIFY_OTP);
+  const [forgotPasswordMutation] = schemaMutation(SEND_EMAIL_OTP);
 
-  const didSubmitPress = () => {
-    navigation.navigate(screens.NEW_PASSWORD);
+  useEffect(() => {
+    const timerFun = () => {
+      if (timer > 0) {
+        setTimer(prevTimer => prevTimer - 1); // Decrement timer by 1 second
+      } else {
+        setVisible(false);
+      }
+    };
+
+    const interval = setInterval(timerFun, 1000);
+    return () => clearInterval(interval);
+  }, [timer]);
+  const didSubmitPress = async () => {
+    try {
+      setLoading(true);
+      const data = await handleOtpVerify(otpVerifyMutation, OTP);
+      if (data?.data?.verifyOtp) {
+        navigation.navigate(screens.NEW_PASSWORD, {otp: OTP});
+      } else {
+        Alert.alert(
+          'Alert',
+          'something went wrong please try again in few seconds',
+        );
+      }
+      setLoading(false);
+    } catch (error: any) {
+      if (error) setLoading(false);
+      return Alert.alert('Alert', error?.message);
+    }
   };
-  const onPressResend = () => {
-    console.log('resend');
+  const onPressResend = async () => {
+    if (timer == 0) {
+      setTimer(30);
+      setVisible(true);
+    }
+    try {
+      setLoading(true);
+      const data = await handleSendOtpEmail(forgotPasswordMutation, userEmail);
+      if (data?.forgotPassword) {
+        setLoading(false);
+        Alert.alert('Sucess', 'Please check you email');
+      } else {
+        Alert.alert('Alert', 'User not exist,please check your email address');
+      }
+      setLoading(false);
+    } catch (error: any) {
+      if (error) setLoading(false);
+      return Alert.alert('Alert', error);
+    }
   };
   return (
     <AppContainer style={styles.container}>
@@ -52,17 +110,21 @@ const OTPScreen = () => {
                 inputValue={OTP}
               />
             </View>
-            <TouchableOpacity style={styles.bottomtxt} onPress={onPressResend}>
+            <AppLoader isVisible={loading} />
+            <TouchableOpacity
+              style={styles.bottomtxt}
+              disabled={isVisible}
+              onPress={onPressResend}>
               <AppText
                 text={'Did not received a code? '}
                 style={styles.alreadyTxt}
               />
-              <AppText
-                // onPress={() => navigation.navigate(screens.NEW_PASSWORD)}
-                text={' Resend'}
-                style={styles.login}
-              />
+              <AppText text={' Resend'} style={styles.login} />
             </TouchableOpacity>
+            <View style={styles.otpTimer}>
+              <AppText style={styles.timerRem} text={'Time Remaining:'} />
+              <AppText style={styles.timerTxt} text={`   ${timer}s`} />
+            </View>
           </View>
         </View>
         <View style={styles.bottomBtns}>
@@ -154,6 +216,21 @@ const styles = StyleSheet.create({
     fontFamily: fonts.dmSans[500],
     color: COLORS.green,
     textDecorationLine: 'underline',
+  },
+  otpTimer: {
+    flexDirection: 'row',
+    marginTop: 20,
+    justifyContent: 'center',
+  },
+  timerRem: {
+    fontFamily: fonts.dmSans[500],
+    fontSize: 16,
+    color: COLORS.light_gray,
+  },
+  timerTxt: {
+    fontFamily: fonts.dmSans[500],
+    fontSize: 16,
+    color: COLORS.dark_gray,
   },
   forTxt: {
     fontSize: 10,

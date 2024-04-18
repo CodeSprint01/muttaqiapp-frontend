@@ -1,19 +1,72 @@
-import {StyleSheet, View, Platform, KeyboardAvoidingView} from 'react-native';
-import React, {useState} from 'react';
+import {
+  StyleSheet,
+  View,
+  Platform,
+  KeyboardAvoidingView,
+  Alert,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS, fonts} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import AppInput from '../../components/molecules/app-input/AppInput';
+import {handleResetPassword, schemaMutation} from '../../services/api';
+import {RESET_PASSWORD} from '../../services/graphQL';
+import {screens} from '../../types/types';
+import {useNavigation} from '@react-navigation/native';
 
-const NewPassword = () => {
-  const [userData, setUserData] = useState({
+export interface ResetPassData {
+  password: string;
+  conPassword: string;
+  otp: string;
+}
+
+const NewPassword = ({route}) => {
+  const otp = route.params.otp;
+  const navigation = useNavigation();
+
+  const [userData, setUserData] = useState<ResetPassData>({
     password: '',
     conPassword: '',
+    otp: '',
   });
+  const [resetPasswordMutation] = schemaMutation(RESET_PASSWORD);
 
   const handleInputChange = (key: string, val: string) => {
     setUserData(preVal => ({...preVal, [key]: val}));
+  };
+  useEffect(() => {
+    setUserData(preVal => ({...preVal, otp: otp}));
+  }, []);
+
+  const didLoginSubmit = async () => {
+    if (userData.password === userData.conPassword) {
+      try {
+        const data = await handleResetPassword(resetPasswordMutation, userData);
+        if (data?.data?.resetPassword) {
+          Alert.alert(
+            'Congratulation',
+            'Password reset sucessfully, please Login',
+            [
+              {
+                text: 'OK',
+                onPress: () => navigation.navigate(screens.SIGN_IN),
+              },
+            ],
+          );
+        } else {
+          Alert.alert(
+            'Alert',
+            'something went wrong please try again in few seconds',
+          );
+        }
+      } catch (error) {
+        Alert.alert('Alert', error?.message);
+      }
+    } else {
+      Alert.alert('Alert', 'Password and confirm password not matched');
+    }
   };
 
   return (
@@ -48,10 +101,7 @@ const NewPassword = () => {
           </View>
         </View>
         <View style={styles.bottomBtns}>
-          <AppButton
-            buttonText="Submit"
-            //   onPress={didLoginPress}
-          />
+          <AppButton buttonText="Submit" onPress={didLoginSubmit} />
         </View>
       </KeyboardAvoidingView>
     </AppContainer>

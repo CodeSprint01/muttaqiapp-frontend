@@ -40,3 +40,19 @@ export const CHANGE_PASSWORD = gql`
     changePassword(currentPassword: $currentPassword, newPassword: $newPassword)
   }
 `;
+
+export const SEND_EMAIL_OTP = gql`
+  mutation SendEmail($email: String!) {
+    forgotPassword(forgotPasswordInput: {email: $email})
+  }
+`;
+export const VERIFY_OTP = gql`
+  mutation VerifyOtp($otp: String!) {
+    verifyOtp(forgotPasswordInput: {otp: $otp})
+  }
+`;
+export const RESET_PASSWORD = gql`
+  mutation SetNewPassword($otp: String!, $newPassword: String!) {
+    resetPassword(forgotPasswordInput: {otp: $otp, newPassword: $newPassword})
+  }
+`;
