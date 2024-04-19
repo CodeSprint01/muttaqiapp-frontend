@@ -38,7 +38,7 @@ const SignUp = () => {
     setUserData(prev => ({...prev, [key]: val}));
   };
   const isLogin = useSelector((state: State) => state?.userReducer?.userInfo);
-  console.log(isLogin, 'in signup is logg');
+  // console.log(isLogin, 'in signup is logg');
 
   const didPressCreateAccount = async () => {
     const isMatched = userData?.password == userData?.confPassowrd;

@@ -99,7 +99,7 @@ export const Icons = {
   Paypak: 'PAYPAK',
   Camera: 'CAMERA',
   idCard: 'ID_CARD',
-  Document: 'DOCUMENTS',
+  Document: 'DOCUMENT',
   Copy: 'COPY',
   WateringPlants: 'WATERING_PLANTS',
 };

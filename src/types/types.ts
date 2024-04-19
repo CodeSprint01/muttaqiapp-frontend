@@ -125,11 +125,19 @@ export interface SettingState {
 export interface PrayerState {
   task: TodoTask[];
   prayerData: UserPrayers[];
+  sunnahPrayer: SunnahPrayer[];
 }
 
 export interface State {
   userReducer: AppState;
   settingReducer: SettingState;
+  prayerReducer: PrayerState;
+}
+export interface SunnahInterface {
+  id: number;
+  isRead: boolean;
+  name: string;
+  rakats: string;
 }
 
 export interface Types {

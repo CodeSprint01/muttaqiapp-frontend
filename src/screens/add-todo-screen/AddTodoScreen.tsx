@@ -5,11 +5,15 @@ import ScreenHeader from '../../components/molecules/app-header/ScreenHeader';
 import UserProgressCard from './UserProgressCard';
 import TodoTask from './TodoTask';
 import PrayerProgress from './PrayerProgress';
-import {useDispatch} from 'react-redux';
-import {addToDoTask} from '../../redux/prayer/action';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  deleteSunnahPrayer,
+  updateSunnahPrayer,
+} from '../../redux/prayer/action';
 import BottomSheetOverlapView from '../../components/molecules/bottom-sheet-overlap/BottomSheetOverlapView';
-import AppText from '../../components/atoms/app-text/AppText';
 import TodoTaskForm from './TodoTaskForm';
+import SunnahPrayer from './SunnahPrayer';
+import {State} from '../../types/types';
 
 const AddTodoScreen = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,8 +44,19 @@ const AddTodoScreen = () => {
     console.log(index);
   };
   const onPressAddTodo = () => {
-    // dispatch(addToDoTask())
     setIsVisible(true);
+  };
+  const sunnahData = useSelector(
+    (state: State) => state?.prayerReducer?.sunnahPrayer,
+  );
+  console.log(sunnahData, 'iss all sun h');
+  const onCheckSunnah = (id: number) => {
+    console.log(id);
+    dispatch(updateSunnahPrayer(id));
+  };
+  const onPressDelete = (id: number) => {
+    console.log(id);
+    dispatch(deleteSunnahPrayer(id));
   };
 
   return (
@@ -69,6 +84,13 @@ const AddTodoScreen = () => {
             snapPoints={snapPoint}
             children={<TodoTaskForm />}
           />
+          <View>
+            <SunnahPrayer
+              sunnahData={sunnahData}
+              onToggleSunnah={id => onCheckSunnah(id)}
+              onPressDelete={id => onPressDelete(id)}
+            />
+          </View>
         </View>
       </ScrollView>
     </AppContainer>

@@ -11,11 +11,14 @@ import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 import Config from 'react-native-config';
 
 const App = () => {
+  console.log(Config.LOCAL_URL, 'hhjhggj');
+
   LogBox.ignoreAllLogs();
   const {store, persistor} = configureStore();
   // Initialize Apollo Client
   const client = new ApolloClient({
-    uri: Config.LOCAL_URL,
+    uri: 'http://192.168.1.108:3000/graphql',
+    // uri: Config.LOCAL_URL,
     cache: new InMemoryCache(),
   });
   return (

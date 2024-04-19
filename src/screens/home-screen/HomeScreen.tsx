@@ -52,9 +52,6 @@ const HomeScreen = () => {
     graphData[index].isShowEye = !graphData[index]?.isShowEye;
     setIsShowGraph(graphData);
   };
-  const isLogin = useSelector((state: State) => state?.userReducer?.isLoged);
-  console.log(isLogin, 'in home screen');
-
   const updatePrayerData = () => {
     const currentTime = new Date();
     const updated = [...prayerData];

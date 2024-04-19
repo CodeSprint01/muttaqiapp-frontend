@@ -66,15 +66,18 @@ export const handleSendOtpEmail = async (
   email: string,
 ) => {
   try {
+    console.log(email, 'ee');
     const {data} = await forgotPasswordMutation({
       variables: {
         email: email,
-        newPassword: 'Test@123',
-        otp: '0383302',
       },
     });
+    console.log(data, 'dd');
+
     return data;
   } catch (error) {
+    console.log(error, 'ee');
+
     throw error;
   }
 };

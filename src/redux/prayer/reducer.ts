@@ -1,4 +1,4 @@
-import {PrayerState, UserPrayers} from '../../types/types';
+import {PrayerState, SunnahInterface, UserPrayers} from '../../types/types';
 import {Prayers} from '../../utils/helper/constant';
 import {generateRendomNumber} from '../../utils/helper/helpers';
 import {ActionTypes} from './types';
@@ -6,6 +6,7 @@ import {ActionTypes} from './types';
 const initialState: PrayerState = {
   prayerData: Prayers,
   task: [],
+  sunnahPrayer: [],
 };
 
 // Reducers
@@ -72,7 +73,51 @@ export default function reducer(state = initialState, action: any = {}) {
         prayerData: updated,
       };
     }
-
+    case ActionTypes.ADD_SUNNAH_PRAYER: {
+      let prayer = action?.payload?.prayer;
+      console.log(prayer, 'prayer from red');
+      const id = generateRendomNumber();
+      let data = {
+        id: id,
+        isRead: prayer?.isRead,
+        name: prayer?.name,
+        rakats: prayer?.rakats,
+      };
+      return {
+        ...state,
+        sunnahPrayer:
+          state?.sunnahPrayer?.length > 0
+            ? [...state?.sunnahPrayer, data]
+            : [data],
+      };
+    }
+    case ActionTypes.UPDATE_SUNNAH_PRAYER: {
+      let id = action?.payload?.id;
+      console.log(id, 'prayer from red');
+      const oldData = state.sunnahPrayer;
+      let updated = oldData.map((itm: SunnahInterface) => {
+        if (itm?.id == id)
+          return {
+            ...itm,
+            isRead: !itm?.isRead,
+          };
+        return itm;
+      });
+      return {
+        ...state,
+        sunnahPrayer: updated,
+      };
+    }
+    case ActionTypes.DELETE_SUNNAH_PRAYER: {
+      let id = action?.payload?.id;
+      console.log(id, 'prayer from red');
+      const oldData = state.sunnahPrayer;
+      let updated = oldData.filter(itm => itm?.id !== id);
+      return {
+        ...state,
+        sunnahPrayer: updated,
+      };
+    }
     // case ActionTypes.ADD_TO_DO_TASK: {
     //   const task = action?.payload?.task;
     //   const id = generateRendomNumber();

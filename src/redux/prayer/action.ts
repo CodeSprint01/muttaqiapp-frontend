@@ -1,4 +1,4 @@
-import {AlarmUpdate, UserPrayers} from '../../types/types';
+import {AlarmUpdate, SunnahPrayer, UserPrayers} from '../../types/types';
 import {ActionTypes} from './types';
 
 export function getPrayers(prayerData: any) {
@@ -34,6 +34,33 @@ export function addToDoTask(task: any) {
     type: ActionTypes.PRAYER_OFFERED_AND_ALARM,
     payload: {
       task,
+    },
+  };
+}
+export function addSunnahPrayer(prayer: SunnahPrayer) {
+  console.log(prayer, 'action data');
+  return {
+    type: ActionTypes.ADD_SUNNAH_PRAYER,
+    payload: {
+      prayer,
+    },
+  };
+}
+export function updateSunnahPrayer(id: number) {
+  console.log(id, 'action data');
+  return {
+    type: ActionTypes.UPDATE_SUNNAH_PRAYER,
+    payload: {
+      id,
+    },
+  };
+}
+export function deleteSunnahPrayer(id: number) {
+  console.log(id, 'action data');
+  return {
+    type: ActionTypes.DELETE_SUNNAH_PRAYER,
+    payload: {
+      id,
     },
   };
 }

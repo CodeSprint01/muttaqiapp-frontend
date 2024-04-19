@@ -4,4 +4,7 @@ export enum ActionTypes {
   PRAYER_OFFERED_AND_ALARM = 'muttaqi/prayer/PRAYER_OFFERED_AND_ALARM',
   PRAYER_ALARM_UPDATE = 'muttaqi/prayer/PRAYER_ALARM_UPDATE',
   ADD_TO_DO_TASK = 'muttaqi/prayer/ADD_TO_DO_TASK',
+  ADD_SUNNAH_PRAYER = 'muttaqi/prayer/ADD_SUNNAH_PRAYER',
+  UPDATE_SUNNAH_PRAYER = 'muttaqi/prayer/UPDATE_SUNNAH_PRAYER',
+  DELETE_SUNNAH_PRAYER = 'muttaqi/prayer/DELETE_SUNNAH_PRAYER',
 }
