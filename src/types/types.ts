@@ -328,7 +328,7 @@ export interface LoginsInfo {
 export interface NotesInfo {
   id?: number;
   title?: string;
-  details: string;
+  content: string;
 }
 export interface CardInfo {
   id?: number;

@@ -1,9 +1,16 @@
-import {MutationFunction, useMutation} from '@apollo/client';
+import {MutationFunction, useMutation, useQuery} from '@apollo/client';
 import {ResetPassData} from '../screens/authentication/NewPassword';
+import {NotesInfo} from '../types/types';
+import {generateRendomNumber} from '../utils/helper/helpers';
 
 export const schemaMutation = (schema: any) => {
   return useMutation(schema);
 };
+export const schemaQuery = (schema: any) => {
+  const {loading, error, data} = useQuery(schema);
+  return {loading, data, error};
+};
+
 export const handleSignUp = async (
   signUpMutation: MutationFunction,
   userData: any,
@@ -106,5 +113,39 @@ export const handleResetPassword = async (
     return data;
   } catch (error) {
     throw error;
+  }
+};
+export const handleCreateSeecureNotes = async (
+  createSecureNoteMutation: MutationFunction,
+  userData: NotesInfo,
+) => {
+  const id = generateRendomNumber();
+  // console.log(userData, id, 'userdata create note');
+  try {
+    const data = await createSecureNoteMutation({
+      variables: {
+        title: userData?.title,
+        content: userData?.details,
+        vualtId: id,
+      },
+    });
+    // console.log(data, 'after create note');
+    return data;
+  } catch (error) {
+    // console.log(error, 'error create note Api');
+    return error;
+  }
+};
+export const handleGetAllSeecureNotes = async (
+  getAllSecureNotesMutation: any,
+) => {
+  console.log('request');
+  try {
+    const data = await getAllSecureNotesMutation({});
+    console.log(data, 'form inside api');
+    return data;
+  } catch (error) {
+    console.log(error);
+    return error;
   }
 };

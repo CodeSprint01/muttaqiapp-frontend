@@ -1,5 +1,5 @@
 import {Alert, FlatList, StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
 import AppText from '../../../components/atoms/app-text/AppText';
@@ -16,6 +16,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {NotesInfo, State, screens} from '../../../types/types';
 import SecureNote from './SecureNote';
 import {useNavigation} from '@react-navigation/native';
+import {handleCreateSeecureNotes, schemaMutation} from '../../../services/api';
+import {
+  CREATE_SECURE_NOTE,
+  GET_ALL_SEECURE_NOTES,
+} from '../../../services/graphQL';
+import {useQuery} from '@apollo/client';
+import AppLoader from '../../../components/atoms/loader/AppLoader';
 
 const VaultSecureNotesSetting = () => {
   let dataInitialState = {
@@ -28,11 +35,16 @@ const VaultSecureNotesSetting = () => {
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const [createSecureNoteMutation] = schemaMutation(CREATE_SECURE_NOTE);
 
-  const notesData = useSelector(
-    (state: State) => state?.settingReducer?.secureNotes,
-  );
-  console.log(notesData, 'notes new h');
+  // here get all secure notes
+  const {loading, error, data} = useQuery(GET_ALL_SEECURE_NOTES);
+  console.log(data, 'tttt');
+
+  // const notesData = useSelector(
+  //   (state: State) => state?.settingReducer?.secureNotes,
+  // );
+  console.log(error, 'this is aplo err');
 
   const didCreateNotes = () => {
     setIsVisible(true);
@@ -49,7 +61,7 @@ const VaultSecureNotesSetting = () => {
       setUserData(preVal => ({...preVal, details: txt}));
     }
   };
-  const handleDeleteNote = (id: number) => {
+  const handleDeleteNote = (id: number | undefined) => {
     Alert.alert('Alert', 'Are you sure you want to delete this note', [
       {
         text: 'cancel',
@@ -64,10 +76,14 @@ const VaultSecureNotesSetting = () => {
     navigation.navigate(screens.VAULT_SECURE_NOTES_READ, {data: item});
   };
 
-  const createCredentail = () => {
+  const createCredentail = async () => {
     const isValidate = Object.values(userData).some(val => val === '');
     if (!isValidate) {
-      dispatch(actionUserSecureNotesCreate(userData));
+      // dispatch(actionUserSecureNotesCreate(userData));
+      const data = await handleCreateSeecureNotes(
+        createSecureNoteMutation,
+        userData,
+      );
       setUserData(dataInitialState);
       setIsVisible(false);
       setValidationError(false);
@@ -75,18 +91,22 @@ const VaultSecureNotesSetting = () => {
       setValidationError(true);
     }
   };
+
   // notes map
   const renderItem = ({item, index}: {item: NotesInfo; index: number}) => {
     return (
       <>
         <SecureNote
           title={item?.title}
-          details={item?.details}
+          details={item?.content}
           didDeleteNote={() => handleDeleteNote(item?.id)}
           didNotesPress={() => handleNoteOpen(item)}
         />
         <View
-          style={{marginBottom: notesData.length - 1 === index ? 200 : 0}}
+          style={{
+            marginBottom:
+              data?.findAllSecureNote?.length - 1 === index ? 200 : 0,
+          }}
         />
       </>
     );
@@ -120,7 +140,7 @@ const VaultSecureNotesSetting = () => {
                   inputValue={userData?.details}
                   maxLength={8000}
                   multiline
-                  style={{height: 200, backgroundColor: 'pink'}}
+                  style={{height: 200}}
                 />
               </View>
               {validationError && (
@@ -144,10 +164,11 @@ const VaultSecureNotesSetting = () => {
             </View>
           }
         />
+        <AppLoader isVisible={loading} />
       </View>
       <View style={styles.notesContainer}>
         <FlatList
-          data={notesData}
+          data={data?.findAllSecureNote}
           renderItem={renderItem}
           numColumns={2}
           showsVerticalScrollIndicator={false}

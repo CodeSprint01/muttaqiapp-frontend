@@ -5,7 +5,7 @@ import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
 import {COLORS, fonts} from '../../../styles/color';
 
 interface NotesProps {
-  title: string;
+  title: string | undefined;
   didNotesPress: () => void;
   didDeleteNote: () => void;
   details: string;

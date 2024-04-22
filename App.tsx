@@ -17,8 +17,8 @@ const App = () => {
   const {store, persistor} = configureStore();
   // Initialize Apollo Client
   const client = new ApolloClient({
-    uri: 'http://192.168.1.108:3000/graphql',
-    // uri: Config.LOCAL_URL,
+    // uri: 'http://192.168.1.108:3000/graphql',
+    uri: 'http://localhost:3000/graphql',
     cache: new InMemoryCache(),
   });
   return (

@@ -56,3 +56,27 @@ export const RESET_PASSWORD = gql`
     resetPassword(forgotPasswordInput: {otp: $otp, newPassword: $newPassword})
   }
 `;
+export const CREATE_SECURE_NOTE = gql`
+  mutation secureNote($title: String!, $content: String!, $vualtId: String!) {
+    createSecureNote(
+      createSecureNoteInput: {
+        title: $title
+        content: $content
+        vualtId: $vualtId
+      }
+    ) {
+      id
+      title
+      content
+    }
+  }
+`;
+export const GET_ALL_SEECURE_NOTES = gql`
+  query FindAllSecureNote {
+    findAllSecureNote {
+      id
+      title
+      content
+    }
+  }
+`;
