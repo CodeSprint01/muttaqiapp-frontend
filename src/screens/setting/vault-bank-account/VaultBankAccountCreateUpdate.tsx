@@ -1,4 +1,4 @@
-import {Alert, StyleSheet, Text, View} from 'react-native';
+import {Alert, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
@@ -10,6 +10,8 @@ import {
   actionUserBankAccountAdd,
   actionUserBankAccountUpdate,
 } from '../../../redux/setting/action';
+import {handleCreateBankAccount, schemaMutation} from '../../../services/api';
+import {CREATE_BANK_ACCOUNT} from '../../../services/graphQL';
 
 const VaultBankAccountCreateUpdate = ({route}) => {
   const cardId = route?.params?.id;
@@ -27,6 +29,7 @@ const VaultBankAccountCreateUpdate = ({route}) => {
   const [bankAccount, setBankAccount] = useState(
     cardId === undefined ? initialState : filterForUpdate,
   );
+  const [createBankAccount] = schemaMutation(CREATE_BANK_ACCOUNT);
   const dispatch = useDispatch();
 
   // validation
@@ -57,13 +60,23 @@ const VaultBankAccountCreateUpdate = ({route}) => {
     }
   };
 
-  const handleSavePress = () => {
+  const handleSavePress = async () => {
     if (!isValidate) {
       if (checkChanges()) {
         dispatch(actionUserBankAccountUpdate(bankAccount));
         Alert.alert('Alert', 'Credit card data updated sucessfully');
       } else {
-        dispatch(actionUserBankAccountAdd(bankAccount));
+        // dispatch(actionUserBankAccountAdd(bankAccount));
+        try {
+          const data = await handleCreateBankAccount(
+            createBankAccount,
+            bankAccount,
+          );
+          console.log(data, 'this is datares');
+        } catch (error) {
+          console.log(error, 'erro from main comp');
+        }
+
         Alert.alert('Alert', 'Credit card data saved sucessfully');
       }
     } else {

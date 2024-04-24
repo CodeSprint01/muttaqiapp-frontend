@@ -56,3 +56,30 @@ export const RESET_PASSWORD = gql`
     resetPassword(forgotPasswordInput: {otp: $otp, newPassword: $newPassword})
   }
 `;
+export const CREATE_BANK_ACCOUNT = gql`
+  mutation bankAccount(
+    $bankName: String!
+    $accountNumber: String!
+    $vualtId: String!
+  ) {
+    createBankAccount(
+      createBankAccountInput: {
+        bankName: $bankName
+        accountNumber: $accountNumber
+        vualtId: $vualtId
+      }
+    ) {
+      id
+      bankName
+      accountNumber
+    }
+  }
+`;
+export const CREATE_VALUT = gql`
+  mutation vault($password: String!, $userId: String!) {
+    createVualt(createVualtInput: {password: $password, userId: $userId}) {
+      id
+      password
+    }
+  }
+`;

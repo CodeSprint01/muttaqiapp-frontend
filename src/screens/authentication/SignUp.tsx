@@ -58,7 +58,7 @@ const SignUp = () => {
         userID: data?.createUser?.user?.id,
         token: data?.createUser?.token,
         name: data?.createUser?.user?.username,
-        email: data?.createUser?.user?.emailaddress,
+        email: data?.createUser?.user?.email,
       };
       console.log(response, 'resp after apis');
       setLoading(false);

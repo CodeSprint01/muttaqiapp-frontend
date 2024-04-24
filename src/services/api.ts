@@ -1,5 +1,7 @@
 import {MutationFunction, useMutation} from '@apollo/client';
 import {ResetPassData} from '../screens/authentication/NewPassword';
+import {BankAccount, NotesInfo} from '../types/types';
+import {generateRendomNumber} from '../utils/helper/helpers';
 
 export const schemaMutation = (schema: any) => {
   return useMutation(schema);
@@ -66,15 +68,18 @@ export const handleSendOtpEmail = async (
   email: string,
 ) => {
   try {
+    console.log(email, 'ee');
     const {data} = await forgotPasswordMutation({
       variables: {
         email: email,
-        newPassword: 'Test@123',
-        otp: '0383302',
       },
     });
+    console.log(data, 'dd');
+
     return data;
   } catch (error) {
+    console.log(error, 'ee');
+
     throw error;
   }
 };
@@ -99,6 +104,74 @@ export const handleResetPassword = async (
   try {
     const data = await resetPasswordMutation({
       variables: {otp: userData?.otp, newPassword: userData?.password},
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const handleCreateSeecureNotes = async (
+  createSecureNoteMutation: MutationFunction,
+  userData: NotesInfo,
+) => {
+  const id = generateRendomNumber();
+  try {
+    const data = await createSecureNoteMutation({
+      variables: {
+        title: userData?.title,
+        content: userData?.details,
+        vualtId: id,
+      },
+    });
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+// remove below code because we use it on its current screen
+// export const handleGetAllSeecureNotes = async (
+//   getAllSecureNotesMutation: MutationFunction,
+// ) => {
+//   console.log('request');
+//   try {
+//     const data = await getAllSecureNotesMutation({});
+//     console.log(data, 'form inside api');
+//     return data;
+//   } catch (error) {
+//     console.log(error);
+//     return error;
+//   }
+// };
+export const handleCreateBankAccount = async (
+  createBankAccount: MutationFunction,
+  bData: BankAccount,
+) => {
+  const id = generateRendomNumber();
+  try {
+    const data = await createBankAccount({
+      variables: {
+        bankName: bData?.name,
+        accountNumber: bData?.number,
+        vualtId: id,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const handleCreateVault = async (
+  createUserVault: MutationFunction,
+  password: any,
+  userid: string,
+) => {
+  console.log(password, userid, 'usman nn');
+  try {
+    const data = await createUserVault({
+      variables: {
+        password: password,
+        userId: userid,
+      },
     });
     return data;
   } catch (error) {

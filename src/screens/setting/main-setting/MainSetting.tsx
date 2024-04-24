@@ -1,5 +1,13 @@
-import {View, StyleSheet, ScrollView, FlatList, Platform} from 'react-native';
-import React from 'react';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  FlatList,
+  Platform,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
+import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {COLORS, fonts} from '../../../styles/color';
@@ -7,16 +15,69 @@ import UserInfoCard from './UserInfoCard';
 import SettingList from '../../../components/molecules/setting/SettingList';
 import {settingArray} from '../../../utils/mocks/setting-array/SettingArray';
 import {settingEnum, settingScreen} from '../../../types/keyVlaue';
-import {screens} from '../../../types/types';
-import {useDispatch} from 'react-redux';
+import {State, screens} from '../../../types/types';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   actionGetUserInfoSucess,
   actionUserLogedIn,
 } from '../../../redux/user/action';
+import AppModal from '../../../components/atoms/app-modal/AppModal';
+import AppInput from '../../../components/molecules/app-input/AppInput';
+import AppButton from '../../../components/molecules/app-button/AppButton';
+import {handleCreateVault, schemaMutation} from '../../../services/api';
+import {CREATE_VALUT} from '../../../services/graphQL';
 
 const MainSetting = () => {
+  const initialState = {
+    password: '',
+    confPassword: '',
+  };
+  const [vaultPassword, setVaultPassword] = useState(initialState);
+  const [userPassword, setUserPassword] = useState('');
+  const [isVisible, setIsvisible] = useState(false);
+  const [isAlreadyAcc, setIsAlreadyAcc] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const isValueCreated = false;
+  const userdata = useSelector((state: State) => state?.userReducer?.userInfo);
+  console.log(userdata, 'this is ');
+
+  const onChnageVault = (key: string, val: string) => {
+    setVaultPassword(preVal => ({...preVal, [key]: val}));
+  };
+  const validator = Object.values(vaultPassword).some(val => val == '');
+  console.log(validator, 'vv');
+  const [createUserVault] = schemaMutation(CREATE_VALUT);
+
+  const onPressSave = async () => {
+    // setIsvisible(false)
+    if (vaultPassword?.password === vaultPassword?.confPassword) {
+      if (validator) {
+        Alert.alert('Alert', 'Please fill all the fields');
+      } else {
+        try {
+          console.log('call api');
+          const data = await handleCreateVault(
+            createUserVault,
+            vaultPassword?.password,
+            userdata?.userID,
+          );
+          setIsvisible(false);
+          Alert.alert('Alert', 'vault created sucessfully');
+        } catch (error) {
+          console.log(error);
+          setIsvisible(false);
+          Alert.alert('Alert', 'Something went wrong please try again');
+        }
+      }
+    } else {
+      Alert.alert('Alert', 'Password and confirm password not matched');
+    }
+  };
+  const onPressCancel = () => {
+    setVaultPassword(initialState);
+    setIsvisible(false);
+  };
 
   const handleListClick = (type: settingEnum) => {
     switch (type) {
@@ -36,7 +97,11 @@ const MainSetting = () => {
         navigation.navigate(screens.PASSWORD_SECURITY_STACK);
         break;
       case settingEnum.VAULT:
-        navigation.navigate(screens.VAULT_STACK);
+        if (isValueCreated) {
+          navigation.navigate(screens.VAULT_STACK);
+        } else {
+          setIsvisible(true);
+        }
         break;
       case settingEnum.PERSONAL_FINANCIAL_INFO:
         console.log('switch 6');
@@ -103,6 +168,91 @@ const MainSetting = () => {
           keyExtractor={(_item, index) => index.toString()}
         />
       </View>
+      <View>
+        <AppModal
+          isVisible={isVisible}
+          toggleModal={() => setIsvisible(!isVisible)}
+          children={
+            <>
+              {isAlreadyAcc == true ? (
+                <View>
+                  <AppText
+                    text={'Add vault password'}
+                    style={styles.valutTxt}
+                  />
+                  <View style={styles.modalContainer}>
+                    <AppInput
+                      placeholder="Enter password"
+                      inputLabel="Password"
+                      inputValue={vaultPassword?.password}
+                      handleInputChange={val => onChnageVault('password', val)}
+                    />
+                    <AppInput
+                      placeholder="Enter confirm password"
+                      inputLabel="Confirm password"
+                      inputValue={vaultPassword?.confPassword}
+                      handleInputChange={val =>
+                        onChnageVault('confPassword', val)
+                      }
+                    />
+                    <TouchableOpacity
+                      onPress={() => setIsAlreadyAcc(false)}
+                      style={styles.alredyAccount}>
+                      <AppText
+                        text={'Already have an account?'}
+                        style={styles.alredytxt}
+                      />
+                    </TouchableOpacity>
+                    <View style={styles.btnContainer}>
+                      <View style={styles.button}>
+                        <AppButton
+                          buttonText="Login in"
+                          onPress={onPressSave}
+                        />
+                      </View>
+                      <View style={styles.button}>
+                        <AppButton
+                          buttonText="Cancel"
+                          onPress={onPressCancel}
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              ) : (
+                <View>
+                  <AppText
+                    text={'Add vault password'}
+                    style={styles.valutTxt}
+                  />
+                  <View style={styles.modalContainer}>
+                    <AppInput
+                      placeholder="Enter password"
+                      inputLabel="Password"
+                      inputValue={userPassword}
+                      handleInputChange={val => setUserPassword(val)}
+                    />
+                    <View style={styles.btnContainer}>
+                      <View style={styles.button}>
+                        <AppButton
+                          buttonText="Login in"
+                          onPress={onPressSave}
+                        />
+                      </View>
+                      <View style={styles.button}>
+                        <AppButton
+                          buttonText="sign up"
+                          onPress={() => setIsAlreadyAcc(true)}
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              )}
+            </>
+          }
+        />
+      </View>
     </ScrollView>
   );
 };
@@ -136,5 +286,33 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 10,
     paddingBottom: 120,
+  },
+  modalContainer: {
+    paddingHorizontal: 20,
+    marginTop: 30,
+  },
+  valutTxt: {
+    textAlign: 'center',
+    paddingTop: 10,
+    fontSize: 20,
+    fontFamily: fonts.dmSans[500],
+    color: COLORS.green,
+  },
+  btnContainer: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  alredyAccount: {
+    marginTop: 10,
+  },
+  alredytxt: {
+    fontSize: 16,
+    color: COLORS.dark_gray,
+    fontFamily: fonts.dmSans[400],
+  },
+  button: {
+    width: '47%',
+    marginTop: 30,
+    marginBottom: 10,
   },
 });
