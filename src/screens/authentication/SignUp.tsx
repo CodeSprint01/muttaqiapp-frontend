@@ -54,6 +54,8 @@ const SignUp = () => {
     try {
       setLoading(true);
       const data = await handleSignUp(signUpMutation, userData);
+      console.log(data, 'data of sign up');
+
       let response = {
         userID: data?.createUser?.user?.id,
         token: data?.createUser?.token,

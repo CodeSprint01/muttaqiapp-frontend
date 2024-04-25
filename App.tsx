@@ -13,9 +13,8 @@ import Config from 'react-native-config';
 const App = () => {
   LogBox.ignoreAllLogs();
   const {store, persistor} = configureStore();
-  // Initialize Apollo Client
   const client = new ApolloClient({
-    uri: Config.LOCAL_URL,
+    uri: 'http://localhost:3000/graphql',
     cache: new InMemoryCache(),
   });
   return (

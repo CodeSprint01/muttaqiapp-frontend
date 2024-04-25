@@ -1,6 +1,6 @@
 import {MutationFunction, useMutation} from '@apollo/client';
 import {ResetPassData} from '../screens/authentication/NewPassword';
-import {BankAccount, NotesInfo} from '../types/types';
+import {BankAccount, CardInfo, NotesInfo} from '../types/types';
 import {generateRendomNumber} from '../utils/helper/helpers';
 
 export const schemaMutation = (schema: any) => {
@@ -10,11 +10,13 @@ export const handleSignUp = async (
   signUpMutation: MutationFunction,
   userData: any,
 ) => {
+  console.log(userData);
+
   try {
     const {data} = await signUpMutation({
       variables: {
         username: userData?.name,
-        emailaddress: userData?.email,
+        email: userData?.email,
         password: userData?.password,
       },
     });
@@ -171,6 +173,29 @@ export const handleCreateVault = async (
       variables: {
         password: password,
         userId: userid,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const handleCreateCreditCard = async (
+  creditCard: MutationFunction,
+  userData: CardInfo,
+  // vaultId: string,
+) => {
+  console.log(userData, 'user data');
+
+  try {
+    const data = await creditCard({
+      variables: {
+        cardNumber: userData?.number,
+        nameOnCard: userData?.name,
+        expiryDate: userData?.expiry,
+        cvc: userData?.cvv,
+        vualtId: 'b6b84458-c08a-47c8-b694-08a4b4d70400',
+        // vualtId: vaultId,
       },
     });
     return data;

@@ -13,6 +13,7 @@ const initialState: SettingState = {
   bankAccount: [],
   socialNumbers: [],
   licenses: [],
+  vault: [],
 };
 
 // Reducers

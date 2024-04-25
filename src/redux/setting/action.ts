@@ -235,3 +235,12 @@ export const actionUserDriverLicenseDelete = (id: number) => {
     },
   };
 };
+export const actionUserVaultId = (id: string) => {
+  console.log(id, 'this is user doc id info aaction');
+  return {
+    type: ActionTypes.USER_VAULT_ID,
+    payload: {
+      id,
+    },
+  };
+};

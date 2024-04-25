@@ -51,6 +51,7 @@ const MainSetting = () => {
 
   const onPressSave = async () => {
     // setIsvisible(false)
+
     if (vaultPassword?.password === vaultPassword?.confPassword) {
       if (validator) {
         Alert.alert('Alert', 'Please fill all the fields');
@@ -64,6 +65,7 @@ const MainSetting = () => {
           );
           setIsvisible(false);
           Alert.alert('Alert', 'vault created sucessfully');
+          navigation.navigate(screens.VAULT_STACK);
         } catch (error) {
           console.log(error);
           setIsvisible(false);
@@ -97,11 +99,13 @@ const MainSetting = () => {
         navigation.navigate(screens.PASSWORD_SECURITY_STACK);
         break;
       case settingEnum.VAULT:
-        if (isValueCreated) {
-          navigation.navigate(screens.VAULT_STACK);
-        } else {
-          setIsvisible(true);
-        }
+        navigation.navigate(screens.VAULT_STACK);
+
+        // if (isValueCreated) {
+        //   navigation.navigate(screens.VAULT_STACK);
+        // } else {
+        //   setIsvisible(true);
+        // }
         break;
       case settingEnum.PERSONAL_FINANCIAL_INFO:
         console.log('switch 6');

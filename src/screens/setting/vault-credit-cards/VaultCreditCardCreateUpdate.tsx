@@ -13,6 +13,8 @@ import AppInputDropDown from '../../../components/molecules/app-input-drop-down/
 import {CardArray} from '../../../utils/mocks/AllMockArray';
 import {State} from '../../../types/types';
 import Toast from 'react-native-toast-message';
+import {handleCreateCreditCard, schemaMutation} from '../../../services/api';
+import {CREATE_CREDIT_CARD} from '../../../services/graphQL';
 
 const VaultCreditCardCreateUpdate = ({route}) => {
   const cardId = route?.params?.id;
@@ -26,7 +28,7 @@ const VaultCreditCardCreateUpdate = ({route}) => {
   const reduxData = useSelector(
     (state: State) => state?.settingReducer?.creditCard,
   );
-
+  const [creditCard] = schemaMutation(CREATE_CREDIT_CARD);
   const updatingObject =
     reduxData == undefined ? [] : reduxData.filter(item => item?.id == cardId);
   const filterForUpdate = updatingObject[0];
@@ -67,14 +69,21 @@ const VaultCreditCardCreateUpdate = ({route}) => {
     }
   };
 
-  const handleSavePress = () => {
+  const handleSavePress = async () => {
     if (!isValidate) {
       if (checkChanges()) {
         dispatch(actionUserCreditCardUpdate(cardData));
         Alert.alert('Alert', 'Credit card data updated sucessfully');
       } else {
-        dispatch(actionUserCreditCardCreate(cardData));
-        Alert.alert('Alert', 'Credit card data saved sucessfully');
+        try {
+          const data = await handleCreateCreditCard(creditCard, cardData);
+          console.log(data, 'user credit card data ');
+          Alert.alert('Alert', 'Credit card data saved sucessfully');
+        } catch (error) {
+          console.log(error, 'credit card error');
+        }
+
+        // dispatch(actionUserCreditCardCreate(cardData));
       }
     } else {
       Alert.alert('Alert', 'Please fill all fields');

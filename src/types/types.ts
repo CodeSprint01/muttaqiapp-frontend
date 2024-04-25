@@ -121,6 +121,7 @@ export interface SettingState {
   bankAccount: BankAccount[];
   socialNumbers: SocialNumbers[];
   licenses: DriverLicense[];
+  vault: Vault[];
 }
 export interface PrayerState {
   task: TodoTask[];
@@ -363,6 +364,10 @@ export interface DriverLicense {
   id?: number;
   name: string;
   number: string;
+}
+export interface Vault {
+  vaultId: string;
+  userId: string;
 }
 export interface TodoTask {
   id?: number;

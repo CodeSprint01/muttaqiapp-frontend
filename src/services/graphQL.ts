@@ -1,18 +1,8 @@
 import {gql} from '@apollo/client';
-// user authtication CARD operation
-// user signUp schema
 export const SIGN_UP = gql`
-  mutation SignUp(
-    $username: String!
-    $emailaddress: String!
-    $password: String!
-  ) {
+  mutation SignUp($username: String!, $email: String!, $password: String!) {
     createUser(
-      createUserInput: {
-        username: $username
-        email: $emailaddress
-        password: $password
-      }
+      createUserInput: {username: $username, email: $email, password: $password}
     ) {
       user {
         id
@@ -80,6 +70,27 @@ export const CREATE_VALUT = gql`
     createVualt(createVualtInput: {password: $password, userId: $userId}) {
       id
       password
+    }
+  }
+`;
+export const CREATE_CREDIT_CARD = gql`
+  mutation creditCard(
+    $cardNumber: String!
+    $nameOnCard: String!
+    $expiryDate: String!
+    $cvc: String!
+    $vualtId: String!
+  ) {
+    createCreditCard(
+      createCreditCardInput: {
+        cardNumber: $cardNumber
+        nameOnCard: $nameOnCard
+        expiryDate: $expiryDate
+        cvc: $cvc
+        vualtId: $vualtId
+      }
+    ) {
+      id
     }
   }
 `;
