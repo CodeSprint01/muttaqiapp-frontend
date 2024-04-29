@@ -27,7 +27,6 @@ import SurahContainer from '../../../components/molecules/quran-cards/SurahConta
 const SurahDetailsScreen = ({route}) => {
   const surahData = route?.params?.data;
 
-  console.log(surahData, 'this is surahData');
   const [ayatDetails, setAyatDetails] = useState<Ayah[]>([]);
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
   const [hideTranslation, setHideTranslation] = useState<boolean>(false);

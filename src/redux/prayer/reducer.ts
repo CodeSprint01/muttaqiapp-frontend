@@ -53,7 +53,6 @@ export default function reducer(state = initialState, action: any = {}) {
     }
     case ActionTypes.PRAYER_ALARM_UPDATE: {
       const alarm = action?.payload?.alarmData;
-      console.log(alarm, 'alarm in reducer');
 
       const alarmData = state?.prayerData;
       const updated = alarmData.map((itm: any) => {

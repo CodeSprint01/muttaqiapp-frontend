@@ -30,6 +30,8 @@ import {FastingArray} from '../../utils/mocks/tracker/FastingArray';
 import ShowmoreButton from '../../components/molecules/app-header/ShowmoreButton';
 import TodoTask from '../add-todo-screen/TodoTask';
 import {useNavigation} from '@react-navigation/native';
+import {FIND_BANK_ACCOUNT} from '../../services/graphQL';
+import {useQuery} from '@apollo/client';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -52,8 +54,6 @@ const HomeScreen = () => {
     graphData[index].isShowEye = !graphData[index]?.isShowEye;
     setIsShowGraph(graphData);
   };
-  const isLogin = useSelector((state: State) => state?.userReducer?.isLoged);
-  console.log(isLogin, 'in home screen');
 
   const updatePrayerData = () => {
     const currentTime = new Date();
@@ -127,9 +127,6 @@ const HomeScreen = () => {
     dispatch(offeredPrayerAndAlarm(item));
   };
   const handleAlarmPress = (item: UserPrayers) => {
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
     const data = {
       id: item?.id,
       // notification: item?.notification,
@@ -159,7 +156,6 @@ const HomeScreen = () => {
       },
     });
   }
-  console.log(useSelector((staete: State) => staete?.userReducer?.userInfo));
 
   return (
     <View style={styles.container}>

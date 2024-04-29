@@ -352,8 +352,8 @@ export interface DocumentInfo {
 }
 export interface BankAccount {
   id?: number;
-  name: string;
-  number: string;
+  bankName: string;
+  accountNumber: string;
 }
 export interface SocialNumbers {
   id?: number;

@@ -40,13 +40,11 @@ const MainSetting = () => {
   const dispatch = useDispatch();
   const isValueCreated = false;
   const userdata = useSelector((state: State) => state?.userReducer?.userInfo);
-  console.log(userdata, 'this is ');
 
   const onChnageVault = (key: string, val: string) => {
     setVaultPassword(preVal => ({...preVal, [key]: val}));
   };
   const validator = Object.values(vaultPassword).some(val => val == '');
-  console.log(validator, 'vv');
   const [createUserVault] = schemaMutation(CREATE_VALUT);
 
   const onPressSave = async () => {

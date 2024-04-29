@@ -65,6 +65,58 @@ export const CREATE_BANK_ACCOUNT = gql`
     }
   }
 `;
+export const GET_BANK_ACCOUNTS_DETAILS = gql`
+  query FindAllBankAccount {
+    findAllBankAccount {
+      id
+      bankName
+      accountNumber
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const FIND_BANK_ACCOUNT = gql`
+  query OneBankAccount($id: String!) {
+    findOneBankAccount(id: $id) {
+      bankName
+      accountNumber
+      createdAt
+      updatedAt
+      id
+    }
+  }
+`;
+export const UPDATE_BANK_ACCOUNT = gql`
+  mutation bankAccount(
+    $bankName: String
+    $accountNumber: String
+    $vualtId: String!
+    $id: String!
+  ) {
+    updateBankAccount(
+      updateBankAccountInput: {
+        bankName: $bankName
+        accountNumber: $accountNumber
+        vualtId: $vualtId
+        id: $id
+      }
+    ) {
+      id
+      bankName
+    }
+  }
+`;
+export const DELETE_BANK_ACCOUNT = gql`
+  mutation deleteBank($id: String!) {
+    RemoveBankAccount(removeBankAccount: {id: $id}) {
+      id
+      bankName
+      accountNumber
+      createdAt
+    }
+  }
+`;
 export const CREATE_VALUT = gql`
   mutation vault($password: String!, $userId: String!) {
     createVualt(createVualtInput: {password: $password, userId: $userId}) {

@@ -37,8 +37,6 @@ const SignUp = () => {
   const handleInputChange = (val: string, key: string) => {
     setUserData(prev => ({...prev, [key]: val}));
   };
-  const isLogin = useSelector((state: State) => state?.userReducer?.userInfo);
-  console.log(isLogin, 'in signup is logg');
 
   const didPressCreateAccount = async () => {
     const isMatched = userData?.password == userData?.confPassowrd;
@@ -54,7 +52,6 @@ const SignUp = () => {
     try {
       setLoading(true);
       const data = await handleSignUp(signUpMutation, userData);
-      console.log(data, 'data of sign up');
 
       let response = {
         userID: data?.createUser?.user?.id,
@@ -62,7 +59,6 @@ const SignUp = () => {
         name: data?.createUser?.user?.username,
         email: data?.createUser?.user?.email,
       };
-      console.log(response, 'resp after apis');
       setLoading(false);
       dispatch(actionGetUserInfoSucess(response));
       navigation.navigate(screens.WELCOME_USER);

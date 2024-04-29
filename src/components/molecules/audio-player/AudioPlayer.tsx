@@ -44,7 +44,6 @@ const AudioPlayer: FC<PlayerProops> = ({
     };
   }
   var totalDuration = secondsToHMS(progressDuration);
-  console.log(totalDuration.hours, 'total du');
 
   useEffect(() => {
     const timeObject = secondsToHMS(progressPosition);
@@ -54,9 +53,7 @@ const AudioPlayer: FC<PlayerProops> = ({
       minutes: timeObject?.minutes,
       seconds: timeObject?.seconds,
     }));
-    console.log(timeObject, 'jj');
   }, [progressPosition]);
-  console.log(currentTime, 'jj');
 
   return (
     <LinearGradient colors={['#1290A1', '#1DA28F']} style={styles.container}>

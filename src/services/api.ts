@@ -144,24 +144,6 @@ export const handleCreateSeecureNotes = async (
 //     return error;
 //   }
 // };
-export const handleCreateBankAccount = async (
-  createBankAccount: MutationFunction,
-  bData: BankAccount,
-) => {
-  const id = generateRendomNumber();
-  try {
-    const data = await createBankAccount({
-      variables: {
-        bankName: bData?.name,
-        accountNumber: bData?.number,
-        vualtId: id,
-      },
-    });
-    return data;
-  } catch (error) {
-    throw error;
-  }
-};
 export const handleCreateVault = async (
   createUserVault: MutationFunction,
   password: any,
@@ -196,6 +178,63 @@ export const handleCreateCreditCard = async (
         cvc: userData?.cvv,
         vualtId: 'b6b84458-c08a-47c8-b694-08a4b4d70400',
         // vualtId: vaultId,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const handleCreateBankAccount = async (
+  createBankAccount: MutationFunction,
+  // bData: BankAccount,
+  bData: any,
+) => {
+  console.log(bData, 'from api cretae');
+  try {
+    const data = await createBankAccount({
+      variables: {
+        bankName: bData?.name,
+        accountNumber: bData?.number,
+        vualtId: 'e5dd217d-9336-4ca6-afb2-4f1eca5cfac3',
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const handleUpdateBankAccount = async (
+  updateBankAccount: MutationFunction,
+  bankAccount: any,
+  vualtId: string,
+  accountId: string,
+) => {
+  console.log(bankAccount, vualtId, accountId, 'from api ');
+  try {
+    const data = await updateBankAccount({
+      variables: {
+        bankName: bankAccount?.name,
+        accountNumber: bankAccount?.number,
+        vualtId: vualtId,
+        id: accountId,
+      },
+    });
+    console.log(data, 'updated data ');
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const handleDeleteBankAccount = async (
+  deleteBank: MutationFunction,
+  id: string,
+) => {
+  console.log(id, 'for delete');
+  try {
+    const data = await deleteBank({
+      variables: {
+        id: id,
       },
     });
     return data;

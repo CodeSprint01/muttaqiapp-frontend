@@ -34,7 +34,6 @@ const WelcomeUser = () => {
   //   };
   // }, []);
   const handleHome = () => {
-    console.log('click');
     dispatch(actionUserLogedIn(true));
   };
 

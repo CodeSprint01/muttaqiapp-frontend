@@ -1,60 +1,73 @@
 import {Alert, StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
 import AppInput from '../../../components/molecules/app-input/AppInput';
 import AppButton from '../../../components/molecules/app-button/AppButton';
-import {useDispatch, useSelector} from 'react-redux';
-import {State} from '../../../types/types';
 import {
-  actionUserBankAccountAdd,
-  actionUserBankAccountUpdate,
-} from '../../../redux/setting/action';
-import {handleCreateBankAccount, schemaMutation} from '../../../services/api';
-import {CREATE_BANK_ACCOUNT} from '../../../services/graphQL';
+  handleCreateBankAccount,
+  handleUpdateBankAccount,
+  schemaMutation,
+} from '../../../services/api';
+import {
+  CREATE_BANK_ACCOUNT,
+  FIND_BANK_ACCOUNT,
+  UPDATE_BANK_ACCOUNT,
+} from '../../../services/graphQL';
+import {useQuery} from '@apollo/client';
 
 const VaultBankAccountCreateUpdate = ({route}) => {
   const cardId = route?.params?.id;
+  const {data, error, loading} = useQuery(FIND_BANK_ACCOUNT, {
+    variables: {id: cardId},
+  });
 
   const initialState = {
     name: '',
     number: '',
   };
-  const reduxData = useSelector(
-    (state: State) => state?.settingReducer?.bankAccount,
-  );
-  const updatingObject =
-    reduxData == undefined ? [] : reduxData.filter(item => item?.id == cardId);
-  const filterForUpdate = updatingObject[0];
-  const [bankAccount, setBankAccount] = useState(
-    cardId === undefined ? initialState : filterForUpdate,
-  );
-  const [createBankAccount] = schemaMutation(CREATE_BANK_ACCOUNT);
-  const dispatch = useDispatch();
+  const forUpdate = {
+    name: data?.findOneBankAccount?.bankName,
+    number: data?.findOneBankAccount?.accountNumber,
+  };
 
-  // validation
+  console.log(forUpdate, 'data from initial state');
+
+  console.log(data, error, 'apollo query datas');
+  const [bankAccount, setBankAccount] = useState(initialState);
+  const [createBankAccount] = schemaMutation(CREATE_BANK_ACCOUNT);
+  const [updateBankAccount] = schemaMutation(UPDATE_BANK_ACCOUNT);
+
   const isValidate = Object.values(bankAccount)?.some(itm => itm == '');
-  // handel inputs values
+
   function onChangeText(key: string, txt: string): void {
     setBankAccount(preVal => ({...preVal, [key]: txt}));
   }
+  useEffect(() => {
+    if (cardId !== undefined) {
+      setBankAccount(forUpdate);
+    }
+  }, [data]);
+
   const checkChanges = () => {
     // return true;
-    if (!filterForUpdate) {
+    if (cardId !== undefined) {
       return false;
     }
     const keys = Object.keys(bankAccount);
     for (let key of keys) {
-      if (bankAccount[key] !== filterForUpdate[key]) {
+      if (bankAccount[key] !== forUpdate[key]) {
         return true;
       }
     }
     return false;
   };
+  console.log(checkChanges(), 'check for updates');
+
   // bottom buttton
   const handleCancelPress = () => {
     if (cardId) {
-      setBankAccount(filterForUpdate);
+      setBankAccount(forUpdate);
     } else {
       setBankAccount(initialState);
     }
@@ -63,28 +76,32 @@ const VaultBankAccountCreateUpdate = ({route}) => {
   const handleSavePress = async () => {
     if (!isValidate) {
       if (checkChanges()) {
-        dispatch(actionUserBankAccountUpdate(bankAccount));
-        Alert.alert('Alert', 'Credit card data updated sucessfully');
-      } else {
-        // dispatch(actionUserBankAccountAdd(bankAccount));
         try {
-          const data = await handleCreateBankAccount(
-            createBankAccount,
-            bankAccount,
-          );
-          console.log(data, 'this is datares');
+          await handleCreateBankAccount(createBankAccount, bankAccount);
+          Alert.alert('Alert', 'Credit card data saved sucessfully');
+          setBankAccount(initialState);
         } catch (error) {
           console.log(error, 'erro from main comp');
         }
-
-        Alert.alert('Alert', 'Credit card data saved sucessfully');
+      } else {
+        try {
+          await handleUpdateBankAccount(
+            updateBankAccount,
+            bankAccount,
+            'e5dd217d-9336-4ca6-afb2-4f1eca5cfac3',
+            cardId,
+          );
+          Alert.alert('Alert', 'Credit card data update sucessfully');
+          setBankAccount(initialState);
+        } catch (error) {
+          console.log(error);
+          console.log(error, 'erro from main comp');
+        }
       }
     } else {
       Alert.alert('Alert', 'Please fill all fields');
     }
   };
-
-  console.log(bankAccount);
 
   return (
     <AppContainer>
@@ -116,7 +133,7 @@ const VaultBankAccountCreateUpdate = ({route}) => {
           </View>
           <View style={styles.halfwidth}>
             <AppButton
-              buttonText={checkChanges() ? 'Update' : 'Save'}
+              buttonText={checkChanges() ? 'Save' : 'Update'}
               onPress={handleSavePress}
             />
           </View>
