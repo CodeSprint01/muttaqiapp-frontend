@@ -146,3 +146,11 @@ export const CREATE_CREDIT_CARD = gql`
     }
   }
 `;
+export const FIND_USER_VAULT = gql`
+  query VerifyUserVault($userId: String!) {
+    verifyUserVault(userId: $userId) {
+      message
+      success
+    }
+  }
+`;

@@ -29,6 +29,7 @@ export const actionLoginUserInfoSucess = (userInfo: UserInfo) => {
 };
 
 export const actionUserLogedIn = (islog: any) => {
+  console.log(islog, 'islog');
   return {
     type: ActionTypes.USER_LOGED_IN,
     payload: {
@@ -39,7 +40,7 @@ export const actionUserLogedIn = (islog: any) => {
 
 export const actionSendEmailForOtp = (email: string) => {
   return {
-    type: ActionTypes.USER_LOGED_IN,
+    type: ActionTypes.SEND_EMAIL_OTP,
     payload: {
       email,
     },

@@ -14,7 +14,7 @@ const App = () => {
   LogBox.ignoreAllLogs();
   const {store, persistor} = configureStore();
   const client = new ApolloClient({
-    uri: 'http://localhost:3000/graphql',
+    uri: 'http://192.168.1.108:3000/graphql',
     cache: new InMemoryCache(),
   });
   return (

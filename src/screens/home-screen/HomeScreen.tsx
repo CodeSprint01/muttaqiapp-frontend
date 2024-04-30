@@ -30,8 +30,6 @@ import {FastingArray} from '../../utils/mocks/tracker/FastingArray';
 import ShowmoreButton from '../../components/molecules/app-header/ShowmoreButton';
 import TodoTask from '../add-todo-screen/TodoTask';
 import {useNavigation} from '@react-navigation/native';
-import {FIND_BANK_ACCOUNT} from '../../services/graphQL';
-import {useQuery} from '@apollo/client';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();

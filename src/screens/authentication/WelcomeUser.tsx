@@ -15,24 +15,24 @@ const WelcomeUser = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  // const gotoHome = () => {
-  //   navigation.dispatch(
-  //     CommonActions.reset({
-  //       index: 0,
-  //       routes: [{name: screens.APP_STACK}],
-  //     }),
-  //   );
-  //   return true;
-  // };
-  // useEffect(() => {
-  //   const backHandler = BackHandler.addEventListener(
-  //     'hardwareBackPress',
-  //     gotoHome,
-  //   );
-  //   return () => {
-  //     backHandler.remove();
-  //   };
-  // }, []);
+  const gotoHome = () => {
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{name: screens.APP_STACK}],
+      }),
+    );
+    return true;
+  };
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      gotoHome,
+    );
+    return () => {
+      backHandler.remove();
+    };
+  }, []);
   const handleHome = () => {
     dispatch(actionUserLogedIn(true));
   };

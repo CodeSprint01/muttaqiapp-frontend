@@ -12,7 +12,7 @@ const MainStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {!isLogin ? (
+        {isLogin ? (
           <Stack.Screen
             name={screens.APP_STACK}
             component={AppStack}

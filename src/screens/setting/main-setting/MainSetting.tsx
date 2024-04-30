@@ -25,7 +25,8 @@ import AppModal from '../../../components/atoms/app-modal/AppModal';
 import AppInput from '../../../components/molecules/app-input/AppInput';
 import AppButton from '../../../components/molecules/app-button/AppButton';
 import {handleCreateVault, schemaMutation} from '../../../services/api';
-import {CREATE_VALUT} from '../../../services/graphQL';
+import {CREATE_VALUT, FIND_USER_VAULT} from '../../../services/graphQL';
+import {useQuery} from '@apollo/client';
 
 const MainSetting = () => {
   const initialState = {
@@ -40,6 +41,15 @@ const MainSetting = () => {
   const dispatch = useDispatch();
   const isValueCreated = false;
   const userdata = useSelector((state: State) => state?.userReducer?.userInfo);
+  // console.log(userdata, 'uu d');
+
+  const {data, error, loading} = useQuery(FIND_USER_VAULT, {
+    variables: {
+      userId: userdata?.userID ?? '7c4d9229-e495-43c5-ab87-d390174628ec',
+    },
+  });
+
+  console.log(data, error, 'data and error both..');
 
   const onChnageVault = (key: string, val: string) => {
     setVaultPassword(preVal => ({...preVal, [key]: val}));
@@ -79,6 +89,10 @@ const MainSetting = () => {
     setIsvisible(false);
   };
 
+  function manageVault() {
+    // call api to check user exist or not
+  }
+
   const handleListClick = (type: settingEnum) => {
     switch (type) {
       case settingEnum.BOOKMARKS:
@@ -97,8 +111,8 @@ const MainSetting = () => {
         navigation.navigate(screens.PASSWORD_SECURITY_STACK);
         break;
       case settingEnum.VAULT:
-        navigation.navigate(screens.VAULT_STACK);
-
+        // navigation.navigate(screens.VAULT_STACK);
+        manageVault();
         // if (isValueCreated) {
         //   navigation.navigate(screens.VAULT_STACK);
         // } else {
