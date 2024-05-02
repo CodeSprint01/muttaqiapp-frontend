@@ -3,17 +3,21 @@ import React, {useEffect} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS, fonts} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
-import {screens} from '../../types/types';
+import {State, screens} from '../../types/types';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
 import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
 import {CommonActions} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {actionUserLogedIn} from '../../redux/user/action';
 
 const WelcomeUser = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  console.log(
+    'in welcome screen',
+    useSelector((state: State) => state?.userReducer?.userInfo?.isLogin),
+  );
 
   const gotoHome = () => {
     navigation.dispatch(

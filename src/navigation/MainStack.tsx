@@ -8,7 +8,10 @@ import {useSelector} from 'react-redux';
 
 const MainStack = () => {
   const Stack = createStackNavigator();
-  const isLogin = useSelector((state: State) => state?.userReducer?.isLoged);
+  const data = useSelector((state: State) => state?.userReducer?.userInfo);
+  const isLogin = data?.isLogin;
+  console.log('final user log....', isLogin);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>

@@ -119,9 +119,8 @@ export const DELETE_BANK_ACCOUNT = gql`
 `;
 export const CREATE_VALUT = gql`
   mutation vault($password: String!, $userId: String!) {
-    createVualt(createVualtInput: {password: $password, userId: $userId}) {
+    createVault(createVaultInput: {password: $password, userId: $userId}) {
       id
-      password
     }
   }
 `;

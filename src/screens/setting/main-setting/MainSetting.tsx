@@ -19,29 +19,27 @@ import {State, screens} from '../../../types/types';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   actionGetUserInfoSucess,
+  actionResetStore,
   actionUserLogedIn,
 } from '../../../redux/user/action';
 import AppModal from '../../../components/atoms/app-modal/AppModal';
 import AppInput from '../../../components/molecules/app-input/AppInput';
 import AppButton from '../../../components/molecules/app-button/AppButton';
-import {handleCreateVault, schemaMutation} from '../../../services/api';
+import {schemaMutation} from '../../../services/api';
 import {CREATE_VALUT, FIND_USER_VAULT} from '../../../services/graphQL';
 import {useQuery} from '@apollo/client';
+import AppLoader from '../../../components/atoms/loader/AppLoader';
 
 const MainSetting = () => {
   const initialState = {
     password: '',
     confPassword: '',
   };
-  const [vaultPassword, setVaultPassword] = useState(initialState);
   const [userPassword, setUserPassword] = useState('');
   const [isVisible, setIsvisible] = useState(false);
-  const [isAlreadyAcc, setIsAlreadyAcc] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const isValueCreated = false;
   const userdata = useSelector((state: State) => state?.userReducer?.userInfo);
-  // console.log(userdata, 'uu d');
 
   const {data, error, loading} = useQuery(FIND_USER_VAULT, {
     variables: {
@@ -51,46 +49,22 @@ const MainSetting = () => {
 
   console.log(data, error, 'data and error both..');
 
-  const onChnageVault = (key: string, val: string) => {
-    setVaultPassword(preVal => ({...preVal, [key]: val}));
-  };
-  const validator = Object.values(vaultPassword).some(val => val == '');
-  const [createUserVault] = schemaMutation(CREATE_VALUT);
-
-  const onPressSave = async () => {
-    // setIsvisible(false)
-
-    if (vaultPassword?.password === vaultPassword?.confPassword) {
-      if (validator) {
-        Alert.alert('Alert', 'Please fill all the fields');
-      } else {
-        try {
-          console.log('call api');
-          const data = await handleCreateVault(
-            createUserVault,
-            vaultPassword?.password,
-            userdata?.userID,
-          );
-          setIsvisible(false);
-          Alert.alert('Alert', 'vault created sucessfully');
-          navigation.navigate(screens.VAULT_STACK);
-        } catch (error) {
-          console.log(error);
-          setIsvisible(false);
-          Alert.alert('Alert', 'Something went wrong please try again');
-        }
-      }
-    } else {
-      Alert.alert('Alert', 'Password and confirm password not matched');
+  const onPressOk = () => {
+    try {
+      //
+    } catch (error) {
+      console.log(error, 'while checking user vault password');
     }
   };
-  const onPressCancel = () => {
-    setVaultPassword(initialState);
-    setIsvisible(false);
-  };
+  const onPressForgot = () => {};
 
   function manageVault() {
-    // call api to check user exist or not
+    setIsvisible(true);
+    console.log('fun calls');
+    if (!data?.verifyUserVault?.success) {
+      console.log('not true');
+      navigation.navigate(screens.VAULT_CREATE_DETAILS);
+    }
   }
 
   const handleListClick = (type: settingEnum) => {
@@ -151,8 +125,9 @@ const MainSetting = () => {
     }
   };
   const handleLogout = () => {
-    dispatch(actionGetUserInfoSucess(null));
-    dispatch(actionUserLogedIn(false));
+    // dispatch(actionGetUserInfoSucess(null));
+    // dispatch(actionUserLogedIn(false));
+    dispatch(actionResetStore());
   };
 
   const renderItem = ({item, index}: {item: settingScreen; index: number}) => {
@@ -184,87 +159,46 @@ const MainSetting = () => {
           keyExtractor={(_item, index) => index.toString()}
         />
       </View>
+      <AppLoader isVisible={loading} />
       <View>
         <AppModal
           isVisible={isVisible}
           toggleModal={() => setIsvisible(!isVisible)}
           children={
             <>
-              {isAlreadyAcc == true ? (
-                <View>
-                  <AppText
-                    text={'Add vault password'}
-                    style={styles.valutTxt}
+              <View>
+                <AppText
+                  text={'Enter vault password'}
+                  style={styles.valutTxt}
+                />
+                <View style={styles.modalContainer}>
+                  <AppInput
+                    placeholder="Enter password"
+                    inputLabel="Password"
+                    inputValue={userPassword}
+                    handleInputChange={val => setUserPassword(val)}
                   />
-                  <View style={styles.modalContainer}>
-                    <AppInput
-                      placeholder="Enter password"
-                      inputLabel="Password"
-                      inputValue={vaultPassword?.password}
-                      handleInputChange={val => onChnageVault('password', val)}
+                  <TouchableOpacity
+                    onPress={() => onPressForgot}
+                    style={styles.alredyAccount}>
+                    <AppText
+                      text={'Forgot password'}
+                      style={styles.alredytxt}
                     />
-                    <AppInput
-                      placeholder="Enter confirm password"
-                      inputLabel="Confirm password"
-                      inputValue={vaultPassword?.confPassword}
-                      handleInputChange={val =>
-                        onChnageVault('confPassword', val)
-                      }
-                    />
-                    <TouchableOpacity
-                      onPress={() => setIsAlreadyAcc(false)}
-                      style={styles.alredyAccount}>
-                      <AppText
-                        text={'Already have an account?'}
-                        style={styles.alredytxt}
+                  </TouchableOpacity>
+                  <View style={styles.btnContainer}>
+                    <View style={styles.button}>
+                      <AppButton
+                        buttonText="Cancel"
+                        onPress={() => setIsvisible(false)}
                       />
-                    </TouchableOpacity>
-                    <View style={styles.btnContainer}>
-                      <View style={styles.button}>
-                        <AppButton
-                          buttonText="Login in"
-                          onPress={onPressSave}
-                        />
-                      </View>
-                      <View style={styles.button}>
-                        <AppButton
-                          buttonText="Cancel"
-                          onPress={onPressCancel}
-                        />
-                      </View>
+                    </View>
+                    <View style={styles.button}>
+                      <AppButton buttonText="ok" onPress={onPressOk} />
                     </View>
                   </View>
                 </View>
-              ) : (
-                <View>
-                  <AppText
-                    text={'Add vault password'}
-                    style={styles.valutTxt}
-                  />
-                  <View style={styles.modalContainer}>
-                    <AppInput
-                      placeholder="Enter password"
-                      inputLabel="Password"
-                      inputValue={userPassword}
-                      handleInputChange={val => setUserPassword(val)}
-                    />
-                    <View style={styles.btnContainer}>
-                      <View style={styles.button}>
-                        <AppButton
-                          buttonText="Login in"
-                          onPress={onPressSave}
-                        />
-                      </View>
-                      <View style={styles.button}>
-                        <AppButton
-                          buttonText="sign up"
-                          onPress={() => setIsAlreadyAcc(true)}
-                        />
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              )}
+              </View>
             </>
           }
         />
@@ -322,8 +256,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   alredytxt: {
-    fontSize: 16,
-    color: COLORS.dark_gray,
+    fontSize: 14,
+    color: COLORS.light_black_gray,
     fontFamily: fonts.dmSans[400],
   },
   button: {

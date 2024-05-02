@@ -33,9 +33,17 @@ export default function reducer(state = initialState, action: any = {}) {
     case ActionTypes.USER_LOGED_IN: {
       const islg = action?.payload?.islog;
       console.log('in redeucer login ', action?.payload?.islog);
+      console.log(state?.userInfo, 'in reducer all state');
+      const updatedObj = {
+        userID: state?.userInfo?.userID,
+        token: state?.userInfo?.token,
+        name: state?.userInfo?.name,
+        email: state?.userInfo?.email,
+        isLogin: islg,
+      };
       return {
         ...state,
-        isLoged: islg,
+        userInfo: updatedObj,
       };
     }
     default:

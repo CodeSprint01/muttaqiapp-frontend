@@ -102,6 +102,8 @@ export enum screens {
   PASSWORD_SECURITY_STACK = 'password-security-stack',
   ALL_PASSWORDS_SETTING = 'all-passwords-setting',
   CHANGE_PASSWORD = 'change-password',
+  CREATE_NEW_VAULT = 'create-new-vault',
+  VAULT_CREATE_DETAILS = 'vault-create-details',
 }
 export interface AppState {
   error: string | undefined;
@@ -311,6 +313,7 @@ export interface UserInfo {
   token: string;
   name: string;
   email: string;
+  isLogin: boolean;
 }
 export interface LoginsInfo {
   id?: number;

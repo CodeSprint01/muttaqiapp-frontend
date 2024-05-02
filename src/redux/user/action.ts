@@ -46,3 +46,8 @@ export const actionSendEmailForOtp = (email: string) => {
     },
   };
 };
+export function actionResetStore() {
+  return {
+    type: ActionTypes.RESET_STORE,
+  };
+}

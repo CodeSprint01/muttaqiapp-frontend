@@ -49,7 +49,8 @@ const SignIn = () => {
         userID: data?.loginUser?.user?.id,
         token: data?.loginUser?.token,
         name: data?.loginUser?.user?.username,
-        email: data?.loginUser?.user?.emailaddress,
+        email: data?.loginUser?.user?.email,
+        isLogin: false,
       };
       dispatch(actionLoginUserInfoSucess(response));
       navigation.navigate(screens.WELCOME_USER);
@@ -57,8 +58,6 @@ const SignIn = () => {
       Alert.alert(error?.message);
     }
   };
-  const uData = useSelector((state: State) => state?.userReducer?.userInfo);
-  // console.log(uData, 'hhhga');
 
   const renderItem = ({item, index}: {item: InputSignIn; index: any}) => {
     return (

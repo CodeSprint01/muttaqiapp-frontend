@@ -25,8 +25,17 @@ const settingPersistConfig = {
   // blacklist: [''], //  our initial state that is Not persist
 };
 
+const RESET_STORE = 'wyzepay/app/RESET_STORE';
+const rootReducer = (state: any, action: any) => {
+  // console.log(state, ' this is state');
+  if (action.type === RESET_STORE) {
+    state = undefined;
+  }
+  return appReducers(state, action);
+};
+
 // here we combine all reducer
-const rootReducer = combineReducers({
+const appReducers = combineReducers({
   prayerReducer: persistReducer(prayerPersistConfig, prayerReducer as any),
   userReducer: persistReducer(userPersistConfig, userReducer as any),
   settingReducer: persistReducer(settingPersistConfig, settingReducer as any),

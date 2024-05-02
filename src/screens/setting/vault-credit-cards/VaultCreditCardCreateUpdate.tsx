@@ -12,7 +12,6 @@ import {
 import AppInputDropDown from '../../../components/molecules/app-input-drop-down/AppInputDropDown';
 import {CardArray} from '../../../utils/mocks/AllMockArray';
 import {State} from '../../../types/types';
-import Toast from 'react-native-toast-message';
 import {handleCreateCreditCard, schemaMutation} from '../../../services/api';
 import {CREATE_CREDIT_CARD} from '../../../services/graphQL';
 

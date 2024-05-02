@@ -11,9 +11,10 @@ import PrivacyPolicySetting from '../screens/setting/privacy-policy-setting/Priv
 import LanguageSetting from '../screens/setting/language-setting/LanguageSetting';
 import VaultSetting from '../screens/setting/vault-setting/VaultSetting';
 import VaultStack from './setting/VaultStack';
-import NotificationStack from './setting/NotificationStack';
 import NotificationSetting from '../screens/setting/notification-settting/NotificationSetting';
 import PasswordSecurityStack from './setting/PasswordSecurityStack';
+import VaultCreateDetails from '../screens/setting/create-vault/VaultCreateDetails';
+import CreateNewVault from '../screens/setting/create-vault/CreateNewVault';
 const AppStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -74,17 +75,17 @@ const AppStack = () => {
         component={PasswordSecurityStack}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name={screens.VAULT_CREATE_DETAILS}
+        component={VaultCreateDetails}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.CREATE_NEW_VAULT}
+        component={CreateNewVault}
+        options={{headerShown: false}}
+      />
       {/*
-      <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
-        options={{headerShown: false}}
-      />
       <Stack.Screen
         name="ProfileStack"
         component={ProfileStack}

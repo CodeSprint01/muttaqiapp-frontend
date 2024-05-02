@@ -26,8 +26,8 @@ const SignUp = () => {
   const [userData, setUserData] = useState<{[key: string]: string}>({
     name: '',
     email: '',
-    password: '',
-    confPassowrd: '',
+    password: 'Test@123',
+    confPassowrd: 'Test@123',
   });
   const [loading, setLoading] = useState(false);
   const [signUpMutation] = schemaMutation(SIGN_UP);
@@ -58,6 +58,7 @@ const SignUp = () => {
         token: data?.createUser?.token,
         name: data?.createUser?.user?.username,
         email: data?.createUser?.user?.email,
+        isLogin: false,
       };
       setLoading(false);
       dispatch(actionGetUserInfoSucess(response));
