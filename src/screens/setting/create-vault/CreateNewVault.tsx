@@ -41,7 +41,7 @@ const CreateNewVault = () => {
           passwords?.password,
           userInfo?.userID,
         );
-        console.log(data);
+        console.log(data, 'after crerate vault');
         setPasswords(initialState);
         navigation.dispatch(
           CommonActions.reset({

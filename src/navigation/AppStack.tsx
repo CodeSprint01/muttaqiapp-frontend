@@ -15,6 +15,8 @@ import NotificationSetting from '../screens/setting/notification-settting/Notifi
 import PasswordSecurityStack from './setting/PasswordSecurityStack';
 import VaultCreateDetails from '../screens/setting/create-vault/VaultCreateDetails';
 import CreateNewVault from '../screens/setting/create-vault/CreateNewVault';
+import ForgotVaultPassword from '../screens/setting/create-vault/ForgotVaultPassword';
+import VaultOtpVerify from '../screens/setting/create-vault/VaultOtpVerify';
 const AppStack = () => {
   const Stack = createStackNavigator();
   return (
@@ -83,6 +85,16 @@ const AppStack = () => {
       <Stack.Screen
         name={screens.CREATE_NEW_VAULT}
         component={CreateNewVault}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.FORGOT_VAULT_PASSWORD}
+        component={ForgotVaultPassword}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.VAULT_OTP_VERIFY}
+        component={VaultOtpVerify}
         options={{headerShown: false}}
       />
       {/*

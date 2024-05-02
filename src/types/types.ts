@@ -104,6 +104,8 @@ export enum screens {
   CHANGE_PASSWORD = 'change-password',
   CREATE_NEW_VAULT = 'create-new-vault',
   VAULT_CREATE_DETAILS = 'vault-create-details',
+  FORGOT_VAULT_PASSWORD = 'forgot-vault-password',
+  VAULT_OTP_VERIFY = 'vault-otp-verify',
 }
 export interface AppState {
   error: string | undefined;

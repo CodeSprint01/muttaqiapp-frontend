@@ -1,13 +1,13 @@
 import {Alert} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {handleSendOtpEmail, schemaMutation} from '../../services/api';
-import {SEND_EMAIL_OTP} from '../../services/graphQL';
-import {screens} from '../../types/types';
-import AppContainer from '../../components/atoms/app-container/AppContainer';
-import SendEmailOtp from '../../components/organisums/authentication/SendEmailOtp';
+import {SEND_EMAIL_OTP} from '../../../services/graphQL';
+import {handleSendOtpEmail, schemaMutation} from '../../../services/api';
+import {screens} from '../../../types/types';
+import AppContainer from '../../../components/atoms/app-container/AppContainer';
+import SendEmailOtp from '../../../components/organisums/authentication/SendEmailOtp';
 
-const ForgotPassword = () => {
+const ForgotVaultPassword = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   console.log(email);
@@ -15,7 +15,7 @@ const ForgotPassword = () => {
   const [forgotPasswordMutation] = schemaMutation(SEND_EMAIL_OTP);
 
   const onPressSendOtp = async () => {
-      navigation.navigate(screens.OTP_SCREEN, {email: email});
+    navigation.navigate(screens.VAULT_OTP_VERIFY);
     // try {
     //   setLoading(true);
     //   const data = await handleSendOtpEmail(forgotPasswordMutation, email);
@@ -27,14 +27,14 @@ const ForgotPassword = () => {
     //   setLoading(false);
     // } catch (error: any) {
     //   if (error) setLoading(false);
-    //   return Alert.alert('Alert', 'error while sending otp');
+    //   return Alert.alert('Alert', error);
     // }
   };
 
   return (
     <AppContainer>
       <SendEmailOtp
-        label="Forgot password"
+        label="Forgot vault password"
         buttonText="Send OTP"
         handleInputChange={val => setEmail(val)}
         inputValue={email}
@@ -45,4 +45,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default ForgotVaultPassword;
