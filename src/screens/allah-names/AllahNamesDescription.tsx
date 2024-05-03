@@ -15,7 +15,7 @@ const AllahNamesDescription = ({route}) => {
     <AppContainer style={styles.container}>
       <View style={{flex: 1}}>
         <View style={{paddingHorizontal: 20}}>
-          <ScreenHeader headerText="Allah Names" />
+          <ScreenHeader headerText="Allah Name" />
         </View>
         <View style={{flex: 1, paddingTop: 30}}>
           <AllahNameCard
@@ -32,14 +32,14 @@ const AllahNamesDescription = ({route}) => {
                 style={styles.txt}
                 text={`Meaning: ${item?.meaningDescription}`}
               />
-              <AppText
+              {/* <AppText
                 style={styles.txt}
                 text={`Occurrence: ${item?.occurrence}`}
               />
               <AppText
                 style={styles.txt}
                 text={`Occurrence: ${item?.evidance}`}
-              />
+              /> */}
             </View>
           ))}
         </View>
