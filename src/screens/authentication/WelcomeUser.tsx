@@ -16,7 +16,7 @@ const WelcomeUser = () => {
   const dispatch = useDispatch();
   console.log(
     'in welcome screen',
-    useSelector((state: State) => state?.userReducer?.userInfo?.isLogin),
+    useSelector((state: State) => state?.userReducer?.userInfo?.isLoged),
   );
 
   const gotoHome = () => {

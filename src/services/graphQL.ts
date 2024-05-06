@@ -153,3 +153,11 @@ export const FIND_USER_VAULT = gql`
     }
   }
 `;
+export const LOGIN_VAULT = gql`
+  mutation logVault($password: String!, $userId: String!) {
+    loginVault(vaultLoginInput: {password: $password, userId: $userId}) {
+      message
+      success
+    }
+  }
+`;

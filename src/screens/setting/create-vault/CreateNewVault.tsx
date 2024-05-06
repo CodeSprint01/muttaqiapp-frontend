@@ -26,6 +26,8 @@ const CreateNewVault = () => {
   };
 
   const userInfo = useSelector((state: State) => state?.userReducer?.userInfo);
+  console.log(userInfo, 'createing vault user in');
+
   const validator = passwords.password == '' || passwords?.confPassword == '';
   const isEqual = passwords.password === passwords?.confPassword;
 

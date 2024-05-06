@@ -50,7 +50,7 @@ const SignIn = () => {
         token: data?.loginUser?.token,
         name: data?.loginUser?.user?.username,
         email: data?.loginUser?.user?.email,
-        isLogin: false,
+        isLoged: false,
       };
       dispatch(actionLoginUserInfoSucess(response));
       navigation.navigate(screens.WELCOME_USER);

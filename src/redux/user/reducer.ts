@@ -6,7 +6,6 @@ const initialState: AppState = {
   error: undefined,
   userLocation: [],
   userInfo: [],
-  isLoged: undefined,
 };
 
 // Reducers
@@ -19,6 +18,7 @@ export default function reducer(state = initialState, action: any = {}) {
       };
     }
     case ActionTypes.USER_SIGN_UP_INFO_SCUCESS: {
+      console.log(action?.payload.userInfo, 'sign up user data');
       return {
         ...state,
         userInfo: action?.payload?.userInfo,
@@ -32,14 +32,14 @@ export default function reducer(state = initialState, action: any = {}) {
     }
     case ActionTypes.USER_LOGED_IN: {
       const islg = action?.payload?.islog;
-      console.log('in redeucer login ', action?.payload?.islog);
+      console.log('in redeucer login', action?.payload?.islog);
       console.log(state?.userInfo, 'in reducer all state');
       const updatedObj = {
         userID: state?.userInfo?.userID,
         token: state?.userInfo?.token,
         name: state?.userInfo?.name,
         email: state?.userInfo?.email,
-        isLogin: islg,
+        isLoged: islg,
       };
       return {
         ...state,

@@ -112,7 +112,6 @@ export interface AppState {
   loading?: boolean;
   userLocation?: location[];
   userInfo: UserInfo[];
-  isLoged?: boolean | null;
 }
 
 export interface SettingState {
@@ -315,7 +314,7 @@ export interface UserInfo {
   token: string;
   name: string;
   email: string;
-  isLogin: boolean;
+  isLoged: boolean;
 }
 export interface LoginsInfo {
   id?: number;

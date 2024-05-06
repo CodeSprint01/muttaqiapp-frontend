@@ -242,3 +242,21 @@ export const handleDeleteBankAccount = async (
     throw error;
   }
 };
+export const handleLoginVault = async (
+  logVault: MutationFunction,
+  userId: string,
+  password: string,
+) => {
+  console.log(userId, password, 'rom api');
+  try {
+    const data = await logVault({
+      variables: {
+        password: password,
+        userId: userId,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};

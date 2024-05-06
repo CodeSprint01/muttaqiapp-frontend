@@ -5,6 +5,7 @@ import {
   FlatList,
   Platform,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import AppText from '../../../components/atoms/app-text/AppText';
@@ -19,8 +20,12 @@ import {actionResetStore} from '../../../redux/user/action';
 import AppModal from '../../../components/atoms/app-modal/AppModal';
 import AppInput from '../../../components/molecules/app-input/AppInput';
 import AppButton from '../../../components/molecules/app-button/AppButton';
-import {schemaMutation} from '../../../services/api';
-import {CREATE_VALUT, FIND_USER_VAULT} from '../../../services/graphQL';
+import {handleLoginVault, schemaMutation} from '../../../services/api';
+import {
+  CREATE_VALUT,
+  FIND_USER_VAULT,
+  LOGIN_VAULT,
+} from '../../../services/graphQL';
 import {useQuery} from '@apollo/client';
 import AppLoader from '../../../components/atoms/loader/AppLoader';
 import {useNavigation} from '@react-navigation/native';
@@ -35,22 +40,36 @@ const MainSetting = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const userdata = useSelector((state: State) => state?.userReducer?.userInfo);
-  console.log(userdata?.userID, 'u d');
+  console.log(userdata, 'u d');
+  const userId = userdata?.userID;
 
+  const [logVault] = schemaMutation(LOGIN_VAULT);
   const {data, error, loading} = useQuery(FIND_USER_VAULT, {
     variables: {
-      userId: userdata?.userID,
+      userId: userId,
     },
   });
 
   console.log(data, error, 'data and error both..');
-  console.log(data?.verifyUserVault?.success, 'data g q l');
+  // console.log(data?.verifyUserVault?.success, 'data g q l');
 
-  const onPressOk = () => {
+  const onPressOk = async () => {
+    if (userPassword == '') {
+      Alert.alert('Alert', 'please enter password');
+      return;
+    }
     try {
-      //
+      const data = await handleLoginVault(logVault, userId, userPassword);
+      console.log(data, 'from wheer cal');
+      if (data?.data?.loginVault?.success) {
+        setIsvisible(false);
+        setUserPassword('');
+        navigation.navigate(screens.VAULT_STACK);
+      } else {
+        Alert.alert('Alert', data?.data?.loginVault?.message);
+      }
     } catch (error) {
-      console.log(error, 'while checking user vault password');
+      console.log(error, 'from wheer cala');
     }
   };
   const onPressForgot = () => {
@@ -60,14 +79,12 @@ const MainSetting = () => {
   };
 
   function manageVault() {
-    setIsvisible(true);
-    console.log('fun calls');
-    // if (!data?.verifyUserVault?.success) {
-    //   console.log('not true');
-    //   navigation.navigate(screens.VAULT_CREATE_DETAILS);
-    // } else {
-    //   setIsvisible(true);
-    // }
+    if (!data?.verifyUserVault?.success) {
+      console.log('not true');
+      navigation.navigate(screens.VAULT_CREATE_DETAILS);
+    } else {
+      setIsvisible(true);
+    }
   }
 
   const handleListClick = (type: settingEnum) => {
@@ -88,13 +105,7 @@ const MainSetting = () => {
         navigation.navigate(screens.PASSWORD_SECURITY_STACK);
         break;
       case settingEnum.VAULT:
-        // navigation.navigate(screens.VAULT_STACK);
         manageVault();
-        // if (isValueCreated) {
-        //   navigation.navigate(screens.VAULT_STACK);
-        // } else {
-        //   setIsvisible(true);
-        // }
         break;
       case settingEnum.PERSONAL_FINANCIAL_INFO:
         console.log('switch 6');

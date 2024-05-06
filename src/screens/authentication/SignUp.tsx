@@ -58,7 +58,7 @@ const SignUp = () => {
         token: data?.createUser?.token,
         name: data?.createUser?.user?.username,
         email: data?.createUser?.user?.email,
-        isLogin: false,
+        isLoged: false,
       };
       setLoading(false);
       dispatch(actionGetUserInfoSucess(response));
