@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import React, {FC} from 'react';
 import AppText from '../../components/atoms/app-text/AppText';
-import {COLORS} from '../../styles/color';
+import {COLORS, arabicFnt, fonts} from '../../styles/color';
 
 interface cardProps {
   onPress?: () => void;
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '400',
     color: COLORS.green,
+    fontFamily: arabicFnt[0],
   },
   english: {
     fontSize: 14,
@@ -91,8 +92,8 @@ const styles = StyleSheet.create({
     color: COLORS.green,
   },
   description: {
-    fontSize: 20,
-    fontWeight: '700',
+    fontSize: 18,
+    fontFamily: fonts.dmSans[700],
     color: COLORS.green,
   },
 });

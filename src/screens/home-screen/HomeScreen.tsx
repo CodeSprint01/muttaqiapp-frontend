@@ -52,6 +52,8 @@ const HomeScreen = () => {
     graphData[index].isShowEye = !graphData[index]?.isShowEye;
     setIsShowGraph(graphData);
   };
+  const user = useSelector((state: State) => state?.userReducer?.userInfo);
+  console.log(user, ';;');
 
   const updatePrayerData = () => {
     const currentTime = new Date();

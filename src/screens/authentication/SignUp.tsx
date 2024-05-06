@@ -33,6 +33,8 @@ const SignUp = () => {
   const [signUpMutation] = schemaMutation(SIGN_UP);
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const user = useSelector((state: State) => state?.userReducer?.userInfo);
+  console.log(user, 'user in');
 
   const handleInputChange = (val: string, key: string) => {
     setUserData(prev => ({...prev, [key]: val}));
