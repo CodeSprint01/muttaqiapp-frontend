@@ -2,7 +2,7 @@ import React from 'react';
 import TabNavigator from './TabNavigator';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeStack from './HomeStack';
-import {screens} from '../types/types';
+import {RootStackParamList, screens} from '../types/types';
 import ProfileStack from './setting/ProfileStack';
 import HelpSupportSetting from '../screens/setting/help-support-setting/HelpSupportSetting';
 import FAQSetting from '../screens/setting/FAQ-setting/FAQSetting';
@@ -17,8 +17,10 @@ import VaultCreateDetails from '../screens/setting/create-vault/VaultCreateDetai
 import CreateNewVault from '../screens/setting/create-vault/CreateNewVault';
 import ForgotVaultPassword from '../screens/setting/create-vault/ForgotVaultPassword';
 import VaultOtpVerify from '../screens/setting/create-vault/VaultOtpVerify';
+
 const AppStack = () => {
-  const Stack = createStackNavigator();
+  const Stack = createStackNavigator<RootStackParamList>();
+
   return (
     <Stack.Navigator initialRouteName={screens.TAB_NAVIGATOR}>
       <Stack.Screen

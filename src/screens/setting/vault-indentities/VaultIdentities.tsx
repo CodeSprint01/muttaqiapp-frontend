@@ -28,9 +28,10 @@ const VaultIdentities = () => {
   const renderItem = ({item, index}: {item: IdentityInfo; index: number}) => {
     return (
       <SettingList
+        key={index}
         title={item?.name}
         iconName={Icons.idCard}
-        didSettingPress={() => onPressOpenCard(item?.id)}
+        onPress={() => onPressOpenCard(item?.id)}
       />
     );
   };

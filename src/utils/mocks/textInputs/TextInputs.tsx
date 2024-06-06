@@ -29,16 +29,17 @@ export const SignUpArray: InputSignUp[] = [
 
 export const SignInArray: InputSignIn[] = [
   {
-    key: 'userOrEmail',
+    key: 'userEmail',
     inputLabel: 'Email',
-    placeholder: 'Enter your username or e-mail address',
+    placeholder: 'Enter your email',
   },
   {
-    key: 'password',
+    key: 'userPassword',
     inputLabel: 'Password',
     placeholder: 'Enter password',
   },
 ];
+
 // export const HelpSupport: InputSignUp[] = [
 //   {
 //     key: 'name',

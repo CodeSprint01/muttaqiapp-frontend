@@ -33,11 +33,13 @@ const VaultPasswordAdd = () => {
   console.log(filterData(), 'this is filter res');
   const renderItem = ({item, index}: {item: PasswordsInfo; index: number}) => {
     return (
-      <View style={{marginBottom: index + 1 == arrayLength ? 240 : 0}}>
+      <View
+        key={index}
+        style={{marginBottom: index + 1 == arrayLength ? 240 : 0}}>
         <SettingList
           iconName={Icons.Lock}
           title={item?.name}
-          didSettingPress={() => onPressOpen(item?.id)}
+          onPress={() => onPressOpen(item?.id)}
         />
       </View>
     );

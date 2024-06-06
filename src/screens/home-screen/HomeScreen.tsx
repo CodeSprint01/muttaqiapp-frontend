@@ -1,6 +1,6 @@
 import {Alert, FlatList, ScrollView, StyleSheet, View} from 'react-native';
 import '../../components/atoms/error/LogBox';
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import Swiper from 'react-native-swiper';
 import PrayerSwiper from './PrayerSwiper';
 import {COLORS, fonts} from '../../styles/color';
@@ -11,7 +11,7 @@ import PrayerTimesList from './PrayerTimesList';
 import notifee from '@notifee/react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import UserStatsSwiper from './UserStatsSwiper';
-import {StatsListArray} from '../../utils/mocks/tracker/StatsListArray';
+import {StatsList, StatsListArray} from '../../utils/mocks/tracker/StatsListArray';
 import TodayProgressSwiper from './TodayProgressSwiper';
 import {useDispatch, useSelector} from 'react-redux';
 import {Coordinates, CalculationMethod, PrayerTimes} from 'adhan';
@@ -22,7 +22,7 @@ import {
   offeredPrayerAndAlarm,
   prayerAlarmUpdate,
 } from '../../redux/prayer/action';
-import {UserPrayers} from '../../types/types';
+import {RootStackParamList, UserPrayers} from '../../types/types';
 import {State, screens} from '../../types/types';
 import SettingList from '../../components/molecules/setting/SettingList';
 import TrackerTodoTask from '../tracker/todo-task-record-screen/TrackerTodoTask';
@@ -30,8 +30,11 @@ import {FastingArray} from '../../utils/mocks/tracker/FastingArray';
 import ShowmoreButton from '../../components/molecules/app-header/ShowmoreButton';
 import TodoTask from '../add-todo-screen/TodoTask';
 import {useNavigation} from '@react-navigation/native';
+import { StackScreenProps } from '@react-navigation/stack';
 
-const HomeScreen = () => {
+type Props = StackScreenProps<RootStackParamList, screens.TAB_HOME>
+
+const HomeScreen: FC<Props> = ({navigation}) => {
   const dispatch = useDispatch();
   const prayerData = useSelector(
     (state: any) => state?.prayerReducer?.prayerData,
@@ -45,15 +48,11 @@ const HomeScreen = () => {
   const prayerTimes = new PrayerTimes(coordinates, date, params);
   const nextPrayer = prayerTimes?.nextPrayer();
 
-  const navigation = useNavigation();
-
   const handleFilterSliderData = (index: number) => {
     const graphData = [...isShowGraph];
     graphData[index].isShowEye = !graphData[index]?.isShowEye;
     setIsShowGraph(graphData);
   };
-  const user = useSelector((state: State) => state?.userReducer?.userInfo);
-  console.log(user, ';;');
 
   const updatePrayerData = () => {
     const currentTime = new Date();
@@ -69,25 +68,26 @@ const HomeScreen = () => {
     dispatch(getPrayers(updated));
   };
   // todo list task
-  const onPressTodoCheck = () => {
-    //
-  };
+  const onPressTodoCheck = () => {}
+  
   useEffect(() => {
     updatePrayerData();
   }, [testCall]);
+
   useEffect(() => {
     setTimeout(() => {
       setTestCall(!testCall);
     }, 12000);
   }, [testCall]);
 
-  const getAlarmIcon = data => {
+  const getAlarmIcon = (data) => {
     if (data?.notification?.isOn) {
       return Icons.Alarm;
     } else {
       return Icons.AlarmSlash;
     }
   };
+  
   const getBackgroundImage = (data: any) => {
     switch (data?.name) {
       case 'fajr':

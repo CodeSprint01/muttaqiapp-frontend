@@ -5,3 +5,5 @@ export function generateRendomNumber() {
   }
   return randomNumber;
 }
+
+export const ActiveClickOpacity = 0.7;

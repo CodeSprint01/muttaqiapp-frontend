@@ -3,19 +3,20 @@ import React, {FC} from 'react';
 import {AppIconSvg, Icons} from '../../atoms/app-icon-svg';
 import AppText from '../../atoms/app-text/AppText';
 import {COLORS, fonts} from '../../../styles/color';
+import {ActiveClickOpacity} from '../../../utils/helper/helpers';
 
 interface ListProps {
   iconName?: any;
   title: string;
-  didSettingPress: () => void;
+  onPress: () => void;
 }
 
-const SettingList: FC<ListProps> = ({iconName, title, didSettingPress}) => {
+const SettingList: FC<ListProps> = ({iconName, title, onPress}) => {
   return (
     <TouchableOpacity
       style={{height: 60}}
-      activeOpacity={0.5}
-      onPress={didSettingPress}>
+      activeOpacity={ActiveClickOpacity}
+      onPress={onPress}>
       <View style={styles.listContainer}>
         <View style={styles.iconAndName}>
           {iconName && (

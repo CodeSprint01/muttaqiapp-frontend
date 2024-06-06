@@ -6,10 +6,7 @@ import {generateRendomNumber} from '../utils/helper/helpers';
 export const schemaMutation = (schema: any) => {
   return useMutation(schema);
 };
-export const handleSignUp = async (
-  signUpMutation: MutationFunction,
-  userData: any,
-) => {
+export const handleSignUp = async (signUpMutation: MutationFunction,userData: any) => {
   console.log(userData);
 
   try {
@@ -20,6 +17,7 @@ export const handleSignUp = async (
         password: userData?.password,
       },
     });
+    console.log (data, 'cosnole of response of data')
     return data;
   } catch (error) {
     throw error;
@@ -27,13 +25,13 @@ export const handleSignUp = async (
 };
 export const handleLogin = async (
   signInMutation: MutationFunction,
-  userData: any,
+  userData: {userEmail: string; userPassword: string },
 ) => {
   try {
     const {data} = await signInMutation({
       variables: {
-        email: userData?.userOrEmail,
-        password: userData?.password,
+        email: userData?.userEmail,
+        password: userData?.userPassword,
       },
     });
     return data;

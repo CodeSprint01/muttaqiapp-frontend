@@ -19,24 +19,27 @@ const VaultDriverLicenseAdd = () => {
   const arrayLength = reduxData?.length;
   console.log(reduxData, 'this is redux data');
 
-  const renderItem = ({item, index}: {item: PasswordsInfo; index: number}) => {
-    return (
-      <View style={{marginBottom: index + 1 == arrayLength ? 240 : 0}}>
-        <SettingList
-          iconName={Icons.idCard}
-          title={item?.name}
-          didSettingPress={() => onPressOpen(item?.id)}
-        />
-      </View>
-    );
-  };
-
-  const onPressOpen = (id: number) => {
+  const onPressOpen = (id: string) => {
     navigation.navigate(screens.VAULT_DRIVER_LICENSE_CREATE_UPDATE, {data: id});
   };
   const onPressAdd = () => {
     navigation.navigate(screens.VAULT_DRIVER_LICENSE_CREATE_UPDATE);
   };
+
+  const renderItem = ({item, index}: {item: PasswordsInfo; index: number}) => {
+    return (
+      <View
+        key={index}
+        style={{marginBottom: index + 1 == arrayLength ? 240 : 0}}>
+        <SettingList
+          iconName={Icons.idCard}
+          title={item?.name}
+          onPress={() => onPressOpen(item?.id)}
+        />
+      </View>
+    );
+  };
+
   return (
     <AppContainer>
       <ScreenHeader headerText="Driver license" extraStyle={styles.header} />

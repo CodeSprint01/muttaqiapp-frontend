@@ -7,12 +7,12 @@ import {
   Alert,
   ActivityIndicator,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS, fonts} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
 import {SignUpArray} from '../../utils/mocks/textInputs/TextInputs';
-import {InputSignUp, State, screens} from '../../types/types';
+import {InputSignUp, RootStackParamList, State, screens} from '../../types/types';
 import AppInput from '../../components/molecules/app-input/AppInput';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
@@ -21,20 +21,22 @@ import {handleSignUp, schemaMutation} from '../../services/api';
 import {useDispatch, useSelector} from 'react-redux';
 import {actionGetUserInfoSucess} from '../../redux/user/action';
 import {SIGN_UP} from '../../services/graphQL';
+import { err } from 'react-native-svg';
+import { StackScreenProps } from '@react-navigation/stack';
 
-const SignUp = () => {
+type Props = StackScreenProps<RootStackParamList, screens.SIGN_UP>
+
+const SignUp: FC<Props> = ({navigation}) => {
   const [userData, setUserData] = useState<{[key: string]: string}>({
     name: '',
     email: '',
-    password: 'Test@123',
-    confPassowrd: 'Test@123',
+    password: '123123',
+    confPassowrd: '123123',
   });
   const [loading, setLoading] = useState(false);
   const [signUpMutation] = schemaMutation(SIGN_UP);
-  const navigation = useNavigation();
   const dispatch = useDispatch();
   const user = useSelector((state: State) => state?.userReducer?.userInfo);
-  console.log(user, 'user in');
 
   const handleInputChange = (val: string, key: string) => {
     setUserData(prev => ({...prev, [key]: val}));
@@ -42,32 +44,27 @@ const SignUp = () => {
 
   const didPressCreateAccount = async () => {
     const isMatched = userData?.password == userData?.confPassowrd;
-    if (!isMatched) {
-      Alert.alert('Password', 'Password and Re-enter Password not matched');
-      return;
-    }
-    let isEmpty = Object.values(userData).some(val => val === '');
-    if (isEmpty) {
-      Alert.alert('Validation failed', 'Please fill all the fields');
-      return;
-    }
+    if (!isMatched) return Alert.alert('Password', 'Password and Re-enter Password not matched')
+    const isEmpty = Object.values(userData).some(val => val === '');
+    if (isEmpty) return Alert.alert('Validation failed', 'Please fill all the fields')
     try {
       setLoading(true);
-      const data = await handleSignUp(signUpMutation, userData);
-
-      let response = {
-        userID: data?.createUser?.user?.id,
-        token: data?.createUser?.token,
-        name: data?.createUser?.user?.username,
-        email: data?.createUser?.user?.email,
-        isLoged: false,
-      };
-      setLoading(false);
-      dispatch(actionGetUserInfoSucess(response));
-      navigation.navigate(screens.WELCOME_USER);
-    } catch (error: any) {
+      const response = await handleSignUp(signUpMutation, userData);
+      if (response?.createUser?.statusCode === 200) {
+        const data = {
+          userID: response?.createUser?.data?.user?.id,
+          token: response?.createUser?.data?.token,
+          name: response?.createUser?.data?.user?.username,
+          email: response?.createUser?.data?.user?.email,
+          isLoged: false,
+        };
+        setLoading(false);
+        dispatch(actionGetUserInfoSucess(data));
+        navigation.navigate(screens.WELCOME_USER);
+      } else setLoading(false)
+    } catch (error: any) {  
       if (error) setLoading(false);
-      return Alert.alert(error?.message);
+      return Alert.alert(error.message);
     }
   };
 
@@ -133,8 +130,6 @@ const SignUp = () => {
     </AppContainer>
   );
 };
-
-export default SignUp;
 
 const styles = StyleSheet.create({
   container: {
@@ -216,3 +211,6 @@ const styles = StyleSheet.create({
     paddingTop: 4,
   },
 });
+
+
+export default SignUp;

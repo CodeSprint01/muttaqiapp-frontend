@@ -1,5 +1,5 @@
 import {StyleSheet, View, Platform, BackHandler} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS, fonts} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
@@ -14,10 +14,7 @@ import {actionUserLogedIn} from '../../redux/user/action';
 const WelcomeUser = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  console.log(
-    'in welcome screen',
-    useSelector((state: State) => state?.userReducer?.userInfo?.isLoged),
-  );
+  const {userInfo} = useSelector((state: State) =>  state.userReducer)
 
   const gotoHome = () => {
     navigation.dispatch(
@@ -37,6 +34,7 @@ const WelcomeUser = () => {
       backHandler.remove();
     };
   }, []);
+  
   const handleHome = () => {
     dispatch(actionUserLogedIn(true));
   };
@@ -44,7 +42,7 @@ const WelcomeUser = () => {
   return (
     <AppContainer style={styles.container}>
       <View style={styles.iconContainer}>
-        <AppText text={'Welcome Usman!'} style={styles.logoTxt} />
+        <AppText text={`Welcome ${userInfo?.name ? userInfo?.name : ""}`} style={styles.logoTxt} />
       </View>
       <View style={styles.textInputContainer}>
         <View style={styles.inputContainer}>
