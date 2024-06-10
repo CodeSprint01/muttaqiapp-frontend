@@ -6,14 +6,14 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS, fonts} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
 import AppInput from '../../components/molecules/app-input/AppInput';
-import {screens} from '../../types/types';
+import {RootStackParamList, screens} from '../../types/types';
 import {
   handleOtpVerify,
   handleSendOtpEmail,
@@ -21,24 +21,27 @@ import {
 } from '../../services/api';
 import {SEND_EMAIL_OTP, VERIFY_OTP} from '../../services/graphQL';
 import AppLoader from '../../components/atoms/loader/AppLoader';
+import {StackScreenProps} from '@react-navigation/stack';
 
-const OTPScreen = ({route}) => {
-  const userEmail = route.params.email;
+type Props = StackScreenProps<RootStackParamList, screens.OTP_SCREEN>;
+
+const OTPScreen: FC<Props> = ({navigation, route}) => {
+  const userEmail = route?.params?.email;
   const [OTP, setOTP] = useState('');
   const [timer, setTimer] = useState(30);
   const [isVisible, setVisible] = useState(true);
   const [loading, setLoading] = useState(false);
-  const navigation = useNavigation();
+  const [otpVerifyMutation] = schemaMutation(VERIFY_OTP);
+  const [forgotPasswordMutation] = schemaMutation(SEND_EMAIL_OTP);
+
   const handleInputChange = (val: string) => {
     setOTP(val);
   };
-  const [otpVerifyMutation] = schemaMutation(VERIFY_OTP);
-  const [forgotPasswordMutation] = schemaMutation(SEND_EMAIL_OTP);
 
   useEffect(() => {
     const timerFun = () => {
       if (timer > 0) {
-        setTimer(prevTimer => prevTimer - 1); // Decrement timer by 1 second
+        setTimer(prevTimer => prevTimer - 1);
       } else {
         setVisible(false);
       }
@@ -47,17 +50,17 @@ const OTPScreen = ({route}) => {
     const interval = setInterval(timerFun, 1000);
     return () => clearInterval(interval);
   }, [timer]);
+
   const didSubmitPress = async () => {
     try {
       setLoading(true);
-      const data = await handleOtpVerify(otpVerifyMutation, OTP);
-      if (data?.data?.verifyOtp) {
+      const response = await handleOtpVerify(otpVerifyMutation, OTP);
+      const {message, statusCode, success} = response.data?.verifyOtp;
+      if (success) {
+        Alert.alert('Success', message);
         navigation.navigate(screens.NEW_PASSWORD, {otp: OTP});
       } else {
-        Alert.alert(
-          'Alert',
-          'something went wrong please try again in few seconds',
-        );
+        Alert.alert('Alert!', message);
       }
       setLoading(false);
     } catch (error: any) {
@@ -65,19 +68,24 @@ const OTPScreen = ({route}) => {
       return Alert.alert('Alert', error?.message);
     }
   };
+
   const onPressResend = async () => {
-    if (timer == 0) {
+    if (timer === 0) {
       setTimer(30);
       setVisible(true);
     }
     try {
       setLoading(true);
-      const data = await handleSendOtpEmail(forgotPasswordMutation, userEmail);
-      if (data?.forgotPassword) {
-        setLoading(false);
-        Alert.alert('Sucess', 'Please check you email');
+      const response = await handleSendOtpEmail(
+        forgotPasswordMutation,
+        userEmail,
+      );
+      console.log(response, 'console of response of resend OTP');
+      const {message, success, statusCode} = response?.forgotPassword;
+      if (success) {
+        Alert.alert('Sucess', message);
       } else {
-        Alert.alert('Alert', 'User not exist,please check your email address');
+        Alert.alert('Alert', message);
       }
       setLoading(false);
     } catch (error: any) {

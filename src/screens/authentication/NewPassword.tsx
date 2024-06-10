@@ -5,7 +5,7 @@ import {
   KeyboardAvoidingView,
   Alert,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS, fonts} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
@@ -13,8 +13,11 @@ import AppButton from '../../components/molecules/app-button/AppButton';
 import AppInput from '../../components/molecules/app-input/AppInput';
 import {handleResetPassword, schemaMutation} from '../../services/api';
 import {RESET_PASSWORD} from '../../services/graphQL';
-import {screens} from '../../types/types';
+import {ErrorMessage, RootStackParamList, screens} from '../../types/types';
 import {useNavigation} from '@react-navigation/native';
+import {StackScreenProps} from '@react-navigation/stack';
+
+type Props = StackScreenProps<RootStackParamList, screens.NEW_PASSWORD>;
 
 export interface ResetPassData {
   password: string;
@@ -22,47 +25,39 @@ export interface ResetPassData {
   otp: string;
 }
 
-const NewPassword = ({route}) => {
-  const otp = route.params.otp;
-  const navigation = useNavigation();
-
+const NewPassword: FC<Props> = ({navigation, route}) => {
+  const otp = route?.params?.otp;
   const [userData, setUserData] = useState<ResetPassData>({
     password: '',
     conPassword: '',
-    otp: '',
+    otp: otp,
   });
   const [resetPasswordMutation] = schemaMutation(RESET_PASSWORD);
 
   const handleInputChange = (key: string, val: string) => {
     setUserData(preVal => ({...preVal, [key]: val}));
   };
-  useEffect(() => {
-    setUserData(preVal => ({...preVal, otp: otp}));
-  }, []);
 
   const didLoginSubmit = async () => {
     if (userData.password === userData.conPassword) {
       try {
-        const data = await handleResetPassword(resetPasswordMutation, userData);
-        if (data?.data?.resetPassword) {
-          Alert.alert(
-            'Congratulation',
-            'Password reset sucessfully, please Login',
-            [
-              {
-                text: 'OK',
-                onPress: () => navigation.navigate(screens.SIGN_IN),
-              },
-            ],
-          );
+        const response = await handleResetPassword(
+          resetPasswordMutation,
+          userData,
+        );
+        const {message, statusCode, success} = response?.data?.resetPassword;
+        if (statusCode === 200) {
+          Alert.alert('Congratulation', message, [
+            {
+              text: 'OK',
+              onPress: () => navigation.navigate(screens.SIGN_IN),
+            },
+          ]);
         } else {
-          Alert.alert(
-            'Alert',
-            'something went wrong please try again in few seconds',
-          );
+          Alert.alert('Alert', 'Something went wrong! Please try again');
         }
       } catch (error) {
-        Alert.alert('Alert', error?.message);
+        Alert.alert('Alert', (error as ErrorMessage)?.message);
       }
     } else {
       Alert.alert('Alert', 'Password and confirm password not matched');

@@ -130,8 +130,8 @@ export type RootStackParamList = {
   [screens.SIGN_IN]: undefined;
   [screens.WELCOME_USER]: undefined;
   [screens.FORGOT_PASSWORD]: undefined;
-  [screens.OTP_SCREEN]: undefined;
-  [screens.NEW_PASSWORD]: undefined;
+  [screens.OTP_SCREEN]: {email: string};
+  [screens.NEW_PASSWORD]: {otp: string};
   [screens.TAB_NAVIGATOR]: undefined;
   [screens.MAIN_SETTING]: undefined;
 

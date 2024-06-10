@@ -1,4 +1,5 @@
 import {gql} from '@apollo/client';
+
 export const SIGN_UP = gql`
   mutation SignUp($username: String!, $email: String!, $password: String!) {
     createUser(
@@ -43,24 +44,33 @@ export const CHANGE_PASSWORD = gql`
   }
 `;
 
-// needs fixing from backend
 export const SEND_EMAIL_OTP = gql`
-  mutation SendEmail($email: String!) {
-    forgotPassword(forgotPasswordInput: {email: $email})
+  mutation ForgotPassword($email: String!) {
+    forgotPassword(forgotPasswordInput: {email: $email}) {
+      success
+      statusCode
+      message
+    }
   }
 `;
 
-// needs fixing from backend
 export const VERIFY_OTP = gql`
   mutation VerifyOtp($otp: String!) {
-    verifyOtp(forgotPasswordInput: {otp: $otp})
+    verifyOtp(otpInput: {otp: $otp}) {
+      success
+      statusCode
+      message
+    }
   }
 `;
 
-// needs fixing from backend
 export const RESET_PASSWORD = gql`
-  mutation SetNewPassword($otp: String!, $newPassword: String!) {
-    resetPassword(forgotPasswordInput: {otp: $otp, newPassword: $newPassword})
+  mutation ResetPassword($otp: String!, $newPassword: String!) {
+    resetPassword(ResetPasswordInput: {otp: $otp, newPassword: $newPassword}) {
+      success
+      statusCode
+      message
+    }
   }
 `;
 

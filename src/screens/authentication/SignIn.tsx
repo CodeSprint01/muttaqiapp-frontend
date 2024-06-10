@@ -46,9 +46,7 @@ const SignIn: FC<Props> = ({navigation}) => {
     setUserData(prev => ({...prev, [key]: val}));
   };
 
-  const onPressForgotPass = () => {
-    navigation.navigate(screens.FORGOT_PASSWORD);
-  };
+  const onPressForgotPass = () => navigation.navigate(screens.FORGOT_PASSWORD);
 
   const didLoginPress = async () => {
     const isEmpty = Object.values(userData).some(val => val === '');
@@ -87,8 +85,8 @@ const SignIn: FC<Props> = ({navigation}) => {
         />
         {index == 1 && (
           <TouchableOpacity
-            onPress={onPressForgotPass}
             style={styles.forgotPass}
+            onPress={onPressForgotPass}
             activeOpacity={ActiveClickOpacity}>
             <AppText text={'Forgot password?'} style={styles.forTxt} />
           </TouchableOpacity>
