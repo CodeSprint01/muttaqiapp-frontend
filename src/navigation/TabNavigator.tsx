@@ -9,12 +9,12 @@ import BottomTabbarTabs from '../components/atoms/bottomTabBar-tabs/BottomTabbar
 import {AppIconSvg, Icons} from '../components/atoms/app-icon-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import HomeScreen from '../screens/home-screen/HomeScreen';
-import {screens} from '../types/types';
+import {RootStackParamList, screens} from '../types/types';
 import AppContainer from '../components/atoms/app-container/AppContainer';
 import AddTodoStack from './AddTodoStack';
 
 const TabNavigator = () => {
-  const Tab = createBottomTabNavigator();
+  const Tab = createBottomTabNavigator<RootStackParamList>();
   const CustomTabBarIcon = ({onPress, children}) => (
     <TouchableOpacity
       activeOpacity={8}

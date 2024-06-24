@@ -22,6 +22,7 @@ export enum screens {
   OTP_SCREEN = 'otp-screen',
   NEW_PASSWORD = 'new-password',
   TAB_NAVIGATOR = 'tab-navigator',
+  MAIN_SETTING = 'main-setting',
 
   ALL_BOOKMARKS = 'all-bookmarks',
   ALL_BOOKMARK = 'all-bookmark',
@@ -107,11 +108,123 @@ export enum screens {
   FORGOT_VAULT_PASSWORD = 'forgot-vault-password',
   VAULT_OTP_VERIFY = 'vault-otp-verify',
 }
+
+export type RootStackParamList = {
+  [screens.TAB_HOME]: undefined;
+  [screens.TAB_QIBLA]: undefined;
+  [screens.TAB_TO_DO]: undefined;
+  [screens.TAB_TRACKER]: undefined;
+  [screens.TAB_SETTING]: undefined;
+  [screens.KNOWLEDGE]: undefined;
+  [screens.HADITH]: undefined;
+  [screens.ALLAH_NAMES_DESCRIPTION]: undefined;
+  [screens.ALLAH_NAMES]: undefined;
+  [screens.QURAN_SCREEN]: undefined;
+  [screens.DETAIL_SCREENN]: undefined;
+  [screens.CARD_SCREEN]: undefined;
+  [screens.SURAH_DETAILS_SCREEN]: undefined;
+  [screens.TASBIH_COUNTER]: undefined;
+  [screens.AUTH_STACK]: undefined;
+  [screens.APP_STACK]: undefined;
+  [screens.SIGN_UP]: undefined;
+  [screens.SIGN_IN]: undefined;
+  [screens.WELCOME_USER]: undefined;
+  [screens.FORGOT_PASSWORD]: undefined;
+  [screens.OTP_SCREEN]: {email: string};
+  [screens.NEW_PASSWORD]: {otp: string};
+  [screens.TAB_NAVIGATOR]: undefined;
+  [screens.MAIN_SETTING]: undefined;
+
+  [screens.ALL_BOOKMARKS]: undefined;
+  [screens.ALL_BOOKMARK]: undefined;
+  [screens.QURAN_BOOKMARK]: undefined;
+  [screens.AZKAR_BOOKMARK]: undefined;
+  [screens.DUA_BOOKMARK]: undefined;
+  [screens.HADITH_BOOKMARK]: undefined;
+  [screens.TRACKER_SCREEN]: undefined;
+  [screens.ALL_DETAILS_STATS]: undefined;
+
+  [screens.ALL_FAVOURITES]: undefined;
+  [screens.ALL_FAVOURITE]: undefined;
+  [screens.QURAN_FAVOURITE]: undefined;
+  [screens.AZKAR_FAVOURITE]: undefined;
+  [screens.DUA_FAVOURITE]: undefined;
+  [screens.HADITH_FAVOURITE]: undefined;
+  [screens.WEEKLY_STATS]: undefined;
+  [screens.MONTHLY_STATS]: undefined;
+  [screens.YEARLY_STATS]: undefined;
+
+  [screens.USER_INFO_STACK]: undefined;
+  [screens.GENERAL_INFORMATION]: undefined;
+  [screens.FAMILY_INFORMATION_FIRST_FORM]: undefined;
+  [screens.ALL_TODO_STATS_SCREENS]: undefined;
+  [screens.WEEKLY_TODO_STAT]: undefined;
+  [screens.MONTHLY_TODO_STAT]: undefined;
+  [screens.YEARLY_TODO_STAT]: undefined;
+  [screens.HOME_STACK]: undefined;
+
+  [screens.PROFILE_STACK]: undefined;
+  [screens.USER_PROFILE_SETTING]: undefined;
+  [screens.BOOKMARKS_SETTING]: undefined;
+  [screens.FAVORITIES_SETTING]: undefined;
+  [screens.ZAKAT_CALCULATION_SETTING]: undefined;
+  [screens.INHERITANCE_CALCULATION_SETTING]: undefined;
+  [screens.PASSWORD_SECURITY_SETTING]: undefined;
+  [screens.VAULT_SETTING]: undefined;
+  [screens.VAULT_STACK]: undefined;
+  [screens.PERSONAL_FINANCIAL_INFO_SETTING]: undefined;
+  [screens.NOTIFICATION_SETTINGS]: undefined;
+  [screens.LANGUAGE_SETTING]: undefined;
+  [screens.FREQUENTLY_ASKED_QUESTION_SETTING]: undefined;
+  [screens.HELP_SUPPORT_SETTING]: undefined;
+  [screens.TERMS_CONDITION_SETTING]: undefined;
+  [screens.PRIVACY_POLICY_SETTING]: undefined;
+  [screens.ABOUT_MUTTAQI_SETTING]: undefined;
+  [screens.LOG_OUT_SETTING]: undefined;
+
+  [screens.All_ITEMS_SETTING]: undefined;
+  [screens.VAULT_LOGINS_SETTING]: {data: string};
+  [screens.SECURE_NOTES_SETTING]: undefined;
+  [screens.CREDIT_CARDS_SETTING]: undefined;
+  [screens.IDENTITIES_SETTING]: undefined;
+  [screens.PASSWORD_SETTING]: undefined;
+  [screens.DOCUMENTS_SETTING]: undefined;
+  [screens.BANK_ACCOUNTS_SETTING]: undefined;
+  [screens.DRIVER_LICENES_SETTING]: undefined;
+  [screens.SOCAIL_SECURITY_NUMBERS_SETTING]: undefined;
+  [screens.ARCHIVE_SETTING]: undefined;
+  [screens.LOGINS_CREDENTIALS]: undefined;
+  [screens.VAULT_SECURE_NOTES_SETTING]: undefined;
+  [screens.VAULT_SECURE_NOTES_READ]: undefined;
+  [screens.VAULT_SECURE_NOTES_UPDATE]: undefined;
+  [screens.VAULT_CREDIT_CARD_ADD]: undefined;
+  [screens.VAULT_CREDIT_CARD_CREATE_UPDATE]: undefined;
+  [screens.VAULT_IDENTITIES_SETTING]: undefined;
+  [screens.VAULT_IDENTITIES_CREATE_UPDATE]: undefined;
+  [screens.VAULT_PASSWORD_ADD]: undefined;
+  [screens.VAULT_PASSWORD_CREATE_UPDATE]: undefined;
+  [screens.VAULT_DOCUMENT_ADD_DELETE]: undefined;
+  [screens.VAULT_DOCUMENT_READ]: undefined;
+  [screens.VAULT_BANK_ACCOUNT_ADD]: undefined;
+  [screens.VAULT_BANK_ACCOUNT_CREATE_UPDATE]: undefined;
+  [screens.VAULT_SOCIAL_SECURITY_ADD]: undefined;
+  [screens.VAULT_SOCIAL_SECURITY_CREATE_UPDATE]: undefined;
+  [screens.VAULT_DRIVER_LICENSE_ADD]: undefined;
+  [screens.VAULT_DRIVER_LICENSE_CREATE_UPDATE]: undefined;
+  [screens.PASSWORD_SECURITY_STACK]: undefined;
+  [screens.ALL_PASSWORDS_SETTING]: undefined;
+  [screens.CHANGE_PASSWORD]: undefined;
+  [screens.CREATE_NEW_VAULT]: undefined;
+  [screens.VAULT_CREATE_DETAILS]: undefined;
+  [screens.FORGOT_VAULT_PASSWORD]: undefined;
+  [screens.VAULT_OTP_VERIFY]: undefined;
+};
+
 export interface AppState {
   error: string | undefined;
   loading?: boolean;
   userLocation?: location[];
-  userInfo: UserInfo[];
+  userInfo: UserInfo;
 }
 
 export interface SettingState {
@@ -355,7 +468,7 @@ export interface DocumentInfo {
   docUri: string;
 }
 export interface BankAccount {
-  id?: number;
+  id: string;
   bankName: string;
   accountNumber: string;
 }
@@ -378,4 +491,8 @@ export interface TodoTask {
   taskName: string;
   repeat?: string;
   isChecked: boolean;
+}
+
+export interface ErrorMessage {
+  message: string;
 }

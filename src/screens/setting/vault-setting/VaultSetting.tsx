@@ -1,5 +1,5 @@
 import {View, StyleSheet, ScrollView, FlatList, Platform} from 'react-native';
-import React from 'react';
+import React, {FC} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {COLORS, fonts} from '../../../styles/color';
 import SettingList from '../../../components/molecules/setting/SettingList';
@@ -7,14 +7,15 @@ import {VaultEnum, vaultScreen} from '../../../types/keyVlaue';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
 import {vaultArray} from '../../../utils/mocks/setting-array/VaultArray';
-import {screens} from '../../../types/types';
+import {RootStackParamList, screens} from '../../../types/types';
+import {StackScreenProps} from '@react-navigation/stack';
 
-const VaultSetting = () => {
-  const navigation = useNavigation();
+type Props = StackScreenProps<RootStackParamList, screens.VAULT_SETTING>;
+
+const VaultSetting: FC<Props> = ({navigation}) => {
   const handleListClick = (type: VaultEnum) => {
     switch (type) {
       case VaultEnum.All_ITEMS:
-        console.log('switch 0');
         break;
       case VaultEnum.LOGINS:
         navigation.navigate(screens.VAULT_LOGINS_SETTING, {data: 'usman'});
@@ -44,7 +45,6 @@ const VaultSetting = () => {
         navigation.navigate(screens.VAULT_SOCIAL_SECURITY_ADD);
         break;
       case VaultEnum.ARCHIVE:
-        console.log('switch 10');
         break;
       default:
         break;
@@ -54,9 +54,10 @@ const VaultSetting = () => {
   const renderItem = ({item, index}: {item: vaultScreen; index: number}) => {
     return (
       <SettingList
+        key={index}
         iconName={item?.image}
         title={item?.name}
-        didSettingPress={() => handleListClick(item?.type)}
+        onPress={() => handleListClick(item?.type)}
       />
     );
   };

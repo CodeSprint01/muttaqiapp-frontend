@@ -37,9 +37,8 @@ const ChangePassword = () => {
     setPasswordData(initialState);
   };
   const onPressConfirm = async () => {
-    if (passwordData.newPass !== passwordData.retypePass) {
-      Alert.alert('Alert', 'New password and retype password not matched');
-      return;
+    if (passwordData?.newPass !== passwordData?.retypePass) {
+      return Alert.alert('Alert', 'New password and retype password not matched');
     }
     try {
       const response = await changePassword(

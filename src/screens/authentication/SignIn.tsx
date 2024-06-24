@@ -7,12 +7,18 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS, fonts} from '../../styles/color';
 import AppText from '../../components/atoms/app-text/AppText';
 import {SignInArray} from '../../utils/mocks/textInputs/TextInputs';
-import {InputSignIn, State, screens} from '../../types/types';
+import {
+  ErrorMessage,
+  InputSignIn,
+  RootStackParamList,
+  State,
+  screens,
+} from '../../types/types';
 import AppInput from '../../components/molecules/app-input/AppInput';
 import AppButton from '../../components/molecules/app-button/AppButton';
 import {useNavigation} from '@react-navigation/native';
@@ -20,59 +26,68 @@ import {handleLogin, schemaMutation} from '../../services/api';
 import {useDispatch, useSelector} from 'react-redux';
 import {actionLoginUserInfoSucess} from '../../redux/user/action';
 import {SIGN_IN} from '../../services/graphQL';
+import {StackScreenProps} from '@react-navigation/stack';
+import {ActiveClickOpacity} from '../../utils/helper/helpers';
 
-const SignIn = () => {
-  const [userData, setUserData] = useState<{[key: string]: string}>({
-    userOrEmail: '',
-    password: '',
+type Props = StackScreenProps<RootStackParamList, screens.SIGN_IN>;
+
+const SignIn: FC<Props> = ({navigation}) => {
+  const [userData, setUserData] = useState<{
+    userEmail: string;
+    userPassword: string;
+  }>({
+    userEmail: '',
+    userPassword: '',
   });
-  const navigation = useNavigation();
   const [signInMutation] = schemaMutation(SIGN_IN);
   const dispatch = useDispatch();
 
   const handleInputChange = (val: string, key: string) => {
     setUserData(prev => ({...prev, [key]: val}));
   };
-  const onPressForgotPass = () => {
-    navigation.navigate(screens.FORGOT_PASSWORD);
-  };
+
+  const onPressForgotPass = () => navigation.navigate(screens.FORGOT_PASSWORD);
 
   const didLoginPress = async () => {
     const isEmpty = Object.values(userData).some(val => val === '');
     try {
       if (isEmpty) {
-        Alert.alert('Please fill all the fields');
-        return;
+        return Alert.alert('Please fill all the fields');
       }
-      const data = await handleLogin(signInMutation, userData);
-      let response = {
-        userID: data?.loginUser?.user?.id,
-        token: data?.loginUser?.token,
-        name: data?.loginUser?.user?.username,
-        email: data?.loginUser?.user?.email,
-        isLoged: false,
-      };
-      dispatch(actionLoginUserInfoSucess(response));
-      navigation.navigate(screens.WELCOME_USER);
+      const response = await handleLogin(signInMutation, userData);
+      if (response?.loginUser?.statusCode === 200) {
+        const {token, user} = response?.loginUser?.data;
+        let data = {
+          userID: user?.id,
+          token: token,
+          name: user?.username,
+          email: user?.email,
+          isLoged: false,
+        };
+        console.log(data, 'console of data');
+        dispatch(actionLoginUserInfoSucess(data));
+        navigation.navigate(screens.WELCOME_USER);
+      }
     } catch (error) {
-      Alert.alert(error?.message);
+      Alert.alert((error as ErrorMessage)?.message);
     }
   };
 
-  const renderItem = ({item, index}: {item: InputSignIn; index: any}) => {
+  const renderItem = ({item, index}: {item: InputSignIn; index: number}) => {
     return (
-      <View style={styles.inputTextSty}>
+      <View key={index} style={styles.inputTextSty}>
         <AppInput
           inputLabel={item.inputLabel}
           placeholder={item.placeholder}
-          secureTextEntry={index === 1 ? true : false}
+          secureTextEntry={Boolean(index === 1)}
           handleInputChange={val => handleInputChange(val, item.key)}
           inputValue={userData[item.key]}
         />
         {index == 1 && (
           <TouchableOpacity
+            style={styles.forgotPass}
             onPress={onPressForgotPass}
-            style={styles.forgotPass}>
+            activeOpacity={ActiveClickOpacity}>
             <AppText text={'Forgot password?'} style={styles.forTxt} />
           </TouchableOpacity>
         )}
@@ -94,9 +109,9 @@ const SignIn = () => {
           <View style={styles.inputContainer}>
             <AppText text={'Log in'} style={styles.signupTxt} />
             <FlatList
-              data={SignInArray}
+              data={SignInArray ?? []}
               renderItem={renderItem}
-              keyExtractor={item => item.key}
+              keyExtractor={(_, index) => index.toString()}
             />
           </View>
         </View>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {screens} from '../../types/types';
+import {RootStackParamList, screens} from '../../types/types';
 import VaultSetting from '../../screens/setting/vault-setting/VaultSetting';
 import VaultLoginsSetting from '../../screens/setting/vault-logins-setting/VaultLoginsSetting';
 import LoginCredentials from '../../screens/setting/logins-credential/LoginCredentials';
@@ -20,8 +20,9 @@ import VaultSocialSecurityNumberAdd from '../../screens/setting/vault-social-sec
 import VaultSocialSecurityCreateUpdate from '../../screens/setting/vault-social-security/VaultSocialSecurityCreateUpdate';
 import VaultDriverLicenseAdd from '../../screens/setting/vault-driver-license/VaultDriverLicenseAdd';
 import VaultDriverLicenseCreateUpdate from '../../screens/setting/vault-driver-license/VaultDriverLicenseCreateUpdate';
+
 const VaultStack = () => {
-  const Stack = createStackNavigator();
+  const Stack = createStackNavigator<RootStackParamList>();
   return (
     <Stack.Navigator>
       <Stack.Screen

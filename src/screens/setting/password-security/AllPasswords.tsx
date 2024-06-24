@@ -20,10 +20,7 @@ const AllPasswords = () => {
         extraStyle={styles.header}
       />
       <View style={styles.container}>
-        <SettingList
-          title={'Change password'}
-          didSettingPress={didSettingPress}
-        />
+        <SettingList title={'Change password'} onPress={didSettingPress} />
       </View>
     </AppContainer>
   );

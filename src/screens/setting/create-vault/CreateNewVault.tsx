@@ -1,5 +1,5 @@
 import {Alert, StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
 import AppText from '../../../components/atoms/app-text/AppText';
@@ -9,49 +9,61 @@ import AppButton from '../../../components/molecules/app-button/AppButton';
 import {handleCreateVault, schemaMutation} from '../../../services/api';
 import {CREATE_VALUT} from '../../../services/graphQL';
 import {useSelector} from 'react-redux';
-import {State, screens} from '../../../types/types';
+import {
+  ErrorMessage,
+  RootStackParamList,
+  State,
+  screens,
+} from '../../../types/types';
 import {useNavigation, CommonActions} from '@react-navigation/native';
+import {StackScreenProps} from '@react-navigation/stack';
 
-const CreateNewVault = () => {
+type Props = StackScreenProps<RootStackParamList, screens.CREATE_NEW_VAULT>;
+
+const CreateNewVault: FC<Props> = ({navigation}) => {
   const initialState = {
     password: '',
     confPassword: '',
   };
   const [passwords, setPasswords] = useState(initialState);
   const [createUserVault] = schemaMutation(CREATE_VALUT);
+  const {userInfo} = useSelector((state: State) => state?.userReducer);
+  const validator = passwords.password == '' || passwords?.confPassword == '';
+  const isEqual = passwords.password === passwords?.confPassword;
 
-  const navigation = useNavigation();
   const onChangeInput = (key: string, val: string) => {
     setPasswords(preVal => ({...preVal, [key]: val}));
   };
 
-  const userInfo = useSelector((state: State) => state?.userReducer?.userInfo);
-  console.log(userInfo, 'createing vault user in');
-
-  const validator = passwords.password == '' || passwords?.confPassword == '';
-  const isEqual = passwords.password === passwords?.confPassword;
-
-  const onPressOk = async () => {
+  const handlePressCreateVault = async () => {
     if (!validator) {
       if (!isEqual) {
-        Alert.alert('Alert', 'Password and confirm password not matched');
-        return;
+        return Alert.alert(
+          'Alert',
+          'Password and confirm password not matched',
+        );
       }
       try {
-        const data = await handleCreateVault(
+        const response = await handleCreateVault(
           createUserVault,
           passwords?.password,
           userInfo?.userID,
         );
-        console.log(data, 'after crerate vault');
         setPasswords(initialState);
-        navigation.dispatch(
-          CommonActions.reset({
-            index: 1,
-            routes: [{name: screens.TAB_NAVIGATOR}],
-          }),
-        );
+        const {message, statusCode, success} = response?.data?.createVault;
+        if (statusCode === 200) {
+          navigation.goBack();
+          // navigation.dispatch(
+          //   CommonActions.reset({
+          //     index: 1,
+          //     routes: [{name: screens.TAB_NAVIGATOR}],
+          //   }),
+          // );
+        } else {
+          Alert.alert(message);
+        }
       } catch (error) {
+        Alert.alert((error as ErrorMessage).message);
         console.log(error, 'erro from creating vault');
       }
     } else {
@@ -59,6 +71,7 @@ const CreateNewVault = () => {
     }
   };
   const onPressCancel = () => setPasswords(initialState);
+
   return (
     <AppContainer>
       <ScreenHeader headerText="Create new vault" extraStyle={styles.header} />
@@ -83,13 +96,13 @@ const CreateNewVault = () => {
         <View style={styles.buttons}>
           <View style={styles.btn}>
             <AppButton
-              buttonText="Cancel"
+              buttonText="Clear"
               fill={false}
               onPress={onPressCancel}
             />
           </View>
           <View style={styles.btn}>
-            <AppButton buttonText="Ok" onPress={onPressOk} />
+            <AppButton buttonText="Ok" onPress={handlePressCreateVault} />
           </View>
         </View>
       </View>
@@ -102,6 +115,7 @@ export default CreateNewVault;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 20,
     paddingHorizontal: 20,
   },
   header: {

@@ -23,6 +23,7 @@ import TrackPlayer, {
 } from 'react-native-track-player';
 import BottomSheetOverlapView from '../../../components/molecules/bottom-sheet-overlap/BottomSheetOverlapView';
 import SurahContainer from '../../../components/molecules/quran-cards/SurahContainer';
+import {ActiveClickOpacity} from '../../../utils/helper/helpers';
 
 const SurahDetailsScreen = ({route}) => {
   const surahData = route?.params?.data;
@@ -163,7 +164,9 @@ const SurahDetailsScreen = ({route}) => {
       </View>
       <View style={styles.container}>
         <View style={styles.hideShowTrans}>
-          <TouchableOpacity activeOpacity={0.5} onPress={handleHideTranslation}>
+          <TouchableOpacity
+            activeOpacity={ActiveClickOpacity}
+            onPress={handleHideTranslation}>
             <AppText
               text={hideTranslation ? 'Show translation' : 'Hide translation'}
               style={styles.hideShowTxt}

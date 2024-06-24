@@ -1,12 +1,17 @@
 import {Alert, FlatList, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import VaultList from '../../../components/molecules/setting/VaultList';
 import {Icons} from '../../../utils/helper/svg';
 import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
 import PlusIconWithText from '../../../components/molecules/app-button/PlusIconWithText';
 import {useNavigation} from '@react-navigation/native';
-import {BankAccount, State, screens} from '../../../types/types';
+import {
+  BankAccount,
+  RootStackParamList,
+  State,
+  screens,
+} from '../../../types/types';
 import {useDispatch, useSelector} from 'react-redux';
 import {actionUserBankAccountDelete} from '../../../redux/setting/action';
 import DeleteModal from '../../../components/organisums/delete-modal/DeleteModal';
@@ -18,29 +23,39 @@ import {
 } from '../../../services/graphQL';
 import AppLoader from '../../../components/atoms/loader/AppLoader';
 import {handleDeleteBankAccount, schemaMutation} from '../../../services/api';
+import {StackScreenProps} from '@react-navigation/stack';
+import {useApolloClient} from '@apollo/client';
 
-const VaultBankAccountAdd = () => {
+type Props = StackScreenProps<
+  RootStackParamList,
+  screens.VAULT_BANK_ACCOUNT_ADD
+>;
+
+const VaultBankAccountAdd: FC<Props> = ({navigation}) => {
+  const client = useApolloClient();
   const [isVisible, setIsVisible] = useState(false);
   const [accountID, setaccountID] = useState('');
-  const navigation = useNavigation();
   const dispatch = useDispatch();
-  // add bank nnumber button
 
-  const onPressAdd = async () => {
-    navigation.navigate(screens.VAULT_BANK_ACCOUNT_CREATE_UPDATE);
-  };
+  // add bank nnumber button
   const {data, error, loading} = useQuery(GET_BANK_ACCOUNTS_DETAILS);
   const [deleteBank] = schemaMutation(DELETE_BANK_ACCOUNT);
   console.log(data, error, 'applo query datas');
 
-  const onPressRemove = (id: number) => {
+  const onPressAdd = async () => {
+    navigation.navigate(screens.VAULT_BANK_ACCOUNT_CREATE_UPDATE);
+  };
+
+  const onPressRemove = (id: string) => {
     console.log(id);
     setaccountID(id);
     setIsVisible(true);
   };
+
   const onPressCancel = () => {
     setIsVisible(false);
   };
+
   const onPressDelete = async () => {
     // dispatch(actionUserBankAccountDelete(accountID));
     try {
@@ -57,7 +72,7 @@ const VaultBankAccountAdd = () => {
 
   const renderItem = ({item, index}: {item: BankAccount; index: number}) => {
     return (
-      <View style={{flex: 1}}>
+      <View key={index} style={{flex: 1}}>
         <VaultList
           cardName={item?.bankName}
           iconName={Icons.Bank}

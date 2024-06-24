@@ -54,7 +54,7 @@ const VaultCreateDetails = () => {
         <View style={styles.btn}>
           <AppButton
             buttonText="Create vault"
-            onPress={() => navigation.navigate(screens.CREATE_NEW_VAULT)}
+            onPress={() => navigation.replace(screens.CREATE_NEW_VAULT)}
           />
         </View>
       </View>

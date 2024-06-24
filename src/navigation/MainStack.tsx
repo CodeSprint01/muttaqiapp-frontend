@@ -8,14 +8,14 @@ import {useSelector} from 'react-redux';
 
 const MainStack = () => {
   const Stack = createStackNavigator();
-  const data = useSelector((state: State) => state?.userReducer?.userInfo);
-  const isLogin = data?.isLoged;
+  const { userInfo } = useSelector((state: State) => state?.userReducer);
+  const isLogin = userInfo?.isLoged;
   console.log('final user log....', isLogin);
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {data?.isLoged ? (
+        {userInfo?.isLoged ? (
           <Stack.Screen
             name={screens.APP_STACK}
             component={AppStack}

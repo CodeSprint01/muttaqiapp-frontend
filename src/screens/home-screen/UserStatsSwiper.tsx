@@ -1,8 +1,7 @@
 import {FlatList, StyleSheet, View, Platform} from 'react-native';
 import React, {FC} from 'react';
 import AppText from '../../components/atoms/app-text/AppText';
-import {COLORS, fonts} from '../../styles/color';
-import SliderListCard from '../tracker/weekly-slider/SliderListCard';
+import {COLORS, fonts} from '../../styles/color';;
 import {Icons} from '../../utils/helper/svg';
 import {StatsList} from '../../utils/mocks/tracker/StatsListArray';
 import {
@@ -12,6 +11,7 @@ import {
   graphDemo1,
 } from '../../utils/mocks/tracker/StatsGraphArray';
 import {LineChart} from 'react-native-gifted-charts';
+import SliderListCard from "../../screens/Tracker/weekly-slider/SliderListCard"
 
 interface StatsProps {
   graphData: any;
@@ -23,9 +23,9 @@ const UserStatsSwiper: FC<StatsProps> = ({handleEyeClick, graphData}) => {
     return (
       <View style={styles.listCard}>
         <SliderListCard
-          listText={item.text}
-          dotColor={item.boxColor}
-          icon={item.isShowEye ? Icons.Eye : Icons.EyeSlash}
+          listText={item?.text}
+          dotColor={item?.boxColor}
+          icon={item?.isShowEye ? Icons.Eye : Icons.EyeSlash}
           onPress={() => handleEyeClick(index)}
         />
       </View>

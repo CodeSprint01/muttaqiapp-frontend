@@ -27,13 +27,13 @@ export const handleSignUp = async (
 };
 export const handleLogin = async (
   signInMutation: MutationFunction,
-  userData: any,
+  userData: {userEmail: string; userPassword: string},
 ) => {
   try {
     const {data} = await signInMutation({
       variables: {
-        email: userData?.userOrEmail,
-        password: userData?.password,
+        email: userData?.userEmail,
+        password: userData?.userPassword,
       },
     });
     return data;
@@ -70,18 +70,13 @@ export const handleSendOtpEmail = async (
   email: string,
 ) => {
   try {
-    console.log(email, 'ee');
     const {data} = await forgotPasswordMutation({
       variables: {
         email: email,
       },
     });
-    console.log(data, 'dd');
-
     return data;
   } catch (error) {
-    console.log(error, 'ee');
-
     throw error;
   }
 };

@@ -2,7 +2,6 @@ import {FlatList, StyleSheet, View, Platform} from 'react-native';
 import React, {FC} from 'react';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {COLORS, fonts} from '../../../styles/color';
-import SliderListCard from './SliderListCard';
 import {Icons} from '../../../utils/helper/svg';
 import {StatsList} from '../../../utils/mocks/tracker/StatsListArray';
 import {
@@ -12,6 +11,7 @@ import {
   graphData4,
 } from '../../../utils/mocks/tracker/StatsGraphArray';
 import {LineChart} from 'react-native-gifted-charts';
+import SliderListCard from './SliderListCard';
 
 interface StatsProps {
   graphData: any;

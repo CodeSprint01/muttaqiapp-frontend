@@ -1,5 +1,5 @@
 import {Alert, StyleSheet, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
 import AppInput from '../../../components/molecules/app-input/AppInput';
@@ -15,13 +15,19 @@ import {
   UPDATE_BANK_ACCOUNT,
 } from '../../../services/graphQL';
 import {useQuery} from '@apollo/client';
+import {StackScreenProps} from '@react-navigation/stack';
+import {RootStackParamList, screens} from '../../../types/types';
 
-const VaultBankAccountCreateUpdate = ({route}) => {
+type Props = StackScreenProps<
+  RootStackParamList,
+  screens.VAULT_BANK_ACCOUNT_CREATE_UPDATE
+>;
+
+const VaultBankAccountCreateUpdate: FC<Props> = ({navigation, route}) => {
   const cardId = route?.params?.id;
   const {data, error, loading} = useQuery(FIND_BANK_ACCOUNT, {
     variables: {id: cardId},
   });
-
   const initialState = {
     name: '',
     number: '',
@@ -30,19 +36,19 @@ const VaultBankAccountCreateUpdate = ({route}) => {
     name: data?.findOneBankAccount?.bankName,
     number: data?.findOneBankAccount?.accountNumber,
   };
-
-  console.log(forUpdate, 'data from initial state');
-
-  console.log(data, error, 'apollo query datas');
   const [bankAccount, setBankAccount] = useState(initialState);
   const [createBankAccount] = schemaMutation(CREATE_BANK_ACCOUNT);
   const [updateBankAccount] = schemaMutation(UPDATE_BANK_ACCOUNT);
 
+  console.log(forUpdate, 'data from initial state');
+
+  console.log(data, error, 'apollo query datas');
+
   const isValidate = Object.values(bankAccount)?.some(itm => itm == '');
 
-  function onChangeText(key: string, txt: string): void {
+  const onChangeText = (key: string, txt: string): void => {
     setBankAccount(preVal => ({...preVal, [key]: txt}));
-  }
+  };
   useEffect(() => {
     if (cardId !== undefined) {
       setBankAccount(forUpdate);
@@ -143,8 +149,6 @@ const VaultBankAccountCreateUpdate = ({route}) => {
   );
 };
 
-export default VaultBankAccountCreateUpdate;
-
 const styles = StyleSheet.create({
   header: {
     paddingHorizontal: 15,
@@ -168,3 +172,5 @@ const styles = StyleSheet.create({
     width: '48%',
   },
 });
+
+export default VaultBankAccountCreateUpdate;

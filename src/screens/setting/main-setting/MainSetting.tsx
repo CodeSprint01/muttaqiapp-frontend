@@ -7,14 +7,14 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {COLORS, fonts} from '../../../styles/color';
 import UserInfoCard from './UserInfoCard';
 import SettingList from '../../../components/molecules/setting/SettingList';
 import {settingArray} from '../../../utils/mocks/setting-array/SettingArray';
 import {settingEnum, settingScreen} from '../../../types/keyVlaue';
-import {State, screens} from '../../../types/types';
+import {RootStackParamList, State, screens} from '../../../types/types';
 import {useDispatch, useSelector} from 'react-redux';
 import {actionResetStore} from '../../../redux/user/action';
 import AppModal from '../../../components/atoms/app-modal/AppModal';
@@ -26,37 +26,56 @@ import {
   FIND_USER_VAULT,
   LOGIN_VAULT,
 } from '../../../services/graphQL';
-import {useQuery} from '@apollo/client';
+import {useApolloClient, useQuery} from '@apollo/client';
 import AppLoader from '../../../components/atoms/loader/AppLoader';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
+import {StackScreenProps} from '@react-navigation/stack';
 
-const MainSetting = () => {
+type Props = StackScreenProps<RootStackParamList, screens.MAIN_SETTING>;
+
+const MainSetting: FC<Props> = ({navigation}) => {
   const initialState = {
     password: '',
     confPassword: '',
   };
   const [userPassword, setUserPassword] = useState('');
   const [isVisible, setIsvisible] = useState(false);
-  const navigation = useNavigation();
   const dispatch = useDispatch();
-  const userdata = useSelector((state: State) => state?.userReducer?.userInfo);
-  console.log(userdata, 'u d');
-  const userId = userdata?.userID;
-
+  const client = useApolloClient();
+  const {userInfo} = useSelector((state: State) => state?.userReducer);
+  const [isUserVaultSuccess, setIsUserVaultSuccess] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const userId = userInfo?.userID;
+  const isFocused = useIsFocused();
   const [logVault] = schemaMutation(LOGIN_VAULT);
-  const {data, error, loading} = useQuery(FIND_USER_VAULT, {
-    variables: {
-      userId: userId,
-    },
-  });
 
-  console.log(data, error, 'data and error both..');
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const {data, error, loading} = await client.query({
+          query: FIND_USER_VAULT,
+          variables: {userId},
+        });
+        setIsLoading(loading);
+        if (error) {
+          setIsLoading(false);
+          return Alert.alert(error.message);
+        }
+        setIsUserVaultSuccess(data?.verifyUserVault?.success);
+      } catch (error) {
+        setIsLoading(false);
+      }
+    };
+    if (isFocused) {
+      fetchData();
+    }
+  }, [isFocused]);
+
   // console.log(data?.verifyUserVault?.success, 'data g q l');
 
   const onPressOk = async () => {
     if (userPassword == '') {
-      Alert.alert('Alert', 'please enter password');
-      return;
+      return Alert.alert('Alert', 'please enter password');
     }
     try {
       const data = await handleLoginVault(logVault, userId, userPassword);
@@ -78,14 +97,13 @@ const MainSetting = () => {
     navigation.navigate(screens.FORGOT_VAULT_PASSWORD);
   };
 
-  function manageVault() {
-    if (!data?.verifyUserVault?.success) {
-      console.log('not true');
+  const manageVault = () => {
+    if (!isUserVaultSuccess) {
       navigation.navigate(screens.VAULT_CREATE_DETAILS);
     } else {
       setIsvisible(true);
     }
-  }
+  };
 
   const handleListClick = (type: settingEnum) => {
     switch (type) {
@@ -145,9 +163,10 @@ const MainSetting = () => {
   const renderItem = ({item, index}: {item: settingScreen; index: number}) => {
     return (
       <SettingList
+        key={index}
         iconName={item?.image}
         title={item?.name}
-        didSettingPress={() => handleListClick(item?.type)}
+        onPress={() => handleListClick(item?.type)}
       />
     );
   };
@@ -171,7 +190,7 @@ const MainSetting = () => {
           keyExtractor={(_item, index) => index.toString()}
         />
       </View>
-      <AppLoader isVisible={loading} />
+      <AppLoader isVisible={isLoading} />
       <View>
         <AppModal
           isVisible={isVisible}

@@ -1,17 +1,19 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {screens} from '../types/types';
-import SignUp from '../screens/authentication/SignUp';
+import {RootStackParamList, screens} from '../types/types';
 import SignIn from '../screens/authentication/SignIn';
 import WelcomeUser from '../screens/authentication/WelcomeUser';
 import UserInfoStack from './UserInfoStack';
 import ForgotPassword from '../screens/authentication/ForgotPassword';
 import OTPScreen from '../screens/authentication/OTPScreen';
 import NewPassword from '../screens/authentication/NewPassword';
+import SignUp from '../screens/authentication/SignUp';
+
 const AuthStack = () => {
-  const Stack = createStackNavigator();
+  const Stack = createStackNavigator<RootStackParamList>();
+  
   return (
-    <Stack.Navigator initialRouteName={screens.SIGN_UP}>
+    <Stack.Navigator>
       <Stack.Screen
         name={screens.SIGN_UP}
         component={SignUp}
