@@ -5,7 +5,7 @@ import {getSvgIcon, Icons} from '../../../utils/helper/svg';
 
 interface AppIconSvgProps {
   icon: string;
-  width?: number;
+  width?: number | string;
   height?: number;
   color?: string;
   style?: StyleProp<ViewStyle>;

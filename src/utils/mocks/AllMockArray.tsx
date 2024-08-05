@@ -31,6 +31,28 @@ export const IdentityArray: Array<{label: string; value: string}> = [
     value: 'Passport',
   },
 ];
+export const IncomeType: Array<{label: string; value: string}> = [
+  {label: 'Earned Income', value: 'Earned Income'},
+  {label: 'Business Income', value: 'Business Income'},
+  {label: 'Dividend Income', value: 'Dividend Income'},
+  {label: 'Rental Income', value: 'Rental Income'},
+];
+export const relationship: Array<{label: string; value: string}> = [
+  {label: 'Parent', value: 'Parent'},
+  {label: 'Siblings', value: 'Siblings'},
+  {label: 'Spouse', value: 'Spouse'},
+  {label: 'Child', value: 'Child'},
+];
+export const maritalStatus: Array<{label: string; value: string}> = [
+  {label: 'Single', value: 'Single'},
+  {label: 'Married', value: 'Married'},
+  {label: 'Divorced', value: 'Divorced'},
+  {label: 'Widowed', value: 'Widowed'},
+];
+export const aliveStatus: Array<{label: string; value: string}> = [
+  {label: 'Alive', value: 'Alive'},
+  {label: 'Deceased', value: 'Deceased'},
+];
 import {allahNamesProps, exploreInterface, screens} from '../../types/types';
 import {Icons} from '../helper/svg';
 

@@ -496,3 +496,12 @@ export interface TodoTask {
 export interface ErrorMessage {
   message: string;
 }
+
+export interface Child {
+  name: '';
+  age: 0;
+}
+export interface Siblings {
+  name: '';
+  age: 0;
+}
