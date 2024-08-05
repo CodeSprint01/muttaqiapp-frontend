@@ -18,6 +18,8 @@ import SiblingsInfo from '../user-info/SiblingsInfo';
 
 const GeneralInformation = () => {
   const navigation = useNavigation();
+  const [currentStep, setCurrentStep] = useState(0);
+  const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
   const [userData, setUserData] = useState({
     userName: '',
     userGender: null,
@@ -30,6 +32,46 @@ const GeneralInformation = () => {
     userFirqa: '',
   });
 
+  const renderUserInfoView = [
+    [<GeneralInfo key="GeneralInfo" />],
+    [
+      <FamilyInfo key="FamilyInfo" />,
+      <ChildrenInfo key="ChildrenInfo" />,
+      <SiblingsInfo key="SiblingsInfo" />,
+    ],
+    [
+      <AssetsSalaryInfo key="AssetsSalaryInfo" />,
+      <AssetsBusinessInfo key="AssetsBusinessInfo" />,
+    ],
+    [<NomineeInfo key="NomineeInfo" />],
+    [<AssetsBusinessInfo key="AssetsBusinessInfo" />],
+  ];
+
+  const handleNext = () => {
+    const currentStepComponents = renderUserInfoView[currentStep];
+    if (currentComponentIndex < currentStepComponents.length - 1) {
+      setCurrentComponentIndex(currentComponentIndex + 1);
+    } else if (currentStep < renderUserInfoView.length - 1) {
+      setCurrentStep(currentStep + 1);
+      setCurrentComponentIndex(0);
+    } else if (currentStep === 4) {
+      navigation.navigate(screens.APP_STACK);
+    }
+  };
+
+  const handleSkip = () => {
+    navigation.navigate(screens.APP_STACK);
+  };
+
+  const Steps = [
+    Icons.FirstStep,
+    Icons.SecondStep,
+    Icons.ThirdStep,
+    Icons.FourthStep,
+    Icons.FifthStep,
+  ];
+  console.log(currentStep);
+
   return (
     <AppContainer>
       <LinearGradient
@@ -40,7 +82,7 @@ const GeneralInformation = () => {
         style={styles.container}>
         <View style={styles.progress}>
           <AppIconSvg
-            icon={Icons.FirstStep}
+            icon={Steps[currentStep]}
             width={'100%'}
             height={50}
             color="black"
@@ -48,34 +90,29 @@ const GeneralInformation = () => {
         </View>
         <View style={styles.formContainer}>
           <View style={{paddingHorizontal: 20}}>
-            <AppText text={'1/6'} style={styles.formNumberTxt} />
+            <AppText
+              text={`${currentStep + 1}/${renderUserInfoView.length}`}
+              style={styles.formNumberTxt}
+            />
           </View>
           <ScrollView
             showsVerticalScrollIndicator={false}
             style={styles.scroll}>
             <View style={{paddingHorizontal: 20}}>
-              <GeneralInfo />
-              {/* <AssetsSalaryInfo /> */}
-              {/* <AssetsBusinessInfo /> */}
-              {/* <NomineeInfo /> */}
-              {/* <FamilyInfo /> */}
-              {/* <ChildrenInfo /> */}
-              {/* <SiblingsInfo /> */}
+              {renderUserInfoView[currentStep][currentComponentIndex]}
+              {/* <GeneralInfo />
+              <AssetsSalaryInfo />
+              <AssetsBusinessInfo />
+              <NomineeInfo />
+              <FamilyInfo />
+              <ChildrenInfo />
+              <SiblingsInfo /> */}
             </View>
           </ScrollView>
           <View style={styles.bottomBtns}>
-            <AppButton
-              buttonText="Next"
-              onPress={() =>
-                navigation.navigate(screens.FAMILY_INFORMATION_FIRST_FORM)
-              }
-            />
+            <AppButton buttonText="Next" onPress={handleNext} />
             <View style={styles.skipBtn}>
-              <AppButton
-                buttonText="Skip"
-                fill={false}
-                onPress={() => navigation.navigate(screens.APP_STACK)}
-              />
+              <AppButton buttonText="Skip" fill={false} onPress={handleSkip} />
             </View>
           </View>
         </View>
