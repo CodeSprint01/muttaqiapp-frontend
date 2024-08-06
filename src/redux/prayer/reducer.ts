@@ -27,15 +27,16 @@ export default function reducer(state = initialState, action: any = {}) {
               isOffered: !item.isOffered,
             };
           }
-          if (!singlePrayer?.isOfferedTimePassed) {
-            let updatedNotification = item?.notification + 1;
-            updatedNotification =
-              updatedNotification === 3 ? 0 : updatedNotification;
-            return {
-              ...item,
-              notification: updatedNotification,
-            };
-          } else {
+          // if (!singlePrayer?.isOfferedTimePassed) {
+          //   let updatedNotification = item?.notification + 1;
+          //   updatedNotification =
+          //     updatedNotification === 3 ? 0 : updatedNotification;
+          //   return {
+          //     ...item,
+          //     notification: updatedNotification,
+          //   };
+          // }
+          else {
             return {
               ...item,
             };

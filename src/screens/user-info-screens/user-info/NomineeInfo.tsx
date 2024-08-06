@@ -2,14 +2,9 @@ import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import AppText from '../../../components/atoms/app-text/AppText';
 import AppInputDropDown from '../../../components/molecules/app-input-drop-down/AppInputDropDown';
-import {
-  Gender,
-  relationship,
-  SecteList,
-} from '../../../utils/mocks/AllMockArray';
+import {relationship} from '../../../utils/mocks/AllMockArray';
 import PhoneNumberInput from 'react-native-phone-number-input';
 import AppInput from '../../../components/molecules/app-input/AppInput';
-import {Icons} from '../../../utils/helper/svg';
 import {COLORS, fonts} from '../../../styles/color';
 
 const NomineeInfo = () => {
@@ -32,7 +27,7 @@ const NomineeInfo = () => {
 
   return (
     <View>
-      <AppText text={'General information'} style={styles.formTitle} />
+      <AppText text={'Nominee information'} style={styles.formTitle} />
       <View style={styles.form}>
         <AppInput
           inputLabel="Nominee name"

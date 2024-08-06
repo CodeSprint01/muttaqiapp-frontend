@@ -1,33 +1,29 @@
-import {StyleSheet, View} from 'react-native';
+import {Modal, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import AppText from '../../../components/atoms/app-text/AppText';
 import AppInputDropDown from '../../../components/molecules/app-input-drop-down/AppInputDropDown';
 import {
   aliveStatus,
-  Gender,
   maritalStatus,
-  SecteList,
+  previouslyMarriedStatus,
 } from '../../../utils/mocks/AllMockArray';
-import PhoneNumberInput from 'react-native-phone-number-input';
-import AppButton from '../../../components/molecules/app-button/AppButton';
-import {useNavigation} from '@react-navigation/native';
-import {screens} from '../../../types/types';
 import AppInput from '../../../components/molecules/app-input/AppInput';
-import {Icons} from '../../../utils/helper/svg';
 import {COLORS, fonts} from '../../../styles/color';
+import AppModal from '../../../components/atoms/app-modal/AppModal';
+import AppButton from '../../../components/molecules/app-button/AppButton';
 
-const FamilyInfo = () => {
-  const navigation = useNavigation();
-  const [formattedValue, setFormattedValue] = useState('');
-  const [countryCode, setCountryCode] = useState('PK'); // Initial country code
+interface Props {
+  onPressConfirm: () => void;
+  isVisible: boolean;
+}
+
+const FamilyInfo = ({onPressConfirm, isVisible}: Props) => {
   const [userData, setUserData] = useState({
     maritalStatus: null,
-    fatherStatus: null,
-    motherStatus: null,
-    numberOfBrothers: 0,
-    numberOfsSisters: 0,
+    numberOfWives: 0,
+    previousMarriageStatus: null,
   });
-  // all data store in userdata state and only phone store in formattedValue
+
   const handleInputValue = (val: any, inputName: string) => {
     setUserData(prevState => ({
       ...prevState,
@@ -38,7 +34,7 @@ const FamilyInfo = () => {
   return (
     <View>
       <AppText text={'Family information'} style={styles.formTitle} />
-      <View style={styles.form}>
+      <View style={styles.inputs}>
         <AppInputDropDown
           placeholderText="Select your marital status"
           arrayData={maritalStatus}
@@ -48,43 +44,44 @@ const FamilyInfo = () => {
         />
       </View>
       <View style={styles.inputs}>
-        <AppInputDropDown
-          placeholderText="Choose parent status"
-          arrayData={aliveStatus}
-          inputLabel="Is your father alive?"
-          isRequired={true}
-          handleSelectValue={val => handleInputValue(val, 'fatherStatus')}
-        />
-      </View>
-      <View style={styles.inputs}>
-        <AppInputDropDown
-          placeholderText="Choose parent status"
-          arrayData={aliveStatus}
-          inputLabel="Is your mother alive?"
-          isRequired={true}
-          handleSelectValue={val => handleInputValue(val, 'motherStatus')}
-        />
-      </View>
-      <View style={styles.inputs}>
         <AppInput
-          inputLabel="Number of brothers"
-          placeholder="Enter the number of your brothers"
+          inputLabel="Number of wives"
+          placeholder="Enter the number of your wives"
           isRequired={true}
-          handleInputChange={val => handleInputValue(val, 'userAddress')}
-          inputValue={userData.numberOfBrothers}
+          handleInputChange={val => handleInputValue(val, 'numberOfWives')}
+          inputValue={userData.numberOfWives}
           keyboardType={'number-pad'}
         />
       </View>
       <View style={styles.inputs}>
-        <AppInput
-          inputLabel="Number of sisters"
-          placeholder="Enter the number of your sisters"
+        <AppInputDropDown
+          placeholderText="Choose the case of your previous marriage"
+          arrayData={previouslyMarriedStatus}
+          inputLabel="Have you been previously married?"
           isRequired={true}
-          handleInputChange={val => handleInputValue(val, 'userCountry')}
-          inputValue={userData.numberOfsSisters}
-          keyboardType={'number-pad'}
+          handleSelectValue={val =>
+            handleInputValue(val, 'previousMarriageStatus')
+          }
         />
       </View>
+      <AppModal
+        extraViewStyle={styles.extraModalStyle}
+        isVisible={isVisible}
+        children={
+          <View style={styles.modalView}>
+            <AppText text={'Reminder'} style={styles.modalTitle} />
+            <AppText
+              text={
+                'In the next step, you will be asked to register some family information for inheritance calculation. Please do not add any non-muslin family members as they are not Islamic heirs according to sharia.'
+              }
+              style={styles.modalText}
+            />
+            <View style={styles.button}>
+              <AppButton buttonText={'Confirm'} onPress={onPressConfirm} />
+            </View>
+          </View>
+        }
+      />
     </View>
   );
 };
@@ -98,10 +95,37 @@ const styles = StyleSheet.create({
     fontFamily: fonts.dmSans[700],
     paddingTop: 4,
   },
-  form: {
-    marginTop: 24,
-  },
   inputs: {
     marginTop: 24,
+  },
+  extraModalStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center',
+    backgroundColor: 'transparent',
+  },
+  modalView: {
+    height: '42%',
+    borderRadius: 38,
+    backgroundColor: COLORS.light_Powder_Blue,
+  },
+  modalTitle: {
+    color: COLORS.green,
+    fontSize: 24,
+    fontFamily: fonts.dmSans[700],
+    alignSelf: 'center',
+    marginTop: 40,
+  },
+  modalText: {
+    color: COLORS.medium_gray,
+    fontSize: 18,
+    fontFamily: fonts.dmSans[500],
+    marginHorizontal: 15,
+    textAlign: 'center',
+    marginTop: 32,
+  },
+  button: {
+    marginHorizontal: 42,
+    marginVertical: 32,
   },
 });

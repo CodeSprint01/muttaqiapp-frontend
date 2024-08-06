@@ -5,7 +5,7 @@ import AppInput from '../../../components/molecules/app-input/AppInput';
 import {COLORS, fonts} from '../../../styles/color';
 import {Child} from '../../../types/types';
 
-const ChildrenInfo = () => {
+const ChildrenOtherInfo = () => {
   const [userData, setUserData] = useState({
     spouseName: '',
     numberOfSons: '',
@@ -56,7 +56,7 @@ const ChildrenInfo = () => {
       <AppText text={'Family information'} style={styles.formTitle} />
       <View style={styles.inputs}>
         <AppInput
-          inputLabel="Spouse 1 name"
+          inputLabel="Spouse 2 name (deceased)"
           placeholder="Type your spouse name"
           isRequired={true}
           handleInputChange={val => handleInputValue(val, 'spouseName')}
@@ -141,7 +141,7 @@ const ChildrenInfo = () => {
   );
 };
 
-export default ChildrenInfo;
+export default ChildrenOtherInfo;
 
 const styles = StyleSheet.create({
   formTitle: {

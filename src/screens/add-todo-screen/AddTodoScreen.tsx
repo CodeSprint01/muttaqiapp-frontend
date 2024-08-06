@@ -60,17 +60,21 @@ const AddTodoScreen = () => {
             />
           </View>
           <View style={styles.todoConntainer}>
-            <TodoTask handleAddTodo={onPressAddTodo} />
+            <TodoTask
+              todoName="Read surat Al-mulk before sleep"
+              repeatText="daily"
+              handleAddTodo={onPressAddTodo}
+            />
           </View>
-          <BottomSheetOverlapView
-            showBottomSheet={isVisible}
-            enableHeaderLine
-            setShowBottomSheet={() => setIsVisible(false)}
-            snapPoints={snapPoint}
-            children={<TodoTaskForm />}
-          />
         </View>
       </ScrollView>
+      <BottomSheetOverlapView
+        showBottomSheet={isVisible}
+        enableHeaderLine
+        setShowBottomSheet={() => setIsVisible(false)}
+        snapPoints={snapPoint}
+        children={<TodoTaskForm />}
+      />
     </AppContainer>
   );
 };

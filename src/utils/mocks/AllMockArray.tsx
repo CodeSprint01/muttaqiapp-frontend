@@ -53,6 +53,34 @@ export const aliveStatus: Array<{label: string; value: string}> = [
   {label: 'Alive', value: 'Alive'},
   {label: 'Deceased', value: 'Deceased'},
 ];
+export const previouslyMarriedStatus: Array<{label: string; value: string}> = [
+  {label: 'No', value: 'No'},
+  {label: 'Yes, spouse deceased', value: 'Yes, spouse deceased'},
+  {label: 'Yes, spouse divorced', value: 'Yes, spouse divorced'},
+];
+export const relationshipToBrother: Array<{label: string; value: string}> = [
+  {label: 'Full brother', value: 'Full brother'},
+  {label: 'Maternal brother', value: 'Maternal brother'},
+  {label: 'Paternal brother', value: 'Paternal brother'},
+];
+export const relationshipToSister: Array<{label: string; value: string}> = [
+  {label: 'Full sister', value: 'Full sister'},
+  {label: 'Maternal sister', value: 'Maternal sister'},
+  {label: 'Paternal sister', value: 'Paternal sister'},
+];
+export const relationshipToBequest: Array<{label: string; value: string}> = [
+  {label: 'Spouse', value: 'Spouse'},
+  {label: 'Child', value: 'Child'},
+  {label: 'Parent', value: 'Parent'},
+  {label: 'Sibling', value: 'Sibling'},
+  {label: 'Grandchild', value: 'Grandchild'},
+  {label: 'Grandparent', value: 'Grandparent'},
+  {label: 'Aunt', value: 'Aunt'},
+  {label: 'Uncle', value: 'Uncle'},
+  {label: 'Niece', value: 'Niece'},
+  {label: 'Nephew', value: 'Nephew'},
+  {label: 'Cousin', value: 'Cousin'},
+];
 import {allahNamesProps, exploreInterface, screens} from '../../types/types';
 import {Icons} from '../helper/svg';
 

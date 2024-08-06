@@ -23,18 +23,35 @@ const PrayerAlarmCard: FC<AlarmProps> = ({
   alarmIcon,
   item,
 }) => {
+  const isDisabled = item?.isOfferedTimePassed ? false : true;
+
   return (
     <View style={styles.container}>
       <View style={styles.iconText}>
-        <TouchableOpacity onPress={() => onPress(item)}>
-          <View style={styles.circleView}>
-            <AppIconSvg
-              icon={prayerIcon}
-              width={24}
-              height={24}
-              color={COLORS.green}
-            />
-          </View>
+        <TouchableOpacity
+          onPress={() => onPress(item)}
+          disabled={isDisabled}
+          style={[styles.button, isDisabled && styles.disabledButton]}>
+          <LinearGradient
+            colors={[
+              '#1290A1',
+              'rgba(24, 154, 151, 0.86)',
+              'rgba(29, 162, 143, 0.73)',
+            ]}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 1}}
+            style={styles.linearCircleView}>
+            <View style={styles.circleView}>
+              {prayerIcon && (
+                <AppIconSvg
+                  icon={prayerIcon}
+                  width={10}
+                  height={8}
+                  color={COLORS.white}
+                />
+              )}
+            </View>
+          </LinearGradient>
         </TouchableOpacity>
         <AppText text={name} style={styles.prayerText} />
       </View>
@@ -68,7 +85,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     // backgroundColor: 'pink',
   },
-  circleView: {
+  linearCircleView: {
     width: 36,
     height: 36,
     borderRadius: 18,
@@ -112,5 +129,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 10,
     paddingHorizontal: 3,
+  },
+  circleView: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    borderWidth: 2,
+    borderColor: COLORS.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+    flexDirection: 'row',
+  },
+  disabledButton: {
+    opacity: 0.5,
   },
 });

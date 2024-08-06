@@ -4,7 +4,6 @@ import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import LinearGradient from 'react-native-linear-gradient';
 import {COLORS, fonts} from '../../../styles/color';
 import AppText from '../../../components/atoms/app-text/AppText';
-import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
 import {useNavigation} from '@react-navigation/native';
 import {screens} from '../../../types/types';
 import GeneralInfo from '../user-info/GeneralInfo';
@@ -15,11 +14,17 @@ import NomineeInfo from '../user-info/NomineeInfo';
 import FamilyInfo from '../user-info/FamilyInfo';
 import ChildrenInfo from '../user-info/ChildrenInfo';
 import SiblingsInfo from '../user-info/SiblingsInfo';
+import ChildrenOtherInfo from '../user-info/ChildrenOtherInfo';
+import NumberOfSiblings from '../user-info/NumberOfSiblings';
+import StepCounter from './StepCounter';
+import BequestDesire from '../user-info/BequestDesire';
+import BequestInfo from '../user-info/BequestInfo';
 
 const GeneralInformation = () => {
   const navigation = useNavigation();
   const [currentStep, setCurrentStep] = useState(0);
   const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
+  const [isVisible, setVisible] = useState(false);
   const [userData, setUserData] = useState({
     userName: '',
     userGender: null,
@@ -31,12 +36,22 @@ const GeneralInformation = () => {
     userSect: '',
     userFirqa: '',
   });
+  const onPressConfirm = () => {
+    setVisible(false);
+    handleNext();
+  };
 
   const renderUserInfoView = [
     [<GeneralInfo key="GeneralInfo" />],
     [
-      <FamilyInfo key="FamilyInfo" />,
+      <FamilyInfo
+        onPressConfirm={onPressConfirm}
+        key="FamilyInfo"
+        isVisible={isVisible}
+      />,
       <ChildrenInfo key="ChildrenInfo" />,
+      <ChildrenOtherInfo key={'ChildrenOtherInfo'} />,
+      <NumberOfSiblings key={'NumberOfSiblings'} />,
       <SiblingsInfo key="SiblingsInfo" />,
     ],
     [
@@ -44,7 +59,10 @@ const GeneralInformation = () => {
       <AssetsBusinessInfo key="AssetsBusinessInfo" />,
     ],
     [<NomineeInfo key="NomineeInfo" />],
-    [<AssetsBusinessInfo key="AssetsBusinessInfo" />],
+    [
+      <BequestDesire key={'BequestDesire'} />,
+      <BequestInfo key={'BequestInfo'} />,
+    ],
   ];
 
   const handleNext = () => {
@@ -63,14 +81,9 @@ const GeneralInformation = () => {
     navigation.navigate(screens.APP_STACK);
   };
 
-  const Steps = [
-    Icons.FirstStep,
-    Icons.SecondStep,
-    Icons.ThirdStep,
-    Icons.FourthStep,
-    Icons.FifthStep,
-  ];
-  console.log(currentStep);
+  const openModal = () => {
+    setVisible(true);
+  };
 
   return (
     <AppContainer>
@@ -81,12 +94,7 @@ const GeneralInformation = () => {
         locations={[0.0837, 0.9295]}
         style={styles.container}>
         <View style={styles.progress}>
-          <AppIconSvg
-            icon={Steps[currentStep]}
-            width={'100%'}
-            height={50}
-            color="black"
-          />
+          <StepCounter currentStep={currentStep} />
         </View>
         <View style={styles.formContainer}>
           <View style={{paddingHorizontal: 20}}>
@@ -100,19 +108,48 @@ const GeneralInformation = () => {
             style={styles.scroll}>
             <View style={{paddingHorizontal: 20}}>
               {renderUserInfoView[currentStep][currentComponentIndex]}
-              {/* <GeneralInfo />
-              <AssetsSalaryInfo />
-              <AssetsBusinessInfo />
-              <NomineeInfo />
-              <FamilyInfo />
-              <ChildrenInfo />
-              <SiblingsInfo /> */}
+              {/* <GeneralInfo /> */}
+              {/* <AssetsSalaryInfo /> */}
+              {/* <AssetsBusinessInfo /> */}
+              {/* <NomineeInfo /> */}
+              {/* <FamilyInfo /> */}
+              {/* <ChildrenInfo /> */}
+              {/* <ChildrenOtherInfo /> */}
+              {/* <NumberOfSiblings /> */}
+              {/* <SiblingsInfo /> */}
+              {/* <BequestDesire /> */}
+              {/* <BequestInfo /> */}
             </View>
           </ScrollView>
           <View style={styles.bottomBtns}>
-            <AppButton buttonText="Next" onPress={handleNext} />
+            <AppButton
+              buttonText={
+                currentStep === 4 && currentComponentIndex === 0
+                  ? 'Yes'
+                  : currentStep === 4 && currentComponentIndex === 1
+                  ? 'Calculate'
+                  : 'Next'
+              }
+              onPress={
+                currentStep === 1 && currentComponentIndex === 0
+                  ? openModal
+                  : handleNext
+              }
+            />
             <View style={styles.skipBtn}>
-              <AppButton buttonText="Skip" fill={false} onPress={handleSkip} />
+              <AppButton
+                buttonText={
+                  currentStep === 4 && currentComponentIndex === 0
+                    ? 'No'
+                    : 'Skip'
+                }
+                fill={false}
+                onPress={
+                  currentStep === 4 && currentComponentIndex === 0
+                    ? handleSkip
+                    : handleSkip
+                }
+              />
             </View>
           </View>
         </View>

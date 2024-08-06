@@ -22,12 +22,9 @@ const PrayerTimesList: FC<PrayerProps> = ({
   const getPrayerIcon = (item: any) => {
     if (item?.isOfferedTimePassed) {
       if (item?.isOffered) {
-        return Icons.TickCircle;
-      } else return Icons.EmptyCircle;
-    } else if (item?.notification === 0) return Icons.Alarm;
-    else if (item?.notification === 1) return Icons.AlarmSlash;
-    else if (item?.notification === 2) return Icons.AlarmCross;
-    // item.isOffered ? offerPrayed() : alarmState()
+        return Icons.CheckBoxTickIcon;
+      } else return null;
+    }
   };
   const getAlarmIcon = (item: any) => {
     if (item?.notification === 0) return Icons.Alarm;

@@ -2,19 +2,19 @@ import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import AppText from '../../../components/atoms/app-text/AppText';
 import AppInputDropDown from '../../../components/molecules/app-input-drop-down/AppInputDropDown';
-import {Gender, SecteList} from '../../../utils/mocks/AllMockArray';
+import {Gender, relationshipToBequest} from '../../../utils/mocks/AllMockArray';
 import PhoneNumberInput from 'react-native-phone-number-input';
 import AppInput from '../../../components/molecules/app-input/AppInput';
 import {COLORS, fonts} from '../../../styles/color';
 
-const GeneralInfo = () => {
+const BequestInfo = () => {
   const [formattedValue, setFormattedValue] = useState('');
   const [countryCode, setCountryCode] = useState('PK'); // Initial country code
   const [userData, setUserData] = useState({
     userName: '',
     userGender: null,
     userAge: 0,
-    userEduction: '',
+    relationshipToBequest: '',
     userAddress: '',
     userCountry: '',
     userCNIC: 0,
@@ -31,12 +31,12 @@ const GeneralInfo = () => {
 
   return (
     <View>
-      <AppText text={'General information'} style={styles.formTitle} />
+      <AppText text={'Bequest information'} style={styles.formTitle} />
       <View style={styles.form}>
         <AppInput
-          inputLabel="Full Name"
+          inputLabel="Bequest receiver name"
           isRequired={true}
-          placeholder="Enter your full legal name"
+          placeholder="Enter the full legal name of bequest receiver"
           handleInputChange={val => handleInputValue(val, 'userName')}
           inputValue={userData.userName}
         />
@@ -63,17 +63,20 @@ const GeneralInfo = () => {
         </View>
       </View>
       <View style={styles.inputs}>
-        <AppInput
-          inputLabel="Education"
-          placeholder="Type your highest degree"
-          handleInputChange={val => handleInputValue(val, 'userEduction')}
-          inputValue={userData.userEduction}
+        <AppInputDropDown
+          placeholderText="Choose relation to bequest receiver"
+          arrayData={relationshipToBequest}
+          inputLabel="Relationship to bequest receiver"
+          isRequired={true}
+          handleSelectValue={val =>
+            handleInputValue(val, 'relationshipToBequest')
+          }
         />
       </View>
       <View style={styles.inputs}>
         <AppInput
           inputLabel="Address"
-          placeholder="Enter your address"
+          placeholder="Enter bequest receiver address"
           handleInputChange={val => handleInputValue(val, 'userAddress')}
           inputValue={userData.userAddress}
         />
@@ -81,7 +84,7 @@ const GeneralInfo = () => {
       <View style={styles.inputs}>
         <AppInput
           inputLabel="Country of stay"
-          placeholder="Enter your current country"
+          placeholder="Enter bequest receiver current country"
           handleInputChange={val => handleInputValue(val, 'userCountry')}
           inputValue={userData.userCountry}
         />
@@ -90,7 +93,7 @@ const GeneralInfo = () => {
         <AppInput
           inputLabel="CNIC. No"
           isRequired={true}
-          placeholder="Enter your CNIC. No"
+          placeholder="Enter bequest receiver CNIC. No"
           handleInputChange={val => handleInputValue(val, 'userCNIC')}
           inputValue={userData.userCNIC}
           keyboardType={'number-pad'}
@@ -111,31 +114,11 @@ const GeneralInfo = () => {
           codeTextStyle={{color: COLORS.medium_gray}}
         />
       </View>
-      <View style={[styles.genderAge, {marginBottom: 50}]}>
-        <View style={styles.gender}>
-          <AppInputDropDown
-            placeholderText="Choose Sect"
-            arrayData={SecteList}
-            inputLabel="Sect"
-            isRequired={true}
-            handleSelectValue={val => handleInputValue(val, 'userSect')}
-          />
-        </View>
-        <View style={[styles.userAge, {marginTop: 0}]}>
-          <AppInputDropDown
-            placeholderText="Choose Firqa"
-            arrayData={SecteList}
-            inputLabel="Firqa"
-            isRequired={true}
-            handleSelectValue={val => handleInputValue(val, 'userFirqa')}
-          />
-        </View>
-      </View>
     </View>
   );
 };
 
-export default GeneralInfo;
+export default BequestInfo;
 
 const styles = StyleSheet.create({
   formTitle: {

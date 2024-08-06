@@ -504,4 +504,6 @@ export interface Child {
 export interface Siblings {
   name: '';
   age: 0;
+  cnic: '';
+  relationship: null;
 }
