@@ -28,9 +28,10 @@ const ChildrenInfo = () => {
       }));
       setDaughtersList(updatedDaughtersList);
     }
+    const stringValue = typeof val === 'number' ? String(val) : val;
     setUserData(prevState => ({
       ...prevState,
-      [inputName]: val,
+      [inputName]: stringValue,
     }));
   };
 
@@ -40,13 +41,14 @@ const ChildrenInfo = () => {
     value: string,
     isSon: boolean,
   ) => {
+    const stringValue = typeof value === 'number' ? String(value) : value;
     if (isSon) {
       const updatedSonsList = [...sonsList];
-      updatedSonsList[index][key] = value;
+      updatedSonsList[index][key] = stringValue;
       setSonsList(updatedSonsList);
     } else {
       const updatedDaughtersList = [...daughtersList];
-      updatedDaughtersList[index][key] = value;
+      updatedDaughtersList[index][key] = stringValue;
       setDaughtersList(updatedDaughtersList);
     }
   };
@@ -104,7 +106,7 @@ const ChildrenInfo = () => {
               handleInputChange={val =>
                 handleChildInputChange(index, 'age', val, true)
               }
-              inputValue={item.age}
+              inputValue={item.age.toString()}
               keyboardType={'number-pad'}
             />
           </View>
@@ -131,7 +133,7 @@ const ChildrenInfo = () => {
               handleInputChange={val =>
                 handleChildInputChange(index, 'age', val, false)
               }
-              inputValue={item.age}
+              inputValue={item.age.toString()}
               keyboardType={'number-pad'}
             />
           </View>

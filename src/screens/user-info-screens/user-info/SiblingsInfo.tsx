@@ -46,9 +46,10 @@ const SiblingsInfo = () => {
   }, []);
 
   const handleInputValue = (val: any, inputName: string) => {
+    const stringValue = typeof val === 'number' ? String(val) : val;
     setUserData(prevState => ({
       ...prevState,
-      [inputName]: val,
+      [inputName]: stringValue,
     }));
   };
 
@@ -58,13 +59,14 @@ const SiblingsInfo = () => {
     value: string,
     isSon: boolean,
   ) => {
+    const stringValue = typeof value === 'number' ? String(value) : value;
     if (isSon) {
       const updatedbrothersList = [...brothersList];
-      updatedbrothersList[index][key] = value;
+      updatedbrothersList[index][key] = stringValue;
       setBrothersList(updatedbrothersList);
     } else {
       const updatedSistersList = [...SistersList];
-      updatedSistersList[index][key] = value;
+      updatedSistersList[index][key] = stringValue;
       setDaughtersList(updatedSistersList);
     }
   };
@@ -108,110 +110,114 @@ const SiblingsInfo = () => {
           inputValue={userData.motherCNICNo}
         />
       </View>
-      {brothersList.map((item, index) => (
-        <>
-          <View key={index} style={styles.siblingDetailView}>
-            <View style={styles.siblingView}>
-              <AppInput
-                inputLabel={`Brother ${index + 1} name`}
-                isRequired={true}
-                placeholder="Enter your brother's name"
-                handleInputChange={val =>
-                  handleChildInputChange(index, 'name', val, true)
-                }
-                inputValue={item.name}
-              />
+      {brothersList.map((item, index) => {
+        return (
+          <View key={index}>
+            <View style={styles.siblingDetailView}>
+              <View style={styles.siblingView}>
+                <AppInput
+                  inputLabel={`Brother ${index + 1} name`}
+                  isRequired={true}
+                  placeholder="Enter your brother's name"
+                  handleInputChange={val =>
+                    handleChildInputChange(index, 'name', val, true)
+                  }
+                  inputValue={item.name}
+                />
+              </View>
+              <View style={styles.siblingView}>
+                <AppInput
+                  inputLabel="Age"
+                  isRequired={true}
+                  placeholder="Enter brother's age"
+                  handleInputChange={val =>
+                    handleChildInputChange(index, 'age', val, true)
+                  }
+                  inputValue={item.age.toString()}
+                  keyboardType={'number-pad'}
+                />
+              </View>
             </View>
-            <View style={styles.siblingView}>
+            <View style={styles.inputs}>
               <AppInput
-                inputLabel="Age"
+                inputLabel="Brother’s CNIC no"
+                placeholder="Type your brother‘s CNIC"
                 isRequired={true}
-                placeholder="Enter brother's age"
                 handleInputChange={val =>
-                  handleChildInputChange(index, 'age', val, true)
+                  handleChildInputChange(index, 'cnic', val, true)
                 }
-                inputValue={item.age}
+                inputValue={userData.motherCNICNo.toString()}
                 keyboardType={'number-pad'}
               />
             </View>
-          </View>
-          <View style={styles.inputs}>
-            <AppInput
-              inputLabel="Brother’s CNIC no"
-              placeholder="Type your brother‘s CNIC"
-              isRequired={true}
-              handleInputChange={val =>
-                handleChildInputChange(index, 'cnic', val, true)
-              }
-              inputValue={userData.motherCNICNo}
-              keyboardType={'number-pad'}
-            />
-          </View>
-          <View style={styles.inputs}>
-            <AppInputDropDown
-              placeholderText={`Choose relation to brother ${index + 1}`}
-              arrayData={relationshipToBrother}
-              inputLabel={`Relationship to brother ${index + 1}`}
-              isRequired={true}
-              handleSelectValue={val =>
-                handleChildInputChange(index, 'relationship', val, true)
-              }
-            />
-          </View>
-        </>
-      ))}
-      {SistersList.map((item, index) => (
-        <>
-          <View key={index} style={styles.siblingDetailView}>
-            <View style={styles.siblingView}>
-              <AppInput
-                inputLabel={`Sister ${index + 1} name`}
+            <View style={styles.inputs}>
+              <AppInputDropDown
+                placeholderText={`Choose relation to brother ${index + 1}`}
+                arrayData={relationshipToBrother}
+                inputLabel={`Relationship to brother ${index + 1}`}
                 isRequired={true}
-                placeholder="Your Sister's name"
-                handleInputChange={val =>
-                  handleChildInputChange(index, 'name', val, false)
+                handleSelectValue={val =>
+                  handleChildInputChange(index, 'relationship', val, true)
                 }
-                inputValue={item.name}
               />
             </View>
-            <View style={styles.siblingView}>
+          </View>
+        );
+      })}
+      {SistersList.map((item, index) => {
+        return (
+          <View key={index}>
+            <View style={styles.siblingDetailView}>
+              <View style={styles.siblingView}>
+                <AppInput
+                  inputLabel={`Sister ${index + 1} name`}
+                  isRequired={true}
+                  placeholder="Your Sister's name"
+                  handleInputChange={val =>
+                    handleChildInputChange(index, 'name', val, false)
+                  }
+                  inputValue={item.name}
+                />
+              </View>
+              <View style={styles.siblingView}>
+                <AppInput
+                  inputLabel="Age"
+                  isRequired={true}
+                  placeholder="Enter Sister's age"
+                  handleInputChange={val =>
+                    handleChildInputChange(index, 'age', val, false)
+                  }
+                  inputValue={item.age.toString()}
+                  keyboardType={'number-pad'}
+                />
+              </View>
+            </View>
+            <View style={styles.inputs}>
               <AppInput
-                inputLabel="Age"
+                inputLabel="Sister’s CNIC no"
+                placeholder="Type your sister‘s CNIC"
                 isRequired={true}
-                placeholder="Enter Sister's age"
                 handleInputChange={val =>
-                  handleChildInputChange(index, 'age', val, false)
+                  handleChildInputChange(index, 'cnic', val, false)
                 }
-                inputValue={item.age}
+                inputValue={item.cnic.toString()}
                 keyboardType={'number-pad'}
               />
             </View>
+            <View style={styles.inputs}>
+              <AppInputDropDown
+                placeholderText={`Choose relation to sister ${index + 1}`}
+                arrayData={relationshipToSister}
+                inputLabel={`Relationship to sister ${index + 1}`}
+                isRequired={true}
+                handleSelectValue={val =>
+                  handleChildInputChange(index, 'relationship', val, false)
+                }
+              />
+            </View>
           </View>
-          <View style={styles.inputs}>
-            <AppInput
-              inputLabel="Sister’s CNIC no"
-              placeholder="Type your sister‘s CNIC"
-              isRequired={true}
-              handleInputChange={val =>
-                handleChildInputChange(index, 'cnic', val, false)
-              }
-              inputValue={item.cnic}
-              keyboardType={'number-pad'}
-            />
-          </View>
-          <View style={styles.inputs}>
-            <AppInputDropDown
-              placeholderText={`Choose relation to sister ${index + 1}`}
-              arrayData={relationshipToSister}
-              inputLabel={`Relationship to sister ${index + 1}`}
-              isRequired={true}
-              handleSelectValue={val =>
-                handleChildInputChange(index, 'relationship', val, false)
-              }
-            />
-          </View>
-        </>
-      ))}
+        );
+      })}
     </View>
   );
 };

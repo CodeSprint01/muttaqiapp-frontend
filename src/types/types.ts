@@ -53,6 +53,11 @@ export enum screens {
   HOME_STACK = 'home-stack',
 
   PROFILE_STACK = 'profile-stack',
+  BOOKMARKS_STACK = 'bookmarks-stack',
+  FAVORITIES_STACK = 'favorities-stack',
+  ZAKAT_CALCULATION_STACK = 'zakat-calculation-stack',
+  INHERITANCE_CALCULATION_STACK = 'inheritance-calculation-stack',
+  TERMS_CONDITION_STACK = 'terms-condition-stack',
   USER_PROFILE_SETTING = 'user-profile-setting',
   BOOKMARKS_SETTING = 'bookmarks-setting',
   FAVORITIES_SETTING = 'favorities-setting',
@@ -164,6 +169,11 @@ export type RootStackParamList = {
   [screens.HOME_STACK]: undefined;
 
   [screens.PROFILE_STACK]: undefined;
+  [screens.BOOKMARKS_STACK]: undefined;
+  [screens.FAVORITIES_STACK]: undefined;
+  [screens.ZAKAT_CALCULATION_STACK]: undefined;
+  [screens.INHERITANCE_CALCULATION_STACK]: undefined;
+  [screens.TERMS_CONDITION_STACK]: undefined;
   [screens.USER_PROFILE_SETTING]: undefined;
   [screens.BOOKMARKS_SETTING]: undefined;
   [screens.FAVORITIES_SETTING]: undefined;

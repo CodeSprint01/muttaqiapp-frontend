@@ -13,19 +13,20 @@ const GeneralInfo = () => {
   const [userData, setUserData] = useState({
     userName: '',
     userGender: null,
-    userAge: 0,
+    userAge: '',
     userEduction: '',
     userAddress: '',
     userCountry: '',
-    userCNIC: 0,
+    userCNIC: '',
     userSect: '',
     userFirqa: '',
   });
 
   const handleInputValue = (val: any, inputName: string) => {
+    const stringValue = typeof val === 'number' ? String(val) : val;
     setUserData(prevState => ({
       ...prevState,
-      [inputName]: val,
+      [inputName]: stringValue,
     }));
   };
 
@@ -57,7 +58,7 @@ const GeneralInfo = () => {
             isRequired={true}
             placeholder="Enter your age"
             handleInputChange={val => handleInputValue(val, 'userAge')}
-            inputValue={userData.userAge}
+            inputValue={userData.userAge.toString()}
             keyboardType={'number-pad'}
           />
         </View>
@@ -92,7 +93,7 @@ const GeneralInfo = () => {
           isRequired={true}
           placeholder="Enter your CNIC. No"
           handleInputChange={val => handleInputValue(val, 'userCNIC')}
-          inputValue={userData.userCNIC}
+          inputValue={userData.userCNIC.toString()}
           keyboardType={'number-pad'}
         />
       </View>

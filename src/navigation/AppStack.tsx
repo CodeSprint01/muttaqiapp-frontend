@@ -17,6 +17,11 @@ import VaultCreateDetails from '../screens/setting/create-vault/VaultCreateDetai
 import CreateNewVault from '../screens/setting/create-vault/CreateNewVault';
 import ForgotVaultPassword from '../screens/setting/create-vault/ForgotVaultPassword';
 import VaultOtpVerify from '../screens/setting/create-vault/VaultOtpVerify';
+import BookmarksStack from './setting/BookmarksStack';
+import FavoritiesStack from './setting/FavoritiesStack';
+import ZakatCalculationStack from './setting/ZakatCalculationStack';
+import InheritanceCalculationStack from './setting/InheritanceCalculationStack';
+import TermsConditionsStack from './setting/TermsConditionsStack';
 
 const AppStack = () => {
   const Stack = createStackNavigator<RootStackParamList>();
@@ -99,27 +104,31 @@ const AppStack = () => {
         component={VaultOtpVerify}
         options={{headerShown: false}}
       />
-      {/*
       <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
+        name={screens.BOOKMARKS_STACK}
+        component={BookmarksStack}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
+        name={screens.FAVORITIES_STACK}
+        component={FavoritiesStack}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
+        name={screens.ZAKAT_CALCULATION_STACK}
+        component={ZakatCalculationStack}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="ProfileStack"
-        component={ProfileStack}
+        name={screens.INHERITANCE_CALCULATION_STACK}
+        component={InheritanceCalculationStack}
         options={{headerShown: false}}
-      /> */}
+      />
+      <Stack.Screen
+        name={screens.TERMS_CONDITION_STACK}
+        component={TermsConditionsStack}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };

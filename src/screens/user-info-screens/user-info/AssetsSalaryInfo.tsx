@@ -10,14 +10,15 @@ import {COLORS, fonts} from '../../../styles/color';
 const AssetsSalaryInfo = () => {
   const [userData, setUserData] = useState({
     incomeType: null,
-    salaryAmount: 0,
+    salaryAmount: '',
     organization: '',
   });
   // all data store in userdata state and only phone store in formattedValue
   const handleInputValue = (val: any, inputName: string) => {
+    const stringValue = typeof val === 'number' ? String(val) : val;
     setUserData(prevState => ({
       ...prevState,
-      [inputName]: val,
+      [inputName]: stringValue,
     }));
   };
 
@@ -39,7 +40,7 @@ const AssetsSalaryInfo = () => {
           isRequired={true}
           placeholder="Type your salary amount"
           handleInputChange={val => handleInputValue(val, 'salaryAmount')}
-          inputValue={userData.salaryAmount}
+          inputValue={userData.salaryAmount.toString()}
           keyboardType={'number-pad'}
         />
       </View>

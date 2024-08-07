@@ -19,9 +19,10 @@ const NomineeInfo = () => {
   });
   // all data store in userdata state and only phone store in formattedValue
   const handleInputValue = (val: any, inputName: string) => {
+    const stringValue = typeof val === 'number' ? String(val) : val;
     setUserData(prevState => ({
       ...prevState,
-      [inputName]: val,
+      [inputName]: stringValue,
     }));
   };
 
@@ -68,7 +69,7 @@ const NomineeInfo = () => {
           inputLabel="Nominee CNIC No."
           placeholder="Enter the CNIC No. of your nominee"
           handleInputChange={val => handleInputValue(val, 'nomineeCNIC')}
-          inputValue={userData.nomineeCNIC}
+          inputValue={userData.nomineeCNIC.toString()}
           keyboardType={'number-pad'}
         />
       </View>

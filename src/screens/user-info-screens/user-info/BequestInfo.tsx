@@ -13,19 +13,20 @@ const BequestInfo = () => {
   const [userData, setUserData] = useState({
     userName: '',
     userGender: null,
-    userAge: 0,
+    userAge: '',
     relationshipToBequest: '',
     userAddress: '',
     userCountry: '',
-    userCNIC: 0,
+    userCNIC: '',
     userSect: '',
     userFirqa: '',
   });
 
   const handleInputValue = (val: any, inputName: string) => {
+    const stringValue = typeof val === 'number' ? String(val) : val;
     setUserData(prevState => ({
       ...prevState,
-      [inputName]: val,
+      [inputName]: stringValue,
     }));
   };
 
@@ -57,7 +58,7 @@ const BequestInfo = () => {
             isRequired={true}
             placeholder="Enter your age"
             handleInputChange={val => handleInputValue(val, 'userAge')}
-            inputValue={userData.userAge}
+            inputValue={userData.userAge.toString()}
             keyboardType={'number-pad'}
           />
         </View>
@@ -95,7 +96,7 @@ const BequestInfo = () => {
           isRequired={true}
           placeholder="Enter bequest receiver CNIC. No"
           handleInputChange={val => handleInputValue(val, 'userCNIC')}
-          inputValue={userData.userCNIC}
+          inputValue={userData.userCNIC.toString()}
           keyboardType={'number-pad'}
         />
       </View>

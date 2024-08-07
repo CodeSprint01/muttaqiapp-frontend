@@ -16,7 +16,7 @@ import ChildrenInfo from '../user-info/ChildrenInfo';
 import SiblingsInfo from '../user-info/SiblingsInfo';
 import ChildrenOtherInfo from '../user-info/ChildrenOtherInfo';
 import NumberOfSiblings from '../user-info/NumberOfSiblings';
-import StepCounter from './StepCounter';
+import StepCounter from '../StepCounter';
 import BequestDesire from '../user-info/BequestDesire';
 import BequestInfo from '../user-info/BequestInfo';
 

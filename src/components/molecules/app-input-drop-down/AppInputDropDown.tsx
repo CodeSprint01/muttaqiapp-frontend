@@ -12,6 +12,8 @@ interface MyProps {
   icon?: any;
   isRequired?: boolean;
   handleSelectValue: (val: string) => void;
+  keyValue?: string;
+  value?: string;
 }
 
 const AppInputDropDown: FC<MyProps> = ({
@@ -21,6 +23,8 @@ const AppInputDropDown: FC<MyProps> = ({
   isRequired = false,
   handleSelectValue,
   icon,
+  keyValue,
+  value,
   ...props
 }) => {
   return (
@@ -30,6 +34,7 @@ const AppInputDropDown: FC<MyProps> = ({
         {isRequired && <AppText text={' *'} style={styles.requireDot} />}
       </View>
       <SelectList
+        defaultOption={{key: keyValue, value: value}}
         setSelected={(val: string) => handleSelectValue(val)}
         data={arrayData}
         save="value"

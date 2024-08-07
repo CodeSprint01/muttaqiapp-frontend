@@ -10,14 +10,15 @@ const NumberOfSiblings = () => {
   const [userData, setUserData] = useState({
     fatherStatus: null,
     motherStatus: null,
-    numberOfBrothers: 0,
-    numberOfsSisters: 0,
+    numberOfBrothers: '',
+    numberOfsSisters: '',
   });
   // all data store in userdata state and only phone store in formattedValue
   const handleInputValue = (val: any, inputName: string) => {
+    const stringValue = typeof val === 'number' ? String(val) : val;
     setUserData(prevState => ({
       ...prevState,
-      [inputName]: val,
+      [inputName]: stringValue,
     }));
   };
 
@@ -48,7 +49,7 @@ const NumberOfSiblings = () => {
           placeholder="Enter the number of your brothers"
           isRequired={true}
           handleInputChange={val => handleInputValue(val, 'userAddress')}
-          inputValue={userData.numberOfBrothers}
+          inputValue={userData.numberOfBrothers.toString()}
           keyboardType={'number-pad'}
         />
       </View>
@@ -58,7 +59,7 @@ const NumberOfSiblings = () => {
           placeholder="Enter the number of your sisters"
           isRequired={true}
           handleInputChange={val => handleInputValue(val, 'userCountry')}
-          inputValue={userData.numberOfsSisters}
+          inputValue={userData.numberOfsSisters.toString()}
           keyboardType={'number-pad'}
         />
       </View>

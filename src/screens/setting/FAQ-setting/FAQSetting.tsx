@@ -2,10 +2,10 @@ import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import AppText from '../../../components/atoms/app-text/AppText';
 import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
-import {COLORS} from '../../../styles/color';
+import {COLORS, fonts} from '../../../styles/color';
 import ScreenHeader from '../../../components/molecules/app-header/ScreenHeader';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
-import {FAQsArray} from '../../../utils/mocks/FAQArray';
+import {FAQsArray, KnowledgeProps} from '../../../utils/mocks/FAQArray';
 
 const FAQSetting = () => {
   const [showItems, setShowItems] = useState<number[]>([]);
@@ -49,7 +49,7 @@ const FAQSetting = () => {
   return (
     <AppContainer style={styles.container}>
       <View style={{paddingHorizontal: 20}}>
-        <ScreenHeader headerText="Knowledge" />
+        <ScreenHeader headerText="FAQs" />
         <FlatList
           data={FAQsArray}
           renderItem={renderItem}
@@ -73,19 +73,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: 12,
     marginTop: 20,
+    paddingHorizontal: 20,
   },
   title: {
-    width: '83%',
+    flex: 1,
     paddingVertical: 12,
-    paddingLeft: 18,
   },
   listTxt: {
     fontSize: 16,
-    fontWeight: '500',
+    fontFamily: fonts.dmSans[500],
     color: COLORS.green,
   },
   descriptionView: {
-    // backgroundColor: 'white',
     paddingHorizontal: 20,
     marginTop: 12,
   },
@@ -94,8 +93,8 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   icon: {
-    width: '17%',
+    width: '10%',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-end',
   },
 });

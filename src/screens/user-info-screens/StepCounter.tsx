@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet, Dimensions, ScrollView} from 'react-native';
-import {Icons} from '../../../utils/helper/svg';
-import {COLORS} from '../../../styles/color';
-import {AppIconSvg} from '../../../components/atoms/app-icon-svg';
+import {Icons} from '../../utils/helper/svg';
+import {COLORS} from '../../styles/color';
+import {AppIconSvg} from '../../components/atoms/app-icon-svg';
 
 const StepCounter = ({currentStep}) => {
   const totalSteps = 9; // Total number of steps

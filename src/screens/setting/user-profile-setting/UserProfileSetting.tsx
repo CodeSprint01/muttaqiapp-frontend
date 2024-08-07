@@ -69,6 +69,14 @@ const UserProfileSetting = () => {
       <View style={styles.saveBtn}>
         <View style={styles.btn}>
           <AppButton
+            buttonText="Cancel"
+            fill={false}
+            onPress={() => console.log('user save')}
+          />
+        </View>
+        <View style={styles.emptyView}></View>
+        <View style={styles.btn}>
+          <AppButton
             buttonText="Save"
             onPress={() => console.log('user save')}
           />
@@ -137,13 +145,15 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   saveBtn: {
-    flex: 1,
-    bottom: 0,
+    marginHorizontal: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   btn: {
-    position: 'absolute',
-    width: '94%',
-    marginLeft: '3%',
-    bottom: 50,
+    flex: 1,
+    marginVertical: 46,
+  },
+  emptyView: {
+    width: 17,
   },
 });

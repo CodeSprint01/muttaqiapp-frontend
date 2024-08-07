@@ -102,6 +102,7 @@ export const Icons = {
   Document: 'DOCUMENTS',
   Copy: 'COPY',
   WateringPlants: 'WATERING_PLANTS',
+  Empty: 'Empty',
 };
 
 export const Colors = {
@@ -213,6 +214,7 @@ export const Colors = {
   [Icons.Document]: {color: COLORS.green},
   [Icons.Copy]: {color: COLORS.green},
   [Icons.WateringPlants]: {color: COLORS.green},
+  [Icons.Empty]: {color: COLORS.green},
 };
 
 const SvgIcons: any = {};
@@ -400,6 +402,7 @@ SvgIcons[Icons.Paypak] = require('../../../assets/images/vault/paypak').default;
 SvgIcons[Icons.Copy] = require('../../../assets/images/vault/copy').default;
 SvgIcons[Icons.Document] =
   require('../../../assets/images/vault/document').default;
+SvgIcons[Icons.Empty] = require('../../../assets/images/empty').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

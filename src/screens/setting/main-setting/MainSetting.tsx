@@ -108,16 +108,16 @@ const MainSetting: FC<Props> = ({navigation}) => {
   const handleListClick = (type: settingEnum) => {
     switch (type) {
       case settingEnum.BOOKMARKS:
-        console.log('switch 0');
+        navigation.navigate(screens.BOOKMARKS_STACK);
         break;
       case settingEnum.FAVORITIES:
-        console.log('switch 1');
+        navigation.navigate(screens.FAVORITIES_STACK);
         break;
       case settingEnum.ZAKAT_CALCULATION:
-        console.log('switch 2');
+        navigation.navigate(screens.ZAKAT_CALCULATION_STACK);
         break;
       case settingEnum.INHERITANCE_CALCULATION:
-        console.log('switch 3');
+        navigation.navigate(screens.INHERITANCE_CALCULATION_STACK);
         break;
       case settingEnum.PASSWORD_SECURITY:
         navigation.navigate(screens.PASSWORD_SECURITY_STACK);
@@ -141,7 +141,7 @@ const MainSetting: FC<Props> = ({navigation}) => {
         navigation.navigate(screens.HELP_SUPPORT_SETTING);
         break;
       case settingEnum.TERMS_CONDITION:
-        console.log('switch 11');
+        navigation.navigate(screens.TERMS_CONDITION_STACK);
         break;
       case settingEnum.PRIVACY_POLICY:
         navigation.navigate(screens.PRIVACY_POLICY_SETTING);

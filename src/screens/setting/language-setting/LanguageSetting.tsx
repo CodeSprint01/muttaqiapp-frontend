@@ -24,12 +24,16 @@ const LanguageSetting = () => {
       <View style={styles.dropDown}>
         <AppInputDropDown
           arrayData={language}
+          keyValue="English"
+          value="English"
           inputLabel="Default language"
           handleSelectValue={val => console.log(val)}
         />
       </View>
       <View style={styles.dropDown}>
         <AppInputDropDown
+          keyValue="Urdu"
+          value="Urdu"
           arrayData={language}
           inputLabel="Translate language"
           handleSelectValue={val => console.log(val)}

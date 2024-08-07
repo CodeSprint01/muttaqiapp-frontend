@@ -20,14 +20,15 @@ interface Props {
 const FamilyInfo = ({onPressConfirm, isVisible}: Props) => {
   const [userData, setUserData] = useState({
     maritalStatus: null,
-    numberOfWives: 0,
+    numberOfWives: '',
     previousMarriageStatus: null,
   });
 
   const handleInputValue = (val: any, inputName: string) => {
+    const stringValue = typeof val === 'number' ? String(val) : val;
     setUserData(prevState => ({
       ...prevState,
-      [inputName]: val,
+      [inputName]: stringValue,
     }));
   };
 
@@ -49,7 +50,7 @@ const FamilyInfo = ({onPressConfirm, isVisible}: Props) => {
           placeholder="Enter the number of your wives"
           isRequired={true}
           handleInputChange={val => handleInputValue(val, 'numberOfWives')}
-          inputValue={userData.numberOfWives}
+          inputValue={userData.numberOfWives.toString()}
           keyboardType={'number-pad'}
         />
       </View>

@@ -60,7 +60,23 @@ const HomeScreen: FC<Props> = ({navigation}) => {
 
   const updatePrayerData = () => {
     const currentTime = new Date();
+    const coordinates = new Coordinates(31.5204, 74.3587);
+    const params = CalculationMethod.MoonsightingCommittee();
+    const prayerTimes = new PrayerTimes(coordinates, currentTime, params);
     const updated = [...prayerData];
+    updated.forEach(item => {
+      if (item.name === 'fajr') {
+        item.prayerTime = prayerTimes.fajr;
+      } else if (item.name === 'dhuhr') {
+        item.prayerTime = prayerTimes.dhuhr;
+      } else if (item.name === 'asr') {
+        item.prayerTime = prayerTimes.asr;
+      } else if (item.name === 'maghrib') {
+        item.prayerTime = prayerTimes.maghrib;
+      } else if (item.name === 'isha') {
+        item.prayerTime = prayerTimes.isha;
+      }
+    });
     updated.forEach(item => {
       let formatedTime = new Date(item?.prayerTime);
       let isTimePass = formatedTime < currentTime;
