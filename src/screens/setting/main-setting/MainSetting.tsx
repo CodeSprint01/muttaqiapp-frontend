@@ -126,7 +126,7 @@ const MainSetting: FC<Props> = ({navigation}) => {
         manageVault();
         break;
       case settingEnum.PERSONAL_FINANCIAL_INFO:
-        console.log('switch 6');
+        navigation.navigate(screens.PERSONAL_FINANCIAL_INFO_STACK);
         break;
       case settingEnum.NOTIFICATION_SETTINGS:
         navigation.navigate(screens.NOTIFICATION_SETTINGS);

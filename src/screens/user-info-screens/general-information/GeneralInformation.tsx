@@ -19,23 +19,13 @@ import NumberOfSiblings from '../user-info/NumberOfSiblings';
 import StepCounter from '../StepCounter';
 import BequestDesire from '../user-info/BequestDesire';
 import BequestInfo from '../user-info/BequestInfo';
+import LiabilitiesInfo from '../user-info/LiabilitiesInfo';
 
 const GeneralInformation = () => {
   const navigation = useNavigation();
   const [currentStep, setCurrentStep] = useState(0);
   const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
   const [isVisible, setVisible] = useState(false);
-  const [userData, setUserData] = useState({
-    userName: '',
-    userGender: null,
-    userAge: 0,
-    userEducation: '',
-    userAddress: '',
-    userCountry: '',
-    userCNIC: 0,
-    userSect: '',
-    userFirqa: '',
-  });
   const onPressConfirm = () => {
     setVisible(false);
     handleNext();
@@ -59,6 +49,7 @@ const GeneralInformation = () => {
       <AssetsBusinessInfo key="AssetsBusinessInfo" />,
     ],
     [<NomineeInfo key="NomineeInfo" />],
+    [<LiabilitiesInfo key={'LiabilitiesInfo'} />],
     [
       <BequestDesire key={'BequestDesire'} />,
       <BequestInfo key={'BequestInfo'} />,
@@ -72,8 +63,8 @@ const GeneralInformation = () => {
     } else if (currentStep < renderUserInfoView.length - 1) {
       setCurrentStep(currentStep + 1);
       setCurrentComponentIndex(0);
-    } else if (currentStep === 4) {
-      navigation.navigate(screens.APP_STACK);
+    } else if (currentStep === 5) {
+      navigation.navigate(screens.INHERITANCE_BREAK_DOWN);
     }
   };
 
@@ -108,25 +99,14 @@ const GeneralInformation = () => {
             style={styles.scroll}>
             <View style={{paddingHorizontal: 20}}>
               {renderUserInfoView[currentStep][currentComponentIndex]}
-              {/* <GeneralInfo /> */}
-              {/* <AssetsSalaryInfo /> */}
-              {/* <AssetsBusinessInfo /> */}
-              {/* <NomineeInfo /> */}
-              {/* <FamilyInfo /> */}
-              {/* <ChildrenInfo /> */}
-              {/* <ChildrenOtherInfo /> */}
-              {/* <NumberOfSiblings /> */}
-              {/* <SiblingsInfo /> */}
-              {/* <BequestDesire /> */}
-              {/* <BequestInfo /> */}
             </View>
           </ScrollView>
           <View style={styles.bottomBtns}>
             <AppButton
               buttonText={
-                currentStep === 4 && currentComponentIndex === 0
+                currentStep === 5 && currentComponentIndex === 0
                   ? 'Yes'
-                  : currentStep === 4 && currentComponentIndex === 1
+                  : currentStep === 5 && currentComponentIndex === 1
                   ? 'Calculate'
                   : 'Next'
               }
@@ -139,13 +119,13 @@ const GeneralInformation = () => {
             <View style={styles.skipBtn}>
               <AppButton
                 buttonText={
-                  currentStep === 4 && currentComponentIndex === 0
+                  currentStep === 5 && currentComponentIndex === 0
                     ? 'No'
                     : 'Skip'
                 }
                 fill={false}
                 onPress={
-                  currentStep === 4 && currentComponentIndex === 0
+                  currentStep === 5 && currentComponentIndex === 0
                     ? handleSkip
                     : handleSkip
                 }

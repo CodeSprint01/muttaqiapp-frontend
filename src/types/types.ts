@@ -45,7 +45,7 @@ export enum screens {
 
   USER_INFO_STACK = 'user-info-stack',
   GENERAL_INFORMATION = 'general-information',
-  FAMILY_INFORMATION_FIRST_FORM = 'family-information-first-form',
+  INHERITANCE_BREAK_DOWN = 'inheritance-break-down',
   ALL_TODO_STATS_SCREENS = 'all-todo-stats-screens',
   WEEKLY_TODO_STAT = 'weekly-todo-stat',
   MONTHLY_TODO_STAT = 'monthly-todo-stat',
@@ -58,6 +58,7 @@ export enum screens {
   ZAKAT_CALCULATION_STACK = 'zakat-calculation-stack',
   INHERITANCE_CALCULATION_STACK = 'inheritance-calculation-stack',
   TERMS_CONDITION_STACK = 'terms-condition-stack',
+  PERSONAL_FINANCIAL_INFO_STACK = 'personal-financial-info-stack',
   USER_PROFILE_SETTING = 'user-profile-setting',
   BOOKMARKS_SETTING = 'bookmarks-setting',
   FAVORITIES_SETTING = 'favorities-setting',
@@ -161,7 +162,7 @@ export type RootStackParamList = {
 
   [screens.USER_INFO_STACK]: undefined;
   [screens.GENERAL_INFORMATION]: undefined;
-  [screens.FAMILY_INFORMATION_FIRST_FORM]: undefined;
+  [screens.INHERITANCE_BREAK_DOWN]: undefined;
   [screens.ALL_TODO_STATS_SCREENS]: undefined;
   [screens.WEEKLY_TODO_STAT]: undefined;
   [screens.MONTHLY_TODO_STAT]: undefined;
@@ -174,6 +175,7 @@ export type RootStackParamList = {
   [screens.ZAKAT_CALCULATION_STACK]: undefined;
   [screens.INHERITANCE_CALCULATION_STACK]: undefined;
   [screens.TERMS_CONDITION_STACK]: undefined;
+  [screens.PERSONAL_FINANCIAL_INFO_STACK]: undefined;
   [screens.USER_PROFILE_SETTING]: undefined;
   [screens.BOOKMARKS_SETTING]: undefined;
   [screens.FAVORITIES_SETTING]: undefined;

@@ -5,17 +5,12 @@ import {COLORS} from '../../styles/color';
 import {AppIconSvg} from '../../components/atoms/app-icon-svg';
 
 const StepCounter = ({currentStep}) => {
-  const totalSteps = 9; // Total number of steps
-  const circleSize = 13; // Size of the circle
-  const lineWidth =
-    (Dimensions.get('window').width - totalSteps * circleSize) /
-    (totalSteps - 1); // Width of the line connecting circles
+  const totalSteps = 6; // Total number of steps
+  const screenWidth = Dimensions.get('window').width;
+  const lineWidth = screenWidth / totalSteps - 20; // Width of the line connecting circles
 
   return (
-    <ScrollView
-      showsHorizontalScrollIndicator={false}
-      horizontal
-      style={styles.container}>
+    <View style={styles.container}>
       {Array.from({length: totalSteps}, (_, index) => (
         <View key={index} style={styles.stepContainer}>
           <View
@@ -54,12 +49,13 @@ const StepCounter = ({currentStep}) => {
           )}
         </View>
       ))}
-    </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
     height: 50,
   },
   stepContainer: {

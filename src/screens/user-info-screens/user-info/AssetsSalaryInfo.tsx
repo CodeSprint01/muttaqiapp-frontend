@@ -4,7 +4,6 @@ import AppText from '../../../components/atoms/app-text/AppText';
 import AppInputDropDown from '../../../components/molecules/app-input-drop-down/AppInputDropDown';
 import {IncomeType} from '../../../utils/mocks/AllMockArray';
 import AppInput from '../../../components/molecules/app-input/AppInput';
-import {Icons} from '../../../utils/helper/svg';
 import {COLORS, fonts} from '../../../styles/color';
 
 const AssetsSalaryInfo = () => {

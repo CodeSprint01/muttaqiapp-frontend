@@ -6,12 +6,8 @@ import AppCheckBoxTick from '../../components/molecules/app-checkbox/AppCheckBox
 import AppButton from '../../components/molecules/app-button/AppButton';
 import AppInputDropDown from '../../components/molecules/app-input-drop-down/AppInputDropDown';
 
-const TodoTaskForm = () => {
+const SunnahTaskForm = () => {
   const [isRepeat, setIsRepeat] = useState(false);
-  const [duration, setDuration] = useState({
-    holyTask: false,
-    normalTask: false,
-  });
   const [taskData, setTaskData] = useState({
     taskName: '',
     today: '',
@@ -28,21 +24,14 @@ const TodoTaskForm = () => {
     {label: 'weekly', value: 'weekly'},
     {label: 'monthly', value: 'monthly'},
   ];
-  const onSelectDuration = (val: string) => {
-    setDuration(val);
-  };
+  const onSelectDuration = (val: string) => {};
 
   return (
     <View style={styles.container}>
       <AppInput
-        placeholder="Task name"
+        placeholder="Prayer name"
         handleInputChange={val => onChangeText('taskName', val)}
         inputValue={taskData?.taskName}
-      />
-      <AppInput
-        placeholder="Today"
-        handleInputChange={val => onChangeText('today', val)}
-        inputValue={taskData?.today}
       />
       <View style={styles.repeatBox}>
         <View style={styles.repeat}>
@@ -63,32 +52,6 @@ const TodoTaskForm = () => {
         )}
       </View>
       <View style={styles.verticalyLine} />
-      <View style={styles.bottomTask}>
-        <AppCheckBoxTick
-          label="Holy task"
-          isChecked={duration.holyTask}
-          onToggle={() =>
-            setDuration(preVal => ({
-              ...preVal,
-              holyTask: !preVal.holyTask,
-              normalTask: false,
-            }))
-          }
-        />
-        <AppCheckBoxTick
-          label="Normal task"
-          containerStyle={{marginLeft: 20}}
-          isChecked={duration.normalTask}
-          onToggle={() =>
-            setDuration(preVal => ({
-              ...preVal,
-              normalTask: !preVal.normalTask,
-              holyTask: false,
-            }))
-          }
-        />
-      </View>
-      <View style={styles.verticalyLine} />
       <View style={styles.btn}>
         <AppButton buttonText="Save" />
       </View>
@@ -96,7 +59,7 @@ const TodoTaskForm = () => {
   );
 };
 
-export default TodoTaskForm;
+export default SunnahTaskForm;
 
 const styles = StyleSheet.create({
   container: {
@@ -109,9 +72,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 1,
     backgroundColor: COLORS.pale_aqua,
-  },
-  bottomTask: {
-    flexDirection: 'row',
   },
   repeat: {
     width: '50%',

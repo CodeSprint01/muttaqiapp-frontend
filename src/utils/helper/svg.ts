@@ -103,6 +103,7 @@ export const Icons = {
   Copy: 'COPY',
   WateringPlants: 'WATERING_PLANTS',
   Empty: 'Empty',
+  Filter: 'Filter',
 };
 
 export const Colors = {
@@ -200,7 +201,7 @@ export const Colors = {
   [Icons.CreditCards]: {color: COLORS.light_gray},
   [Icons.Identities]: {color: COLORS.light_gray},
   [Icons.Passwords]: {color: COLORS.light_gray},
-  [Icons.Documents]: {color: COLORS.light_gray},
+  [Icons.Documents]: {color: COLORS.medium_gray},
   [Icons.Bank]: {color: COLORS.light_gray},
   [Icons.License]: {color: COLORS.light_gray},
   [Icons.SocialSecurity]: {color: COLORS.light_gray},
@@ -215,6 +216,7 @@ export const Colors = {
   [Icons.Copy]: {color: COLORS.green},
   [Icons.WateringPlants]: {color: COLORS.green},
   [Icons.Empty]: {color: COLORS.green},
+  [Icons.Filter]: {color: COLORS.green},
 };
 
 const SvgIcons: any = {};
@@ -403,6 +405,7 @@ SvgIcons[Icons.Copy] = require('../../../assets/images/vault/copy').default;
 SvgIcons[Icons.Document] =
   require('../../../assets/images/vault/document').default;
 SvgIcons[Icons.Empty] = require('../../../assets/images/empty').default;
+SvgIcons[Icons.Filter] = require('../../../assets/images/filter').default;
 
 export const getSvgIcon = (icon: string, color: string | boolean = false) => {
   const SvgIcon = SvgIcons[icon];

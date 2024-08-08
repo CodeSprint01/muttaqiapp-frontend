@@ -16,8 +16,8 @@ import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
 import {useDispatch} from 'react-redux';
 import {actionUserSecureNotesUpdate} from '../../../redux/setting/action';
 
-const ReadSecureNotes = ({route}) => {
-  const notes = route?.params?.data;
+const ReadSecureNotes = props => {
+  const notes = props.route?.params?.data;
   console.log(notes, 'this is notes');
   const initialState = {
     id: notes?.id,
@@ -30,7 +30,7 @@ const ReadSecureNotes = ({route}) => {
   const dispatch = useDispatch();
 
   const onChangeText = (key: number, txt: string) => {
-    if ((key = 1)) {
+    if (key === 1) {
       setUpdatedNote(preVal => ({...preVal, title: txt}));
     } else {
       setUpdatedNote(preVal => ({...preVal, details: txt}));
@@ -51,6 +51,7 @@ const ReadSecureNotes = ({route}) => {
       Alert.alert('Alert', 'please fill all the fields');
     } else {
       dispatch(actionUserSecureNotesUpdate(updatedNote));
+      props.navigation.goBack();
     }
   };
   return isEdited !== true ? (
@@ -164,14 +165,14 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   titleInput: {
-    height: 100,
+    maxHeight: 100,
     borderColor: COLORS.green,
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
   },
   detailsInput: {
-    height: 400,
+    maxHeight: 400,
     borderColor: COLORS.green,
     borderWidth: 1,
     borderRadius: 10,

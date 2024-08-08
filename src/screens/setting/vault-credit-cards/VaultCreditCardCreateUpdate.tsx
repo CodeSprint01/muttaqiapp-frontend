@@ -15,8 +15,8 @@ import {State} from '../../../types/types';
 import {handleCreateCreditCard, schemaMutation} from '../../../services/api';
 import {CREATE_CREDIT_CARD} from '../../../services/graphQL';
 
-const VaultCreditCardCreateUpdate = ({route}) => {
-  const cardId = route?.params?.id;
+const VaultCreditCardCreateUpdate = props => {
+  const cardId = props?.route?.params?.id;
   const initialState = {
     number: '',
     name: '',
@@ -77,12 +77,12 @@ const VaultCreditCardCreateUpdate = ({route}) => {
         try {
           const data = await handleCreateCreditCard(creditCard, cardData);
           console.log(data, 'user credit card data ');
+          dispatch(actionUserCreditCardCreate(cardData));
+          props.navigation.goBack();
           Alert.alert('Alert', 'Credit card data saved sucessfully');
         } catch (error) {
           console.log(error, 'credit card error');
         }
-
-        // dispatch(actionUserCreditCardCreate(cardData));
       }
     } else {
       Alert.alert('Alert', 'Please fill all fields');

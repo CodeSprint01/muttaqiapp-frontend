@@ -22,6 +22,7 @@ import FavoritiesStack from './setting/FavoritiesStack';
 import ZakatCalculationStack from './setting/ZakatCalculationStack';
 import InheritanceCalculationStack from './setting/InheritanceCalculationStack';
 import TermsConditionsStack from './setting/TermsConditionsStack';
+import PersonalFinancialInfoStack from './setting/PersonalFinancialInfoStack';
 
 const AppStack = () => {
   const Stack = createStackNavigator<RootStackParamList>();
@@ -127,6 +128,11 @@ const AppStack = () => {
       <Stack.Screen
         name={screens.TERMS_CONDITION_STACK}
         component={TermsConditionsStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screens.PERSONAL_FINANCIAL_INFO_STACK}
+        component={PersonalFinancialInfoStack}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

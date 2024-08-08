@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import AppText from '../../atoms/app-text/AppText';
-import {COLORS} from '../../../styles/color';
+import {COLORS, fonts} from '../../../styles/color';
 import {AppIconSvg, Icons} from '../../atoms/app-icon-svg';
 
 interface CustomCheckboxStyle {
@@ -46,12 +46,12 @@ const AppCheckBoxTick = ({
           />
         )}
       </TouchableOpacity>
-      <>
+      <View style={styles.textView}>
         <AppText
           style={[styles.textContent, style?.textContent]}
           text={label}
         />
-      </>
+      </View>
     </View>
   );
 };
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 40,
+    paddingVertical: 16,
   },
   checkboxUnchecked: {
     width: 25,
@@ -81,12 +81,13 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   textContent: {
-    flex: 1,
     fontStyle: 'normal',
-    fontWeight: '500',
+    fontFamily: fonts.dmSans[400],
     fontSize: 16,
     lineHeight: 24,
-    paddingTop: 7,
+  },
+  textView: {
+    justifyContent: 'center',
   },
 });
 

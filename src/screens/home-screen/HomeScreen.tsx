@@ -65,6 +65,13 @@ const HomeScreen: FC<Props> = ({navigation}) => {
     const prayerTimes = new PrayerTimes(coordinates, currentTime, params);
     const updated = [...prayerData];
     updated.forEach(item => {
+      const date = moment(item.prayerTime).format('YYYY-MM-DD');
+      const fajrPrayerTimes = moment(prayerTimes.fajr).format('YYYY-MM-DD');
+      if (date != fajrPrayerTimes) {
+        item.isOffered = false;
+      }
+    });
+    updated.forEach(item => {
       if (item.name === 'fajr') {
         item.prayerTime = prayerTimes.fajr;
       } else if (item.name === 'dhuhr') {

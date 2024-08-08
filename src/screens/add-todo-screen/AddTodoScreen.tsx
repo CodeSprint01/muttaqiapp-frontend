@@ -10,9 +10,12 @@ import {addToDoTask} from '../../redux/prayer/action';
 import BottomSheetOverlapView from '../../components/molecules/bottom-sheet-overlap/BottomSheetOverlapView';
 import AppText from '../../components/atoms/app-text/AppText';
 import TodoTaskForm from './TodoTaskForm';
+import SunnahList from './SunnahList';
+import SunnahTaskForm from './SunnahTaskForm';
 
 const AddTodoScreen = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [sunnahListVisible, setSunnahListVisible] = useState(false);
   const [prayerTime, setprayerTime] = useState({
     fajr: true,
     duhr: true,
@@ -66,6 +69,16 @@ const AddTodoScreen = () => {
               handleAddTodo={onPressAddTodo}
             />
           </View>
+          <View style={styles.todoConntainer}>
+            <SunnahList
+              handleAddSunnah={() => {
+                setSunnahListVisible(true);
+              }}
+              isCheckBox={false}
+              handleCheckBox={() => {}}
+              SunnahName={'Before Fajr (2)'}
+            />
+          </View>
         </View>
       </ScrollView>
       <BottomSheetOverlapView
@@ -74,6 +87,13 @@ const AddTodoScreen = () => {
         setShowBottomSheet={() => setIsVisible(false)}
         snapPoints={snapPoint}
         children={<TodoTaskForm />}
+      />
+      <BottomSheetOverlapView
+        showBottomSheet={sunnahListVisible}
+        enableHeaderLine
+        setShowBottomSheet={() => setSunnahListVisible(false)}
+        snapPoints={snapPoint}
+        children={<SunnahTaskForm />}
       />
     </AppContainer>
   );

@@ -7,11 +7,11 @@ import {COLORS, fonts} from '../../../styles/color';
 import LinearGradient from 'react-native-linear-gradient';
 import {AppIconSvg} from '../../../components/atoms/app-icon-svg';
 
-const AssetsBusinessInfo = () => {
+const LiabilitiesInfo = () => {
   const [userData, setUserData] = useState({
-    businessName: '',
-    businessType: '',
-    businessValue: '',
+    liabilityName: '',
+    liabilityType: '',
+    liabilityValue: '',
   });
   // all data store in userdata state and only phone store in formattedValue
   const handleInputValue = (val: any, inputName: string) => {
@@ -23,32 +23,32 @@ const AssetsBusinessInfo = () => {
 
   return (
     <View>
-      <AppText text={'Assets information'} style={styles.formTitle} />
+      <AppText text={'Liabilities information'} style={styles.formTitle} />
       <View style={styles.input}>
         <AppInput
-          inputLabel="Business name"
+          inputLabel="Liability name"
           isRequired={true}
-          placeholder="Type your business name"
-          handleInputChange={val => handleInputValue(val, 'businessName')}
-          inputValue={userData.businessName}
+          placeholder="Type your liability name"
+          handleInputChange={val => handleInputValue(val, 'liabilityName')}
+          inputValue={userData.liabilityName}
         />
       </View>
       <View style={styles.input}>
         <AppInput
-          inputLabel="Business type"
+          inputLabel="Liability type"
           isRequired={true}
-          placeholder="E.g. real state, food, transportation, etc"
-          handleInputChange={val => handleInputValue(val, 'businessType')}
-          inputValue={userData.businessType}
+          placeholder="E.g. mortgage, car, installment, etc"
+          handleInputChange={val => handleInputValue(val, 'liabilityType')}
+          inputValue={userData.liabilityType}
         />
       </View>
       <View style={styles.input}>
         <AppInput
-          inputLabel="Business value"
+          inputLabel="Liability value"
           isRequired={true}
-          placeholder="Enter the estimated value of your business"
-          handleInputChange={val => handleInputValue(val, 'businessValue')}
-          inputValue={userData.businessValue}
+          placeholder="Enter the estimated value of your liability"
+          handleInputChange={val => handleInputValue(val, 'liabilityValue')}
+          inputValue={userData.liabilityValue}
         />
       </View>
       <TouchableOpacity style={{flexDirection: 'row', marginTop: 24}}>
@@ -68,13 +68,13 @@ const AssetsBusinessInfo = () => {
             color={COLORS.white}
           />
         </LinearGradient>
-        <AppText text={'Add another business'} style={styles.addBusiness} />
+        <AppText text={'Add another liability'} style={styles.addBusiness} />
       </TouchableOpacity>
     </View>
   );
 };
 
-export default AssetsBusinessInfo;
+export default LiabilitiesInfo;
 
 const styles = StyleSheet.create({
   formTitle: {
