@@ -1,5 +1,4 @@
 export interface keyValue {
-  label: string;
   value: string;
 }
 export interface discover {

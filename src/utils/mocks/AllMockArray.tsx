@@ -1,85 +1,83 @@
-export const language: Array<{label: string; value: string}> = [
-  {label: 'English', value: 'English'},
-  {label: 'Urdu', value: 'Urdu'},
-  {label: 'Arabic', value: 'Arabic'},
+export const language: Array<{value: string}> = [
+  {value: 'English'},
+  {value: 'Urdu'},
+  {value: 'Arabic'},
 ];
-export const SecteList: Array<{label: string; value: string}> = [
-  {label: 'Shia', value: 'Shia'},
-  {label: 'Sunni', value: 'Sunni'},
+export const SecteList: Array<{value: string}> = [
+  {value: 'Shia'},
+  {value: 'Sunni'},
 ];
-export const Gender: Array<{label: string; value: string}> = [
-  {label: 'male', value: 'male'},
-  {label: 'Female', value: 'female'},
+export const Gender: Array<{value: string}> = [
+  {value: 'male'},
+  {value: 'female'},
 ];
-export const MartialStatus: Array<{label: string; value: string}> = [
-  {label: 'Single', value: 'Single'},
-  {label: 'Married', value: 'Married'},
-  {label: 'Divored', value: 'Divored'},
+export const MartialStatus: Array<{value: string}> = [
+  {value: 'Single'},
+  {value: 'Married'},
+  {value: 'Divored'},
 ];
-export const CardArray: Array<{label: string; value: string}> = [
-  {label: 'master', value: 'master'},
-  {label: 'visa', value: 'visa'},
-  {label: 'paypak', value: 'paypak'},
+export const CardArray: Array<{value: string}> = [
+  {value: 'master'},
+  {value: 'visa'},
+  {value: 'paypak'},
 ];
-export const IdentityArray: Array<{label: string; value: string}> = [
+export const IdentityArray: Array<{value: string}> = [
   {
-    label: 'National ID',
     value: 'National ID',
   },
   {
-    label: 'Passport',
     value: 'Passport',
   },
 ];
-export const IncomeType: Array<{label: string; value: string}> = [
-  {label: 'Earned Income', value: 'Earned Income'},
-  {label: 'Business Income', value: 'Business Income'},
-  {label: 'Dividend Income', value: 'Dividend Income'},
-  {label: 'Rental Income', value: 'Rental Income'},
+export const IncomeType: Array<{value: string}> = [
+  {value: 'Earned Income'},
+  {value: 'Business Income'},
+  {value: 'Dividend Income'},
+  {value: 'Rental Income'},
 ];
-export const relationship: Array<{label: string; value: string}> = [
-  {label: 'Parent', value: 'Parent'},
-  {label: 'Siblings', value: 'Siblings'},
-  {label: 'Spouse', value: 'Spouse'},
-  {label: 'Child', value: 'Child'},
+export const relationship: Array<{value: string}> = [
+  {value: 'Parent'},
+  {value: 'Siblings'},
+  {value: 'Spouse'},
+  {value: 'Child'},
 ];
-export const maritalStatus: Array<{label: string; value: string}> = [
-  {label: 'Single', value: 'Single'},
-  {label: 'Married', value: 'Married'},
-  {label: 'Divorced', value: 'Divorced'},
-  {label: 'Widowed', value: 'Widowed'},
+export const maritalStatus: Array<{value: string}> = [
+  {value: 'Single'},
+  {value: 'Married'},
+  {value: 'Divorced'},
+  {value: 'Widowed'},
 ];
-export const aliveStatus: Array<{label: string; value: string}> = [
-  {label: 'Alive', value: 'Alive'},
-  {label: 'Deceased', value: 'Deceased'},
+export const aliveStatus: Array<{value: string}> = [
+  {value: 'Alive'},
+  {value: 'Deceased'},
 ];
-export const previouslyMarriedStatus: Array<{label: string; value: string}> = [
-  {label: 'No', value: 'No'},
-  {label: 'Yes, spouse deceased', value: 'Yes, spouse deceased'},
-  {label: 'Yes, spouse divorced', value: 'Yes, spouse divorced'},
+export const previouslyMarriedStatus: Array<{value: string}> = [
+  {value: 'No'},
+  {value: 'Yes, spouse deceased'},
+  {value: 'Yes, spouse divorced'},
 ];
-export const relationshipToBrother: Array<{label: string; value: string}> = [
-  {label: 'Full brother', value: 'Full brother'},
-  {label: 'Maternal brother', value: 'Maternal brother'},
-  {label: 'Paternal brother', value: 'Paternal brother'},
+export const relationshipToBrother: Array<{value: string}> = [
+  {value: 'Full brother'},
+  {value: 'Maternal brother'},
+  {value: 'Paternal brother'},
 ];
-export const relationshipToSister: Array<{label: string; value: string}> = [
-  {label: 'Full sister', value: 'Full sister'},
-  {label: 'Maternal sister', value: 'Maternal sister'},
-  {label: 'Paternal sister', value: 'Paternal sister'},
+export const relationshipToSister: Array<{value: string}> = [
+  {value: 'Full sister'},
+  {value: 'Maternal sister'},
+  {value: 'Paternal sister'},
 ];
-export const relationshipToBequest: Array<{label: string; value: string}> = [
-  {label: 'Spouse', value: 'Spouse'},
-  {label: 'Child', value: 'Child'},
-  {label: 'Parent', value: 'Parent'},
-  {label: 'Sibling', value: 'Sibling'},
-  {label: 'Grandchild', value: 'Grandchild'},
-  {label: 'Grandparent', value: 'Grandparent'},
-  {label: 'Aunt', value: 'Aunt'},
-  {label: 'Uncle', value: 'Uncle'},
-  {label: 'Niece', value: 'Niece'},
-  {label: 'Nephew', value: 'Nephew'},
-  {label: 'Cousin', value: 'Cousin'},
+export const relationshipToBequest: Array<{value: string}> = [
+  {value: 'Spouse'},
+  {value: 'Child'},
+  {value: 'Parent'},
+  {value: 'Sibling'},
+  {value: 'Grandchild'},
+  {value: 'Grandparent'},
+  {value: 'Aunt'},
+  {value: 'Uncle'},
+  {value: 'Niece'},
+  {value: 'Nephew'},
+  {value: 'Cousin'},
 ];
 import {allahNamesProps, exploreInterface, screens} from '../../types/types';
 import {Icons} from '../helper/svg';

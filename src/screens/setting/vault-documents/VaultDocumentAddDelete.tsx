@@ -40,7 +40,7 @@ const VaultDocumentAddDelete = () => {
   const onPressAddDoc = async () => {
     try {
       const res = await DocumentPicker.pick({
-        type: [DocumentPicker.types.allFiles],
+        type: ['application/pdf'],
       });
       setDocument(preVal => ({
         ...preVal,

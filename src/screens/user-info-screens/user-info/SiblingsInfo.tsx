@@ -10,7 +10,11 @@ import {
   relationshipToSister,
 } from '../../../utils/mocks/AllMockArray';
 
-const SiblingsInfo = () => {
+interface SiblingsInfoProps {
+  scrollViewRef: any;
+}
+
+const SiblingsInfo = ({scrollViewRef}: SiblingsInfoProps) => {
   const [userData, setUserData] = useState({
     fatherName: '',
     motherName: '',
@@ -150,7 +154,17 @@ const SiblingsInfo = () => {
                 keyboardType={'number-pad'}
               />
             </View>
-            <View style={styles.inputs}>
+            <View
+              style={[
+                styles.inputs,
+                {
+                  marginBottom:
+                    SistersList.length === 0 &&
+                    brothersList.length === index + 1
+                      ? 20
+                      : 0,
+                },
+              ]}>
               <AppInputDropDown
                 placeholderText={`Choose relation to brother ${index + 1}`}
                 arrayData={relationshipToBrother}
@@ -159,6 +173,11 @@ const SiblingsInfo = () => {
                 handleSelectValue={val =>
                   handleChildInputChange(index, 'relationship', val, true)
                 }
+                handleOpenDropDown={() => {
+                  SistersList.length === 0 && brothersList.length === index + 1
+                    ? scrollViewRef.current.scrollToEnd({animated: true})
+                    : null;
+                }}
               />
             </View>
           </View>
@@ -204,7 +223,11 @@ const SiblingsInfo = () => {
                 keyboardType={'number-pad'}
               />
             </View>
-            <View style={styles.inputs}>
+            <View
+              style={[
+                styles.inputs,
+                {marginBottom: SistersList.length === index + 1 ? 20 : 0},
+              ]}>
               <AppInputDropDown
                 placeholderText={`Choose relation to sister ${index + 1}`}
                 arrayData={relationshipToSister}
@@ -213,6 +236,11 @@ const SiblingsInfo = () => {
                 handleSelectValue={val =>
                   handleChildInputChange(index, 'relationship', val, false)
                 }
+                handleOpenDropDown={() => {
+                  SistersList.length === index + 1
+                    ? scrollViewRef.current.scrollToEnd({animated: true})
+                    : null;
+                }}
               />
             </View>
           </View>

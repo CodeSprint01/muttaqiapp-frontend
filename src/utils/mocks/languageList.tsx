@@ -1,16 +1,13 @@
 import {keyValue} from '../../types/keyVlaue';
 
 export const language: keyValue[] = [
-  {label: 'English', value: 'English'},
-  {label: 'Urdu', value: 'Urdu'},
-  {label: 'Arabic', value: 'Arabic'},
+  {value: 'English'},
+  {value: 'Urdu'},
+  {value: 'Arabic'},
 ];
-export const SecteList: keyValue[] = [
-  {label: 'Shia', value: 'Shia'},
-  {label: 'Sunni', value: 'Sunni'},
-];
+export const SecteList: keyValue[] = [{value: 'Shia'}, {value: 'Sunni'}];
 export const MartialStatus: keyValue[] = [
-  {label: 'Single', value: 'Single'},
-  {label: 'Married', value: 'Married'},
-  {label: 'Divorced', value: 'Divorced'},
+  {value: 'Single'},
+  {value: 'Married'},
+  {value: 'Divorced'},
 ];

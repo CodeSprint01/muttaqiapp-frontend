@@ -8,13 +8,9 @@ import {COLORS} from '../../../styles/color';
 const LanguageSetting = () => {
   const language = [
     {
-      id: 1,
-      label: 'English',
       value: 'English',
     },
     {
-      id: 1,
-      label: 'Urdu',
       value: 'Urdu',
     },
   ];
@@ -24,16 +20,14 @@ const LanguageSetting = () => {
       <View style={styles.dropDown}>
         <AppInputDropDown
           arrayData={language}
-          keyValue="English"
-          value="English"
+          defaultvalue="English"
           inputLabel="Default language"
           handleSelectValue={val => console.log(val)}
         />
       </View>
       <View style={styles.dropDown}>
         <AppInputDropDown
-          keyValue="Urdu"
-          value="Urdu"
+          defaultvalue="Urdu"
           arrayData={language}
           inputLabel="Translate language"
           handleSelectValue={val => console.log(val)}

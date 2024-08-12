@@ -7,7 +7,11 @@ import PhoneNumberInput from 'react-native-phone-number-input';
 import AppInput from '../../../components/molecules/app-input/AppInput';
 import {COLORS, fonts} from '../../../styles/color';
 
-const GeneralInfo = () => {
+interface GeneralInfoProps {
+  scrollViewRef: any;
+}
+
+const GeneralInfo = ({scrollViewRef}: GeneralInfoProps) => {
   const [formattedValue, setFormattedValue] = useState('');
   const [countryCode, setCountryCode] = useState('PK'); // Initial country code
   const [userData, setUserData] = useState({
@@ -112,7 +116,7 @@ const GeneralInfo = () => {
           codeTextStyle={{color: COLORS.medium_gray}}
         />
       </View>
-      <View style={[styles.genderAge, {marginBottom: 50}]}>
+      <View style={[styles.genderAge, {marginBottom: 20}]}>
         <View style={styles.gender}>
           <AppInputDropDown
             placeholderText="Choose Sect"
@@ -120,6 +124,9 @@ const GeneralInfo = () => {
             inputLabel="Sect"
             isRequired={true}
             handleSelectValue={val => handleInputValue(val, 'userSect')}
+            handleOpenDropDown={() => {
+              scrollViewRef.current.scrollToEnd({animated: true});
+            }}
           />
         </View>
         <View style={[styles.userAge, {marginTop: 0}]}>
@@ -129,6 +136,9 @@ const GeneralInfo = () => {
             inputLabel="Firqa"
             isRequired={true}
             handleSelectValue={val => handleInputValue(val, 'userFirqa')}
+            handleOpenDropDown={() => {
+              scrollViewRef.current.scrollToEnd({animated: true});
+            }}
           />
         </View>
       </View>

@@ -1,5 +1,5 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
+import React, {useRef, useState} from 'react';
 import AppContainer from '../../../components/atoms/app-container/AppContainer';
 import LinearGradient from 'react-native-linear-gradient';
 import {COLORS, fonts} from '../../../styles/color';
@@ -20,19 +20,22 @@ import StepCounter from '../StepCounter';
 import BequestDesire from '../user-info/BequestDesire';
 import BequestInfo from '../user-info/BequestInfo';
 import LiabilitiesInfo from '../user-info/LiabilitiesInfo';
+import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
 
 const GeneralInformation = () => {
   const navigation = useNavigation();
   const [currentStep, setCurrentStep] = useState(0);
   const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
   const [isVisible, setVisible] = useState(false);
+  const scrollViewRef = useRef(null);
+
   const onPressConfirm = () => {
     setVisible(false);
     handleNext();
   };
 
   const renderUserInfoView = [
-    [<GeneralInfo key="GeneralInfo" />],
+    [<GeneralInfo scrollViewRef={scrollViewRef} key="GeneralInfo" />],
     [
       <FamilyInfo
         onPressConfirm={onPressConfirm}
@@ -42,7 +45,7 @@ const GeneralInformation = () => {
       <ChildrenInfo key="ChildrenInfo" />,
       <ChildrenOtherInfo key={'ChildrenOtherInfo'} />,
       <NumberOfSiblings key={'NumberOfSiblings'} />,
-      <SiblingsInfo key="SiblingsInfo" />,
+      <SiblingsInfo scrollViewRef={scrollViewRef} key="SiblingsInfo" />,
     ],
     [
       <AssetsSalaryInfo key="AssetsSalaryInfo" />,
@@ -76,6 +79,15 @@ const GeneralInformation = () => {
     setVisible(true);
   };
 
+  const handleBack = () => {
+    if (currentComponentIndex > 0) {
+      setCurrentComponentIndex(currentComponentIndex - 1);
+    } else if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+      setCurrentComponentIndex(renderUserInfoView[currentStep - 1].length - 1);
+    }
+  };
+
   return (
     <AppContainer>
       <LinearGradient
@@ -88,6 +100,14 @@ const GeneralInformation = () => {
           <StepCounter currentStep={currentStep} />
         </View>
         <View style={styles.formContainer}>
+          <TouchableOpacity style={styles.backBtnView} onPress={handleBack}>
+            <AppIconSvg
+              icon={Icons.ArrowLeft}
+              height={20}
+              width={20}
+              color={COLORS.green}
+            />
+          </TouchableOpacity>
           <View style={{paddingHorizontal: 20}}>
             <AppText
               text={`${currentStep + 1}/${renderUserInfoView.length}`}
@@ -95,6 +115,7 @@ const GeneralInformation = () => {
             />
           </View>
           <ScrollView
+            ref={scrollViewRef}
             showsVerticalScrollIndicator={false}
             style={styles.scroll}>
             <View style={{paddingHorizontal: 20}}>
@@ -161,7 +182,6 @@ const styles = StyleSheet.create({
     color: COLORS.light_gray,
     fontSize: 14,
     fontFamily: fonts.dmSans[500],
-    paddingTop: 40,
   },
   bottomBtns: {
     width: '100%',
@@ -171,5 +191,12 @@ const styles = StyleSheet.create({
   skipBtn: {
     marginTop: 20,
     marginBottom: 40,
+  },
+  backBtnView: {
+    height: 30,
+    width: 30,
+    marginTop: 20,
+    marginLeft: 16,
+    justifyContent: 'center',
   },
 });

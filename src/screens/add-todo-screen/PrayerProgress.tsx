@@ -1,9 +1,16 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {FC, useState} from 'react';
 import AppText from '../../components/atoms/app-text/AppText';
 import {COLORS, fonts} from '../../styles/color';
 import LinearGradient from 'react-native-linear-gradient';
 import AppCheckBoxTick from '../../components/molecules/app-checkbox/AppCheckBoxTick';
+import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
 
 interface PrayerProps {
   handleCheckBox: (index: number) => void;
@@ -16,36 +23,67 @@ const PrayerProgress: FC<PrayerProps> = ({
   prayerTime,
   prayerData,
 }) => {
+  const totalSteps = 5;
+  const screenWidth = Dimensions.get('window').width;
+  const lineWidth = screenWidth / totalSteps - 32.5;
+
   return (
     <View style={styles.container}>
       <AppText text={'Prayer progress'} style={styles.prayerProg} />
       <AppText text={'Obligatory'} style={styles.obligatory} />
-      <View style={styles.obligatorySection}>
-        <View style={styles.verticalLine} />
-        <View style={styles.prayerContainer}>
-          {Object.entries(prayerTime).map(([prayerKey, prayerValue], index) => (
-            <View key={index} style={styles.notPrayerBox}>
-              {prayerValue ? (
-                <LinearGradient
-                  colors={['#1290A1', 'rgba(29, 162, 143, 0.73)']}
-                  start={{x: 0, y: 0}}
-                  end={{x: 1, y: 1}}
-                  style={styles.prayerBox}>
-                  <AppCheckBoxTick
-                    isChecked={prayerData[prayerKey]}
-                    checkBoxStyle={styles.boxCircle}
-                    onToggle={() => handleCheckBox(index)}
-                  />
-                </LinearGradient>
-              ) : (
-                <AppCheckBoxTick
-                  isChecked={false}
-                  checkBoxStyle={styles.boxCircle}
-                />
-              )}
-            </View>
-          ))}
-        </View>
+      <View style={styles.prayerContainer}>
+        {Object.entries(prayerTime).map(([prayerKey, prayerValue], index) => (
+          <View key={index} style={styles.notPrayerBox}>
+            {prayerValue ? (
+              <LinearGradient
+                colors={['#1290A1', 'rgba(29, 162, 143, 0.73)']}
+                start={{x: 0, y: 0}}
+                end={{x: 1, y: 1}}
+                style={styles.selectPrayerBox}>
+                <TouchableOpacity
+                  style={styles.boxCircle}
+                  onPress={() => handleCheckBox(index)}>
+                  {prayerData[prayerKey] && (
+                    <AppIconSvg
+                      icon={Icons.CheckBoxTickIcon}
+                      width={12}
+                      height={12}
+                      color={COLORS.white}
+                    />
+                  )}
+                </TouchableOpacity>
+              </LinearGradient>
+            ) : (
+              <View style={styles.unSelectPrayerBox}>
+                <TouchableOpacity
+                  disabled
+                  style={styles.boxCircle}
+                  onPress={() => handleCheckBox(index)}>
+                  {prayerData[prayerKey] && (
+                    <AppIconSvg
+                      icon={Icons.CheckBoxTickIcon}
+                      width={12}
+                      height={12}
+                      color={COLORS.white}
+                    />
+                  )}
+                </TouchableOpacity>
+              </View>
+            )}
+
+            {index < totalSteps - 1 && (
+              <View
+                style={[
+                  styles.line,
+                  {
+                    backgroundColor: COLORS.green,
+                    width: lineWidth,
+                  },
+                ]}
+              />
+            )}
+          </View>
+        ))}
       </View>
     </View>
   );
@@ -66,37 +104,42 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     color: COLORS.medium_gray,
   },
-  obligatorySection: {
-    marginTop: 12,
-  },
   prayerContainer: {
+    marginTop: 12,
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
-  verticalLine: {
-    width: '100%',
-    height: 1,
-    backgroundColor: COLORS.green,
-    position: 'absolute',
-    marginTop: 18,
-  },
-  prayerBox: {
+  selectPrayerBox: {
     width: 36,
     height: 36,
     backgroundColor: '#CCFFCC',
     borderRadius: 18,
     justifyContent: 'center',
+    alignItems: 'center',
   },
-  notPrayerBox: {
+  unSelectPrayerBox: {
     width: 36,
     height: 36,
     backgroundColor: COLORS.light_gray,
     borderRadius: 18,
     justifyContent: 'center',
-    paddingLeft: -6,
+    alignItems: 'center',
+  },
+  notPrayerBox: {
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   boxCircle: {
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    borderWidth: 2,
     borderColor: COLORS.white,
-    marginLeft: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  line: {
+    height: 1,
   },
 });

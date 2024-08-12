@@ -39,10 +39,10 @@ const AppCheckBoxTick = ({
         style={[styles.checkboxUnchecked, checkBoxStyle]}>
         {isChecked && (
           <AppIconSvg
-            icon={Icons.Tick}
-            width={15}
-            height={15}
-            color={COLORS.green}
+            icon={Icons.CheckBoxTickIcon}
+            width={12}
+            height={12}
+            color={COLORS.white}
           />
         )}
       </TouchableOpacity>
