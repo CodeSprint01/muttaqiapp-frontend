@@ -25,7 +25,11 @@ const TodoListCard: FC<ListProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.checkBox}>
-        <AppCheckBoxTick isChecked={isCheckBox} onToggle={handleCheckBox} />
+        <AppCheckBoxTick
+          color={COLORS.green}
+          isChecked={isCheckBox}
+          onToggle={handleCheckBox}
+        />
       </View>
       <View style={styles.todoTxt}>
         <AppText text={todoName} style={styles.txt} />

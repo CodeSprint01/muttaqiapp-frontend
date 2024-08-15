@@ -7,6 +7,7 @@ import AppButton from '../../../components/molecules/app-button/AppButton';
 import {useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {
+  actionUserLoginsCredentialsCreate,
   actionUserLoginsCredentialsDelete,
   actionUserLoginsCredentialsUpdate,
 } from '../../../redux/setting/action';
@@ -14,33 +15,48 @@ import {
 const LoginCredentials = ({route}) => {
   const credentail = route?.params?.data;
   const dataInitialState = {
-    id: credentail?.id,
-    email: credentail?.email,
-    password: credentail?.password,
+    title: route?.params?.data ? credentail.title : '',
+    id: route?.params?.data ? credentail?.id : '',
+    email: route?.params?.data ? credentail?.email : '',
+    password: route?.params?.data ? credentail?.password : '',
   };
   const [userData, setuserData] = useState(dataInitialState);
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const emailChanged = userData.email !== credentail?.email;
+  const titleChanged = userData.title !== credentail?.title;
   const passwordChanged = userData.password !== credentail?.password;
-  const isChanged = emailChanged || passwordChanged;
-  const isValidate = Object.values(userData).some(val => val === '');
+  const isChanged = emailChanged || passwordChanged || titleChanged;
+  const userDataForValidation = {...userData};
+  if (!route?.params?.data) {
+    delete userDataForValidation.id;
+  }
+
+  const isValidate = Object.values(userDataForValidation).some(
+    val => val === '',
+  );
 
   // change credential
-  const onChangeText = (key: number, txt: string) => {
-    if (key === 1) {
-      setuserData(preVal => ({...preVal, email: txt}));
-    } else {
-      setuserData(preVal => ({...preVal, password: txt}));
-    }
+  const onChangeText = (txt: string, key: string) => {
+    setuserData(prevState => ({
+      ...prevState,
+      [key]: txt,
+    }));
   };
 
   // button aactions
   const updateCredentail = () => {
     if (!isValidate) {
       dispatch(actionUserLoginsCredentialsUpdate(userData));
-      Alert.alert('Updated sucessfully');
+      Alert.alert('Success', 'Updated successfully', [
+        {
+          text: 'ok',
+          onPress: () => {
+            navigation.goBack();
+          },
+        },
+      ]);
     } else {
       Alert.alert('Form Error', 'Please fill all the fields');
     }
@@ -64,40 +80,62 @@ const LoginCredentials = ({route}) => {
     }
   };
 
+  const createCredentail = () => {
+    dispatch(actionUserLoginsCredentialsCreate(userData));
+    setuserData(dataInitialState);
+    navigation.goBack();
+  };
+
   return (
     <AppContainer>
       <ScreenHeader headerText={credentail?.title} extraStyle={styles.header} />
       <View style={styles.container}>
         <AppInput
+          placeholder="Enter title"
+          inputLabel="Title"
+          handleInputChange={(txt: string) => onChangeText(txt, 'title')}
+          inputValue={userData?.title}
+        />
+        <AppInput
           placeholder="Enter Username/email"
-          inputLabel="username/email"
-          handleInputChange={(txt: string) => onChangeText(1, txt)}
+          inputLabel="Username/Email"
+          handleInputChange={(txt: string) => onChangeText(txt, 'email')}
           inputValue={userData?.email}
         />
         <View style={styles.inputPass}>
           <AppInput
             placeholder="Enter password"
             inputLabel="Password"
-            handleInputChange={(txt: string) => onChangeText(2, txt)}
+            handleInputChange={(txt: string) => onChangeText(txt, 'password')}
             inputValue={userData?.password}
           />
         </View>
-        <View style={styles.buttons}>
-          <View style={styles.btn}>
+        {route?.params?.data ? (
+          <View style={styles.buttons}>
+            <View style={styles.btn}>
+              <AppButton
+                fill={false}
+                buttonText={isChanged ? 'Cancel' : 'Delete'}
+                onPress={didCancelOrDelete}
+              />
+            </View>
+            <View style={styles.btn}>
+              <AppButton
+                buttonText={'Update'}
+                onPress={updateCredentail}
+                isEnable={!isChanged}
+              />
+            </View>
+          </View>
+        ) : (
+          <View style={styles.saveBtn}>
             <AppButton
-              fill={false}
-              buttonText={isChanged ? 'Cancel' : 'Delete'}
-              onPress={didCancelOrDelete}
+              buttonText={'Save'}
+              onPress={createCredentail}
+              isEnable={isValidate}
             />
           </View>
-          <View style={styles.btn}>
-            <AppButton
-              buttonText={'Update'}
-              onPress={updateCredentail}
-              isEnable={!isChanged}
-            />
-          </View>
-        </View>
+        )}
       </View>
     </AppContainer>
   );
@@ -127,5 +165,11 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: '45%',
+  },
+  saveBtn: {
+    width: '45%',
+    alignSelf: 'center',
+    marginTop: 20,
+    marginBottom: 10,
   },
 });

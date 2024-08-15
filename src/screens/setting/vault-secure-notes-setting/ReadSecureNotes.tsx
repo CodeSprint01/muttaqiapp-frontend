@@ -2,7 +2,6 @@ import {
   Alert,
   ScrollView,
   StyleSheet,
-  Text,
   TextInput,
   TouchableOpacity,
   View,
@@ -14,18 +13,23 @@ import AppText from '../../../components/atoms/app-text/AppText';
 import {COLORS, fonts} from '../../../styles/color';
 import {AppIconSvg, Icons} from '../../../components/atoms/app-icon-svg';
 import {useDispatch} from 'react-redux';
-import {actionUserSecureNotesUpdate} from '../../../redux/setting/action';
+import {
+  actionUserSecureNotesCreate,
+  actionUserSecureNotesUpdate,
+} from '../../../redux/setting/action';
+import AppButton from '../../../components/molecules/app-button/AppButton';
 
 const ReadSecureNotes = props => {
-  const notes = props.route?.params?.data;
+  const notes = props?.route?.params?.data;
+  const isCreated = props?.route?.params?.isCreated;
   console.log(notes, 'this is notes');
   const initialState = {
-    id: notes?.id,
-    title: notes?.title,
-    details: notes?.details,
+    id: notes ? notes?.id : '',
+    title: notes ? notes?.title : '',
+    details: notes ? notes?.details : '',
   };
   const [updatedNote, setUpdatedNote] = useState(initialState);
-  const [isEdited, setIsEdited] = useState(false);
+  const [isEdited, setIsEdited] = useState(isCreated ? isCreated : false);
 
   const dispatch = useDispatch();
 
@@ -37,13 +41,27 @@ const ReadSecureNotes = props => {
     }
   };
 
-  const isValidate = Object.values(updatedNote).some(val => val === '');
+  const userDataForValidation = {...updatedNote};
+  if (isCreated) {
+    delete userDataForValidation.id;
+  }
+
+  const isValidate = Object.values(userDataForValidation).some(
+    val => val === '',
+  );
+
   const titleChanged = updatedNote?.title !== notes?.title;
   const detailsChanged = updatedNote?.details !== notes?.details;
   const isChanged = titleChanged || detailsChanged;
 
   const didUpdatePress = () => {
-    setIsEdited(!isEdited);
+    setIsEdited(prev => !prev);
+  };
+
+  const createCredentail = () => {
+    dispatch(actionUserSecureNotesCreate(updatedNote));
+    setUpdatedNote(initialState);
+    props.navigation.goBack();
   };
 
   const didSavePress = () => {
@@ -78,7 +96,7 @@ const ReadSecureNotes = props => {
     <AppContainer>
       <ScreenHeader headerText="Secure note" extraStyle={styles.header} />
       <ScrollView>
-        {isChanged && (
+        {isChanged && !isCreated && (
           <View style={styles.updatesButton}>
             <AppText
               text={'You have made some changes to your note'}
@@ -126,6 +144,15 @@ const ReadSecureNotes = props => {
             onChangeText={txt => onChangeText(2, txt)}
           />
         </View>
+        {isCreated && (
+          <View style={styles.saveBtn}>
+            <AppButton
+              isEnable={isValidate}
+              buttonText="Save"
+              onPress={createCredentail}
+            />
+          </View>
+        )}
       </ScrollView>
     </AppContainer>
   );
@@ -228,5 +255,11 @@ const styles = StyleSheet.create({
   inputs: {
     paddingHorizontal: 20,
     marginTop: 16,
+  },
+  saveBtn: {
+    width: '45%',
+    alignSelf: 'center',
+    marginTop: 20,
+    marginBottom: 10,
   },
 });

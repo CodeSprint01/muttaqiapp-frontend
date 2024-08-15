@@ -1,6 +1,6 @@
 import {Alert, FlatList, ScrollView, StyleSheet, View} from 'react-native';
 import '../../components/atoms/error/LogBox';
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useEffect, useMemo, useState} from 'react';
 import Swiper from 'react-native-swiper';
 import PrayerSwiper from './PrayerSwiper';
 import {COLORS, fonts} from '../../styles/color';
@@ -35,6 +35,9 @@ import TodoTask from '../add-todo-screen/TodoTask';
 import {useNavigation} from '@react-navigation/native';
 import {StackScreenProps} from '@react-navigation/stack';
 import vaultInstance from '../../services/web3/web3';
+import BottomSheetOverlapView from '../../components/molecules/bottom-sheet-overlap/BottomSheetOverlapView';
+import TodoTaskForm from '../add-todo-screen/TodoTaskForm';
+import DeleteModal from '../../components/organisums/delete-modal/DeleteModal';
 
 type Props = StackScreenProps<RootStackParamList, screens.TAB_HOME>;
 
@@ -51,6 +54,10 @@ const HomeScreen: FC<Props> = ({navigation}) => {
   const params = CalculationMethod.MoonsightingCommittee();
   const prayerTimes = new PrayerTimes(coordinates, date, params);
   const nextPrayer = prayerTimes?.nextPrayer();
+  const [isVisible, setIsVisible] = useState(false);
+  const snapPoint = useMemo(() => ['90%', '91%', '92%'], []);
+  const [onToggleCheck, setOnToggleCheck] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
 
   const handleFilterSliderData = (index: number) => {
     const graphData = [...isShowGraph];
@@ -95,7 +102,9 @@ const HomeScreen: FC<Props> = ({navigation}) => {
     dispatch(getPrayers(updated));
   };
   // todo list task
-  const onPressTodoCheck = () => {};
+  const onPressTodoCheck = () => {
+    setOnToggleCheck(prev => !prev);
+  };
 
   useEffect(() => {
     updatePrayerData();
@@ -193,6 +202,11 @@ const HomeScreen: FC<Props> = ({navigation}) => {
     //   .catch(error => console.log(error));
   }, []);
 
+  const handleUpdateTodo = () => {
+    // dispatch(addToDoTask())
+    setIsVisible(true);
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -236,9 +250,12 @@ const HomeScreen: FC<Props> = ({navigation}) => {
             handelShowmore={() => navigation.navigate(screens.TAB_TO_DO)}
           />
           <TodoTask
-            handleCheckBox={onPressTodoCheck}
             todoName="Read surat Al-mulk before sleep"
             repeatText="daily"
+            handleUpdateTodo={handleUpdateTodo}
+            isCheckBox={onToggleCheck}
+            handleCheckBox={onPressTodoCheck}
+            handleDeleteTodo={() => setDeleteModal(true)}
           />
         </View>
         <View style={{marginBottom: 2}}>
@@ -275,6 +292,22 @@ const HomeScreen: FC<Props> = ({navigation}) => {
         style={styles.gradient}
       />
       {/* <View style={styles.opacity} /> */}
+      <BottomSheetOverlapView
+        showBottomSheet={isVisible}
+        enableHeaderLine
+        setShowBottomSheet={() => setIsVisible(false)}
+        snapPoints={snapPoint}
+        children={<TodoTaskForm />}
+      />
+      <DeleteModal
+        isVisible={deleteModal}
+        CrossBtnPress={() => setDeleteModal(false)}
+        modalText={'Are you sure you want to delete this task ?'}
+        leftBtnText={'Delete'}
+        rightBtnText={'Cancel'}
+        leftOnPress={() => setDeleteModal(false)}
+        rightOnPress={() => setDeleteModal(false)}
+      />
     </View>
   );
 };

@@ -79,6 +79,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: fonts.dmSans[500],
     color: COLORS.dark_gray,
+    textAlign: 'center',
+    marginVertical: 10,
   },
   crossIcon: {
     width: '13%',
@@ -88,7 +90,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginTop: 60,
+    marginTop: 50,
   },
   cancel: {
     width: '45%',

@@ -21,6 +21,7 @@ interface Props {
   style?: CustomCheckboxStyle;
   containerStyle?: StyleProp<ViewStyle>;
   checkBoxStyle?: StyleProp<ViewStyle>;
+  color?: string;
 }
 
 const AppCheckBoxTick = ({
@@ -30,6 +31,7 @@ const AppCheckBoxTick = ({
   style,
   containerStyle,
   checkBoxStyle,
+  color,
 }: Props) => {
   return (
     <View style={[styles.checkboxContainer, containerStyle]}>
@@ -42,7 +44,7 @@ const AppCheckBoxTick = ({
             icon={Icons.CheckBoxTickIcon}
             width={12}
             height={12}
-            color={COLORS.white}
+            color={color ? color : COLORS.white}
           />
         )}
       </TouchableOpacity>

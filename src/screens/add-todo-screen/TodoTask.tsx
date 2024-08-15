@@ -6,7 +6,7 @@ import TodoListCard from './TodoListCard';
 import {AppIconSvg, Icons} from '../../components/atoms/app-icon-svg';
 
 interface TodoProps {
-  handleAddTodo: () => void;
+  handleAddTodo?: () => void;
   isCheckBox: boolean;
   handleCheckBox: () => void;
   todoName: string;

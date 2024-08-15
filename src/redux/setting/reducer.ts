@@ -43,6 +43,7 @@ export default function reducer(state = initialState, action: any = {}) {
         if (itm?.id === newUpdate?.id) {
           return {
             ...itm,
+            title: newUpdate?.title,
             email: newUpdate?.email,
             password: newUpdate?.password,
           };

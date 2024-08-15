@@ -51,11 +51,6 @@ const VaultStack = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name={screens.VAULT_SECURE_NOTES_UPDATE}
-        component={VaultSecureNotesSetting}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
         name={screens.VAULT_CREDIT_CARD_ADD}
         component={VaultCreditCardAdd}
         options={{headerShown: false}}

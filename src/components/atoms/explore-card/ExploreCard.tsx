@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     // backgroundColor: '#afe1af',
     borderRadius: 20,
     marginTop: 20,
-    elevation: 10,
+    // elevation: 10,
     marginHorizontal: 8,
     height: 175,
   },

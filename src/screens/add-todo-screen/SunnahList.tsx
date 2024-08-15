@@ -28,7 +28,11 @@ const SunnahList: FC<SunnahListProps> = ({
         </View>
       )}
       <View style={styles.listContainer}>
-        <AppCheckBoxTick isChecked={isCheckBox} onToggle={handleCheckBox} />
+        <AppCheckBoxTick
+          color={COLORS.green}
+          isChecked={isCheckBox}
+          onToggle={handleCheckBox}
+        />
         <AppText text={SunnahName} style={styles.txt} />
       </View>
     </View>

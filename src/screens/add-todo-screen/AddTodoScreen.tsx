@@ -12,9 +12,12 @@ import AppText from '../../components/atoms/app-text/AppText';
 import TodoTaskForm from './TodoTaskForm';
 import SunnahList from './SunnahList';
 import SunnahTaskForm from './SunnahTaskForm';
+import DeleteModal from '../../components/organisums/delete-modal/DeleteModal';
 
 const AddTodoScreen = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [onToggleCheck, setOnToggleCheck] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
   const [sunnahListVisible, setSunnahListVisible] = useState(false);
   const [prayerTime, setprayerTime] = useState({
     fajr: true,
@@ -46,6 +49,9 @@ const AddTodoScreen = () => {
     // dispatch(addToDoTask())
     setIsVisible(true);
   };
+  const onToggleCheckBox = () => {
+    setOnToggleCheck(prev => !prev);
+  };
 
   return (
     <AppContainer>
@@ -67,6 +73,10 @@ const AddTodoScreen = () => {
               todoName="Read surat Al-mulk before sleep"
               repeatText="daily"
               handleAddTodo={onPressAddTodo}
+              handleUpdateTodo={onPressAddTodo}
+              isCheckBox={onToggleCheck}
+              handleCheckBox={onToggleCheckBox}
+              handleDeleteTodo={() => setDeleteModal(true)}
             />
           </View>
           <View style={styles.todoConntainer}>
@@ -74,8 +84,8 @@ const AddTodoScreen = () => {
               handleAddSunnah={() => {
                 setSunnahListVisible(true);
               }}
-              isCheckBox={false}
-              handleCheckBox={() => {}}
+              isCheckBox={onToggleCheck}
+              handleCheckBox={onToggleCheckBox}
               SunnahName={'Before Fajr (2)'}
             />
           </View>
@@ -94,6 +104,15 @@ const AddTodoScreen = () => {
         setShowBottomSheet={() => setSunnahListVisible(false)}
         snapPoints={snapPoint}
         children={<SunnahTaskForm />}
+      />
+      <DeleteModal
+        isVisible={deleteModal}
+        CrossBtnPress={() => setDeleteModal(false)}
+        modalText={'Are you sure you want to delete this task ?'}
+        leftBtnText={'Delete'}
+        rightBtnText={'Cancel'}
+        leftOnPress={() => setDeleteModal(false)}
+        rightOnPress={() => setDeleteModal(false)}
       />
     </AppContainer>
   );
