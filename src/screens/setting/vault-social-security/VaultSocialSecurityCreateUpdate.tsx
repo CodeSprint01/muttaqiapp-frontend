@@ -12,10 +12,11 @@ import {
   actionUserSocialSecurityNumberAdd,
   actionUserSocialSecurityNumberUpdate,
 } from '../../../redux/setting/action';
+import {useNavigation} from '@react-navigation/native';
 
 const VaultSocialSecurityCreateUpdate = ({route}) => {
   const cardId = route?.params?.id;
-
+  const navigation = useNavigation();
   const initialState = {
     name: '',
     number: '',
@@ -40,7 +41,8 @@ const VaultSocialSecurityCreateUpdate = ({route}) => {
   const checkChanges = () => {
     // return true;
     if (!filterForUpdate) {
-      return false;
+      const isValidate = Object.values(socialData)?.some(itm => itm != '');
+      return isValidate;
     }
     const keys = Object.keys(socialData);
     for (let key of keys) {
@@ -48,7 +50,6 @@ const VaultSocialSecurityCreateUpdate = ({route}) => {
         return true;
       }
     }
-    return false;
   };
   // bottom buttton
   const handleCancelPress = () => {
@@ -61,12 +62,14 @@ const VaultSocialSecurityCreateUpdate = ({route}) => {
 
   const handleSavePress = () => {
     if (!isValidate) {
-      if (checkChanges()) {
+      if (cardId) {
         dispatch(actionUserSocialSecurityNumberUpdate(socialData));
         Alert.alert('Alert', 'Social security data updated sucessfully');
+        navigation.goBack();
       } else {
         dispatch(actionUserSocialSecurityNumberAdd(socialData));
         Alert.alert('Alert', 'Social security added sucessfully');
+        navigation.goBack();
       }
     } else {
       Alert.alert('Alert', 'Please fill all fields');
@@ -105,7 +108,8 @@ const VaultSocialSecurityCreateUpdate = ({route}) => {
           </View>
           <View style={styles.halfwidth}>
             <AppButton
-              buttonText={checkChanges() ? 'Update' : 'Save'}
+              isEnable={checkChanges() ? false : true}
+              buttonText={cardId ? 'Update' : 'Save'}
               onPress={handleSavePress}
             />
           </View>

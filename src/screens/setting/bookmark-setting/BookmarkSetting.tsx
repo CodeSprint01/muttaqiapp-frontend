@@ -11,27 +11,12 @@ import AppButton from '../../../components/molecules/app-button/AppButton';
 
 const BookmarkSetting = () => {
   const [selectedButton, setSelectedButton] = useState('All');
-
-  const handlePress = (button: string) => {
-    setSelectedButton(button);
-  };
-  const [singleArray, setSingleArray] = useState([
-    {
-      namd: 'Al - Baqrah | verse 1',
-      des: 'who believe in the unseen, establish prayer, and donate from what We have provided for them,',
-    },
-    {
-      namd: 'Al - Baqrah | verse 2',
-      des: 'who believe in the unseen, establish prayer, and donate from what We have provided for them,',
-    },
-  ]);
-
-  const [AllData, setAllData] = useState([
+  const AllData = [
     {
       name: 'Quran',
       array: [
         {
-          namd: 'Al - Baqrah | verse 1',
+          namd: 'Al - Baqrah | verse 1 Quran',
           des: 'who believe in the unseen, establish prayer, and donate from what We have provided for them,',
         },
       ],
@@ -40,7 +25,7 @@ const BookmarkSetting = () => {
       name: 'Azkar',
       array: [
         {
-          namd: 'Al - Baqrah | verse 2',
+          namd: 'Al - Baqrah | verse 2 Azkar',
           des: 'who believe in the unseen, establish prayer, and donate from what We have provided for them,',
         },
       ],
@@ -49,12 +34,26 @@ const BookmarkSetting = () => {
       name: 'Dua',
       array: [
         {
-          namd: 'Al - Baqrah | verse 2',
+          namd: 'Al - Baqrah | verse 2 Dua',
           des: 'who believe in the unseen, establish prayer, and donate from what We have provided for them,',
         },
       ],
     },
-  ]);
+  ];
+  const [filteredData, setFilteredData] = useState(AllData);
+
+  const handleFilter = (category: string) => {
+    setSelectedButton(category);
+    if (category === 'All') {
+      setFilteredData(AllData);
+    } else {
+      const filtered = AllData.forEach(item => {
+        if (item.name === category) {
+          setFilteredData(item.array);
+        }
+      });
+    }
+  };
 
   const renderItemArray = ({item, index}) => {
     return (
@@ -78,11 +77,16 @@ const BookmarkSetting = () => {
   const renderItem = ({item, index}) => {
     return (
       <View>
-        <View style={styles.mainHeading}>
-          <AppText text={item.name} style={styles.mainHeadingText} />
-        </View>
+        {selectedButton === 'All' && (
+          <View style={styles.mainHeading}>
+            <AppText text={item.name} style={styles.mainHeadingText} />
+          </View>
+        )}
         <View>
-          <FlatList data={item.array} renderItem={renderItemArray} />
+          <FlatList
+            data={selectedButton === 'All' ? item.array : filteredData}
+            renderItem={renderItemArray}
+          />
         </View>
       </View>
     );
@@ -118,14 +122,10 @@ const BookmarkSetting = () => {
           <HeaderButtons
             selectedButton={selectedButton}
             handlePress={val => {
-              handlePress(val);
+              handleFilter(val);
             }}
           />
-          {selectedButton === 'All' ? (
-            <FlatList data={AllData} renderItem={renderItem} />
-          ) : (
-            <FlatList data={singleArray} renderItem={renderItemArray} />
-          )}
+          <FlatList data={filteredData} renderItem={renderItem} />
         </View>
       )}
     </AppContainer>

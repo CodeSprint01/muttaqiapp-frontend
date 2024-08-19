@@ -114,16 +114,19 @@ const MainSetting: FC<Props> = ({navigation}) => {
         navigation.navigate(screens.FAVORITIES_STACK);
         break;
       case settingEnum.ZAKAT_CALCULATION:
-        navigation.navigate(screens.ZAKAT_CALCULATION_STACK);
+        navigation.navigate(screens.NOTIFICATION_SETTINGS);
+        // navigation.navigate(screens.ZAKAT_CALCULATION_STACK);
         break;
       case settingEnum.INHERITANCE_CALCULATION:
-        navigation.navigate(screens.INHERITANCE_CALCULATION_STACK);
+        navigation.navigate(screens.NOTIFICATION_SETTINGS);
+        // navigation.navigate(screens.INHERITANCE_CALCULATION_STACK);
         break;
       case settingEnum.PASSWORD_SECURITY:
         navigation.navigate(screens.PASSWORD_SECURITY_STACK);
         break;
       case settingEnum.VAULT:
         manageVault();
+        // navigation.navigate(screens.VAULT_STACK);
         break;
       case settingEnum.PERSONAL_FINANCIAL_INFO:
         navigation.navigate(screens.PERSONAL_FINANCIAL_INFO_STACK);
