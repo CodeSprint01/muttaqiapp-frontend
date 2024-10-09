@@ -8,14 +8,15 @@ import {useSelector} from 'react-redux';
 
 const MainStack = () => {
   const Stack = createStackNavigator();
-  const { userInfo } = useSelector((state: State) => state?.userReducer);
+  const {userInfo} = useSelector((state: State) => state?.userReducer);
   const isLogin = userInfo?.isLoged;
   console.log('final user log....', isLogin);
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {userInfo?.isLoged ? (
+        {/* APPTODO: Remove not operator below ie make it {userInfo?.isLoged ? ( */}
+        {!userInfo?.isLoged ? (
           <Stack.Screen
             name={screens.APP_STACK}
             component={AppStack}
