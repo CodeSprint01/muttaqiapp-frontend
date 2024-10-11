@@ -67,7 +67,7 @@ const VaultLoginsSetting = () => {
       <>
         <SettingAndNumber
           number={index + 1}
-          title={item?.title}
+          title={item.title}
           didSettingPress={() =>
             navigation.navigate(screens.LOGINS_CREDENTIALS, {data: item})
           }

@@ -3,6 +3,7 @@ import {AppState} from '../../types/types';
 
 // state
 const initialState: AppState = {
+  loading: false,
   error: undefined,
   userLocation: [],
   userInfo: [],
