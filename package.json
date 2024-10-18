@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.9.6",
-    "@gorhom/bottom-sheet": "^4.6.0",
+    "@gorhom/bottom-sheet": "^4.6.4",
     "@notifee/react-native": "^7.8.2",
     "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-native-clipboard/clipboard": "^1.13.2",
@@ -71,6 +71,7 @@
     "@babel/core": "^7.20.0",
     "@babel/preset-env": "^7.20.0",
     "@babel/runtime": "^7.20.0",
+    "@react-native-community/cli-platform-android": "^14.1.1",
     "@react-native/eslint-config": "^0.72.2",
     "@react-native/metro-config": "^0.72.11",
     "@tsconfig/react-native": "^3.0.0",

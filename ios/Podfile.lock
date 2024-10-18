@@ -378,33 +378,35 @@ PODS:
   - React-jsinspector (0.72.7)
   - React-logger (0.72.7):
     - glog
-  - react-native-blob-util (0.19.8):
+  - react-native-blob-util (0.19.11):
     - React-Core
-  - react-native-blur (4.3.2):
+  - react-native-blur (4.4.1):
+    - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - react-native-compass-heading (1.5.0):
     - React-Core
-  - react-native-config (1.5.1):
-    - react-native-config/App (= 1.5.1)
-  - react-native-config/App (1.5.1):
+  - react-native-config (1.5.3):
+    - react-native-config/App (= 1.5.3)
+  - react-native-config/App (1.5.3):
     - React-Core
-  - react-native-document-picker (9.1.1):
-    - React-Core
-  - react-native-netinfo (11.3.1):
-    - React-Core
-  - react-native-pager-view (6.2.3):
+  - react-native-document-picker (9.3.1):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
-  - react-native-pdf (6.7.4):
+  - react-native-netinfo (11.4.1):
     - React-Core
-  - react-native-safe-area-context (4.7.4):
-    - React-Core
-  - react-native-slider (4.5.0):
+  - react-native-pager-view (6.4.1):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
-  - react-native-track-player (4.0.1):
+  - react-native-pdf (6.7.5):
     - React-Core
-    - SwiftAudioEx (= 1.0.0)
+  - react-native-safe-area-context (4.11.1):
+    - React-Core
+  - react-native-slider (4.5.4):
+    - RCT-Folly (= 2021.07.22.00)
+    - React-Core
+  - react-native-track-player (4.1.1):
+    - React-Core
+    - SwiftAudioEx (= 1.1.0)
   - React-NativeModulesApple (0.72.7):
     - hermes-engine
     - React-callinvoker
@@ -515,16 +517,16 @@ PODS:
     - React-jsi (= 0.72.7)
     - React-logger (= 0.72.7)
     - React-perflogger (= 0.72.7)
-  - ReactNativeGetLocation (4.0.0):
+  - ReactNativeGetLocation (4.0.1):
     - React-Core
-  - RNCAsyncStorage (1.21.0):
+  - RNCAsyncStorage (1.24.0):
     - React-Core
-  - RNCCheckbox (0.5.16):
+  - RNCCheckbox (0.5.17):
     - BEMCheckBox (~> 1.4)
     - React-Core
-  - RNCClipboard (1.13.2):
+  - RNCClipboard (1.14.2):
     - React-Core
-  - RNGestureHandler (2.14.0):
+  - RNGestureHandler (2.20.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - RNImageCropPicker (0.40.3):
@@ -536,20 +538,36 @@ PODS:
     - React-Core
     - React-RCTImage
     - TOCropViewController
-  - RNNotifee (7.8.2):
+  - RNNotifee (7.9.0):
     - React-Core
-    - RNNotifee/NotifeeCore (= 7.8.2)
-  - RNNotifee/NotifeeCore (7.8.2):
+    - RNNotifee/NotifeeCore (= 7.9.0)
+  - RNNotifee/NotifeeCore (7.9.0):
     - React-Core
   - RNPermissions (3.10.1):
     - React-Core
-  - RNReanimated (3.6.1):
+  - RNReanimated (3.16.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
     - ReactCommon/turbomodule/core
-  - RNScreens (3.27.0):
+    - RNReanimated/reanimated (= 3.16.0)
+    - RNReanimated/worklets (= 3.16.0)
+  - RNReanimated/reanimated (3.16.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
+    - ReactCommon/turbomodule/core
+    - RNReanimated/reanimated/apple (= 3.16.0)
+  - RNReanimated/reanimated/apple (3.16.0):
+    - RCT-Folly (= 2021.07.22.00)
+    - React-Core
+    - ReactCommon/turbomodule/core
+  - RNReanimated/worklets (3.16.0):
+    - RCT-Folly (= 2021.07.22.00)
+    - React-Core
+    - ReactCommon/turbomodule/core
+  - RNScreens (3.34.0):
+    - RCT-Folly (= 2021.07.22.00)
+    - React-Core
+    - React-RCTImage
   - RNSensors (7.3.6):
     - React-Core
   - RNSound (0.11.2):
@@ -557,11 +575,11 @@ PODS:
     - RNSound/Core (= 0.11.2)
   - RNSound/Core (0.11.2):
     - React-Core
-  - RNSVG (14.1.0):
+  - RNSVG (14.2.0):
     - React-Core
   - SocketRocket (0.6.1)
-  - SwiftAudioEx (1.0.0)
-  - TOCropViewController (2.6.1)
+  - SwiftAudioEx (1.1.0)
+  - TOCropViewController (2.7.4)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -814,7 +832,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: 5fbbff1d7734827299274638deb8ba3024f6c597
-  FBReactNativeSpec: 638095fe8a01506634d77b260ef8a322019ac671
+  FBReactNativeSpec: 641d00887bf10e7b85a566304cec54b95a13f776
   Flipper: 6edb735e6c3e332975d1b17956bcc584eccf5818
   Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
   Flipper-DoubleConversion: 2dc99b02f658daf147069aad9dbd29d8feb06d30
@@ -843,17 +861,17 @@ SPEC CHECKSUMS:
   React-jsiexecutor: c49502e5d02112247ee4526bc3ccfc891ae3eb9b
   React-jsinspector: 8baadae51f01d867c3921213a25ab78ab4fbcd91
   React-logger: 8edc785c47c8686c7962199a307015e2ce9a0e4f
-  react-native-blob-util: 26f1fb0c91f2b437380d4f3875769a7c3e06080e
-  react-native-blur: cfdad7b3c01d725ab62a8a729f42ea463998afa2
+  react-native-blob-util: 39a20f2ef11556d958dc4beb0aa07d1ef2690745
+  react-native-blur: 4c25fdccf6dc16b0935baa58d9d0fccb0683742b
   react-native-compass-heading: 1b4403d1c99dfd8311073ca8fc52bfc8e365cfac
-  react-native-config: 86038147314e2e6d10ea9972022aa171e6b1d4d8
-  react-native-document-picker: 3599b238843369026201d2ef466df53f77ae0452
-  react-native-netinfo: bdb108d340cdb41875c9ced535977cac6d2ff321
-  react-native-pager-view: e26d35e382d86950c936f8917e3beb9188115ccc
-  react-native-pdf: 79aa75e39a80c1d45ffe58aa500f3cf08f267a2e
-  react-native-safe-area-context: 2cd91d532de12acdb0a9cbc8d43ac72a8e4c897c
-  react-native-slider: cc89964e1432fa31aa9db7a0fa9b21e26b5d5152
-  react-native-track-player: 97d76dbbd35f27cc709e5f04540615e54264b3f9
+  react-native-config: 8f7283449bbb048902f4e764affbbf24504454af
+  react-native-document-picker: 52eab29bbc53f45399b475b7a3f4e503260f1134
+  react-native-netinfo: f0a9899081c185db1de5bb2fdc1c88c202a059ac
+  react-native-pager-view: d1e43158dd108b1b7377d7972157317e06dcc579
+  react-native-pdf: 103940c90d62adfd259f63cca99c7c0c306b514c
+  react-native-safe-area-context: 5141f11858b033636f1788b14f32eaba92cee810
+  react-native-slider: 3bf504f2886e1106adf62937bd4e4d47e1fb8531
+  react-native-track-player: 82ef1756ffeea61140fea17519ecd6d64ec3cf3e
   React-NativeModulesApple: b6868ee904013a7923128892ee4a032498a1024a
   React-perflogger: 31ea61077185eb1428baf60c0db6e2886f141a5a
   React-RCTActionSheet: 392090a3abc8992eb269ef0eaa561750588fc39d
@@ -866,27 +884,27 @@ SPEC CHECKSUMS:
   React-RCTSettings: 506a5f09a455123a8873801b70aa7b4010b76b01
   React-RCTText: 3c71ecaad8ee010b79632ea2590f86c02f5cce17
   React-RCTVibration: d1b78ca38f61ea4b3e9ebb2ddbd0b5662631d99b
-  React-rncore: bfc2f6568b6fecbae6f2f774e95c60c3c9e95bf2
+  React-rncore: 9ae43de0174bcea2e9c2fb6dfa758523914f5ca8
   React-runtimeexecutor: 47b0a2d5bbb416db65ef881a6f7bdcfefa0001ab
   React-runtimescheduler: 7649c3b46c8dee1853691ecf60146a16ae59253c
   React-utils: 56838edeaaf651220d1e53cd0b8934fb8ce68415
   ReactCommon: 5f704096ccf7733b390f59043b6fa9cc180ee4f6
-  ReactNativeGetLocation: 87f83bee4dfecc88772de04afd076d9ae265cc42
-  RNCAsyncStorage: 618d03a5f52fbccb3d7010076bc54712844c18ef
-  RNCCheckbox: 75255b03e604bbcc26411eb31c4cbe3e3865f538
-  RNCClipboard: 60fed4b71560d7bfe40e9d35dea9762b024da86d
-  RNGestureHandler: 32a01c29ecc9bb0b5bf7bc0a33547f61b4dc2741
+  ReactNativeGetLocation: b4379a01dff72507d9abce5f4d569b98abef7761
+  RNCAsyncStorage: ec53e44dc3e75b44aa2a9f37618a49c3bc080a7a
+  RNCCheckbox: a3ca9978cb0846b981d28da4e9914bd437403d77
+  RNCClipboard: 5e503962f0719ace8f7fdfe9c60282b526305c85
+  RNGestureHandler: 74c531dc20aa37fb3a8d3d8514447a0d129ddb7d
   RNImageCropPicker: e7ab6fb43d2fc3e84651e786ef4a080d63b0ed3d
-  RNNotifee: 8e2d3df3f0e9ce8f5d1fe4c967431138190b6175
+  RNNotifee: 935f3ea8c134c88cbf8b13ea0c97c72c09ad2116
   RNPermissions: 4e3714e18afe7141d000beae3755e5b5fb2f5e05
-  RNReanimated: fdbaa9c964bbab7fac50c90862b6cc5f041679b9
-  RNScreens: 3c2d122f5e08c192e254c510b212306da97d2581
+  RNReanimated: 0c57049753998e90769e9d6951f390e4af5a381e
+  RNScreens: 80369e822c4f123c3f076c9ea4141991c17770f9
   RNSensors: 117ba71c7eeeea0407ea0c0bb79e3495d602049b
   RNSound: 6c156f925295bdc83e8e422e7d8b38d33bc71852
-  RNSVG: ba3e7232f45e34b7b47e74472386cf4e1a676d0a
+  RNSVG: 963a95f1f5d512a13d11ffd50d351c87fb5c6890
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
-  SwiftAudioEx: 6f511018b7a0fdfd14ed1bb4081f953588245cc0
-  TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
+  SwiftAudioEx: f6aa653770f3a0d3851edaf8d834a30aee4a7646
+  TOCropViewController: 80b8985ad794298fb69d3341de183f33d1853654
   Yoga: 4c3aa327e4a6a23eeacd71f61c81df1bcdf677d5
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
