@@ -10,6 +10,7 @@ import React, {FC} from 'react';
 import {AppIconSvg, Icons} from '../../atoms/app-icon-svg';
 import {COLORS} from '../../../styles/color';
 import {useNavigation} from '@react-navigation/native';
+import { TextInput } from 'react-native-gesture-handler';
 
 interface HeaderProps {
   headerText?: string;
@@ -35,7 +36,11 @@ const ScreenHeader: FC<HeaderProps> = ({headerText, rightIcon, extraStyle}) => {
         <View style={styles.headerTxt}>
           {headerText && <Text style={styles.txt}>{headerText}</Text>}
         </View>
-        <View style={styles.rightIcon}>
+        {/* <TextInput></TextInput> */}
+        
+        <TouchableOpacity style={styles.rightIcon}
+        // onPress={}
+        >
           {rightIcon && (
             <AppIconSvg
               icon={rightIcon}
@@ -44,7 +49,8 @@ const ScreenHeader: FC<HeaderProps> = ({headerText, rightIcon, extraStyle}) => {
               color={COLORS.dark_gray}
             />
           )}
-        </View>
+        </TouchableOpacity>
+        
       </View>
     </View>
   );
@@ -58,9 +64,10 @@ const styles = StyleSheet.create({
     // paddingVertical: 15,
   },
   txt: {
-    color: COLORS.very_dark_gray,
+    marginTop:10,
+    color: COLORS.dark_gray,
     fontWeight: '700',
-    fontSize: 20,
+    fontSize: 35,
     textAlign: 'center',
   },
   backIcon: {

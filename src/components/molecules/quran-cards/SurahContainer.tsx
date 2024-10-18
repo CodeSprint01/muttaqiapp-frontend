@@ -34,7 +34,7 @@ const SurahContainer: FC<ArabicProps> = ({item}, handleTextPress) => {
                 <Text style={styles.rukuNumb}>{ruk?.rukuNumber}</Text>
               </View>
             ) : (
-              ruk?.sajda && (
+              ruk?.type === 'sajida' && (
                 <View style={styles.sajdaContainer}>
                   <Text style={styles.sajda}>{` ${'السجدة'} (${
                     ruk?.sajdaNumber

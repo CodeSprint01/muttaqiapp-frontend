@@ -42,16 +42,15 @@ const SurahDetailsScreen = ({route}) => {
   });
 
   const extractedValues = [surahData]?.flatMap(surah =>
-    surah.surahDetails.flatMap(detail =>
-      detail.ayahs.map(({numberInSurah, text, enText}) => ({
-        numberInSurah,
-        text,
-        enText,
-      })),
+    surah.surahDetails.flatMap(
+      (detail: {ayahs: {numberInSurah: any; text: any; enText: any}[]}) =>
+        detail.ayahs.map(({numberInSurah, text, enText}) => ({
+          numberInSurah,
+          text,
+          enText,
+        })),
     ),
   );
-
-  console.log(extractedValues, 'this is neccessary');
 
   const handleHideTranslation = () => {
     setHideTranslation(!hideTranslation);
@@ -59,8 +58,6 @@ const SurahDetailsScreen = ({route}) => {
   // here is player code
   const playbackState = usePlaybackState();
   var progress = useProgress();
-
-  // console.log(surahData, 'surahData');
 
   useEffect(() => {
     setupPlayer();
@@ -157,10 +154,11 @@ const SurahDetailsScreen = ({route}) => {
   };
   const DetailsnapPoint = useMemo(() => ['95%', '96%', '77%'], []);
   const PlayersnapPoint = useMemo(() => ['16%', '16.01%'], []);
+
   return (
     <AppContainer>
       <View style={{paddingHorizontal: 20}}>
-        <ScreenHeader headerText="Al-Baqarah" rightIcon={Icons.Search} />
+        <ScreenHeader headerText={surahData.name} rightIcon={Icons.Search} />
       </View>
       <View style={styles.container}>
         <View style={styles.hideShowTrans}>
@@ -206,33 +204,35 @@ const SurahDetailsScreen = ({route}) => {
           </View>
         ) : (
           <>
-            <ScrollView showsVerticalScrollIndicator={false}>
-              {extractedValues.map(item => (
-                <View
-                  style={[
-                    styles.listView,
-                    {marginTop: item?.numberInSurah === 0 ? 23 : 0},
-                  ]}>
-                  <SurahHeader
-                    ayatNumber={item?.numberInSurah + 1}
-                    bookmark={Icons.EmptyBookmark}
-                    favourite={Icons.EmptyHeart}
-                    playPause={
-                      playerData?.audioIndex === item?.numberInSurah &&
-                      playerData.isPlay
-                        ? Icons.Pause
-                        : Icons.Play
-                    }
-                    onPressBooksquare={() => handleShowBottoomsheet(item)}
-                    onPressPlayPause={() =>
-                      handlePlayerClick(item, item?.numberInSurah)
-                    }
-                  />
-                  <Text style={styles.arabicTxt}>{item?.text}</Text>
-                  <AppText style={styles.translation} text={item?.enText} />
-                </View>
-              ))}
-            </ScrollView>
+            <FlatList
+              data={extractedValues}
+              renderItem={({item}) => {
+                return (
+                  <View>
+                    <SurahHeader
+                      ayatNumber={item?.numberInSurah}
+                      bookmark={Icons.EmptyBookmark}
+                      favourite={Icons.EmptyHeart}
+                      playPause={
+                        playerData?.audioIndex === item?.numberInSurah &&
+                        playerData.isPlay
+                          ? Icons.Pause
+                          : Icons.Play
+                      }
+                      onPressBooksquare={() => handleShowBottoomsheet(item)}
+                      onPressPlayPause={() =>
+                        handlePlayerClick(item, item?.numberInSurah)
+                      }
+                      onPressFavourite={function (): void {
+                        throw new Error('Function not implemented.');
+                      }}
+                    />
+                    <Text style={styles.arabicTxt}>{item?.text}</Text>
+                    <AppText style={styles.translation} text={item?.enText} />
+                  </View>
+                );
+              }}
+            />
           </>
         )}
       </View>

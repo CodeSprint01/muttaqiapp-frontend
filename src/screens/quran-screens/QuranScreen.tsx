@@ -5,12 +5,14 @@ import QuranHeaderCard from './QuranHeaderCard';
 import AppContainer from '../../components/atoms/app-container/AppContainer';
 import {COLORS} from '../../styles/color';
 import TopTabs from './tab-items/TopTabs';
+import {Icons} from '../../utils/helper/svg';
+import {TextInput} from 'react-native-gesture-handler';
 
 const QuranScreen = () => {
   return (
     <AppContainer style={styles.container}>
-      <View style={styles.header}>
-        <ScreenHeader />
+      <View style={{paddingHorizontal: 20, margin: 20, flexDirection: 'row'}}>
+        <ScreenHeader headerText={'القرآن'} />
       </View>
       <View style={styles.quranHeader}>
         <QuranHeaderCard
@@ -25,6 +27,7 @@ const QuranScreen = () => {
     </AppContainer>
   );
 };
+//Search on the basis of surah name
 
 const styles = StyleSheet.create({
   container: {

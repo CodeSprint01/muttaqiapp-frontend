@@ -17,6 +17,7 @@ const App = () => {
     uri: 'http://192.168.1.108:3000/graphql',
     cache: new InMemoryCache(),
   });
+
   return (
     <ApolloProvider client={client}>
       <Provider store={store}>
